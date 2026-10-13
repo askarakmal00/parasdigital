@@ -1,0 +1,655 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CMS & Traffic Monitor – Paras Digital</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/svg+xml" href="logoandicon/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  :root {
+    --bg: #08201F;
+    --surface: #0A2B2A;
+    --card: #0F3736;
+    --border: rgba(255,255,255,0.12);
+    --text: #F4F6F3;
+    --muted: #A9C2BE;
+    --accent: #FF6B3D;
+    --green: #2FBF9B;
+  }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: 'DM Sans', sans-serif; font-size: 15px; line-height: 1.5;
+  }
+  h1,h2,h3,h4 { font-family: 'Plus Jakarta Sans', sans-serif; margin: 0; }
+  button, input, textarea, select { font: inherit; }
+
+  /* ─── LOGIN SCREEN ─── */
+  #login-view {
+    min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px;
+    background: radial-gradient(60% 55% at 88% 18%, rgba(255,107,61,0.22) 0%, rgba(255,107,61,0) 62%), var(--bg);
+  }
+  .login-box {
+    width: 100%; max-width: 400px; background: var(--card); border: 1px solid var(--border);
+    border-radius: 28px; padding: 36px 30px; display: flex; flex-direction: column; gap: 20px;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.4);
+  }
+  .brand { display: flex; align-items: center; gap: 10px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 20px; text-decoration: none; color: #FFF; }
+  .field { display: flex; flex-direction: column; gap: 6px; }
+  .field label { font-size: 13px; font-weight: 700; color: var(--muted); }
+  .input {
+    background: var(--surface); border: 1px solid var(--border); color: #FFF;
+    padding: 12px 14px; border-radius: 12px; outline: none; width: 100%;
+    transition: border-color 0.2s;
+  }
+  .input:focus { border-color: var(--accent); }
+  textarea.input { min-height: 80px; resize: vertical; }
+  .btn {
+    border: 0; cursor: pointer; font-weight: 700; border-radius: 999px;
+    padding: 12px 22px; display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    transition: transform 0.15s, opacity 0.15s;
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn-accent { background: var(--accent); color: #0A2B2A; }
+  .btn-outline { background: transparent; color: #FFF; border: 1px solid var(--border); }
+  .btn-danger { background: rgba(255,90,90,0.16); color: #FF9494; border: 1px solid rgba(255,90,90,0.3); }
+
+  /* ─── DASHBOARD LAYOUT ─── */
+  #app-view { display: none; min-height: 100vh; flex-direction: column; }
+  .topbar {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(10,43,42,0.92); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border); padding: 14px 24px;
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px;
+  }
+  .nav-tabs { display: flex; flex-wrap: wrap; gap: 6px; background: var(--bg); padding: 5px; border-radius: 999px; border: 1px solid var(--border); }
+  .nav-tab {
+    border: 0; background: transparent; color: var(--muted); font-weight: 700; font-size: 14px;
+    padding: 9px 18px; border-radius: 999px; cursor: pointer;
+  }
+  .nav-tab.active { background: var(--accent); color: #0A2B2A; }
+
+  .container { max-width: 1180px; width: 100%; margin: 0 auto; padding: 32px 20px 80px; display: flex; flex-direction: column; gap: 28px; }
+  .tab-pane { display: none; flex-direction: column; gap: 24px; }
+  .tab-pane.active { display: flex; }
+
+  /* ─── CARDS & STATS ─── */
+  .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+  .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 20px; }
+  .card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 22px; padding: 24px;
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  .stat-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 20px;
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .stat-label { font-size: 13px; color: var(--muted); font-weight: 500; }
+  .stat-val { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 36px; font-weight: 800; line-height: 1.1; }
+  .stat-sub { font-size: 12px; color: var(--muted); }
+
+  /* ─── BAR CHART ─── */
+  .chart-wrap {
+    height: 220px; display: flex; align-items: flex-end; gap: 8px;
+    padding: 20px 8px 0; border-bottom: 1px solid var(--border); overflow-x: auto;
+  }
+  .chart-col {
+    flex: 1; min-width: 36px; height: 100%; display: flex; flex-direction: column;
+    justify-content: flex-end; align-items: center; gap: 6px;
+  }
+  .chart-bars { width: 100%; height: 165px; display: flex; align-items: flex-end; justify-content: center; gap: 3px; }
+  .bar-pv { width: 42%; background: #2F7A76; border-radius: 4px 4px 0 0; transition: height 0.3s; min-height: 3px; }
+  .bar-uv { width: 42%; background: var(--accent); border-radius: 4px 4px 0 0; transition: height 0.3s; min-height: 3px; }
+  .chart-lbl { font-size: 11px; color: var(--muted); white-space: nowrap; padding-bottom: 6px; }
+
+  /* ─── LIST TABLE ─── */
+  .list-row {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    padding: 10px 14px; background: var(--surface); border-radius: 12px; font-size: 14px;
+  }
+  .badge {
+    font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 999px;
+    background: rgba(255,107,61,0.18); color: var(--accent);
+  }
+  .badge-green { background: rgba(47,191,155,0.18); color: var(--green); }
+
+  /* ─── TOAST ─── */
+  #toast {
+    position: fixed; bottom: 24px; right: 24px; z-index: 200;
+    background: var(--accent); color: #0A2B2A; font-weight: 700;
+    padding: 14px 22px; border-radius: 999px; box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── LOGIN VIEW ─── -->
+<div id="login-view">
+  <form class="login-box" id="login-form">
+    <div class="brand">
+      <svg width="28" height="28" viewBox="0 0 48 48" aria-hidden="true">
+        <rect x="6" y="5" width="11" height="38" rx="5.5" fill="#FFFFFF"/>
+        <circle cx="27" cy="19" r="14" fill="#FFFFFF"/>
+        <circle cx="29.5" cy="19" r="4.6" fill="#FF6B3D"/>
+      </svg>
+      <span><b>paras</b> <span style="color:#A9C2BE;font-weight:500">cms</span></span>
+    </div>
+    <div>
+      <h2 style="font-size:24px">Masuk ke Dashboard</h2>
+      <p style="margin:4px 0 0;color:var(--muted);font-size:14px">Monitor traffic pengunjung & kelola isi website.</p>
+    </div>
+    <div id="login-err" style="display:none;background:rgba(255,80,80,0.18);color:#FF9E9E;padding:10px 14px;border-radius:12px;font-size:13px"></div>
+    <div class="field">
+      <label>Username</label>
+      <input class="input" type="text" id="login-user" required autocomplete="username" placeholder="admin">
+    </div>
+    <div class="field">
+      <label>Password</label>
+      <input class="input" type="password" id="login-pass" required autocomplete="current-password" placeholder="••••••••">
+    </div>
+    <button type="submit" class="btn btn-accent" style="margin-top:6px;padding:14px">Masuk Dashboard →</button>
+  </form>
+</div>
+
+<!-- ─── APP DASHBOARD VIEW ─── -->
+<div id="app-view">
+  <header class="topbar">
+    <div style="display:flex;align-items:center;gap:14px">
+      <a href="/" target="_blank" class="brand">
+        <svg width="26" height="26" viewBox="0 0 48 48">
+          <rect x="6" y="5" width="11" height="38" rx="5.5" fill="#FFFFFF"/>
+          <circle cx="27" cy="19" r="14" fill="#FFFFFF"/>
+          <circle cx="29.5" cy="19" r="4.6" fill="#FF6B3D"/>
+        </svg>
+        <span><b>paras</b> <span style="color:#A9C2BE;font-weight:500">admin</span></span>
+      </a>
+    </div>
+
+    <div class="nav-tabs">
+      <button class="nav-tab active" onclick="switchTab('traffic', this)">📊 Traffic & Analitik</button>
+      <button class="nav-tab" onclick="switchTab('pricing', this)">🏷️ Paket & Harga</button>
+      <button class="nav-tab" onclick="switchTab('portfolio', this)">🖼️ Portofolio</button>
+      <button class="nav-tab" onclick="switchTab('settings', this)">⚙️ Pengaturan & WA</button>
+    </div>
+
+    <div style="display:flex;align-items:center;gap:10px">
+      <a href="/" target="_blank" class="btn btn-outline" style="font-size:13px;padding:9px 16px">Lihat Website ↗</a>
+      <button class="btn btn-outline" style="font-size:13px;padding:9px 16px" onclick="logout()">Keluar</button>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- ═══ TAB 1: TRAFFIC & ANALITIK ═══ -->
+    <section id="tab-traffic" class="tab-pane active">
+      <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px">
+        <div>
+          <h1 style="font-size:28px">Monitor Traffic Website</h1>
+          <p style="margin:4px 0 0;color:var(--muted)">Data tersimpan pribadi di PostgreSQL VPS Anda (tidak terlihat oleh publik).</p>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px">
+          <select id="stats-days" class="input" style="width:auto;padding:9px 14px" onchange="loadStats()">
+            <option value="7">7 Hari Terakhir</option>
+            <option value="14" selected>14 Hari Terakhir</option>
+            <option value="30">30 Hari Terakhir</option>
+            <option value="90">90 Hari Terakhir</option>
+          </select>
+          <button class="btn btn-outline" onclick="loadStats()">↻ Refresh</button>
+        </div>
+      </div>
+
+      <!-- KPI Cards -->
+      <div class="grid-4">
+        <div class="stat-card">
+          <span class="stat-label">Pengunjung Unik (Periode Ini)</span>
+          <span class="stat-val" style="color:var(--accent)" id="st-uv">0</span>
+          <span class="stat-sub">Hari ini: <b id="st-today-uv">0</b> pengunjung</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">Total Halaman Dibuka (Pageviews)</span>
+          <span class="stat-val" id="st-pv">0</span>
+          <span class="stat-sub">Hari ini: <b id="st-today-pv">0</b> tayangan</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">Klik Tombol WhatsApp</span>
+          <span class="stat-val" style="color:var(--green)" id="st-wa">0</span>
+          <span class="stat-sub">Hari ini: <b id="st-today-wa">0</b> klik WA</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">Klik Pilihan Paket Harga</span>
+          <span class="stat-val" id="st-plan">0</span>
+          <span class="stat-sub">Interaksi tombol pilih paket</span>
+        </div>
+      </div>
+
+      <!-- Daily Chart -->
+      <div class="card">
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
+          <h3>Grafik Kunjungan Harian</h3>
+          <div style="display:flex;gap:16px;font-size:13px;color:var(--muted)">
+            <span style="display:flex;align-items:center;gap:6px"><span style="width:10px;height:10px;border-radius:3px;background:var(--accent)"></span>Pengunjung Unik</span>
+            <span style="display:flex;align-items:center;gap:6px"><span style="width:10px;height:10px;border-radius:3px;background:#2F7A76"></span>Pageviews</span>
+          </div>
+        </div>
+        <div class="chart-wrap" id="daily-chart"></div>
+      </div>
+
+      <!-- Breakdown Grid -->
+      <div class="grid-2">
+        <div class="card">
+          <h3>Sumber Traffic (Referrer)</h3>
+          <div id="list-referrers" style="display:flex;flex-direction:column;gap:8px"></div>
+        </div>
+        <div class="card">
+          <h3>Klik Tombol WA & Paket Terpopuler</h3>
+          <div id="list-clicks" style="display:flex;flex-direction:column;gap:8px"></div>
+        </div>
+        <div class="card">
+          <h3>Perangkat Pengunjung (HP vs Desktop)</h3>
+          <div id="list-devices" style="display:flex;flex-direction:column;gap:8px"></div>
+        </div>
+        <div class="card">
+          <h3>Browser Pengunjung</h3>
+          <div id="list-browsers" style="display:flex;flex-direction:column;gap:8px"></div>
+        </div>
+      </div>
+
+      <!-- Live Recent Activity -->
+      <div class="card">
+        <h3>15 Aktivitas Pengunjung Terakhir</h3>
+        <div id="list-recent" style="display:flex;flex-direction:column;gap:8px"></div>
+      </div>
+    </section>
+
+    <!-- ═══ TAB 2: PAKET & HARGA ═══ -->
+    <section id="tab-pricing" class="tab-pane">
+      <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px">
+        <div>
+          <h1 style="font-size:28px">Kelola Paket & Harga</h1>
+          <p style="margin:4px 0 0;color:var(--muted)">Ubah harga, estimasi waktu, dan daftar fitur yang tampil di halaman depan.</p>
+        </div>
+        <button class="btn btn-accent" onclick="savePricing()">💾 Simpan Semua Paket Harga</button>
+      </div>
+
+      <div class="card">
+        <h3 style="color:var(--accent)">Kategori 1: Paket Website</h3>
+        <div id="editor-pricing-website" class="grid-2"></div>
+      </div>
+
+      <div class="card">
+        <h3 style="color:var(--accent)">Kategori 2: Paket Web App Custom</h3>
+        <div id="editor-pricing-webapp" class="grid-2"></div>
+      </div>
+    </section>
+
+    <!-- ═══ TAB 3: PORTOFOLIO ═══ -->
+    <section id="tab-portfolio" class="tab-pane">
+      <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px">
+        <div>
+          <h1 style="font-size:28px">Kelola Portofolio</h1>
+          <p style="margin:4px 0 0;color:var(--muted)">Tambah atau ubah daftar proyek yang ditampilkan di bagian Portofolio.</p>
+        </div>
+        <div style="display:flex;gap:10px">
+          <button class="btn btn-outline" onclick="addPortfolioItem()">+ Tambah Proyek</button>
+          <button class="btn btn-accent" onclick="savePortfolio()">💾 Simpan Portofolio</button>
+        </div>
+      </div>
+      <div id="editor-portfolio" class="grid-2"></div>
+    </section>
+
+    <!-- ═══ TAB 4: PENGATURAN & KONTAK ═══ -->
+    <section id="tab-settings" class="tab-pane">
+      <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px">
+        <div>
+          <h1 style="font-size:28px">Pengaturan Kontak & WhatsApp</h1>
+          <p style="margin:4px 0 0;color:var(--muted)">Atur nomor WhatsApp tujuan dan informasi footer website.</p>
+        </div>
+        <button class="btn btn-accent" onclick="saveSettings()">💾 Simpan Pengaturan</button>
+      </div>
+
+      <div class="card" style="max-width:680px">
+        <div class="field">
+          <label>Nomor WhatsApp (Awali dengan kode negara 62, tanpa + atau spasi)</label>
+          <input class="input" id="set-wa-num" placeholder="6281234567890">
+        </div>
+        <div class="field">
+          <label>Pesan Sapaan Otomatis WhatsApp</label>
+          <input class="input" id="set-wa-msg" placeholder="Halo Paras Digital, saya ingin konsultasi...">
+        </div>
+        <div class="grid-2">
+          <div class="field">
+            <label>Nama Domain (Tampil di Footer)</label>
+            <input class="input" id="set-domain" placeholder="parasdigital.id">
+          </div>
+          <div class="field">
+            <label>Email Kontak (Tampil di Footer)</label>
+            <input class="input" id="set-email" placeholder="halo@parasdigital.id">
+          </div>
+        </div>
+        <div class="grid-2">
+          <div class="field">
+            <label>Kota / Lokasi (Tampil di Footer)</label>
+            <input class="input" id="set-city" placeholder="Jakarta, Indonesia">
+          </div>
+          <div class="field">
+            <label>Biaya Hosting & Maintenance Bulanan</label>
+            <input class="input" id="set-hosting" placeholder="150rb">
+          </div>
+        </div>
+        <div class="field" style="max-width:240px">
+          <label>Persentase DP Pembayaran (%)</label>
+          <input class="input" id="set-dp" placeholder="50">
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<div id="toast">Tersimpan!</div>
+
+<script>
+let token = localStorage.getItem('paras_admin_token') || '';
+let cmsData = null;
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.style.display = 'block';
+  setTimeout(() => { t.style.display = 'none'; }, 2600);
+}
+
+function switchTab(name, btn) {
+  document.querySelectorAll('.nav-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+}
+
+function logout() {
+  localStorage.removeItem('paras_admin_token');
+  token = '';
+  document.getElementById('app-view').style.display = 'none';
+  document.getElementById('login-view').style.display = 'flex';
+}
+
+document.getElementById('login-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const errEl = document.getElementById('login-err');
+  errEl.style.display = 'none';
+  const username = document.getElementById('login-user').value.trim();
+  const password = document.getElementById('login-pass').value;
+
+  try {
+    const res = await fetch('/api/admin/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username, password })
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || 'Gagal login');
+    token = data.token;
+    localStorage.setItem('paras_admin_token', token);
+    initDashboard();
+  } catch (err) {
+    errEl.textContent = err.message;
+    errEl.style.display = 'block';
+  }
+});
+
+async function apiAdmin(url, options = {}) {
+  const res = await fetch(url, {
+    ...options,
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token,
+      ...(options.headers || {})
+    }
+  });
+  if (res.status === 401) {
+    logout();
+    throw new Error('Sesi berakhir, silakan login kembali.');
+  }
+  return res.json();
+}
+
+async function initDashboard() {
+  document.getElementById('login-view').style.display = 'none';
+  document.getElementById('app-view').style.display = 'flex';
+  await Promise.all([loadStats(), loadCMS()]);
+}
+
+// ─── LOAD TRAFFIC STATS ───
+async function loadStats() {
+  const days = document.getElementById('stats-days').value;
+  try {
+    const data = await apiAdmin('/api/admin/stats?days=' + days);
+    document.getElementById('st-uv').textContent = data.summary?.unique_visitors || 0;
+    document.getElementById('st-pv').textContent = data.summary?.total_pageviews || 0;
+    document.getElementById('st-wa').textContent = data.summary?.wa_clicks || 0;
+    document.getElementById('st-plan').textContent = data.summary?.plan_clicks || 0;
+
+    document.getElementById('st-today-uv').textContent = data.today?.today_visitors || 0;
+    document.getElementById('st-today-pv').textContent = data.today?.today_pageviews || 0;
+    document.getElementById('st-today-wa').textContent = data.today?.today_wa_clicks || 0;
+
+    // Render chart
+    const chartEl = document.getElementById('daily-chart');
+    chartEl.innerHTML = '';
+    const daily = data.daily || [];
+    const maxVal = Math.max(1, ...daily.map(d => Math.max(d.pageviews, d.visitors)));
+    daily.forEach(d => {
+      const hPv = Math.max(4, Math.round((d.pageviews / maxVal) * 155));
+      const hUv = Math.max(4, Math.round((d.visitors / maxVal) * 155));
+      const col = document.createElement('div');
+      col.className = 'chart-col';
+      col.title = `${d.label}: ${d.visitors} pengunjung unik, ${d.pageviews} pageviews, ${d.wa_clicks} klik WA`;
+      col.innerHTML = `
+        <div class="chart-bars">
+          <div class="bar-uv" style="height:${hUv}px"></div>
+          <div class="bar-pv" style="height:${hPv}px"></div>
+        </div>
+        <span class="chart-lbl">${d.label}</span>
+      `;
+      chartEl.appendChild(col);
+    });
+
+    renderSimpleList('list-referrers', data.referrers, r => r.source, r => r.count + ' kunjungan');
+    renderSimpleList('list-clicks', data.clicks, c => `${c.event_type === 'wa_click' ? '💬 WA' : '🏷️ Paket'}: ${c.event_label || 'Klik'}`, c => c.count + 'x');
+    renderSimpleList('list-devices', data.devices, d => d.device_type.toUpperCase(), d => d.count + 'x');
+    renderSimpleList('list-browsers', data.browsers, b => b.browser, b => b.count + 'x');
+
+    // Recent
+    const recEl = document.getElementById('list-recent');
+    recEl.innerHTML = '';
+    if (!data.recent || data.recent.length === 0) {
+      recEl.innerHTML = `<div style="color:var(--muted);font-size:14px">Belum ada aktivitas tercatat.</div>`;
+    } else {
+      data.recent.forEach(r => {
+        const row = document.createElement('div');
+        row.className = 'list-row';
+        const isWa = r.event_type === 'wa_click';
+        row.innerHTML = `
+          <div style="display:flex;align-items:center;gap:10px;min-width:0">
+            <span class="badge ${isWa ? 'badge-green' : ''}">${r.event_type}</span>
+            <span style="font-weight:500">${r.event_label || 'Buka Halaman'}</span>
+            <span style="color:var(--muted);font-size:13px">· ${r.device_type} (${r.browser})</span>
+          </div>
+          <span style="color:var(--muted);font-size:12px;flex:none">${r.time_str} WIB</span>
+        `;
+        recEl.appendChild(row);
+      });
+    }
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+function renderSimpleList(containerId, items = [], labelFn, valFn) {
+  const el = document.getElementById(containerId);
+  el.innerHTML = '';
+  if (!items || items.length === 0) {
+    el.innerHTML = `<div style="color:var(--muted);font-size:14px">Belum ada data.</div>`;
+    return;
+  }
+  items.forEach(item => {
+    const row = document.createElement('div');
+    row.className = 'list-row';
+    row.innerHTML = `<span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${labelFn(item)}</span><span class="badge">${valFn(item)}</span>`;
+    el.appendChild(row);
+  });
+}
+
+// ─── LOAD & RENDER CMS EDITORS ───
+async function loadCMS() {
+  const res = await fetch('/api/content');
+  cmsData = await res.json();
+  renderPricingEditor('editor-pricing-website', cmsData.pricing_website);
+  renderPricingEditor('editor-pricing-webapp', cmsData.pricing_webapp);
+  renderPortfolioEditor();
+  renderSettingsEditor();
+}
+
+function renderPricingEditor(containerId, list) {
+  const el = document.getElementById(containerId);
+  el.innerHTML = '';
+  list.forEach((plan, idx) => {
+    const box = document.createElement('div');
+    box.style.cssText = 'background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:12px';
+    box.innerHTML = `
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <strong>Paket #${idx + 1} ${plan.featured ? '⭐ (Populer)' : ''}</strong>
+      </div>
+      <div class="field"><label>Nama Paket</label><input class="input p-name" value="${plan.name || ''}"></div>
+      <div class="field"><label>Deskripsi Singkat</label><input class="input p-desc" value="${plan.desc || ''}"></div>
+      <div class="grid-2">
+        <div class="field"><label>Harga (tanpa Rp)</label><input class="input p-price" value="${plan.price || ''}"></div>
+        <div class="field"><label>Estimasi Selesai</label><input class="input p-badge2" value="${plan.badge2 || ''}"></div>
+      </div>
+      <div class="field"><label>Daftar Fitur (1 baris = 1 fitur)</label><textarea class="input p-features">${(plan.features || []).join('\n')}</textarea></div>
+    `;
+    el.appendChild(box);
+  });
+}
+
+function collectPricing(containerId, originalList) {
+  const boxes = document.getElementById(containerId).children;
+  return Array.from(boxes).map((box, idx) => ({
+    ...(originalList[idx] || {}),
+    name: box.querySelector('.p-name').value.trim(),
+    desc: box.querySelector('.p-desc').value.trim(),
+    price: box.querySelector('.p-price').value.trim(),
+    badge2: box.querySelector('.p-badge2').value.trim(),
+    features: box.querySelector('.p-features').value.split('\n').map(s => s.trim()).filter(Boolean)
+  }));
+}
+
+async function savePricing() {
+  const web = collectPricing('editor-pricing-website', cmsData.pricing_website);
+  const app = collectPricing('editor-pricing-webapp', cmsData.pricing_webapp);
+  await apiAdmin('/api/admin/content/pricing_website', { method: 'PUT', body: JSON.stringify(web) });
+  await apiAdmin('/api/admin/content/pricing_webapp', { method: 'PUT', body: JSON.stringify(app) });
+  cmsData.pricing_website = web;
+  cmsData.pricing_webapp = app;
+  showToast('Paket & Harga berhasil disimpan!');
+}
+
+function renderPortfolioEditor() {
+  const el = document.getElementById('editor-portfolio');
+  el.innerHTML = '';
+  (cmsData.portfolio || []).forEach((item, idx) => {
+    const box = document.createElement('div');
+    box.className = 'card';
+    box.innerHTML = `
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <h3>Proyek #${item.num || (idx + 1)}</h3>
+        <button class="btn btn-danger" style="padding:6px 12px;font-size:12px" onclick="removePortfolio(${idx})">Hapus</button>
+      </div>
+      <div class="grid-2">
+        <div class="field"><label>Nomor Urut</label><input class="input pf-num" value="${item.num || ''}"></div>
+        <div class="field"><label>Kategori (Website / Web app / Dashboard)</label><input class="input pf-cat" value="${item.category || ''}"></div>
+      </div>
+      <div class="field"><label>Nama Klien / Judul Proyek</label><input class="input pf-title" value="${item.title || ''}"></div>
+      <div class="field"><label>URL Gambar Screenshot (Opsional, kosongkan jika pakai placeholder)</label><input class="input pf-img" value="${item.image_url || ''}" placeholder="https://..."></div>
+      <div class="field"><label>Ringkasan (Masalah, Solusi, Hasil)</label><textarea class="input pf-sum">${item.summary || ''}</textarea></div>
+    `;
+    el.appendChild(box);
+  });
+}
+
+function syncPortfolioFromDOM() {
+  const boxes = document.getElementById('editor-portfolio').children;
+  cmsData.portfolio = Array.from(boxes).map((box, idx) => ({
+    num: box.querySelector('.pf-num').value.trim() || String(idx + 1).padStart(2, '0'),
+    category: box.querySelector('.pf-cat').value.trim(),
+    title: box.querySelector('.pf-title').value.trim(),
+    image_url: box.querySelector('.pf-img').value.trim(),
+    image_placeholder: `[Tangkapan layar proyek ${String(idx + 1).padStart(2, '0')}]`,
+    summary: box.querySelector('.pf-sum').value.trim()
+  }));
+}
+
+function addPortfolioItem() {
+  syncPortfolioFromDOM();
+  const nextNum = String((cmsData.portfolio.length || 0) + 1).padStart(2, '0');
+  cmsData.portfolio.push({
+    num: nextNum,
+    title: 'Proyek Baru',
+    category: 'Website',
+    image_url: '',
+    image_placeholder: `[Tangkapan layar proyek ${nextNum}]`,
+    summary: 'Masalah: [isi]. Solusi: [isi]. Hasil: [isi].'
+  });
+  renderPortfolioEditor();
+}
+
+function removePortfolio(idx) {
+  syncPortfolioFromDOM();
+  cmsData.portfolio.splice(idx, 1);
+  renderPortfolioEditor();
+}
+
+async function savePortfolio() {
+  syncPortfolioFromDOM();
+  await apiAdmin('/api/admin/content/portfolio', { method: 'PUT', body: JSON.stringify(cmsData.portfolio) });
+  showToast('Portofolio berhasil disimpan!');
+}
+
+function renderSettingsEditor() {
+  const s = cmsData.settings || {};
+  document.getElementById('set-wa-num').value = s.whatsapp_number || '';
+  document.getElementById('set-wa-msg').value = s.whatsapp_greeting || '';
+  document.getElementById('set-domain').value = s.domain_display || '';
+  document.getElementById('set-email').value = s.email || '';
+  document.getElementById('set-city').value = s.city || '';
+  document.getElementById('set-hosting').value = s.hosting_price || '';
+  document.getElementById('set-dp').value = s.dp_percent || '';
+}
+
+async function saveSettings() {
+  const s = {
+    whatsapp_number: document.getElementById('set-wa-num').value.trim(),
+    whatsapp_greeting: document.getElementById('set-wa-msg').value.trim(),
+    domain_display: document.getElementById('set-domain').value.trim(),
+    email: document.getElementById('set-email').value.trim(),
+    city: document.getElementById('set-city').value.trim(),
+    hosting_price: document.getElementById('set-hosting').value.trim(),
+    dp_percent: document.getElementById('set-dp').value.trim()
+  };
+  await apiAdmin('/api/admin/content/settings', { method: 'PUT', body: JSON.stringify(s) });
+  cmsData.settings = s;
+  showToast('Pengaturan berhasil disimpan!');
+}
+
+if (token) {
+  initDashboard();
+}
+</script>
+</body>
+</html>
+

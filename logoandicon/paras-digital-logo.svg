@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 64" width="680" height="128" role="img" aria-label="Paras Digital">
+  <g transform="translate(0 2) scale(1.25)">
+    <rect x="6" y="5" width="11" height="38" rx="5.5" fill="#0E3B3A"/>
+    <circle cx="27" cy="19" r="14" fill="#0E3B3A"/>
+    <circle cx="29.5" cy="19" r="4.6" fill="#FF6B3D"/>
+  </g>
+  <text x="78" y="45" font-family="'Plus Jakarta Sans', 'DM Sans', Arial, sans-serif" font-size="42" letter-spacing="-0.84" fill="#11181C"><tspan font-weight="800">paras</tspan><tspan font-weight="500" fill="#46525A"> digital</tspan></text>
+</svg>
