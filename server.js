@@ -447,6 +447,18 @@ app.get('/admin', (req, res) => {
   res.sendFile(path.join(__dirname, 'admin.html'));
 });
 
+app.get('/layanan-website', (req, res) => {
+  res.sendFile(path.join(__dirname, 'layanan-website.html'));
+});
+
+app.get('/layanan-webapp', (req, res) => {
+  res.sendFile(path.join(__dirname, 'layanan-webapp.html'));
+});
+
+app.get('/layanan-maintenance', (req, res) => {
+  res.sendFile(path.join(__dirname, 'layanan-maintenance.html'));
+});
+
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });

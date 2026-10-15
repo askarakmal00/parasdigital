@@ -57,3 +57,4 @@ fi
 
 echo "🔒 Untuk mengaktifkan HTTPS (SSL) setelah DNS domain mengarah ke VPS, jalankan:"
 echo "   sudo certbot --nginx -d $DOMAIN"
+
