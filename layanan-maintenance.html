@@ -64,6 +64,67 @@
   .nav-cta { background: var(--accent); color: #0A2B2A !important; padding: 12px 22px !important; border-radius: 999px; font-weight: 700 !important; transition: transform 0.2s ease, box-shadow 0.2s ease !important; }
   .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255,107,61,0.4); }
 
+  /* ─── NAV DROPDOWN ─── */
+  .nav-dropdown { position: relative; display: inline-flex; align-items: center; }
+  .nav-dropdown-btn {
+    background: transparent; color: #E7EFEC; font-size: 15px; font-weight: 700;
+    padding: 10px 0; display: inline-flex; align-items: center; gap: 6px; cursor: pointer;
+    transition: color 0.2s; border: none; font-family: inherit; color: #FFFFFF;
+  }
+  .nav-dropdown-btn:hover, .nav-dropdown:hover .nav-dropdown-btn { color: #FFFFFF; }
+  .dropdown-chevron { transition: transform 0.25s ease; stroke: currentColor; }
+  .nav-dropdown:hover .dropdown-chevron,
+  .nav-dropdown.active .dropdown-chevron { transform: rotate(180deg); }
+
+  .dropdown-menu {
+    position: absolute; top: calc(100% + 8px); left: 50%; transform: translateX(-50%) translateY(6px);
+    width: 290px;
+    background: rgba(10, 43, 42, 0.96);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 20px;
+    padding: 10px;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.22s ease, transform 0.22s ease;
+    z-index: 150;
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .dropdown-menu::before {
+    content: ''; position: absolute; top: -14px; left: 0; right: 0; height: 14px;
+  }
+  .nav-dropdown:hover .dropdown-menu,
+  .nav-dropdown:focus-within .dropdown-menu,
+  .nav-dropdown.active .dropdown-menu {
+    opacity: 1; pointer-events: auto; transform: translateX(-50%) translateY(0);
+  }
+
+  .dropdown-item {
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: 10px 12px; border-radius: 12px;
+    color: #E7EFEC !important; text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .dropdown-item:hover, .dropdown-item.active {
+    background: rgba(255, 255, 255, 0.08); color: #FFFFFF !important;
+    transform: translateX(3px);
+  }
+  .dropdown-item::after { display: none !important; }
+  .dropdown-icon {
+    width: 32px; height: 32px; border-radius: 8px;
+    background: rgba(255, 107, 61, 0.15); color: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    flex: none; margin-top: 2px;
+    transition: background 0.2s, color 0.2s;
+  }
+  .dropdown-item:hover .dropdown-icon, .dropdown-item.active .dropdown-icon {
+    background: var(--accent); color: #0A2B2A;
+  }
+  .dropdown-text { display: flex; flex-direction: column; gap: 2px; text-align: left; }
+  .dropdown-text strong { font-size: 15px; font-weight: 700; color: #FFFFFF; }
+  .dropdown-text span { font-size: 12px; color: #A9C2BE; line-height: 1.3; }
+
   /* Mobile nav */
   .nav-mobile-right { display: none; align-items: center; gap: 8px; }
   .nav-hamburger {
@@ -80,6 +141,16 @@
   #mobile-menu.open { display: flex; }
   #mobile-menu a { padding: 14px 24px; font-size: 16px; font-weight: 600; color: #E7EFEC; border-bottom: 1px solid rgba(255,255,255,0.06); }
   #mobile-menu a:hover, #mobile-menu a.active { color: var(--accent); }
+  .mobile-dropdown-btn {
+    width: 100%; display: flex; align-items: center; justify-content: space-between;
+    background: transparent; color: #E7EFEC; font-size: 16px; font-weight: 600;
+    padding: 14px 24px; border: none; border-bottom: 1px solid rgba(255,255,255,0.06);
+    font-family: inherit; cursor: pointer; text-align: left;
+  }
+  .mobile-dropdown-sub { display: none; flex-direction: column; background: rgba(0,0,0,0.22); }
+  .mobile-dropdown-sub.open { display: flex; }
+  .mobile-dropdown-sub a { padding: 12px 24px 12px 36px !important; font-size: 15px !important; color: #A9C2BE !important; }
+  .mobile-dropdown-sub a:hover, .mobile-dropdown-sub a.active { color: var(--accent) !important; }
 
   /* ─── HERO ─── */
   .hero-wrap {
@@ -256,9 +327,49 @@
 
       <nav class="nav-links" aria-label="Menu navigasi">
         <a href="./index.html">Beranda</a>
-        <a href="./layanan-website.html">Website</a>
-        <a href="./layanan-webapp.html">Web App</a>
-        <a href="./layanan-maintenance.html" class="active">Maintenance</a>
+        <a href="./index.html#harga">Harga</a>
+        <a href="./index.html#portofolio">Portofolio</a>
+
+        <!-- Dropdown Layanan -->
+        <div class="nav-dropdown" id="nav-dropdown-layanan">
+          <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false" id="dropdown-toggle-btn" type="button">
+            <span>Layanan</span>
+            <svg class="dropdown-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 9l6 6 6-6"/>
+            </svg>
+          </button>
+          <div class="dropdown-menu" role="menu">
+            <a href="./layanan-website.html" class="dropdown-item">
+              <span class="dropdown-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              </span>
+              <div class="dropdown-text">
+                <strong>Website</strong>
+                <span>Company profile &amp; landing page</span>
+              </div>
+            </a>
+            <a href="./layanan-webapp.html" class="dropdown-item">
+              <span class="dropdown-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+              </span>
+              <div class="dropdown-text">
+                <strong>Web App Custom</strong>
+                <span>Sistem operasional, kasir, CRM</span>
+              </div>
+            </a>
+            <a href="./layanan-maintenance.html" class="dropdown-item active">
+              <span class="dropdown-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+              </span>
+              <div class="dropdown-text">
+                <strong>Maintenance &amp; Hosting</strong>
+                <span>Server, SSL, backup, &amp; perbaikan</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <a href="./index.html#proses">Proses</a>
         <a href="./index.html#kontak" class="nav-cta">Konsultasi</a>
       </nav>
 
@@ -275,9 +386,20 @@
 
   <nav id="mobile-menu" aria-label="Menu mobile">
     <a href="./index.html">Beranda</a>
-    <a href="./layanan-website.html">Website</a>
-    <a href="./layanan-webapp.html">Web App</a>
-    <a href="./layanan-maintenance.html" class="active">Maintenance</a>
+    <a href="./index.html#harga">Harga</a>
+    <a href="./index.html#portofolio">Portofolio</a>
+    <div class="mobile-dropdown">
+      <button class="mobile-dropdown-btn" id="mobile-layanan-toggle" type="button">
+        <span>Layanan</span>
+        <svg class="mobile-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="mobile-dropdown-sub" id="mobile-layanan-sub">
+        <a href="./layanan-website.html">↳ Website Company Profile</a>
+        <a href="./layanan-webapp.html">↳ Web App Custom</a>
+        <a href="./layanan-maintenance.html" class="active">↳ Maintenance &amp; Hosting</a>
+      </div>
+    </div>
+    <a href="./index.html#proses">Proses</a>
     <a href="./index.html#kontak" style="background:var(--accent);color:#0A2B2A;font-weight:700;margin:8px 16px 0;border-radius:999px;text-align:center;border-bottom:none;">Konsultasi Gratis</a>
   </nav>
 </header>
@@ -500,6 +622,34 @@ if (burgerBtn && mobileMenu) {
   });
   mobileMenu.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  });
+}
+
+// ── Dropdown Layanan (Desktop & Mobile) ──
+const dropdownBtn = document.getElementById('dropdown-toggle-btn');
+const dropdownWrap = document.getElementById('nav-dropdown-layanan');
+if (dropdownBtn && dropdownWrap) {
+  dropdownBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    dropdownWrap.classList.toggle('active');
+  });
+  document.addEventListener('click', (e) => {
+    if (!dropdownWrap.contains(e.target)) {
+      dropdownWrap.classList.remove('active');
+    }
+  });
+}
+
+const mobileLayananToggle = document.getElementById('mobile-layanan-toggle');
+const mobileLayananSub = document.getElementById('mobile-layanan-sub');
+if (mobileLayananToggle && mobileLayananSub) {
+  mobileLayananToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    mobileLayananSub.classList.toggle('open');
+    const chev = mobileLayananToggle.querySelector('.mobile-chevron');
+    if (chev) {
+      chev.style.transform = mobileLayananSub.classList.contains('open') ? 'rotate(180deg)' : '';
+    }
   });
 }
 
