@@ -18,11 +18,11 @@
   /* ─── RESET & BASE ─── */
   html { scroll-behavior: smooth; }
   *, *::before, *::after { box-sizing: border-box; }
-  body { margin: 0; background: #0A2B2A; color: #F4F6F3; font-family: 'DM Sans', sans-serif; font-size: 17px; line-height: 1.55; overflow-x: clip; }
+  body { margin: 0; background: #F5F4EF; color: #2A3B3A; font-family: 'DM Sans', sans-serif; font-size: 17px; line-height: 1.55; overflow-x: clip; }
   section[id] { scroll-margin-top: 96px; }
   h1,h2,h3,h4 { font-family: 'Plus Jakarta Sans', sans-serif; }
-  a { color: #FFFFFF; text-decoration: none; }
-  a:hover { color: #FFD9CC; }
+  a { color: #0D1F1E; text-decoration: none; }
+  a:hover { color: #FF6B3D; }
   button { font-family: inherit; cursor: pointer; border: none; }
   img { max-width: 100%; display: block; }
 
@@ -73,36 +73,36 @@
     max-width: 1160px; margin: 0 auto;
     display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px;
     padding: 10px 12px 10px 22px; border-radius: 999px;
-    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14);
+    background: rgba(255,255,255,0.85); border: 1px solid rgba(0,0,0,0.08);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     transition: background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
   }
   .nav-wrap.scrolled .nav-pill {
-    background: rgba(10,43,42,0.92);
-    border-color: rgba(255,255,255,0.22);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+    background: rgba(245,244,239,0.96);
+    border-color: rgba(0,0,0,0.12);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.08);
   }
   .nav-logo { display: flex; align-items: center; gap: 10px; font-size: 20px; letter-spacing: -0.02em; transition: opacity 0.2s; }
   .nav-logo:hover { opacity: 0.85; }
-  .nav-logo .wordmark-bold { font-weight: 800; color: #FFFFFF; }
-  .nav-logo .wordmark-light { font-weight: 500; color: #A9C2BE; }
+  .nav-logo .wordmark-bold { font-weight: 800; color: #0D1F1E; }
+  .nav-logo .wordmark-light { font-weight: 500; color: #5A7472; }
   .nav-links { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 26px; font-size: 16px; font-weight: 500; }
-  .nav-links a { color: #E7EFEC; padding: 10px 0; position: relative; transition: color 0.2s; }
+  .nav-links a { color: #2A3B3A; padding: 10px 0; position: relative; transition: color 0.2s; }
   .nav-links a::after { content: ''; position: absolute; bottom: 6px; left: 0; width: 0; height: 2px; background: var(--accent); border-radius: 2px; transition: width 0.25s ease; }
   .nav-links a:hover::after { width: 100%; }
-  .nav-links a:hover { color: #FFFFFF; }
+  .nav-links a:hover { color: #0D1F1E; }
   .nav-cta { background: var(--accent); color: #0A2B2A !important; padding: 12px 22px !important; border-radius: 999px; font-weight: 700 !important; transition: transform 0.2s ease, box-shadow 0.2s ease !important; }
   .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255,107,61,0.4); color: #0A2B2A !important; }
 
   /* ─── NAV DROPDOWN ─── */
   .nav-dropdown { position: relative; display: inline-flex; align-items: center; }
   .nav-dropdown-btn {
-    background: transparent; color: #E7EFEC; font-size: 16px; font-weight: 500;
+    background: transparent; color: #2A3B3A; font-size: 16px; font-weight: 500;
     padding: 10px 0; display: inline-flex; align-items: center; gap: 6px; cursor: pointer;
     transition: color 0.2s; border: none; font-family: inherit;
   }
-  .nav-dropdown-btn:hover, .nav-dropdown:hover .nav-dropdown-btn { color: #FFFFFF; }
+  .nav-dropdown-btn:hover, .nav-dropdown:hover .nav-dropdown-btn { color: #0D1F1E; }
   .dropdown-chevron { transition: transform 0.25s ease; stroke: currentColor; }
   .nav-dropdown:hover .dropdown-chevron,
   .nav-dropdown.active .dropdown-chevron { transform: rotate(180deg); }
@@ -110,11 +110,11 @@
   .dropdown-menu {
     position: absolute; top: calc(100% + 8px); left: 50%; transform: translateX(-50%) translateY(6px);
     width: 290px;
-    background: rgba(10, 43, 42, 0.96);
-    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: rgba(255, 255, 255, 0.98);
+    border: 1px solid rgba(0, 0, 0, 0.10);
     border-radius: 20px;
     padding: 10px;
-    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     opacity: 0; pointer-events: none;
@@ -134,11 +134,11 @@
   .dropdown-item {
     display: flex; align-items: flex-start; gap: 12px;
     padding: 10px 12px; border-radius: 12px;
-    color: #E7EFEC !important; text-decoration: none;
+    color: #2A3B3A !important; text-decoration: none;
     transition: background 0.2s, transform 0.15s;
   }
   .dropdown-item:hover {
-    background: rgba(255, 255, 255, 0.08); color: #FFFFFF !important;
+    background: rgba(0, 0, 0, 0.05); color: #0D1F1E !important;
     transform: translateX(3px);
   }
   .dropdown-item::after { display: none !important; }
@@ -153,49 +153,49 @@
     background: var(--accent); color: #0A2B2A;
   }
   .dropdown-text { display: flex; flex-direction: column; gap: 2px; text-align: left; }
-  .dropdown-text strong { font-size: 15px; font-weight: 700; color: #FFFFFF; }
-  .dropdown-text span { font-size: 12px; color: #A9C2BE; line-height: 1.3; }
+  .dropdown-text strong { font-size: 15px; font-weight: 700; color: #0D1F1E; }
+  .dropdown-text span { font-size: 12px; color: #5A7472; line-height: 1.3; }
 
   /* Mobile nav */
   .nav-mobile-right { display: none; align-items: center; gap: 8px; }
   .nav-hamburger {
     width: 44px; height: 44px; border-radius: 50%;
-    border: 1px solid rgba(255,255,255,0.28);
+    border: 1px solid rgba(0,0,0,0.15);
     background: transparent;
     display: flex; align-items: center; justify-content: center;
-    color: #FFFFFF; transition: background 0.2s, border-color 0.2s;
+    color: #0D1F1E; transition: background 0.2s, border-color 0.2s;
   }
-  .nav-hamburger:hover { background: rgba(255,255,255,0.1); }
+  .nav-hamburger:hover { background: rgba(0,0,0,0.05); }
   .nav-cta-sm { background: var(--accent); color: #0A2B2A; font-weight: 700; font-size: 14px; padding: 12px 16px; border-radius: 999px; transition: transform 0.2s ease, box-shadow 0.2s ease; }
   .nav-cta-sm:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(255,107,61,0.4); }
 
   /* Mobile drawer */
   #mobile-menu {
     display: none; flex-direction: column; gap: 0;
-    background: rgba(10,43,42,0.98); border-top: 1px solid rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.98); border-top: 1px solid rgba(0,0,0,0.08);
     padding: 12px 0 20px;
   }
   #mobile-menu.open { display: flex; animation: fade-up 0.22s ease both; }
-  #mobile-menu a { display: block; padding: 14px 24px; font-size: 17px; font-weight: 500; color: #E7EFEC; border-bottom: 1px solid rgba(255,255,255,0.06); transition: color 0.2s, padding-left 0.2s; }
-  #mobile-menu a:hover { color: #FFFFFF; padding-left: 30px; }
+  #mobile-menu a { display: block; padding: 14px 24px; font-size: 17px; font-weight: 500; color: #2A3B3A; border-bottom: 1px solid rgba(0,0,0,0.06); transition: color 0.2s, padding-left 0.2s; }
+  #mobile-menu a:hover { color: #0D1F1E; padding-left: 30px; }
   #mobile-menu a:last-child { border-bottom: none; }
   .mobile-dropdown-btn {
     width: 100%; display: flex; align-items: center; justify-content: space-between;
-    background: transparent; color: #E7EFEC; font-size: 17px; font-weight: 500;
-    padding: 14px 24px; border: none; border-bottom: 1px solid rgba(255,255,255,0.06);
+    background: transparent; color: #2A3B3A; font-size: 17px; font-weight: 500;
+    padding: 14px 24px; border: none; border-bottom: 1px solid rgba(0,0,0,0.06);
     font-family: inherit; cursor: pointer; text-align: left;
   }
-  .mobile-dropdown-sub { display: none; flex-direction: column; background: rgba(0,0,0,0.22); }
+  .mobile-dropdown-sub { display: none; flex-direction: column; background: rgba(0,0,0,0.04); }
   .mobile-dropdown-sub.open { display: flex; }
-  .mobile-dropdown-sub a { padding: 12px 24px 12px 36px !important; font-size: 15px !important; color: #A9C2BE !important; }
+  .mobile-dropdown-sub a { padding: 12px 24px 12px 36px !important; font-size: 15px !important; color: #5A7472 !important; }
   .mobile-dropdown-sub a:hover { color: var(--accent) !important; }
 
   /* ─── HERO ─── */
   .hero-section {
     margin-top: -82px;
     padding-top: 82px;
-    background: radial-gradient(60% 55% at 88% 18%, rgba(255,107,61,0.30) 0%, rgba(255,107,61,0) 62%),
-                radial-gradient(55% 60% at 0% 0%, rgba(31,122,116,0.60) 0%, rgba(31,122,116,0) 62%);
+    background: radial-gradient(60% 55% at 88% 18%, rgba(255,107,61,0.16) 0%, rgba(255,107,61,0) 62%),
+                radial-gradient(55% 60% at 0% 0%, rgba(31,122,116,0.10) 0%, rgba(31,122,116,0) 62%);
   }
   .hero-inner {
     max-width: 1160px; margin: 0 auto;
@@ -213,21 +213,21 @@
 
   .hero-badge {
     align-self: flex-start; display: flex; align-items: center; gap: 10px;
-    border: 1px solid rgba(255,255,255,0.18); border-radius: 999px;
-    padding: 7px 16px 7px 12px; font-size: 14px; font-weight: 500; color: #E7EFEC;
+    border: 1px solid rgba(13,31,30,0.14); background: rgba(13,31,30,0.04); border-radius: 999px;
+    padding: 7px 16px 7px 12px; font-size: 14px; font-weight: 500; color: #2A3B3A;
   }
   .hero-badge .dot {
     width: 10px; height: 10px; border-radius: 50%; background: var(--accent); flex: none;
     animation: pulse-dot 2.2s ease-in-out infinite;
   }
-  .hero-h1 { margin: 0; font-weight: 800; font-size: clamp(44px, 6.4vw, 88px); line-height: 1; letter-spacing: -0.035em; color: #FFFFFF; }
+  .hero-h1 { margin: 0; font-weight: 800; font-size: clamp(44px, 6.4vw, 88px); line-height: 1; letter-spacing: -0.035em; color: #0D1F1E; }
   .hero-highlight {
     display: inline-block; background: var(--accent); color: #0A2B2A;
     padding: 0 0.18em 0.06em; border-radius: 0.22em; transform: rotate(-2.5deg);
     transition: transform 0.3s ease;
   }
   .hero-highlight:hover { transform: rotate(-1deg) scale(1.03); }
-  .hero-sub { margin: 0; font-size: 20px; color: #A9C2BE; max-width: 540px; }
+  .hero-sub { margin: 0; font-size: 20px; color: #5A7472; max-width: 540px; }
   .hero-btns { display: flex; flex-wrap: wrap; gap: 14px; }
   .btn-primary {
     background: var(--accent); color: #0A2B2A; font-weight: 700; padding: 17px 30px; border-radius: 999px;
@@ -235,11 +235,11 @@
   }
   .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(255,107,61,0.45); color: #0A2B2A; }
   .btn-outline-white {
-    border: 2px solid rgba(255,255,255,0.5); color: #FFFFFF; font-weight: 700; padding: 15px 28px; border-radius: 999px;
+    border: 2px solid rgba(13,31,30,0.38); color: #0D1F1E; font-weight: 700; padding: 15px 28px; border-radius: 999px;
     transition: border-color 0.2s, background 0.2s;
   }
-  .btn-outline-white:hover { border-color: rgba(255,255,255,0.9); background: rgba(255,255,255,0.07); color: #FFFFFF; }
-  .hero-pills { display: flex; flex-wrap: wrap; gap: 10px 28px; font-size: 15px; color: #A9C2BE; }
+  .btn-outline-white:hover { border-color: rgba(13,31,30,0.7); background: rgba(13,31,30,0.05); color: #0D1F1E; }
+  .hero-pills { display: flex; flex-wrap: wrap; gap: 10px 28px; font-size: 15px; color: #5A7472; }
   .hero-pills span { display: flex; align-items: center; gap: 8px; }
   .hero-pills .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); flex: none; }
 
@@ -250,14 +250,14 @@
   }
   .hero-visual svg { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
   .orbit-tag {
-    position: absolute; background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.18); border-radius: 999px;
+    position: absolute; background: rgba(13,31,30,0.05);
+    border: 1px solid rgba(13,31,30,0.12); border-radius: 999px;
     padding: 10px 18px; font-weight: 700; font-size: 15px;
-    display: flex; align-items: center; gap: 8px;
+    display: flex; align-items: center; gap: 8px; color: #2A3B3A;
     transition: background 0.2s, transform 0.2s;
     backdrop-filter: blur(6px);
   }
-  .orbit-tag:hover { background: rgba(255,255,255,0.14); transform: scale(1.05); }
+  .orbit-tag:hover { background: rgba(13,31,30,0.09); transform: scale(1.05); }
   .orbit-tag .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex: none; }
 
   /* ─── TILTED BAND ─── */
@@ -276,18 +276,19 @@
   .band-dot { width: 14px; height: 14px; border-radius: 50%; background: #0A2B2A; flex: none; }
 
   /* ─── SECTION LABEL ─── */
-  .sec-label { font-weight: 700; font-size: 14px; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; }
+  .sec-label { font-weight: 700; font-size: 14px; color: #C94D14; letter-spacing: 0.1em; text-transform: uppercase; }
   .sec-label-dark { font-weight: 700; font-size: 14px; color: #0E3B3A; letter-spacing: 0.1em; text-transform: uppercase; }
-  .sec-h2 { margin: 0; font-weight: 800; font-size: clamp(32px, 4.4vw, 56px); line-height: 1.05; letter-spacing: -0.03em; color: #FFFFFF; }
+  .sec-h2 { margin: 0; font-weight: 800; font-size: clamp(32px, 4.4vw, 56px); line-height: 1.05; letter-spacing: -0.03em; color: #0D1F1E; }
 
   /* ─── LAYANAN (bento) ─── */
   #layanan { max-width: 1160px; margin: 0 auto; padding: 56px 24px 96px; display: flex; flex-direction: column; gap: 48px; }
   .bento-row { display: flex; flex-wrap: wrap; gap: 20px; }
   .card-dark {
-    background: #0F3736; border: 1px solid rgba(255,255,255,0.10); border-radius: 28px; padding: 36px; box-sizing: border-box;
-    transition: border-color 0.25s, transform 0.25s;
+    background: #FFFFFF; border: 1px solid rgba(0,0,0,0.08); border-radius: 28px; padding: 36px; box-sizing: border-box;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
   }
-  .card-dark:hover { border-color: rgba(255,255,255,0.22); transform: translateY(-3px); }
+  .card-dark:hover { border-color: rgba(0,0,0,0.14); transform: translateY(-3px); box-shadow: 0 8px 30px rgba(0,0,0,0.08); }
   .card-light {
     background: #F7F6F2; color: #11181C; border-radius: 28px; padding: 36px; box-sizing: border-box;
     transition: box-shadow 0.25s, transform 0.25s;
@@ -305,7 +306,7 @@
   /* badge pills */
   .badge-pill {
     display: flex; align-items: center; gap: 8px;
-    background: rgba(255,255,255,0.07); border-radius: 999px; padding: 8px 14px; font-size: 15px; font-weight: 500;
+    background: rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.08); border-radius: 999px; padding: 8px 14px; font-size: 15px; font-weight: 500; color: #2A3B3A;
   }
   .badge-pill .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex: none; }
 
@@ -365,15 +366,15 @@
   #portofolio { max-width: 1160px; margin: 0 auto; padding: 24px 24px 104px; display: flex; flex-direction: column; gap: 48px; }
   .porto-grid { display: flex; flex-wrap: wrap; gap: 20px; }
   .porto-item { flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 16px; }
-  .porto-num { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 72px; line-height: 1; color: transparent; -webkit-text-stroke: 1.5px rgba(255,255,255,0.35); }
+  .porto-num { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 72px; line-height: 1; color: transparent; -webkit-text-stroke: 1.5px rgba(13,31,30,0.20); }
   .porto-img {
-    height: 220px; border-radius: 22px; border: 2px dashed rgba(255,255,255,0.25);
-    background: rgba(255,255,255,0.04); display: flex; align-items: center; justify-content: center;
-    color: #A9C2BE; font-weight: 500;
+    height: 220px; border-radius: 22px; border: 2px dashed rgba(13,31,30,0.18);
+    background: rgba(13,31,30,0.04); display: flex; align-items: center; justify-content: center;
+    color: #5A7472; font-weight: 500;
     transition: border-color 0.25s, background 0.25s;
   }
-  .porto-item:hover .porto-img { border-color: rgba(255,255,255,0.45); background: rgba(255,255,255,0.07); }
-  .porto-tag { border: 1px solid rgba(255,255,255,0.25); border-radius: 999px; padding: 4px 12px; font-size: 14px; display: inline-flex; }
+  .porto-item:hover .porto-img { border-color: rgba(13,31,30,0.35); background: rgba(13,31,30,0.07); }
+  .porto-tag { border: 1px solid rgba(13,31,30,0.20); border-radius: 999px; padding: 4px 12px; font-size: 14px; display: inline-flex; color: #2A3B3A; }
 
   /* ─── PRICING ─── */
   #harga { margin: 0 20px 72px; background: #F7F6F2; color: #11181C; border-radius: 40px; }
@@ -420,9 +421,9 @@
   .process-step { flex: 1 1 190px; min-width: 0; display: flex; flex-direction: column; gap: 12px; }
   .step-num {
     width: 48px; height: 48px; border-radius: 50%;
-    border: 2px solid rgba(255,255,255,0.35);
+    border: 2px solid rgba(13,31,30,0.25);
     display: flex; align-items: center; justify-content: center;
-    font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; color: #FFFFFF; flex: none;
+    font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; color: #0D1F1E; flex: none;
     transition: border-color 0.2s, background 0.2s, transform 0.2s;
   }
   .process-step:hover .step-num { border-color: var(--accent); transform: scale(1.1); }
@@ -430,11 +431,11 @@
   .process-step:hover .step-num.final { transform: scale(1.1); background: #e05a2f; }
 
   /* ─── KONTAK ─── */
-  #kontak { background: radial-gradient(55% 80% at 80% 100%, rgba(255,107,61,0.28) 0%, rgba(255,107,61,0) 65%); }
+  #kontak { background: radial-gradient(55% 80% at 80% 100%, rgba(255,107,61,0.12) 0%, rgba(255,107,61,0) 65%); }
   .kontak-inner { max-width: 1160px; margin: 0 auto; padding: 72px 24px 104px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 40px; }
   .kontak-text { flex: 1 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 20px; }
-  .kontak-h2 { margin: 0; font-weight: 800; font-size: clamp(38px, 5.6vw, 76px); line-height: 1; letter-spacing: -0.035em; color: #FFFFFF; }
-  .kontak-sub { margin: 0; font-size: 19px; color: #A9C2BE; }
+  .kontak-h2 { margin: 0; font-weight: 800; font-size: clamp(38px, 5.6vw, 76px); line-height: 1; letter-spacing: -0.035em; color: #0D1F1E; }
+  .kontak-sub { margin: 0; font-size: 19px; color: #5A7472; }
   .wa-circle {
     flex: none; width: 176px; height: 176px; border-radius: 50%;
     background: var(--accent); color: #0A2B2A; display: flex; flex-direction: column;
@@ -457,11 +458,11 @@
   }
 
   /* ─── FOOTER ─── */
-  footer { border-top: 1px solid rgba(255,255,255,0.12); }
+  footer { border-top: 1px solid rgba(0,0,0,0.08); }
   .footer-inner {
     max-width: 1160px; margin: 0 auto; padding: 32px 24px 44px;
     display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
-    gap: 16px; font-size: 15px; color: #A9C2BE;
+    gap: 16px; font-size: 15px; color: #5A7472;
   }
 
   /* ─── UTILITIES ─── */
@@ -481,7 +482,7 @@
   .mt-auto { margin-top: auto; }
   .m-0 { margin: 0; }
   .color-accent { color: var(--accent); }
-  .color-muted { color: #A9C2BE; }
+  .color-muted { color: #5A7472; }
 
   /* ─── RESPONSIVE ─── */
   @media (max-width: 768px) {
@@ -568,8 +569,8 @@
       <a href="#" class="nav-logo">
         <!-- Icon inline -->
         <svg width="30" height="30" viewBox="0 0 48 48" aria-hidden="true">
-          <rect x="6" y="5" width="11" height="38" rx="5.5" fill="#FFFFFF"/>
-          <circle cx="27" cy="19" r="14" fill="#FFFFFF"/>
+          <rect x="6" y="5" width="11" height="38" rx="5.5" fill="#0D1F1E"/>
+          <circle cx="27" cy="19" r="14" fill="#0D1F1E"/>
           <circle cx="29.5" cy="19" r="4.6" fill="#FF6B3D"/>
         </svg>
         <span class="wordmark-bold">paras</span><span class="wordmark-light"> digital</span>
@@ -625,7 +626,7 @@
       <div class="nav-mobile-right">
         <a href="#kontak" class="nav-cta-sm">Konsultasi</a>
         <button class="nav-hamburger" aria-label="Buka menu" id="burger-btn">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0D1F1E" stroke-width="2" stroke-linecap="round" aria-hidden="true">
             <path d="M4 8h16"/><path d="M4 16h16"/>
           </svg>
         </button>
@@ -685,16 +686,16 @@
           </radialGradient>
         </defs>
         <circle cx="260" cy="260" r="170" fill="url(#glow)"/>
-        <circle cx="260" cy="260" r="120" fill="none" stroke="rgba(255,255,255,0.16)"/>
-        <circle cx="260" cy="260" r="190" fill="none" stroke="rgba(255,255,255,0.12)"/>
-        <circle cx="260" cy="260" r="250" fill="none" stroke="rgba(255,255,255,0.10)" stroke-dasharray="3 9"/>
+        <circle cx="260" cy="260" r="120" fill="none" stroke="rgba(13,31,30,0.12)"/>
+        <circle cx="260" cy="260" r="190" fill="none" stroke="rgba(13,31,30,0.09)"/>
+        <circle cx="260" cy="260" r="250" fill="none" stroke="rgba(13,31,30,0.08)" stroke-dasharray="3 9"/>
         <circle cx="130" cy="125" r="6" fill="#FF6B3D"/>
-        <circle cx="448" cy="330" r="5" fill="#FFFFFF" fill-opacity="0.8"/>
-        <circle cx="170" cy="445" r="4" fill="#FFFFFF" fill-opacity="0.6"/>
+        <circle cx="448" cy="330" r="5" fill="#0D1F1E" fill-opacity="0.45"/>
+        <circle cx="170" cy="445" r="4" fill="#0D1F1E" fill-opacity="0.35"/>
         <!-- Logo icon in center -->
         <g transform="translate(161.3 159.2) scale(4.2)">
-          <rect x="6" y="5" width="11" height="38" rx="5.5" fill="#FFFFFF"/>
-          <circle cx="27" cy="19" r="14" fill="#FFFFFF"/>
+          <rect x="6" y="5" width="11" height="38" rx="5.5" fill="#0D1F1E"/>
+          <circle cx="27" cy="19" r="14" fill="#0D1F1E"/>
           <circle cx="29.5" cy="19" r="4.6" fill="#FF6B3D"/>
         </g>
       </svg>
@@ -928,29 +929,29 @@
   <div class="flex-col gap-14 max-w-680">
     <span class="sec-label">Portofolio</span>
     <h2 class="sec-h2">Bukti kerja, bukan sekadar janji.</h2>
-    <span style="font-size:14px;color:#A9C2BE;display:none" id="porto-scroll-hint">Geser untuk melihat proyek →</span>
+    <span style="font-size:14px;color:#5A7472;display:none" id="porto-scroll-hint">Geser untuk melihat proyek →</span>
   </div>
   <div class="porto-grid" id="porto-grid">
     <div class="porto-item">
       <span class="porto-num">01</span>
       <div class="porto-img">[Tangkapan layar proyek 01]</div>
-      <h3 style="margin:0;font-weight:700;font-size:22px;color:#FFFFFF">[Nama klien]</h3>
+      <h3 style="margin:0;font-weight:700;font-size:22px;color:#0D1F1E">[Nama klien]</h3>
       <div style="display:flex;gap:8px"><span class="porto-tag">Website</span></div>
-      <p style="margin:0;color:#A9C2BE">Masalah: [isi]. Solusi: [isi]. Hasil: [isi].</p>
+      <p style="margin:0;color:#5A7472">Masalah: [isi]. Solusi: [isi]. Hasil: [isi].</p>
     </div>
     <div class="porto-item">
       <span class="porto-num">02</span>
       <div class="porto-img">[Tangkapan layar proyek 02]</div>
-      <h3 style="margin:0;font-weight:700;font-size:22px;color:#FFFFFF">[Nama klien]</h3>
+      <h3 style="margin:0;font-weight:700;font-size:22px;color:#0D1F1E">[Nama klien]</h3>
       <div style="display:flex;gap:8px"><span class="porto-tag">Web app</span></div>
-      <p style="margin:0;color:#A9C2BE">Masalah: [isi]. Solusi: [isi]. Hasil: [isi].</p>
+      <p style="margin:0;color:#5A7472">Masalah: [isi]. Solusi: [isi]. Hasil: [isi].</p>
     </div>
     <div class="porto-item">
       <span class="porto-num">03</span>
       <div class="porto-img">[Tangkapan layar proyek 03]</div>
-      <h3 style="margin:0;font-weight:700;font-size:22px;color:#FFFFFF">[Nama klien]</h3>
+      <h3 style="margin:0;font-weight:700;font-size:22px;color:#0D1F1E">[Nama klien]</h3>
       <div style="display:flex;gap:8px"><span class="porto-tag">Dashboard</span></div>
-      <p style="margin:0;color:#A9C2BE">Masalah: [isi]. Solusi: [isi]. Hasil: [isi].</p>
+      <p style="margin:0;color:#5A7472">Masalah: [isi]. Solusi: [isi]. Hasil: [isi].</p>
     </div>
   </div>
 </section>
@@ -969,9 +970,9 @@
       <div class="card-dark" style="flex:2 1 560px;display:flex;flex-wrap:wrap;gap:32px;">
         <div class="flex-col gap-16" style="flex:1 1 260px;min-width:0;">
           <span style="font-weight:700;font-size:14px;color:var(--accent)">02 · Web App Custom</span>
-          <h3 style="margin:0;font-weight:800;font-size:30px;line-height:1.12;letter-spacing:-0.02em;color:#FFFFFF">Sistem yang bekerja seperti cara Anda bekerja.</h3>
-          <p style="margin:0;color:#A9C2BE">Admin panel, booking, inventori, dashboard, dan alur kerja khusus, dirancang dari kebutuhan nyata bisnis Anda.</p>
-          <a href="./layanan-webapp.html" class="mt-auto" style="font-weight:700;color:#FFFFFF;padding:8px 0">Pelajari selengkapnya →</a>
+          <h3 style="margin:0;font-weight:800;font-size:30px;line-height:1.12;letter-spacing:-0.02em;color:#0D1F1E">Sistem yang bekerja seperti cara Anda bekerja.</h3>
+          <p style="margin:0;color:#5A7472">Admin panel, booking, inventori, dashboard, dan alur kerja khusus, dirancang dari kebutuhan nyata bisnis Anda.</p>
+          <a href="./layanan-webapp.html" class="mt-auto" style="font-weight:700;color:#0D1F1E;padding:8px 0">Pelajari selengkapnya →</a>
         </div>
         <!-- Mini dashboard mock -->
         <div style="flex:1 1 280px;min-width:0;background:#08201F;border:1px solid rgba(255,255,255,0.08);border-radius:18px;padding:18px;display:flex;flex-direction:column;gap:14px;">
@@ -1016,14 +1017,14 @@
       <!-- Maintenance -->
       <div class="card-dark" style="flex:1 1 320px;min-width:0;display:flex;flex-direction:column;gap:16px;">
         <span style="font-weight:700;font-size:14px;color:var(--accent)">03 · Maintenance &amp; Hosting</span>
-        <h3 style="margin:0;font-weight:800;font-size:26px;line-height:1.15;letter-spacing:-0.02em;color:#FFFFFF">Anda fokus berjualan, kami jaga tekniknya.</h3>
+        <h3 style="margin:0;font-weight:800;font-size:26px;line-height:1.15;letter-spacing:-0.02em;color:#0D1F1E">Anda fokus berjualan, kami jaga tekniknya.</h3>
         <div style="display:flex;flex-wrap:wrap;gap:10px">
           <span class="badge-pill"><span class="dot"></span>SSL aktif</span>
           <span class="badge-pill"><span class="dot"></span>Backup rutin</span>
           <span class="badge-pill"><span class="dot"></span>Pemantauan server</span>
           <span class="badge-pill"><span class="dot"></span>Perbaikan &amp; update</span>
         </div>
-        <a href="./layanan-maintenance.html" class="mt-auto" style="font-weight:700;color:#FFFFFF;padding:8px 0">Pelajari selengkapnya →</a>
+        <a href="./layanan-maintenance.html" class="mt-auto" style="font-weight:700;color:#0D1F1E;padding:8px 0">Pelajari selengkapnya →</a>
       </div>
 
       <!-- CTA tile -->
@@ -1145,28 +1146,28 @@
   <div class="process-grid">
     <div class="process-step">
       <span class="step-num">1</span>
-      <h3 style="margin:0;font-weight:700;font-size:20px;color:#FFFFFF">Konsultasi</h3>
-      <p style="margin:0;color:#A9C2BE;font-size:16px">Kita bahas tujuan, target pengunjung, dan anggaran.</p>
+      <h3 style="margin:0;font-weight:700;font-size:20px;color:#0D1F1E">Konsultasi</h3>
+      <p style="margin:0;color:#5A7472;font-size:16px">Kita bahas tujuan, target pengunjung, dan anggaran.</p>
     </div>
     <div class="process-step">
       <span class="step-num">2</span>
-      <h3 style="margin:0;font-weight:700;font-size:20px;color:#FFFFFF">Penawaran</h3>
-      <p style="margin:0;color:#A9C2BE;font-size:16px">Ruang lingkup, jadwal, dan harga tertulis jelas.</p>
+      <h3 style="margin:0;font-weight:700;font-size:20px;color:#0D1F1E">Penawaran</h3>
+      <p style="margin:0;color:#5A7472;font-size:16px">Ruang lingkup, jadwal, dan harga tertulis jelas.</p>
     </div>
     <div class="process-step">
       <span class="step-num">3</span>
-      <h3 style="margin:0;font-weight:700;font-size:20px;color:#FFFFFF">Desain</h3>
-      <p style="margin:0;color:#A9C2BE;font-size:16px">Anda melihat tampilannya dulu sebelum dikembangkan.</p>
+      <h3 style="margin:0;font-weight:700;font-size:20px;color:#0D1F1E">Desain</h3>
+      <p style="margin:0;color:#5A7472;font-size:16px">Anda melihat tampilannya dulu sebelum dikembangkan.</p>
     </div>
     <div class="process-step">
       <span class="step-num">4</span>
-      <h3 style="margin:0;font-weight:700;font-size:20px;color:#FFFFFF">Pengembangan</h3>
-      <p style="margin:0;color:#A9C2BE;font-size:16px">Dibangun bertahap, dengan revisi di tiap tahap.</p>
+      <h3 style="margin:0;font-weight:700;font-size:20px;color:#0D1F1E">Pengembangan</h3>
+      <p style="margin:0;color:#5A7472;font-size:16px">Dibangun bertahap, dengan revisi di tiap tahap.</p>
     </div>
     <div class="process-step">
       <span class="step-num final">5</span>
-      <h3 style="margin:0;font-weight:700;font-size:20px;color:#FFFFFF">Rilis &amp; dukungan</h3>
-      <p style="margin:0;color:#A9C2BE;font-size:16px">Online di domain Anda, lalu kami tetap mendampingi.</p>
+      <h3 style="margin:0;font-weight:700;font-size:20px;color:#0D1F1E">Rilis &amp; dukungan</h3>
+      <p style="margin:0;color:#5A7472;font-size:16px">Online di domain Anda, lalu kami tetap mendampingi.</p>
     </div>
   </div>
 </section>
@@ -1200,10 +1201,10 @@
 <!-- ─── FOOTER ─── -->
 <footer>
   <div class="footer-inner">
-    <a href="#" style="display:flex;align-items:center;gap:10px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;color:#FFFFFF;letter-spacing:-0.02em;font-size:18px;">
+    <a href="#" style="display:flex;align-items:center;gap:10px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;color:#0D1F1E;letter-spacing:-0.02em;font-size:18px;">
       <svg width="26" height="26" viewBox="0 0 48 48" aria-hidden="true">
-        <rect x="6" y="5" width="11" height="38" rx="5.5" fill="#FFFFFF"/>
-        <circle cx="27" cy="19" r="14" fill="#FFFFFF"/>
+        <rect x="6" y="5" width="11" height="38" rx="5.5" fill="#0D1F1E"/>
+        <circle cx="27" cy="19" r="14" fill="#0D1F1E"/>
         <circle cx="29.5" cy="19" r="4.6" fill="#FF6B3D"/>
       </svg>
       paras digital
@@ -1529,9 +1530,9 @@ fetch('/api/content')
               ? `<img src="${item.image_url}" alt="${item.title || ''}" style="height:220px;width:100%;object-fit:cover;border-radius:22px;border:1px solid rgba(255,255,255,0.18)">`
               : `<div class="porto-img">${item.image_placeholder || '[Tangkapan layar proyek]'}</div>`
             }
-            <h3 style="margin:0;font-weight:700;font-size:22px;color:#FFFFFF">${item.title || ''}</h3>
+            <h3 style="margin:0;font-weight:700;font-size:22px;color:#0D1F1E">${item.title || ''}</h3>
             <div style="display:flex;gap:8px"><span class="porto-tag">${item.category || 'Website'}</span></div>
-            <p style="margin:0;color:#A9C2BE">${item.summary || ''}</p>
+            <p style="margin:0;color:#5A7472">${item.summary || ''}</p>
           </div>
         `).join('');
       }
