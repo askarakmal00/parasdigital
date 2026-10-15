@@ -23,7 +23,7 @@ app.use('/logoandicon', express.static(path.join(__dirname, 'logoandicon')));
 // ─── DEFAULT CMS DATA ───
 const DEFAULT_CMS = {
   settings: {
-    whatsapp_number: '6281234567890',
+    whatsapp_number: '6281991947017',
     whatsapp_greeting: 'Halo Paras Digital, saya ingin konsultasi pembuatan website / web app.',
     domain_display: 'parasdigital.id',
     email: 'halo@parasdigital.id',
@@ -192,6 +192,12 @@ async function initDB() {
         [key, JSON.stringify(val)]
       );
     }
+    // Update nomor WhatsApp bawaan jika masih nomor contoh dummy
+    await pool.query(`
+      UPDATE cms_content
+      SET value = jsonb_set(value, '{whatsapp_number}', '"6281991947017"')
+      WHERE key = 'settings' AND value->>'whatsapp_number' = '6281234567890'
+    `);
     console.log('✅ PostgreSQL terhubung & tabel siap digunakan.');
   } catch (err) {
     console.error('⚠️ Gagal konek / inisialisasi PostgreSQL:', err.message);
