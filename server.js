@@ -18,6 +18,8 @@ const ADMIN_SECRET = process.env.ADMIN_SECRET || 'paras_secret_key_2026';
 
 app.set('trust proxy', true);
 app.use(express.json({ limit: '5mb' }));
+app.use('/asset', express.static(path.join(__dirname, 'asset')));
+app.use('/logoandicon', express.static(path.join(__dirname, 'asset/logoandicon')));
 app.use('/logoandicon', express.static(path.join(__dirname, 'logoandicon')));
 
 // ─── DEFAULT CMS DATA ───

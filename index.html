@@ -7,7 +7,7 @@
 <meta name="description" content="Paras Digital merancang website company profile dan aplikasi web custom yang memberi bisnis Anda wajah online yang tepat, bukan sekadar template.">
 
 <!-- Favicon inline -->
-<link rel="icon" type="image/svg+xml" href="logoandicon/favicon.svg">
+<link rel="icon" type="image/svg+xml" href="asset/logoandicon/favicon.svg">
 
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -362,19 +362,72 @@
   .example-card:hover .example-icon { transform: scale(1.08); }
   .example-card.dark .example-icon { background: var(--accent); }
 
-  /* ─── PORTOFOLIO ─── */
-  #portofolio { max-width: 1160px; margin: 0 auto; padding: 24px 24px 104px; display: flex; flex-direction: column; gap: 48px; }
-  .porto-grid { display: flex; flex-wrap: wrap; gap: 20px; }
-  .porto-item { flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 16px; }
-  .porto-num { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 72px; line-height: 1; color: transparent; -webkit-text-stroke: 1.5px rgba(13,31,30,0.20); }
-  .porto-img {
-    height: 220px; border-radius: 22px; border: 2px dashed rgba(13,31,30,0.18);
-    background: rgba(13,31,30,0.04); display: flex; align-items: center; justify-content: center;
-    color: #5A7472; font-weight: 500;
-    transition: border-color 0.25s, background 0.25s;
+  /* ─── KLIEN KAMI ─── */
+  #klien { max-width: 1160px; margin: 0 auto; padding: 24px 24px 104px; display: flex; flex-direction: column; gap: 40px; }
+  .client-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
   }
-  .porto-item:hover .porto-img { border-color: rgba(13,31,30,0.35); background: rgba(13,31,30,0.07); }
-  .porto-tag { border: 1px solid rgba(13,31,30,0.20); border-radius: 999px; padding: 4px 12px; font-size: 14px; display: inline-flex; color: #2A3B3A; }
+  .client-card {
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 24px;
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  }
+  .client-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.07);
+    border-color: rgba(255, 107, 61, 0.35);
+  }
+  .client-logo-box {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 12px;
+  }
+  .client-logo-img {
+    max-height: 68px;
+    max-width: 85%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    transition: transform 0.25s ease;
+  }
+  .client-card:hover .client-logo-img {
+    transform: scale(1.05);
+  }
+  .client-detail {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 4px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+  }
+  .client-name {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+    color: #0D1F1E;
+    letter-spacing: -0.01em;
+  }
+  .client-desc {
+    font-size: 13px;
+    color: #5A7472;
+    font-weight: 500;
+  }
 
   /* ─── PRICING ─── */
   #harga { margin: 0 20px 72px; background: #F7F6F2; color: #11181C; border-radius: 40px; }
@@ -543,12 +596,12 @@
     .example-card { border-radius: 20px; padding: 16px; }
     .example-icon { width: 40px; height: 40px; }
 
-    /* Porto */
-    #portofolio { padding: 8px 20px 72px; gap: 28px; }
-    .porto-grid { flex-direction: row; overflow-x: auto; scroll-snap-type: x mandatory; margin: 0 -20px; padding: 0 20px 8px; flex-wrap: nowrap; }
-    .porto-item { flex: none; width: 280px; scroll-snap-align: start; }
-    .porto-num { font-size: 56px; }
-    .porto-img { height: 190px; border-radius: 20px; font-size: 15px; }
+    /* Klien */
+    #klien { padding: 8px 20px 64px; gap: 28px; }
+    .client-grid { grid-template-columns: 1fr; gap: 16px; }
+    .client-card { padding: 24px 20px; border-radius: 20px; }
+    .client-logo-box { height: 80px; }
+    .client-logo-img { max-height: 54px; }
 
     /* Pricing */
     #harga { margin: 0 12px; border-radius: 32px; }
@@ -600,7 +653,7 @@
       <!-- Desktop links -->
       <nav class="nav-links" aria-label="Menu utama">
         <a href="#harga">Harga</a>
-        <a href="#portofolio">Portofolio</a>
+        <a href="#klien">Klien</a>
 
         <!-- Dropdown Layanan -->
         <div class="nav-dropdown" id="nav-dropdown-layanan">
@@ -658,7 +711,7 @@
   <!-- Mobile drawer -->
   <nav id="mobile-menu" aria-label="Menu mobile">
     <a href="#harga">Harga</a>
-    <a href="#portofolio">Portofolio</a>
+    <a href="#klien">Klien</a>
     <div class="mobile-dropdown">
       <button class="mobile-dropdown-btn" id="mobile-layanan-toggle" type="button">
         <span>Layanan</span>
@@ -945,34 +998,40 @@
   </div>
 </section>
 
-<!-- ─── PORTOFOLIO ─── -->
-<section id="portofolio">
+<!-- ─── KLIEN KAMI ─── -->
+<section id="klien">
   <div class="flex-col gap-14 max-w-680">
-    <span class="sec-label">Portofolio</span>
-    <h2 class="sec-h2">Bukti kerja, bukan sekadar janji.</h2>
-    <span style="font-size:14px;color:#5A7472;display:none" id="porto-scroll-hint">Geser untuk melihat proyek →</span>
+    <span class="sec-label">Klien Kami</span>
+    <h2 class="sec-h2">Dipercaya oleh bisnis &amp; perusahaan terkemuka.</h2>
+    <p style="margin:0;font-size:17px;color:#5A7472;line-height:1.6">Kami bangga menjadi mitra teknologi andalan dalam membangun sistem dan identitas digital yang berkinerja tinggi.</p>
   </div>
-  <div class="porto-grid" id="porto-grid">
-    <div class="porto-item">
-      <span class="porto-num">01</span>
-      <div class="porto-img">[Tangkapan layar proyek 01]</div>
-      <h3 style="margin:0;font-weight:700;font-size:22px;color:#0D1F1E">[Nama klien]</h3>
-      <div style="display:flex;gap:8px"><span class="porto-tag">Website</span></div>
-      <p style="margin:0;color:#5A7472">Masalah: [isi]. Solusi: [isi]. Hasil: [isi].</p>
+  <div class="client-grid">
+    <div class="client-card">
+      <div class="client-logo-box">
+        <img src="asset/clientlogo/maetrika-innovation.png" alt="Logo Maetrika Innovation" class="client-logo-img" loading="lazy">
+      </div>
+      <div class="client-detail">
+        <h3 class="client-name">Maetrika Innovation</h3>
+        <span class="client-desc">Inovasi &amp; Solusi Teknologi</span>
+      </div>
     </div>
-    <div class="porto-item">
-      <span class="porto-num">02</span>
-      <div class="porto-img">[Tangkapan layar proyek 02]</div>
-      <h3 style="margin:0;font-weight:700;font-size:22px;color:#0D1F1E">[Nama klien]</h3>
-      <div style="display:flex;gap:8px"><span class="porto-tag">Web app</span></div>
-      <p style="margin:0;color:#5A7472">Masalah: [isi]. Solusi: [isi]. Hasil: [isi].</p>
+    <div class="client-card">
+      <div class="client-logo-box">
+        <img src="asset/clientlogo/rimasa-inovasi-bersama.png" alt="Logo PT Rimasa Inovasi Bersama" class="client-logo-img" loading="lazy">
+      </div>
+      <div class="client-detail">
+        <h3 class="client-name">PT. Rimasa Inovasi Bersama</h3>
+        <span class="client-desc">Konsultan Bisnis &amp; Manajemen</span>
+      </div>
     </div>
-    <div class="porto-item">
-      <span class="porto-num">03</span>
-      <div class="porto-img">[Tangkapan layar proyek 03]</div>
-      <h3 style="margin:0;font-weight:700;font-size:22px;color:#0D1F1E">[Nama klien]</h3>
-      <div style="display:flex;gap:8px"><span class="porto-tag">Dashboard</span></div>
-      <p style="margin:0;color:#5A7472">Masalah: [isi]. Solusi: [isi]. Hasil: [isi].</p>
+    <div class="client-card">
+      <div class="client-logo-box">
+        <img src="asset/clientlogo/surya-terang-teknik-abadi.png" alt="Logo PT Surya Terang Teknik Abadi" class="client-logo-img" loading="lazy">
+      </div>
+      <div class="client-detail">
+        <h3 class="client-name">PT. Surya Terang Teknik Abadi</h3>
+        <span class="client-desc">Engineering &amp; Kontraktor Teknik</span>
+      </div>
     </div>
   </div>
 </section>
@@ -1281,18 +1340,6 @@ if (mobileLayananToggle && mobileLayananSub) {
   });
 }
 
-// ── Porto scroll hint on mobile ──
-function checkMobile() {
-  const hint = document.getElementById('porto-scroll-hint');
-  if (window.innerWidth <= 768) {
-    hint.style.display = 'block';
-  } else {
-    hint.style.display = 'none';
-  }
-}
-checkMobile();
-window.addEventListener('resize', checkMobile);
-
 // ── Pricing tab switch ──
 function switchPricingTab(tab) {
   const webBtn = document.getElementById('tab-web-btn');
@@ -1410,8 +1457,8 @@ const fadeTargets = [
   '#webapp .webapp-text',
   '#webapp .before-after > *',
   '#webapp .example-grid > *',
-  '#portofolio > div:first-child',
-  '#portofolio .porto-item',
+  '#klien > div:first-child',
+  '#klien .client-card',
   '#harga .pricing-inner > div:first-child',
   '#proses > div:first-child',
   '#proses .process-step',
