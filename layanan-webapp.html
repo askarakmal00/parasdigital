@@ -870,7 +870,7 @@ function trackEvent(eventType, eventLabel) {
 trackEvent('pageview', 'Layanan Web App');
 
 // Fetch CMS content for WA & dynamic settings
-fetch('/api/content')
+fetch('/api/content?t=' + Date.now())
   .then(r => r.ok ? r.json() : null)
   .then(data => {
     if (!data) return;
@@ -880,6 +880,17 @@ fetch('/api/content')
     const waFull = waClean && s.whatsapp_greeting
       ? `${waBase}?text=${encodeURIComponent(s.whatsapp_greeting)}`
       : waBase;
+
+    // Update harga dari CMS
+    if (data.pricing_webapp && Array.isArray(data.pricing_webapp)) {
+      const cardIds = ['plan-starter', 'plan-bisnis', 'plan-kustom'];
+      data.pricing_webapp.forEach((p, idx) => {
+        const card = document.getElementById(cardIds[idx]);
+        if (!card) return;
+        const valEl = card.querySelector('.js-price-val');
+        if (valEl && p.price) valEl.textContent = p.price;
+      });
+    }
 
     document.querySelectorAll('.js-wa-link').forEach(a => {
       if (a.classList.contains('js-plan-btn')) {

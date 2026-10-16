@@ -268,34 +268,22 @@
 
     <!-- ═══ TAB 2: PAKET & HARGA ═══ -->
     <section id="tab-pricing" class="tab-pane">
-      <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px">
+      <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-bottom:20px">
         <div>
           <h1 style="font-size:28px">Kelola Paket & Harga</h1>
           <p style="margin:4px 0 0;color:var(--muted)">Ubah harga, estimasi waktu, dan daftar fitur yang tampil di halaman depan.</p>
         </div>
-        <button class="btn btn-accent" onclick="savePricing()">💾 Simpan Semua Paket Harga</button>
+        <button class="btn btn-accent" onclick="savePricing()">💾 Simpan Paket & Harga</button>
       </div>
 
       <div class="card">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
-          <h3 style="color:var(--accent);margin:0">Kategori 1: Paket Website</h3>
-          <button class="btn btn-accent" onclick="savePricing()">💾 Simpan Perubahan</button>
-        </div>
+        <h3 style="color:var(--accent);margin-top:0">Kategori 1: Paket Website</h3>
         <div id="editor-pricing-website" class="grid-2"></div>
-        <div style="margin-top:16px;display:flex;justify-content:flex-end">
-          <button class="btn btn-accent" onclick="savePricing()">💾 Simpan Semua Paket Harga</button>
-        </div>
       </div>
 
       <div class="card">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
-          <h3 style="color:var(--accent);margin:0">Kategori 2: Paket Web App Custom</h3>
-          <button class="btn btn-accent" onclick="savePricing()">💾 Simpan Perubahan</button>
-        </div>
+        <h3 style="color:var(--accent);margin-top:0">Kategori 2: Paket Web App Custom</h3>
         <div id="editor-pricing-webapp" class="grid-2"></div>
-        <div style="margin-top:16px;display:flex;justify-content:flex-end">
-          <button class="btn btn-accent" onclick="savePricing()">💾 Simpan Semua Paket Harga</button>
-        </div>
       </div>
     </section>
 

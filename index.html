@@ -1869,28 +1869,30 @@ fetch('/api/content?t=' + Date.now())
       a.href = waFull;
     });
 
-    // Update info hosting, DP, dan footer
-    if (s.hosting_price) {
-      document.getElementById('info-hosting-text').textContent =
-        `Rp ${s.hosting_price} per bulan, opsional. Mencakup server, SSL, backup, dan perbaikan.`;
-    }
-    if (s.dp_percent) {
-      document.getElementById('info-dp-text').textContent =
-        `DP ${s.dp_percent}% di awal, pelunasan saat rilis.`;
-    }
-    if (s.domain_display || s.email || s.city) {
-      document.getElementById('footer-contact-info').textContent =
-        [s.domain_display, s.email, s.city].filter(Boolean).join(' · ');
+    // 1. Update Pricing Web App dari data CMS (prioritas utama)
+    if (data.pricing_webapp && data.pricing_webapp.length > 0) {
+      renderPricingCards('panel-webapp', data.pricing_webapp, waBase);
     }
 
-    // Update WA base & plan links
+    // 2. Update WA base & plan links
     globalWaBase = waBase;
     updatePlanWaLinks();
 
-    // Update Pricing (hanya panel-webapp dari CMS, panel-website memakai sistem kalkulator domain interaktif)
-    renderPricingCards('panel-webapp', data.pricing_webapp, waBase);
+    // 3. Update info opsional dengan proteksi null-check
+    const elHosting = document.getElementById('info-hosting-text');
+    if (elHosting && s.hosting_price) {
+      elHosting.textContent = `Rp ${s.hosting_price} per bulan, opsional. Mencakup server, SSL, backup, dan perbaikan.`;
+    }
+    const elDp = document.getElementById('info-dp-text');
+    if (elDp && s.dp_percent) {
+      elDp.textContent = `DP ${s.dp_percent}% di awal, pelunasan saat rilis.`;
+    }
+    const elFooter = document.getElementById('footer-contact-info');
+    if (elFooter && (s.domain_display || s.email || s.city)) {
+      elFooter.textContent = [s.domain_display, s.email, s.city].filter(Boolean).join(' · ');
+    }
   })
-  .catch(() => {});
+  .catch((err) => { console.warn('CMS fetch error:', err); });
 
 // Delegasi event klik untuk melacak klik WA & pilih paket
 document.addEventListener('click', (e) => {
