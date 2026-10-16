@@ -37,24 +37,24 @@ const DEFAULT_CMS = {
     {
       name: 'Landing Page',
       desc: 'Cocok untuk promosi satu produk atau jasa.',
-      price: '1,5 Jt',
+      price: '800 Rb',
       badge1: 'Sekali bayar',
-      badge2: 'Selesai ±5 hari',
+      badge2: 'Selesai ±2 hari',
       featured: false,
       cta_text: 'Pilih paket',
       features: [
         '1 halaman, rapi di HP',
         'Tombol WhatsApp & formulir',
-        'Domain & SSL terpasang',
+        'Domain, hosting & SSL tahun pertama',
         'SEO dasar'
       ]
     },
     {
       name: 'Company Profile',
       desc: 'Cocok untuk bisnis yang butuh wajah resmi online.',
-      price: '3,5 Jt',
+      price: '1,55 Jt',
       badge1: 'Sekali bayar',
-      badge2: 'Selesai ±2 minggu',
+      badge2: 'Selesai ±1 minggu',
       featured: true,
       popular_label: 'Paling populer',
       cta_text: 'Pilih paket',
@@ -63,22 +63,24 @@ const DEFAULT_CMS = {
         'SEO dasar & Google Maps',
         'Desain sesuai identitas bisnis',
         'Formulir kontak & WhatsApp',
+        'Domain, hosting & SSL tahun pertama',
         'Revisi sesuai paket'
       ]
     },
     {
       name: 'Website Custom',
       desc: 'Cocok untuk brand yang butuh tampilan dan fitur khusus.',
-      price: '6 Jt',
+      price: '3,4 Jt',
       badge1: 'Sekali bayar',
-      badge2: 'Selesai ±3 minggu',
+      badge2: 'Selesai ±2 minggu',
       featured: false,
-      cta_text: 'Pilih paket',
+      cta_text: 'Diskusikan kebutuhan',
       features: [
         'Desain eksklusif dari nol',
         'Animasi & interaksi khusus',
         'Integrasi (pembayaran, peta, dll.)',
-        'Panel admin untuk mengelola konten'
+        'Panel admin untuk mengelola konten',
+        'Domain, hosting & SSL tahun pertama'
       ]
     }
   ],

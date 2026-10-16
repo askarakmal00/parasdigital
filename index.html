@@ -455,38 +455,75 @@
 
   /* ─── PRICING ─── */
   #harga { margin: 0 20px 72px; background: #F7F6F2; color: #11181C; border-radius: 40px; }
-  .pricing-inner { max-width: 1160px; margin: 0 auto; padding: 88px 24px; display: flex; flex-direction: column; gap: 48px; }
+  .pricing-inner { max-width: 1160px; margin: 0 auto; padding: 88px 24px; display: flex; flex-direction: column; gap: 40px; }
+  .pricing-controls { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 24px; }
   .tab-switch { align-self: flex-start; display: flex; gap: 4px; padding: 6px; border-radius: 999px; background: #E9E7E0; }
   .tab-switch button { border: none; font: inherit; font-weight: 700; padding: 12px 28px; border-radius: 999px; cursor: pointer; transition: background 0.25s, color 0.25s, transform 0.2s; }
   .tab-switch button:hover { transform: scale(1.03); }
   .tab-switch .tab-active { background: #0A2B2A; color: #FFFFFF; }
   .tab-switch .tab-inactive { background: transparent; color: #11181C; display: flex; align-items: center; gap: 8px; }
   .tab-switch .tab-inactive .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+
+  /* Domain Switcher */
+  .domain-switch-wrap { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; text-align: right; }
+  .domain-switch-row { display: flex; align-items: center; gap: 12px; }
+  .domain-label { font-weight: 700; font-size: 15px; color: #11181C; }
+  .domain-switch { display: inline-flex; gap: 4px; padding: 4px; border-radius: 999px; background: #E9E7E0; }
+  .domain-btn {
+    border: none; font: inherit; font-size: 14px; font-weight: 700; padding: 8px 18px;
+    border-radius: 999px; cursor: pointer; transition: background 0.25s, color 0.25s, transform 0.2s;
+    background: transparent; color: #11181C;
+  }
+  .domain-btn:hover { transform: scale(1.03); }
+  .domain-btn.active { background: #0A2B2A; color: #FFFFFF; }
+  .domain-note { font-size: 13px; color: #5A7472; transition: opacity 0.2s; }
+
   .pricing-grid { display: flex; flex-wrap: wrap; gap: 20px; align-items: stretch; }
-  .pricing-card { flex: 1 1 300px; min-width: 0; border-radius: 28px; padding: 34px; display: flex; flex-direction: column; gap: 20px; position: relative; transition: transform 0.25s, box-shadow 0.25s; }
+  .pricing-card { flex: 1 1 300px; min-width: 0; border-radius: 28px; padding: 34px 28px; display: flex; flex-direction: column; gap: 20px; position: relative; transition: transform 0.25s, box-shadow 0.25s; }
   .pricing-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.12); }
   .pricing-card.light { background: #FFFFFF; border: 1px solid #E3E1DA; }
-  .pricing-card.featured { background: #0A2B2A; color: #FFFFFF; }
+  .pricing-card.featured { background: #0D2322; color: #FFFFFF; }
   .pricing-card.featured:hover { box-shadow: 0 16px 40px rgba(10,43,42,0.28); }
-  .pricing-badge { position: absolute; top: -14px; left: 34px; background: var(--accent); color: #0A2B2A; font-weight: 700; font-size: 14px; padding: 6px 14px; border-radius: 999px; }
+  .pricing-badge { position: absolute; top: -14px; left: 28px; background: var(--accent); color: #0A2B2A; font-weight: 700; font-size: 14px; padding: 6px 16px; border-radius: 999px; }
   .price-tag { display: flex; align-items: baseline; gap: 6px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 46px; line-height: 1; letter-spacing: -0.03em; }
   .price-currency { font-size: 20px; letter-spacing: 0; }
   .price-meta { display: flex; flex-wrap: wrap; gap: 8px; }
   .price-chip { border-radius: 999px; padding: 4px 12px; font-size: 13px; font-weight: 500; }
-  .price-chip-light { background: #EFEDE6; }
-  .price-chip-dark { background: rgba(255,255,255,0.12); }
+  .price-chip-light { background: #EFEDE6; color: #2A3B3A; }
+  .price-chip-dark { background: #183B39; color: #E7EFEC; }
+
+  /* Sub-box Full Maintenance */
+  .maint-box {
+    border-radius: 16px; padding: 12px 18px;
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    margin: 2px 0 4px;
+  }
+  .maint-box.light { background: #F4F3EE; border: 1px solid rgba(0,0,0,0.04); }
+  .maint-box.dark { background: #143534; border: 1px solid rgba(255,255,255,0.08); }
+  .maint-col-left { display: flex; flex-direction: column; gap: 2px; text-align: left; }
+  .maint-title { font-size: 13px; font-weight: 700; color: #0D1F1E; line-height: 1.2; }
+  .maint-sub { font-size: 11px; color: #5A7472; line-height: 1.2; }
+  .maint-col-right { display: flex; align-items: baseline; gap: 4px; text-align: right; }
+  .maint-val { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 17px; font-weight: 800; color: #0D1F1E; letter-spacing: -0.01em; }
+  .maint-unit { font-size: 12px; color: #5A7472; }
+
   .divider-light { height: 1px; background: #E3E1DA; }
-  .divider-dark { height: 1px; background: rgba(255,255,255,0.15); }
-  .feature-list { display: flex; flex-direction: column; gap: 12px; font-size: 16px; }
-  .feature-list li { display: flex; gap: 10px; list-style: none; margin: 0; padding: 0; }
+  .divider-dark { height: 1px; background: rgba(255,255,255,0.12); }
+  .feature-list { display: flex; flex-direction: column; gap: 12px; font-size: 15px; }
+  .feature-list li { display: flex; gap: 10px; list-style: none; margin: 0; padding: 0; align-items: flex-start; }
   .btn-dark-outline { display: block; text-align: center; border: 2px solid #11181C; color: #11181C; font-weight: 700; padding: 14px 24px; border-radius: 999px; margin-top: auto; transition: background 0.2s, color 0.2s; }
   .btn-dark-outline:hover { background: #11181C; color: #FFFFFF; }
   .btn-accent-fill { display: block; text-align: center; background: var(--accent); color: #0A2B2A; font-weight: 700; padding: 16px 24px; border-radius: 999px; margin-top: auto; transition: box-shadow 0.2s, transform 0.2s; }
   .btn-accent-fill:hover { box-shadow: 0 8px 24px rgba(255,107,61,0.45); transform: translateY(-2px); color: #0A2B2A; }
-  .pricing-info { display: flex; flex-wrap: wrap; gap: 16px; }
-  .info-card { flex: 1 1 320px; min-width: 0; background: #FFFFFF; border: 1px solid #E3E1DA; border-radius: 20px; padding: 22px 26px; display: flex; flex-direction: column; gap: 4px; }
-  .info-card .info-title { font-weight: 700; }
-  .info-card .info-sub { color: #46525A; font-size: 15px; }
+
+  /* Bottom Information Box */
+  .pricing-bottom-box {
+    background: #EBE9E1; border-radius: 28px; padding: 32px 36px;
+    display: flex; gap: 48px; flex-wrap: wrap; margin-top: 8px;
+  }
+  .pricing-bottom-col { flex: 1 1 300px; display: flex; flex-direction: column; gap: 8px; }
+  .pricing-bottom-title { margin: 0; font-size: 16px; font-weight: 800; color: #0D1F1E; }
+  .pricing-bottom-desc { margin: 0; font-size: 14px; color: #46525A; line-height: 1.6; }
 
   /* pricing panels fade */
   .pricing-panel { display: none; }
@@ -630,13 +667,21 @@
 
     /* Pricing */
     #harga { margin: 0 12px; border-radius: 32px; }
-    .pricing-inner { padding: 52px 20px 44px; gap: 32px; }
-    .tab-switch button { padding: 13px 16px; flex: 1; }
-    .pricing-card { border-radius: 24px; padding: 28px 24px; }
-    .pricing-badge { left: 24px; font-size: 13px; }
-    .price-tag { font-size: 42px; }
+    .pricing-inner { padding: 48px 18px 40px; gap: 28px; }
+    .pricing-controls { flex-direction: column; align-items: flex-start; gap: 18px; }
+    .tab-switch { width: 100%; }
+    .tab-switch button { padding: 11px 16px; flex: 1; text-align: center; justify-content: center; }
+    .domain-switch-wrap { align-items: flex-start; text-align: left; width: 100%; }
+    .domain-switch-row { width: 100%; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+    .domain-switch { flex: 1; justify-content: flex-end; }
+    .domain-btn { padding: 7px 14px; font-size: 13px; }
+    .domain-note { text-align: left; font-size: 12px; }
+    .pricing-card { border-radius: 24px; padding: 26px 20px; }
+    .pricing-badge { left: 20px; font-size: 13px; }
+    .price-tag { font-size: 40px; }
     .price-currency { font-size: 19px; }
     .pricing-grid { flex-direction: column; }
+    .pricing-bottom-box { padding: 24px 20px; gap: 24px; flex-direction: column; border-radius: 22px; }
 
     /* Proses */
     #proses { padding: 72px 20px 56px; gap: 32px; }
@@ -842,87 +887,144 @@
     </div>
 
     <div class="flex-col gap-32">
-      <!-- Tab switch -->
-      <div class="tab-switch">
-        <button id="tab-web-btn" class="tab-active" onclick="switchPricingTab('website')">Website</button>
-        <button id="tab-app-btn" class="tab-inactive" onclick="switchPricingTab('webapp')">Web App <span class="dot" id="tab-dot"></span></button>
+      <!-- Controls: Tabs & Domain Selector -->
+      <div class="pricing-controls">
+        <!-- Tab switch -->
+        <div class="tab-switch">
+          <button id="tab-web-btn" class="tab-active" onclick="switchPricingTab('website')">Website</button>
+          <button id="tab-app-btn" class="tab-inactive" onclick="switchPricingTab('webapp')">Web App <span class="dot" id="tab-dot"></span></button>
+        </div>
+
+        <!-- Domain selector -->
+        <div class="domain-switch-wrap" id="domain-switch-wrap">
+          <div class="domain-switch-row">
+            <span class="domain-label">Domain</span>
+            <div class="domain-switch">
+              <button id="domain-btn-com" class="domain-btn active" type="button" onclick="switchDomain('com')">.com</button>
+              <button id="domain-btn-id" class="domain-btn" type="button" onclick="switchDomain('id')">.id</button>
+              <button id="domain-btn-own" class="domain-btn" type="button" onclick="switchDomain('own')">Sudah punya</button>
+            </div>
+          </div>
+          <div class="domain-note" id="domain-note">Domain .com Rp 140 Rb/tahun, tahun pertama sudah termasuk.</div>
+        </div>
       </div>
 
       <!-- Website plans -->
       <div id="panel-website" class="pricing-panel active">
         <div class="pricing-grid">
           <!-- Landing Page -->
-          <div class="pricing-card light">
+          <div class="pricing-card light" id="card-landing">
             <div class="flex-col gap-6">
-              <h3 style="margin:0;font-weight:800;font-size:24px">Landing Page</h3>
+              <h3 style="margin:0;font-weight:800;font-size:24px;color:#0D1F1E">Landing Page</h3>
               <p style="margin:0;font-size:15px;color:#46525A">Cocok untuk promosi satu produk atau jasa.</p>
             </div>
             <div class="flex-col gap-10">
-              <span style="font-size:14px;color:#46525A">mulai dari</span>
-              <div class="price-tag"><span class="price-currency">Rp</span>[harga]</div>
+              <span style="font-size:14px;color:#5A7472">mulai dari</span>
+              <div class="price-tag"><span class="price-currency">Rp</span><span id="price-landing">800 Rb</span></div>
               <div class="price-meta">
                 <span class="price-chip price-chip-light">Sekali bayar</span>
-                <span class="price-chip price-chip-light">Selesai ±[X] hari</span>
+                <span class="price-chip price-chip-light">Selesai ±2 hari</span>
               </div>
             </div>
+
+            <!-- Sub-box Full Maintenance -->
+            <div class="maint-box light">
+              <div class="maint-col-left">
+                <span class="maint-title">Full Maintenance</span>
+                <span class="maint-sub">mulai tahun ke-2</span>
+              </div>
+              <div class="maint-col-right">
+                <span class="maint-val" id="maint-landing">Rp 425 Rb</span>
+                <span class="maint-unit">/tahun</span>
+              </div>
+            </div>
+
             <div class="divider-light"></div>
             <ul class="feature-list" style="padding:0;margin:0">
-              <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E3B3A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:3px"><path d="M5 12l5 5 9-10"/></svg><span>1 halaman, rapi di HP</span></li>
-              <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E3B3A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:3px"><path d="M5 12l5 5 9-10"/></svg><span>Tombol WhatsApp &amp; formulir</span></li>
-              <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E3B3A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:3px"><path d="M5 12l5 5 9-10"/></svg><span>Domain &amp; SSL terpasang</span></li>
-              <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E3B3A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:3px"><path d="M5 12l5 5 9-10"/></svg><span>SEO dasar</span></li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0D1F1E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:4px"><path d="M5 12l5 5 9-10"/></svg><span>1 halaman, rapi di HP</span></li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0D1F1E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:4px"><path d="M5 12l5 5 9-10"/></svg><span>Tombol WhatsApp &amp; formulir</span></li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0D1F1E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:4px"><path d="M5 12l5 5 9-10"/></svg><span>Domain, hosting &amp; SSL tahun pertama</span></li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0D1F1E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:4px"><path d="M5 12l5 5 9-10"/></svg><span>SEO dasar</span></li>
             </ul>
-            <a href="#kontak" class="btn-dark-outline">Pilih paket</a>
+            <a href="#kontak" class="btn-dark-outline" id="btn-landing-wa">Pilih paket</a>
           </div>
 
           <!-- Company Profile (featured) -->
-          <div class="pricing-card featured">
+          <div class="pricing-card featured" id="card-compro">
             <span class="pricing-badge">Paling populer</span>
             <div class="flex-col gap-6">
-              <h3 style="margin:0;font-weight:800;font-size:24px">Company Profile</h3>
+              <h3 style="margin:0;font-weight:800;font-size:24px;color:#FFFFFF">Company Profile</h3>
               <p style="margin:0;font-size:15px;color:#A9C2BE">Cocok untuk bisnis yang butuh wajah resmi online.</p>
             </div>
             <div class="flex-col gap-10">
               <span style="font-size:14px;color:#A9C2BE">mulai dari</span>
-              <div class="price-tag"><span class="price-currency">Rp</span>[harga]</div>
+              <div class="price-tag"><span class="price-currency">Rp</span><span id="price-compro">1,55 Jt</span></div>
               <div class="price-meta">
                 <span class="price-chip price-chip-dark">Sekali bayar</span>
-                <span class="price-chip price-chip-dark">Selesai ±[X] minggu</span>
+                <span class="price-chip price-chip-dark">Selesai ±1 minggu</span>
               </div>
             </div>
+
+            <!-- Sub-box Full Maintenance -->
+            <div class="maint-box dark">
+              <div class="maint-col-left">
+                <span class="maint-title" style="color:#FFFFFF">Full Maintenance</span>
+                <span class="maint-sub" style="color:#A9C2BE">mulai tahun ke-2</span>
+              </div>
+              <div class="maint-col-right">
+                <span class="maint-val" id="maint-compro" style="color:#FFFFFF">Rp 675 Rb</span>
+                <span class="maint-unit" style="color:#A9C2BE">/tahun</span>
+              </div>
+            </div>
+
             <div class="divider-dark"></div>
             <ul class="feature-list" style="padding:0;margin:0">
-              <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:3px"><path d="M5 12l5 5 9-10"/></svg><span>5–8 halaman + blog</span></li>
-              <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:3px"><path d="M5 12l5 5 9-10"/></svg><span>SEO dasar &amp; Google Maps</span></li>
-              <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:3px"><path d="M5 12l5 5 9-10"/></svg><span>Desain sesuai identitas bisnis</span></li>
-              <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:3px"><path d="M5 12l5 5 9-10"/></svg><span>Formulir kontak &amp; WhatsApp</span></li>
-              <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:3px"><path d="M5 12l5 5 9-10"/></svg><span>Revisi sesuai paket</span></li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:4px"><path d="M5 12l5 5 9-10"/></svg><span>5–8 halaman + blog</span></li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:4px"><path d="M5 12l5 5 9-10"/></svg><span>SEO dasar &amp; Google Maps</span></li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:4px"><path d="M5 12l5 5 9-10"/></svg><span>Desain sesuai identitas bisnis</span></li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:4px"><path d="M5 12l5 5 9-10"/></svg><span>Formulir kontak &amp; WhatsApp</span></li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:4px"><path d="M5 12l5 5 9-10"/></svg><span>Domain, hosting &amp; SSL tahun pertama</span></li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:4px"><path d="M5 12l5 5 9-10"/></svg><span>Revisi sesuai paket</span></li>
             </ul>
-            <a href="#kontak" class="btn-accent-fill">Pilih paket</a>
+            <a href="#kontak" class="btn-accent-fill" id="btn-compro-wa">Pilih paket</a>
           </div>
 
           <!-- Website Custom -->
-          <div class="pricing-card light">
+          <div class="pricing-card light" id="card-custom">
             <div class="flex-col gap-6">
-              <h3 style="margin:0;font-weight:800;font-size:24px">Website Custom</h3>
+              <h3 style="margin:0;font-weight:800;font-size:24px;color:#0D1F1E">Website Custom</h3>
               <p style="margin:0;font-size:15px;color:#46525A">Cocok untuk brand yang butuh tampilan dan fitur khusus.</p>
             </div>
             <div class="flex-col gap-10">
-              <span style="font-size:14px;color:#46525A">mulai dari</span>
-              <div class="price-tag"><span class="price-currency">Rp</span>[harga]</div>
+              <span style="font-size:14px;color:#5A7472">mulai dari</span>
+              <div class="price-tag"><span class="price-currency">Rp</span><span id="price-custom">3,4 Jt</span></div>
               <div class="price-meta">
                 <span class="price-chip price-chip-light">Sekali bayar</span>
-                <span class="price-chip price-chip-light">Selesai ±[X] minggu</span>
+                <span class="price-chip price-chip-light">Selesai ±2 minggu</span>
               </div>
             </div>
+
+            <!-- Sub-box Full Maintenance -->
+            <div class="maint-box light">
+              <div class="maint-col-left">
+                <span class="maint-title">Full Maintenance</span>
+                <span class="maint-sub">mulai tahun ke-2</span>
+              </div>
+              <div class="maint-col-right">
+                <span class="maint-val" id="maint-custom">Rp 1,05 Jt</span>
+                <span class="maint-unit">/tahun</span>
+              </div>
+            </div>
+
             <div class="divider-light"></div>
             <ul class="feature-list" style="padding:0;margin:0">
-              <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E3B3A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:3px"><path d="M5 12l5 5 9-10"/></svg><span>Desain eksklusif dari nol</span></li>
-              <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E3B3A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:3px"><path d="M5 12l5 5 9-10"/></svg><span>Animasi &amp; interaksi khusus</span></li>
-              <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E3B3A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:3px"><path d="M5 12l5 5 9-10"/></svg><span>Integrasi (pembayaran, peta, dll.)</span></li>
-              <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E3B3A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:3px"><path d="M5 12l5 5 9-10"/></svg><span>Panel admin untuk mengelola konten</span></li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0D1F1E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:4px"><path d="M5 12l5 5 9-10"/></svg><span>Desain eksklusif dari nol</span></li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0D1F1E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:4px"><path d="M5 12l5 5 9-10"/></svg><span>Animasi &amp; interaksi khusus</span></li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0D1F1E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:4px"><path d="M5 12l5 5 9-10"/></svg><span>Integrasi (pembayaran, peta, dll.)</span></li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0D1F1E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:4px"><path d="M5 12l5 5 9-10"/></svg><span>Panel admin untuk mengelola konten</span></li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0D1F1E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:4px"><path d="M5 12l5 5 9-10"/></svg><span>Domain, hosting &amp; SSL tahun pertama</span></li>
             </ul>
-            <a href="#kontak" class="btn-dark-outline">Pilih paket</a>
+            <a href="#kontak" class="btn-dark-outline" id="btn-custom-wa">Diskusikan kebutuhan</a>
           </div>
         </div>
       </div>
@@ -1008,15 +1110,15 @@
         </div>
       </div>
 
-      <!-- Info tambahan -->
-      <div class="pricing-info">
-        <div class="info-card">
-          <span class="info-title">Tambahan: hosting &amp; maintenance</span>
-          <span class="info-sub" id="info-hosting-text">Rp [harga] per bulan, opsional. Mencakup server, SSL, backup, dan perbaikan.</span>
+      <!-- Box info bawah -->
+      <div class="pricing-bottom-box">
+        <div class="pricing-bottom-col">
+          <h4 class="pricing-bottom-title">Full Maintenance sudah termasuk</h4>
+          <p class="pricing-bottom-desc">Perpanjangan domain, hosting &amp; SSL, backup berkala, update keamanan, perbaikan bug, dan edit konten kecil. Tahun pertama sudah termasuk dalam harga pembuatan, Full Maintenance mulai ditagih di tahun ke-2.</p>
         </div>
-        <div class="info-card">
-          <span class="info-title">Cara pembayaran</span>
-          <span class="info-sub" id="info-dp-text">DP [50]% di awal, pelunasan saat rilis.</span>
+        <div class="pricing-bottom-col">
+          <h4 class="pricing-bottom-title">Butuh halaman tambahan?</h4>
+          <p class="pricing-bottom-desc">Halaman baru mulai Rp 150 Rb, halaman dengan fitur (form, galeri, integrasi) mulai Rp 300 Rb, revisi halaman yang sudah ada Rp 75 Rb.</p>
         </div>
       </div>
     </div>
@@ -1382,12 +1484,14 @@ function switchPricingTab(tab) {
   const panelWeb = document.getElementById('panel-website');
   const panelApp = document.getElementById('panel-webapp');
   const dot = document.getElementById('tab-dot');
+  const domWrap = document.getElementById('domain-switch-wrap');
   if (tab === 'website') {
     webBtn.className = 'tab-active';
     appBtn.className = 'tab-inactive';
     panelWeb.classList.add('active');
     panelApp.classList.remove('active');
     dot.style.display = 'inline-block';
+    if (domWrap) domWrap.style.display = 'flex';
   } else {
     webBtn.className = 'tab-inactive';
     appBtn.className = 'tab-active';
@@ -1395,8 +1499,92 @@ function switchPricingTab(tab) {
     panelApp.classList.add('active');
     panelWeb.classList.remove('active');
     dot.style.display = 'none';
+    if (domWrap) domWrap.style.display = 'none';
   }
 }
+
+// ── Domain Switcher (Website Plans) ──
+const DOMAIN_DATA = {
+  com: {
+    label: 'Domain .com',
+    note: 'Domain .com Rp 140 Rb/tahun, tahun pertama sudah termasuk.',
+    landing: { price: '800 Rb', maint: 'Rp 425 Rb' },
+    compro: { price: '1,55 Jt', maint: 'Rp 675 Rb' },
+    custom: { price: '3,4 Jt', maint: 'Rp 1,05 Jt' }
+  },
+  id: {
+    label: 'Domain .id',
+    note: 'Domain .id Rp 220 Rb/tahun, tahun pertama sudah termasuk.',
+    landing: { price: '900 Rb', maint: 'Rp 525 Rb' },
+    compro: { price: '1,65 Jt', maint: 'Rp 775 Rb' },
+    custom: { price: '3,5 Jt', maint: 'Rp 1,15 Jt' }
+  },
+  own: {
+    label: 'Sudah Punya Domain',
+    note: 'Pakai domain milik Anda sendiri, tanpa biaya domain.',
+    landing: { price: '650 Rb', maint: 'Rp 250 Rb' },
+    compro: { price: '1,4 Jt', maint: 'Rp 500 Rb' },
+    custom: { price: '3,25 Jt', maint: 'Rp 875 Rb' }
+  }
+};
+
+let currentDomain = 'com';
+let globalWaBase = 'https://wa.me/6281991947017';
+
+function updatePlanWaLinks() {
+  const domInfo = DOMAIN_DATA[currentDomain] || DOMAIN_DATA.com;
+  const btnLanding = document.getElementById('btn-landing-wa');
+  const btnCompro = document.getElementById('btn-compro-wa');
+  const btnCustom = document.getElementById('btn-custom-wa');
+
+  if (btnLanding) {
+    btnLanding.href = `${globalWaBase}?text=${encodeURIComponent('Halo Paras Digital, saya tertarik dengan paket Website Landing Page (' + domInfo.label + ')')}`;
+  }
+  if (btnCompro) {
+    btnCompro.href = `${globalWaBase}?text=${encodeURIComponent('Halo Paras Digital, saya tertarik dengan paket Website Company Profile (' + domInfo.label + ')')}`;
+  }
+  if (btnCustom) {
+    btnCustom.href = `${globalWaBase}?text=${encodeURIComponent('Halo Paras Digital, saya ingin konsultasi paket Website Custom (' + domInfo.label + ')')}`;
+  }
+}
+
+function switchDomain(type) {
+  if (!DOMAIN_DATA[type]) return;
+  currentDomain = type;
+
+  ['com', 'id', 'own'].forEach(key => {
+    const btn = document.getElementById('domain-btn-' + key);
+    if (btn) {
+      if (key === type) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    }
+  });
+
+  const data = DOMAIN_DATA[type];
+  const noteEl = document.getElementById('domain-note');
+  if (noteEl) noteEl.textContent = data.note;
+
+  const pLanding = document.getElementById('price-landing');
+  const mLanding = document.getElementById('maint-landing');
+  if (pLanding) pLanding.textContent = data.landing.price;
+  if (mLanding) mLanding.textContent = data.landing.maint;
+
+  const pCompro = document.getElementById('price-compro');
+  const mCompro = document.getElementById('maint-compro');
+  if (pCompro) pCompro.textContent = data.compro.price;
+  if (mCompro) mCompro.textContent = data.compro.maint;
+
+  const pCustom = document.getElementById('price-custom');
+  const mCustom = document.getElementById('maint-custom');
+  if (pCustom) pCustom.textContent = data.custom.price;
+  if (mCustom) mCustom.textContent = data.custom.maint;
+
+  updatePlanWaLinks();
+}
+switchDomain('com');
 
 // ── Interactive Demo ──
 const ACCENT = '#FF6B3D';
@@ -1617,28 +1805,12 @@ fetch('/api/content')
         [s.domain_display, s.email, s.city].filter(Boolean).join(' · ');
     }
 
-    // Update Pricing
-    renderPricingCards('panel-website', data.pricing_website, waBase);
-    renderPricingCards('panel-webapp', data.pricing_webapp, waBase);
+    // Update WA base & plan links
+    globalWaBase = waBase;
+    updatePlanWaLinks();
 
-    // Update Portofolio
-    if (Array.isArray(data.portfolio) && data.portfolio.length > 0) {
-      const pGrid = document.getElementById('porto-grid');
-      if (pGrid) {
-        pGrid.innerHTML = data.portfolio.map(item => `
-          <div class="porto-item">
-            <span class="porto-num">${item.num || ''}</span>
-            ${item.image_url
-              ? `<img src="${item.image_url}" alt="${item.title || ''}" style="height:220px;width:100%;object-fit:cover;border-radius:22px;border:1px solid rgba(255,255,255,0.18)">`
-              : `<div class="porto-img">${item.image_placeholder || '[Tangkapan layar proyek]'}</div>`
-            }
-            <h3 style="margin:0;font-weight:700;font-size:22px;color:#0D1F1E">${item.title || ''}</h3>
-            <div style="display:flex;gap:8px"><span class="porto-tag">${item.category || 'Website'}</span></div>
-            <p style="margin:0;color:#5A7472">${item.summary || ''}</p>
-          </div>
-        `).join('');
-      }
-    }
+    // Update Pricing (hanya panel-webapp dari CMS, panel-website memakai sistem kalkulator domain interaktif)
+    renderPricingCards('panel-webapp', data.pricing_webapp, waBase);
   })
   .catch(() => {});
 

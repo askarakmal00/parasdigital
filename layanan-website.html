@@ -258,7 +258,45 @@
     background: var(--accent); color: #0A2B2A; padding: 16px 24px;
     transition: transform 0.2s, box-shadow 0.2s;
   }
-  .btn-card-accent:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255,107,61,0.4); color: #0A2B2A; }
+  /* Domain Switcher */
+  .pricing-controls { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 24px; }
+  .domain-switch-wrap { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; text-align: right; }
+  .domain-switch-row { display: flex; align-items: center; gap: 12px; }
+  .domain-label { font-weight: 700; font-size: 15px; color: #11181C; }
+  .domain-switch { display: inline-flex; gap: 4px; padding: 4px; border-radius: 999px; background: #E9E7E0; }
+  .domain-btn {
+    border: none; font: inherit; font-size: 14px; font-weight: 700; padding: 8px 18px;
+    border-radius: 999px; cursor: pointer; transition: background 0.25s, color 0.25s, transform 0.2s;
+    background: transparent; color: #11181C;
+  }
+  .domain-btn:hover { transform: scale(1.03); }
+  .domain-btn.active { background: #0A2B2A; color: #FFFFFF; }
+  .domain-note { font-size: 13px; color: #5A7472; transition: opacity 0.2s; }
+
+  /* Sub-box Full Maintenance */
+  .maint-box {
+    border-radius: 16px; padding: 12px 18px;
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    margin: 2px 0 4px;
+  }
+  .maint-box.light { background: #F4F3EE; border: 1px solid rgba(0,0,0,0.04); }
+  .maint-box.dark { background: #143534; border: 1px solid rgba(255,255,255,0.08); }
+  .maint-col-left { display: flex; flex-direction: column; gap: 2px; text-align: left; }
+  .maint-title { font-size: 13px; font-weight: 700; color: #0D1F1E; line-height: 1.2; }
+  .maint-sub { font-size: 11px; color: #5A7472; line-height: 1.2; }
+  .maint-col-right { display: flex; align-items: baseline; gap: 4px; text-align: right; }
+  .maint-val { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 17px; font-weight: 800; color: #0D1F1E; letter-spacing: -0.01em; }
+  .maint-unit { font-size: 12px; color: #5A7472; }
+
+  /* Bottom Information Box */
+  .pricing-bottom-box {
+    background: #EBE9E1; border-radius: 28px; padding: 32px 36px;
+    display: flex; gap: 48px; flex-wrap: wrap; margin-top: 8px;
+  }
+  .pricing-bottom-col { flex: 1 1 300px; display: flex; flex-direction: column; gap: 8px; }
+  .pricing-bottom-title { margin: 0; font-size: 16px; font-weight: 800; color: #0D1F1E; }
+  .pricing-bottom-desc { margin: 0; font-size: 14px; color: #46525A; line-height: 1.6; }
+
   .pricing-footnote { margin: 0; color: #46525A; font-size: 15px; }
 
   /* ─── PROSES ─── */
@@ -345,6 +383,10 @@
     .hero-h1 { font-size: 44px; }
     #harga { margin: 64px 12px 0; border-radius: 32px; }
     .pricing-inner { padding: 52px 20px 44px; }
+    .pricing-controls { flex-direction: column; align-items: flex-start; gap: 20px; }
+    .domain-switch-wrap { align-items: flex-start; text-align: left; width: 100%; }
+    .domain-switch-row { flex-wrap: wrap; }
+    .pricing-bottom-box { padding: 24px; gap: 24px; }
     .float-wa { display: flex; }
   }
 </style>
@@ -535,84 +577,154 @@
 <!-- ─── PRICING ─── -->
 <section id="harga">
   <div class="pricing-inner">
-    <div style="display:flex;flex-direction:column;gap:12px;">
-      <span class="sec-label-dark">Paket &amp; harga</span>
-      <h2 style="margin:0;font-weight:800;font-size:clamp(32px,4.4vw,52px);line-height:1.05;letter-spacing:-0.03em;color:#11181C">Harga terbuka sejak awal.</h2>
+    <div class="pricing-controls">
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <span class="sec-label-dark">Paket &amp; harga</span>
+        <h2 style="margin:0;font-weight:800;font-size:clamp(32px,4.4vw,52px);line-height:1.05;letter-spacing:-0.03em;color:#11181C">Harga terbuka sejak awal.</h2>
+      </div>
+
+      <!-- Domain Switcher -->
+      <div class="domain-switch-wrap" id="domain-switch-wrap">
+        <div class="domain-switch-row">
+          <span class="domain-label">Pilihan domain:</span>
+          <div class="domain-switch">
+            <button type="button" id="domain-btn-com" class="domain-btn active" onclick="switchDomain('com')">.com</button>
+            <button type="button" id="domain-btn-id" class="domain-btn" onclick="switchDomain('id')">.id</button>
+            <button type="button" id="domain-btn-own" class="domain-btn" onclick="switchDomain('own')">Sudah punya</button>
+          </div>
+        </div>
+        <span class="domain-note" id="domain-note">Domain .com Rp 140 Rb/tahun, tahun pertama sudah termasuk.</span>
+      </div>
     </div>
 
     <div class="pricing-grid" id="pricing-container">
-      <!-- Card 1: Landing Page -->
-      <div class="pricing-card light" id="plan-landing-page">
+      <!-- Landing Page -->
+      <div class="pricing-card light" id="card-landing">
         <div style="display:flex;flex-direction:column;gap:6px">
-          <h3 style="margin:0;font-weight:800;font-size:24px">Landing Page</h3>
-          <p style="margin:0;font-size:15px;color:#46525A">Untuk satu produk atau jasa.</p>
+          <h3 style="margin:0;font-weight:800;font-size:24px;color:#0D1F1E">Landing Page</h3>
+          <p style="margin:0;font-size:15px;color:#46525A">Cocok untuk promosi satu produk atau jasa.</p>
         </div>
-        <div style="display:flex;flex-direction:column;gap:8px">
-          <span style="font-size:14px;color:#46525A">mulai dari</span>
-          <div class="price-tag"><span class="price-currency">Rp</span><span class="js-price-val">1,5 Jt</span></div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <span style="font-size:14px;color:#5A7472">mulai dari</span>
+          <div class="price-tag"><span class="price-currency">Rp</span><span id="price-landing">800 Rb</span></div>
           <div class="price-meta">
             <span class="price-chip price-chip-light">Sekali bayar</span>
-            <span class="price-chip price-chip-light">±5 hari</span>
+            <span class="price-chip price-chip-light">Selesai ±2 hari</span>
           </div>
         </div>
+
+        <!-- Sub-box Full Maintenance -->
+        <div class="maint-box light">
+          <div class="maint-col-left">
+            <span class="maint-title">Full Maintenance</span>
+            <span class="maint-sub">mulai tahun ke-2</span>
+          </div>
+          <div class="maint-col-right">
+            <span class="maint-val" id="maint-landing">Rp 425 Rb</span>
+            <span class="maint-unit">/tahun</span>
+          </div>
+        </div>
+
         <div class="divider-light"></div>
-        <ul class="feature-list">
-          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E3B3A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:3px"><path d="M5 12l5 5 9-10"/></svg><span>1 halaman, rapi di HP</span></li>
-          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E3B3A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:3px"><path d="M5 12l5 5 9-10"/></svg><span>Tombol WhatsApp &amp; formulir</span></li>
-          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E3B3A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:3px"><path d="M5 12l5 5 9-10"/></svg><span>Domain &amp; SSL terpasang</span></li>
+        <ul class="feature-list" style="padding:0;margin:0">
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0D1F1E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:4px"><path d="M5 12l5 5 9-10"/></svg><span>1 halaman, rapi di HP</span></li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0D1F1E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:4px"><path d="M5 12l5 5 9-10"/></svg><span>Tombol WhatsApp &amp; formulir</span></li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0D1F1E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:4px"><path d="M5 12l5 5 9-10"/></svg><span>Domain, hosting &amp; SSL tahun pertama</span></li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0D1F1E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:4px"><path d="M5 12l5 5 9-10"/></svg><span>SEO dasar</span></li>
         </ul>
-        <a href="https://wa.me/6281991947017" class="btn-card-outline js-plan-btn js-wa-link" data-plan-name="Landing Page">Pilih paket</a>
+        <a href="#kontak" class="btn-dark-outline" id="btn-landing-wa">Pilih paket</a>
       </div>
 
-      <!-- Card 2: Company Profile -->
-      <div class="pricing-card featured" id="plan-company-profile">
+      <!-- Company Profile (featured) -->
+      <div class="pricing-card featured" id="card-compro">
         <span class="pricing-badge">Paling populer</span>
         <div style="display:flex;flex-direction:column;gap:6px">
-          <h3 style="margin:0;font-weight:800;font-size:24px">Company Profile</h3>
-          <p style="margin:0;font-size:15px;color:#A9C2BE">Untuk wajah resmi bisnis.</p>
+          <h3 style="margin:0;font-weight:800;font-size:24px;color:#FFFFFF">Company Profile</h3>
+          <p style="margin:0;font-size:15px;color:#A9C2BE">Cocok untuk bisnis yang butuh wajah resmi online.</p>
         </div>
-        <div style="display:flex;flex-direction:column;gap:8px">
+        <div style="display:flex;flex-direction:column;gap:10px">
           <span style="font-size:14px;color:#A9C2BE">mulai dari</span>
-          <div class="price-tag"><span class="price-currency">Rp</span><span class="js-price-val">3,5 Jt</span></div>
+          <div class="price-tag"><span class="price-currency">Rp</span><span id="price-compro">1,55 Jt</span></div>
           <div class="price-meta">
             <span class="price-chip price-chip-dark">Sekali bayar</span>
-            <span class="price-chip price-chip-dark">±2 minggu</span>
+            <span class="price-chip price-chip-dark">Selesai ±1 minggu</span>
           </div>
         </div>
+
+        <!-- Sub-box Full Maintenance -->
+        <div class="maint-box dark">
+          <div class="maint-col-left">
+            <span class="maint-title" style="color:#FFFFFF">Full Maintenance</span>
+            <span class="maint-sub" style="color:#A9C2BE">mulai tahun ke-2</span>
+          </div>
+          <div class="maint-col-right">
+            <span class="maint-val" id="maint-compro" style="color:#FFFFFF">Rp 675 Rb</span>
+            <span class="maint-unit" style="color:#A9C2BE">/tahun</span>
+          </div>
+        </div>
+
         <div class="divider-dark"></div>
-        <ul class="feature-list">
-          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:3px"><path d="M5 12l5 5 9-10"/></svg><span>5–8 halaman + blog</span></li>
-          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:3px"><path d="M5 12l5 5 9-10"/></svg><span>SEO dasar &amp; Google Maps</span></li>
-          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:3px"><path d="M5 12l5 5 9-10"/></svg><span>Desain sesuai identitas bisnis</span></li>
+        <ul class="feature-list" style="padding:0;margin:0">
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:4px"><path d="M5 12l5 5 9-10"/></svg><span>5–8 halaman + blog</span></li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:4px"><path d="M5 12l5 5 9-10"/></svg><span>SEO dasar &amp; Google Maps</span></li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:4px"><path d="M5 12l5 5 9-10"/></svg><span>Desain sesuai identitas bisnis</span></li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:4px"><path d="M5 12l5 5 9-10"/></svg><span>Formulir kontak &amp; WhatsApp</span></li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:4px"><path d="M5 12l5 5 9-10"/></svg><span>Domain, hosting &amp; SSL tahun pertama</span></li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:4px"><path d="M5 12l5 5 9-10"/></svg><span>Revisi sesuai paket</span></li>
         </ul>
-        <a href="https://wa.me/6281991947017" class="btn-card-accent js-plan-btn js-wa-link" data-plan-name="Company Profile">Pilih paket</a>
+        <a href="#kontak" class="btn-accent-fill" id="btn-compro-wa">Pilih paket</a>
       </div>
 
-      <!-- Card 3: Website Custom -->
-      <div class="pricing-card light" id="plan-website-custom">
+      <!-- Website Custom -->
+      <div class="pricing-card light" id="card-custom">
         <div style="display:flex;flex-direction:column;gap:6px">
-          <h3 style="margin:0;font-weight:800;font-size:24px">Website Custom</h3>
-          <p style="margin:0;font-size:15px;color:#46525A">Untuk tampilan dan fitur khusus.</p>
+          <h3 style="margin:0;font-weight:800;font-size:24px;color:#0D1F1E">Website Custom</h3>
+          <p style="margin:0;font-size:15px;color:#46525A">Cocok untuk brand yang butuh tampilan dan fitur khusus.</p>
         </div>
-        <div style="display:flex;flex-direction:column;gap:8px">
-          <span style="font-size:14px;color:#46525A">mulai dari</span>
-          <div class="price-tag"><span class="price-currency">Rp</span><span class="js-price-val">6 Jt</span></div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <span style="font-size:14px;color:#5A7472">mulai dari</span>
+          <div class="price-tag"><span class="price-currency">Rp</span><span id="price-custom">3,4 Jt</span></div>
           <div class="price-meta">
             <span class="price-chip price-chip-light">Sekali bayar</span>
-            <span class="price-chip price-chip-light">±3 minggu</span>
+            <span class="price-chip price-chip-light">Selesai ±2 minggu</span>
           </div>
         </div>
+
+        <!-- Sub-box Full Maintenance -->
+        <div class="maint-box light">
+          <div class="maint-col-left">
+            <span class="maint-title">Full Maintenance</span>
+            <span class="maint-sub">mulai tahun ke-2</span>
+          </div>
+          <div class="maint-col-right">
+            <span class="maint-val" id="maint-custom">Rp 1,05 Jt</span>
+            <span class="maint-unit">/tahun</span>
+          </div>
+        </div>
+
         <div class="divider-light"></div>
-        <ul class="feature-list">
-          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E3B3A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:3px"><path d="M5 12l5 5 9-10"/></svg><span>Desain eksklusif dari nol</span></li>
-          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E3B3A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:3px"><path d="M5 12l5 5 9-10"/></svg><span>Animasi &amp; interaksi khusus</span></li>
-          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E3B3A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:3px"><path d="M5 12l5 5 9-10"/></svg><span>Integrasi (pembayaran, peta, dll.)</span></li>
+        <ul class="feature-list" style="padding:0;margin:0">
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0D1F1E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:4px"><path d="M5 12l5 5 9-10"/></svg><span>Desain eksklusif dari nol</span></li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0D1F1E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:4px"><path d="M5 12l5 5 9-10"/></svg><span>Animasi &amp; interaksi khusus</span></li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0D1F1E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:4px"><path d="M5 12l5 5 9-10"/></svg><span>Integrasi (pembayaran, peta, dll.)</span></li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0D1F1E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:4px"><path d="M5 12l5 5 9-10"/></svg><span>Panel admin untuk mengelola konten</span></li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0D1F1E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:4px"><path d="M5 12l5 5 9-10"/></svg><span>Domain, hosting &amp; SSL tahun pertama</span></li>
         </ul>
-        <a href="https://wa.me/6281991947017" class="btn-card-outline js-plan-btn js-wa-link" data-plan-name="Website Custom">Pilih paket</a>
+        <a href="#kontak" class="btn-dark-outline" id="btn-custom-wa">Diskusikan kebutuhan</a>
       </div>
     </div>
 
-    <p class="pricing-footnote" id="info-pricing-note">Hosting &amp; maintenance opsional: Rp 150rb per bulan. Pembayaran: DP 50% di awal, pelunasan saat rilis.</p>
+    <!-- Box info bawah -->
+    <div class="pricing-bottom-box">
+      <div class="pricing-bottom-col">
+        <h4 class="pricing-bottom-title">Full Maintenance sudah termasuk</h4>
+        <p class="pricing-bottom-desc">Perpanjangan domain, hosting &amp; SSL, backup berkala, update keamanan, perbaikan bug, dan edit konten kecil. Tahun pertama sudah termasuk dalam harga pembuatan, Full Maintenance mulai ditagih di tahun ke-2.</p>
+      </div>
+      <div class="pricing-bottom-col">
+        <h4 class="pricing-bottom-title">Butuh halaman tambahan?</h4>
+        <p class="pricing-bottom-desc">Halaman baru mulai Rp 150 Rb, halaman dengan fitur (form, galeri, integrasi) mulai Rp 300 Rb, revisi halaman yang sudah ada Rp 75 Rb.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -790,6 +902,89 @@ function trackEvent(eventType, eventLabel) {
 // Track pageview on load
 trackEvent('pageview', 'Layanan Website');
 
+// ── Domain Switcher (Website Plans) ──
+const DOMAIN_DATA = {
+  com: {
+    label: 'Domain .com',
+    note: 'Domain .com Rp 140 Rb/tahun, tahun pertama sudah termasuk.',
+    landing: { price: '800 Rb', maint: 'Rp 425 Rb' },
+    compro: { price: '1,55 Jt', maint: 'Rp 675 Rb' },
+    custom: { price: '3,4 Jt', maint: 'Rp 1,05 Jt' }
+  },
+  id: {
+    label: 'Domain .id',
+    note: 'Domain .id Rp 220 Rb/tahun, tahun pertama sudah termasuk.',
+    landing: { price: '900 Rb', maint: 'Rp 525 Rb' },
+    compro: { price: '1,65 Jt', maint: 'Rp 775 Rb' },
+    custom: { price: '3,5 Jt', maint: 'Rp 1,15 Jt' }
+  },
+  own: {
+    label: 'Sudah Punya Domain',
+    note: 'Pakai domain milik Anda sendiri, tanpa biaya domain.',
+    landing: { price: '650 Rb', maint: 'Rp 250 Rb' },
+    compro: { price: '1,4 Jt', maint: 'Rp 500 Rb' },
+    custom: { price: '3,25 Jt', maint: 'Rp 875 Rb' }
+  }
+};
+
+let currentDomain = 'com';
+let globalWaBase = 'https://wa.me/6281991947017';
+
+function updatePlanWaLinks() {
+  const domInfo = DOMAIN_DATA[currentDomain] || DOMAIN_DATA.com;
+  const btnLanding = document.getElementById('btn-landing-wa');
+  const btnCompro = document.getElementById('btn-compro-wa');
+  const btnCustom = document.getElementById('btn-custom-wa');
+
+  if (btnLanding) {
+    btnLanding.href = `${globalWaBase}?text=${encodeURIComponent('Halo Paras Digital, saya tertarik dengan paket Website Landing Page (' + domInfo.label + ')')}`;
+  }
+  if (btnCompro) {
+    btnCompro.href = `${globalWaBase}?text=${encodeURIComponent('Halo Paras Digital, saya tertarik dengan paket Website Company Profile (' + domInfo.label + ')')}`;
+  }
+  if (btnCustom) {
+    btnCustom.href = `${globalWaBase}?text=${encodeURIComponent('Halo Paras Digital, saya ingin konsultasi paket Website Custom (' + domInfo.label + ')')}`;
+  }
+}
+
+function switchDomain(type) {
+  if (!DOMAIN_DATA[type]) return;
+  currentDomain = type;
+
+  ['com', 'id', 'own'].forEach(key => {
+    const btn = document.getElementById('domain-btn-' + key);
+    if (btn) {
+      if (key === type) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    }
+  });
+
+  const data = DOMAIN_DATA[type];
+  const noteEl = document.getElementById('domain-note');
+  if (noteEl) noteEl.textContent = data.note;
+
+  const pLanding = document.getElementById('price-landing');
+  const mLanding = document.getElementById('maint-landing');
+  if (pLanding) pLanding.textContent = data.landing.price;
+  if (mLanding) mLanding.textContent = data.landing.maint;
+
+  const pCompro = document.getElementById('price-compro');
+  const mCompro = document.getElementById('maint-compro');
+  if (pCompro) pCompro.textContent = data.compro.price;
+  if (mCompro) mCompro.textContent = data.compro.maint;
+
+  const pCustom = document.getElementById('price-custom');
+  const mCustom = document.getElementById('maint-custom');
+  if (pCustom) pCustom.textContent = data.custom.price;
+  if (mCustom) mCustom.textContent = data.custom.maint;
+
+  updatePlanWaLinks();
+}
+switchDomain('com');
+
 // Fetch CMS content for WA & dynamic settings
 fetch('/api/content')
   .then(r => r.ok ? r.json() : null)
@@ -802,21 +997,12 @@ fetch('/api/content')
       ? `${waBase}?text=${encodeURIComponent(s.whatsapp_greeting)}`
       : waBase;
 
-    document.querySelectorAll('.js-wa-link').forEach(a => {
-      if (a.classList.contains('js-plan-btn')) {
-        const pName = a.getAttribute('data-plan-name') || '';
-        a.href = waClean ? `${waBase}?text=${encodeURIComponent('Halo Paras Digital, saya tertarik dengan paket ' + pName)}` : waBase;
-      } else {
-        a.href = waFull;
-      }
-    });
+    globalWaBase = waBase;
+    updatePlanWaLinks();
 
-    if (s.hosting_price || s.dp_percent) {
-      const hPrice = s.hosting_price || '150rb';
-      const dpVal = s.dp_percent || '50';
-      const fn = document.getElementById('info-pricing-note');
-      if (fn) fn.textContent = `Hosting & maintenance opsional: Rp ${hPrice} per bulan. Pembayaran: DP ${dpVal}% di awal, pelunasan saat rilis.`;
-    }
+    document.querySelectorAll('.js-wa-link:not(#btn-landing-wa):not(#btn-compro-wa):not(#btn-custom-wa)').forEach(a => {
+      a.href = waFull;
+    });
 
     if (s.domain_display || s.email || s.city) {
       const fInfo = document.getElementById('footer-contact-info');
