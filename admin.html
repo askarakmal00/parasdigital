@@ -357,11 +357,13 @@
 let token = localStorage.getItem('paras_admin_token') || '';
 let cmsData = null;
 
-function showToast(msg) {
+function showToast(msg, isError = false) {
   const t = document.getElementById('toast');
   t.textContent = msg;
+  t.style.background = isError ? '#E11D48' : 'var(--accent)';
+  t.style.color = isError ? '#FFFFFF' : '#0A2B2A';
   t.style.display = 'block';
-  setTimeout(() => { t.style.display = 'none'; }, 2600);
+  setTimeout(() => { t.style.display = 'none'; }, isError ? 4500 : 2600);
 }
 
 function switchTab(name, btn) {
@@ -415,7 +417,11 @@ async function apiAdmin(url, options = {}) {
     logout();
     throw new Error('Sesi berakhir, silakan login kembali.');
   }
-  return res.json();
+  const data = await res.json().catch(() => ({ error: 'Gagal memproses respons server' }));
+  if (!res.ok) {
+    throw new Error(data.error || ('Gagal memproses permintaan (HTTP ' + res.status + ')'));
+  }
+  return data;
 }
 
 async function initDashboard() {
@@ -550,13 +556,18 @@ function collectPricing(containerId, originalList) {
 }
 
 async function savePricing() {
-  const web = collectPricing('editor-pricing-website', cmsData.pricing_website);
-  const app = collectPricing('editor-pricing-webapp', cmsData.pricing_webapp);
-  await apiAdmin('/api/admin/content/pricing_website', { method: 'PUT', body: JSON.stringify(web) });
-  await apiAdmin('/api/admin/content/pricing_webapp', { method: 'PUT', body: JSON.stringify(app) });
-  cmsData.pricing_website = web;
-  cmsData.pricing_webapp = app;
-  showToast('Paket & Harga berhasil disimpan!');
+  try {
+    const web = collectPricing('editor-pricing-website', cmsData.pricing_website);
+    const app = collectPricing('editor-pricing-webapp', cmsData.pricing_webapp);
+    await apiAdmin('/api/admin/content/pricing_website', { method: 'PUT', body: JSON.stringify(web) });
+    await apiAdmin('/api/admin/content/pricing_webapp', { method: 'PUT', body: JSON.stringify(app) });
+    cmsData.pricing_website = web;
+    cmsData.pricing_webapp = app;
+    showToast('Paket & Harga berhasil disimpan!');
+  } catch (err) {
+    showToast('Gagal menyimpan: ' + err.message, true);
+    alert('Gagal menyimpan ke database server:\n\n' + err.message + '\n\nPastikan database PostgreSQL di server/VPS sudah berjalan dan terkonfigurasi di file .env');
+  }
 }
 
 function renderPortfolioEditor() {
@@ -615,9 +626,14 @@ function removePortfolio(idx) {
 }
 
 async function savePortfolio() {
-  syncPortfolioFromDOM();
-  await apiAdmin('/api/admin/content/portfolio', { method: 'PUT', body: JSON.stringify(cmsData.portfolio) });
-  showToast('Portofolio berhasil disimpan!');
+  try {
+    syncPortfolioFromDOM();
+    await apiAdmin('/api/admin/content/portfolio', { method: 'PUT', body: JSON.stringify(cmsData.portfolio) });
+    showToast('Portofolio berhasil disimpan!');
+  } catch (err) {
+    showToast('Gagal menyimpan: ' + err.message, true);
+    alert('Gagal menyimpan ke database server:\n\n' + err.message + '\n\nPastikan database PostgreSQL di server/VPS sudah berjalan dan terkonfigurasi di file .env');
+  }
 }
 
 function renderSettingsEditor() {
@@ -632,18 +648,23 @@ function renderSettingsEditor() {
 }
 
 async function saveSettings() {
-  const s = {
-    whatsapp_number: document.getElementById('set-wa-num').value.trim(),
-    whatsapp_greeting: document.getElementById('set-wa-msg').value.trim(),
-    domain_display: document.getElementById('set-domain').value.trim(),
-    email: document.getElementById('set-email').value.trim(),
-    city: document.getElementById('set-city').value.trim(),
-    hosting_price: document.getElementById('set-hosting').value.trim(),
-    dp_percent: document.getElementById('set-dp').value.trim()
-  };
-  await apiAdmin('/api/admin/content/settings', { method: 'PUT', body: JSON.stringify(s) });
-  cmsData.settings = s;
-  showToast('Pengaturan berhasil disimpan!');
+  try {
+    const s = {
+      whatsapp_number: document.getElementById('set-wa-num').value.trim(),
+      whatsapp_greeting: document.getElementById('set-wa-msg').value.trim(),
+      domain_display: document.getElementById('set-domain').value.trim(),
+      email: document.getElementById('set-email').value.trim(),
+      city: document.getElementById('set-city').value.trim(),
+      hosting_price: document.getElementById('set-hosting').value.trim(),
+      dp_percent: document.getElementById('set-dp').value.trim()
+    };
+    await apiAdmin('/api/admin/content/settings', { method: 'PUT', body: JSON.stringify(s) });
+    cmsData.settings = s;
+    showToast('Pengaturan berhasil disimpan!');
+  } catch (err) {
+    showToast('Gagal menyimpan: ' + err.message, true);
+    alert('Gagal menyimpan ke database server:\n\n' + err.message + '\n\nPastikan database PostgreSQL di server/VPS sudah berjalan dan terkonfigurasi di file .env');
+  }
 }
 
 if (token) {
