@@ -88,7 +88,7 @@ const DEFAULT_CMS = {
     {
       name: 'Starter',
       desc: 'Cocok untuk satu proses yang ingin dirapikan.',
-      price: '5 Jt',
+      price: '950 Ribu',
       badge1: 'Sekali bayar',
       badge2: 'Selesai ±3 minggu',
       featured: false,
@@ -96,15 +96,13 @@ const DEFAULT_CMS = {
       features: [
         '1 modul utama (misalnya pesanan)',
         'Login pengguna',
-        'Database & laporan dasar',
-        'Nyaman di HP dan komputer',
-        'Dukungan setelah rilis'
+        'Database & laporan dasar'
       ]
     },
     {
       name: 'Bisnis',
       desc: 'Cocok untuk operasional beberapa bagian sekaligus.',
-      price: '12 Jt',
+      price: '3 jt',
       badge1: 'Sekali bayar',
       badge2: 'Selesai ±6 minggu',
       featured: true,
@@ -112,16 +110,13 @@ const DEFAULT_CMS = {
       cta_text: 'Pilih paket',
       features: [
         'Beberapa modul yang saling terhubung',
-        'Peran pengguna (admin, staf)',
-        'Dashboard & laporan',
-        'Ekspor data ke Excel/PDF',
-        'Pelatihan penggunaan untuk tim'
+        'Peran pengguna (admin, staf)'
       ]
     },
     {
       name: 'Kustom',
       desc: 'Cocok untuk kebutuhan besar atau terhubung ke sistem lain.',
-      price: '25 Jt',
+      price: 'Ask Us!',
       badge1: 'Sesuai ruang lingkup',
       badge2: 'Selesai ±2 bulan',
       featured: false,
@@ -129,9 +124,7 @@ const DEFAULT_CMS = {
       features: [
         'Analisis kebutuhan mendalam',
         'Integrasi dengan sistem lain (API)',
-        'Alur kerja dan aturan khusus',
-        'Hak akses dan keamanan lanjutan',
-        'Dukungan prioritas'
+        'Alur kerja dan aturan khusus'
       ]
     }
   ],
