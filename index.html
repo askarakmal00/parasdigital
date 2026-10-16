@@ -1811,7 +1811,8 @@ function renderPricingCards(panelId, plans = [], waUrlBase = '#kontak') {
     const divClass = isFeat ? 'divider-dark' : 'divider-light';
     const btnClass = isFeat ? 'btn-accent-fill' : 'btn-dark-outline';
     const cleanPrice = String(p.price || '').trim();
-    const isTextPrice = cleanPrice.toLowerCase().includes('ask') || cleanPrice.toLowerCase().includes('kustom') || cleanPrice.toLowerCase().includes('tanya');
+    const hasDigits = /\d/.test(cleanPrice);
+    const isTextPrice = !hasDigits || cleanPrice.toLowerCase().includes('ask') || cleanPrice.toLowerCase().includes('kustom') || cleanPrice.toLowerCase().includes('tanya') || cleanPrice.toLowerCase().includes('hubungi');
     const priceHtml = isTextPrice
       ? cleanPrice
       : (cleanPrice.toLowerCase().startsWith('rp') ? cleanPrice : `<span class="price-currency">Rp</span>${cleanPrice}`);
@@ -1851,8 +1852,8 @@ function renderPricingCards(panelId, plans = [], waUrlBase = '#kontak') {
   }).join('');
 }
 
-// Ambil konten terbaru dari PostgreSQL CMS jika berjalan di server VPS
-fetch('/api/content')
+// Ambil konten terbaru dari PostgreSQL CMS jika berjalan di server VPS (cache-buster ?t=)
+fetch('/api/content?t=' + Date.now())
   .then(r => r.ok ? r.json() : null)
   .then(data => {
     if (!data) return;

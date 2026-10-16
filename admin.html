@@ -277,13 +277,25 @@
       </div>
 
       <div class="card">
-        <h3 style="color:var(--accent)">Kategori 1: Paket Website</h3>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+          <h3 style="color:var(--accent);margin:0">Kategori 1: Paket Website</h3>
+          <button class="btn btn-accent" onclick="savePricing()">💾 Simpan Perubahan</button>
+        </div>
         <div id="editor-pricing-website" class="grid-2"></div>
+        <div style="margin-top:16px;display:flex;justify-content:flex-end">
+          <button class="btn btn-accent" onclick="savePricing()">💾 Simpan Semua Paket Harga</button>
+        </div>
       </div>
 
       <div class="card">
-        <h3 style="color:var(--accent)">Kategori 2: Paket Web App Custom</h3>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+          <h3 style="color:var(--accent);margin:0">Kategori 2: Paket Web App Custom</h3>
+          <button class="btn btn-accent" onclick="savePricing()">💾 Simpan Perubahan</button>
+        </div>
         <div id="editor-pricing-webapp" class="grid-2"></div>
+        <div style="margin-top:16px;display:flex;justify-content:flex-end">
+          <button class="btn btn-accent" onclick="savePricing()">💾 Simpan Semua Paket Harga</button>
+        </div>
       </div>
     </section>
 
@@ -513,7 +525,7 @@ function renderSimpleList(containerId, items = [], labelFn, valFn) {
 
 // ─── LOAD & RENDER CMS EDITORS ───
 async function loadCMS() {
-  const res = await fetch('/api/content');
+  const res = await fetch('/api/content?t=' + Date.now());
   cmsData = await res.json();
   renderPricingEditor('editor-pricing-website', cmsData.pricing_website);
   renderPricingEditor('editor-pricing-webapp', cmsData.pricing_webapp);

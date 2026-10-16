@@ -261,11 +261,18 @@ function requireAdmin(req, res, next) {
 
 // ─── API PUBLIC: AMBIL KONTEN CMS ───
 app.get('/api/content', async (req, res) => {
+  res.set('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+  res.set('Pragma', 'no-cache');
+  res.set('Expires', '0');
   try {
     const { rows } = await pool.query('SELECT key, value FROM cms_content');
     const result = { ...DEFAULT_CMS };
     rows.forEach(r => {
-      result[r.key] = r.value;
+      let val = r.value;
+      if (typeof val === 'string') {
+        try { val = JSON.parse(val); } catch (_) {}
+      }
+      result[r.key] = val;
     });
     res.json(result);
   } catch (err) {
