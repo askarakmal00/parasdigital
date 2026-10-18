@@ -766,6 +766,514 @@
     .hero-h1 { font-size: 38px; }
     .band { font-size: 18px; }
     .demo-stat .val { font-size: 22px; }
+  /* ─── SHOWCASE MOCKUP INTERAKTIF ─── */
+  #showcase {
+    max-width: 1200px;
+    margin: 40px auto 30px;
+    padding: 24px 24px 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  .showcase-header {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+    max-width: 740px;
+    margin: 0 auto;
+  }
+  .showcase-toggle-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  .showcase-toggle {
+    display: inline-flex;
+    background: #EAE8E1;
+    padding: 6px;
+    border-radius: 999px;
+    border: 1px solid rgba(13,31,30,0.10);
+    gap: 6px;
+  }
+  .showcase-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 24px;
+    border-radius: 999px;
+    border: none;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    color: #5A7472;
+    background: transparent;
+    transition: all 0.22s ease;
+  }
+  .showcase-btn.active {
+    background: #0A2B2A;
+    color: #FFFFFF;
+    box-shadow: 0 4px 16px rgba(10,43,42,0.25);
+  }
+  .showcase-btn:hover:not(.active) {
+    color: #0D1F1E;
+  }
+
+  /* Mockup Frame */
+  .mockup-display {
+    position: relative;
+    border-radius: 28px;
+    background: #FFFFFF;
+    border: 1px solid rgba(13,31,30,0.12);
+    box-shadow: 0 24px 64px rgba(13,31,30,0.10);
+    overflow: hidden;
+  }
+  .mockup-panel {
+    display: none;
+    flex-direction: column;
+  }
+  .mockup-panel.active {
+    display: flex;
+    animation: fade-up 0.35s ease both;
+  }
+
+  /* Browser Window Chrome */
+  .window-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+    background: #EDEBE6;
+    border-bottom: 1px solid rgba(13,31,30,0.10);
+    gap: 16px;
+  }
+  .window-dots {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex: none;
+  }
+  .window-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+  .window-dot.red { background: #FF5F56; }
+  .window-dot.yellow { background: #FFBD2E; }
+  .window-dot.green { background: #27C93F; }
+
+  .window-url-bar {
+    flex: 1;
+    max-width: 480px;
+    margin: 0 auto;
+    background: #FFFFFF;
+    border: 1px solid rgba(13,31,30,0.12);
+    border-radius: 999px;
+    padding: 7px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #5A7472;
+  }
+  .window-actions {
+    display: flex;
+    gap: 10px;
+    color: #8C9E9C;
+    flex: none;
+  }
+
+  /* Panel 1: Website View */
+  .site-preview-body {
+    padding: 36px 40px 52px;
+    background: linear-gradient(180deg, #FFFFFF 0%, #FAF9F5 100%);
+    position: relative;
+    min-height: 520px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  .site-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(13,31,30,0.06);
+  }
+  .site-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 800;
+    font-size: 18px;
+    color: #0D1F1E;
+  }
+  .site-brand-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 9px;
+    background: #0A2B2A;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 16px;
+  }
+  .site-links {
+    display: flex;
+    gap: 22px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #5A7472;
+  }
+  .site-cta-btn {
+    background: var(--accent);
+    color: #0A2B2A;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 9px 20px;
+    border-radius: 999px;
+    border: none;
+  }
+
+  .site-hero-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 36px;
+    align-items: center;
+  }
+  .site-hero-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .site-badge {
+    align-self: flex-start;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 5px 14px;
+    border-radius: 999px;
+    background: rgba(255,107,61,0.12);
+    color: #C94D14;
+    border: 1px solid rgba(255,107,61,0.25);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .site-title {
+    font-size: clamp(26px, 2.9vw, 40px);
+    font-weight: 800;
+    color: #0D1F1E;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    margin: 0;
+  }
+  .site-desc {
+    font-size: 16px;
+    color: #5A7472;
+    line-height: 1.55;
+    margin: 0;
+  }
+  .site-btns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 4px;
+  }
+  .site-btn-p {
+    background: #0A2B2A;
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 11px 22px;
+    border-radius: 999px;
+  }
+  .site-btn-o {
+    border: 1px solid rgba(13,31,30,0.25);
+    color: #0D1F1E;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 11px 20px;
+    border-radius: 999px;
+  }
+
+  .site-card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .site-feature-card {
+    background: #FFFFFF;
+    border: 1px solid rgba(13,31,30,0.08);
+    border-radius: 18px;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.02);
+  }
+  .site-feat-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: rgba(10,43,42,0.06);
+    color: #0A2B2A;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .site-feat-title {
+    font-weight: 700;
+    font-size: 15px;
+    color: #0D1F1E;
+  }
+  .site-feat-desc {
+    font-size: 13px;
+    color: #5A7472;
+    line-height: 1.45;
+  }
+
+  /* Floating Smartphone Mockup */
+  .mockup-mobile-wrap {
+    position: absolute;
+    right: 36px;
+    bottom: 28px;
+    width: 230px;
+    background: #081C1B;
+    border: 5px solid #1A3937;
+    border-radius: 40px;
+    padding: 12px 10px 16px;
+    box-shadow: 0 28px 60px rgba(10,43,42,0.45), 0 0 0 1px rgba(255,255,255,0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 10;
+  }
+  .mobile-island {
+    width: 64px;
+    height: 14px;
+    background: #000000;
+    border-radius: 999px;
+    margin: 0 auto 6px;
+  }
+  .mobile-screen {
+    background: #F7F6F2;
+    border-radius: 28px;
+    padding: 14px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    overflow: hidden;
+  }
+  .mobile-screen-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .mobile-screen-hero {
+    background: #FFFFFF;
+    border-radius: 16px;
+    padding: 12px;
+    border: 1px solid rgba(0,0,0,0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .mobile-wa-pill {
+    background: #25D366;
+    color: #FFFFFF;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 6px 10px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    align-self: flex-start;
+    box-shadow: 0 4px 12px rgba(37,211,102,0.35);
+  }
+
+  /* Floating Badges */
+  .floating-metric-badge {
+    position: absolute;
+    background: #FFFFFF;
+    border: 1px solid rgba(13,31,30,0.12);
+    border-radius: 16px;
+    padding: 10px 16px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #0D1F1E;
+    z-index: 5;
+  }
+  .floating-badge-1 {
+    left: 40px;
+    bottom: 24px;
+  }
+
+  /* Panel 2: Web App Layout */
+  .app-preview-layout {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    min-height: 540px;
+  }
+  .app-sidebar {
+    background: #0A2B2A;
+    color: #FFFFFF;
+    padding: 22px 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-right: 1px solid rgba(255,255,255,0.08);
+  }
+  .app-nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 18px;
+  }
+  .app-nav-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #A9C2BE;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .app-nav-item.active {
+    background: rgba(255,255,255,0.12);
+    color: #FFFFFF;
+  }
+  .app-nav-item:hover:not(.active) {
+    background: rgba(255,255,255,0.06);
+    color: #FFFFFF;
+  }
+  .app-nav-badge {
+    background: var(--accent);
+    color: #0A2B2A;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 2px 7px;
+    border-radius: 999px;
+  }
+  .app-main-content {
+    background: #F9F8F5;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    overflow-x: auto;
+  }
+  .app-topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  .app-search-box {
+    background: #FFFFFF;
+    border: 1px solid rgba(13,31,30,0.10);
+    border-radius: 999px;
+    padding: 8px 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #5A7472;
+    min-width: 260px;
+  }
+  .app-metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .app-stat-card {
+    background: #FFFFFF;
+    border: 1px solid rgba(13,31,30,0.08);
+    border-radius: 18px;
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.03);
+  }
+  .app-stat-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #5A7472;
+  }
+  .app-stat-val {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 26px;
+    color: #0D1F1E;
+    line-height: 1.1;
+  }
+  .app-stat-sub {
+    font-size: 12px;
+    font-weight: 600;
+    color: #10B981;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .app-table-wrap {
+    background: #FFFFFF;
+    border: 1px solid rgba(13,31,30,0.08);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.03);
+  }
+  .app-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  .app-table th {
+    text-align: left;
+    padding: 11px 14px;
+    color: #5A7472;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(13,31,30,0.08);
+  }
+  .app-table td {
+    padding: 14px;
+    border-bottom: 1px solid rgba(13,31,30,0.04);
+    color: #2A3B3A;
+    font-weight: 500;
+  }
+  .status-pill {
+    display: inline-flex;
+    padding: 4px 11px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .status-pill.selesai { background: #D1FAE5; color: #065F46; }
+  .status-pill.proses { background: #DBEAFE; color: #1E40AF; }
+  .status-pill.baru { background: #FFEDD5; color: #9A3412; }
+
+  @media (max-width: 900px) {
+    .site-hero-grid { grid-template-columns: 1fr; }
+    .mockup-mobile-wrap { position: static; width: 100%; max-width: 260px; margin: 20px auto 0; }
+    .floating-metric-badge { position: static; margin-top: 14px; }
+    .app-preview-layout { grid-template-columns: 1fr; }
+    .site-card-grid { grid-template-columns: 1fr; }
+    .app-metrics-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -786,6 +1294,7 @@
       </a>
       <!-- Desktop links -->
       <nav class="nav-links" aria-label="Menu utama">
+        <a href="#showcase">Preview</a>
         <a href="#harga">Harga</a>
         <a href="#klien">Klien</a>
 
@@ -844,6 +1353,7 @@
   </div>
   <!-- Mobile drawer -->
   <nav id="mobile-menu" aria-label="Menu mobile">
+    <a href="#showcase">Preview Mockup</a>
     <a href="#harga">Harga</a>
     <a href="#klien">Klien</a>
     <div class="mobile-dropdown">
@@ -876,6 +1386,7 @@
       <p class="hero-sub">Paras berarti wajah. Kami merancang website company profile dan aplikasi web custom yang memberi bisnis Anda wajah online yang tepat, bukan sekadar template.</p>
       <div class="hero-btns">
         <a href="#kontak" class="btn-primary">Konsultasi via WhatsApp</a>
+        <a href="#showcase" class="btn-outline-white">Lihat Preview Mockup →</a>
       </div>
       <div class="hero-pills">
         <span><span class="dot"></span>Desain khas</span>
@@ -941,6 +1452,318 @@
     </div>
   </div>
 </div>
+
+<!-- ─── SHOWCASE MOCKUP INTERAKTIF ─── -->
+<section id="showcase">
+  <div class="showcase-header">
+    <span class="sec-label">Preview Visual &amp; Sistem</span>
+    <h2 class="sec-h2">Inilah standar kualitas yang kami bangun untuk bisnis Anda.</h2>
+    <p style="margin:0;font-size:17px;color:#5A7472;line-height:1.6">Bukan sekadar template tiruan. Setiap komponen, tombol, tipografi, dan alur database dirancang khusus agar bisnis Anda tampil kredibel, dipercaya klien, dan efisien beroperasi.</p>
+    
+    <!-- Tab Controls -->
+    <div class="showcase-toggle-wrap">
+      <div class="showcase-toggle" role="tablist">
+        <button class="showcase-btn active" id="tab-mockup-web" role="tab" aria-selected="true" onclick="switchMockupTab('web')">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          <span>Website &amp; Mobile Preview</span>
+        </button>
+        <button class="showcase-btn" id="tab-mockup-app" role="tab" aria-selected="false" onclick="switchMockupTab('app')">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          <span>Web App &amp; Dashboard Operasional</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="mockup-display">
+    <!-- Browser Window Header Chrome -->
+    <div class="window-bar">
+      <div class="window-dots">
+        <span class="window-dot red"></span>
+        <span class="window-dot yellow"></span>
+        <span class="window-dot green"></span>
+      </div>
+      <div class="window-url-bar">
+        <svg class="lock-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        <span class="url-text" id="mockup-url-display">https://bumi-lestari.co.id (SSL Aktif · Terverifikasi)</span>
+      </div>
+      <div class="window-actions">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </div>
+    </div>
+
+    <!-- ═══ PANEL 1: WEBSITE COMPANY PROFILE & MOBILE ═══ -->
+    <div class="mockup-panel active" id="panel-mockup-web">
+      <div class="site-preview-body">
+        <!-- Site Nav -->
+        <div class="site-nav">
+          <div class="site-brand">
+            <div class="site-brand-icon">B</div>
+            <span>Bumi Lestari <span style="color:#10B981;font-weight:600">Energi</span></span>
+          </div>
+          <div class="site-links" style="display:flex;align-items:center;">
+            <span>Layanan</span>
+            <span>Portofolio</span>
+            <span>Tentang Kami</span>
+            <span>Sertifikasi</span>
+          </div>
+          <button class="site-cta-btn" type="button">Hubungi Konsultan →</button>
+        </div>
+
+        <!-- Site Hero Grid -->
+        <div class="site-hero-grid">
+          <div class="site-hero-content">
+            <span class="site-badge">
+              <span style="width:7px;height:7px;border-radius:50%;background:#FF6B3D;display:inline-block"></span>
+              Pelopor Transisi Energi Hijau B2B
+            </span>
+            <h3 class="site-title">Solusi Energi Surya Cerdas untuk Efisiensi Pabrik &amp; Industri.</h3>
+            <p class="site-desc">Mengurangi beban biaya listrik operasional hingga 35% dengan sistem panel surya terintegrasi IoT dan pemantauan performa real-time.</p>
+            <div class="site-btns">
+              <span class="site-btn-p">Minta Penawaran Proyek</span>
+              <span class="site-btn-o">Hitung Estimasi ROI</span>
+            </div>
+          </div>
+
+          <!-- Feature Metric Box inside hero -->
+          <div style="background:#FFFFFF;border:1px solid rgba(13,31,30,0.10);border-radius:20px;padding:22px;display:flex;flex-direction:column;gap:14px;box-shadow:0 8px 24px rgba(0,0,0,0.04);">
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <span style="font-size:13px;font-weight:700;color:#5A7472;">Statistik Performa Klien</span>
+              <span style="font-size:11px;font-weight:700;background:#D1FAE5;color:#065F46;padding:3px 8px;border-radius:999px;">Terverifikasi</span>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+              <div style="background:#F7F6F2;padding:12px;border-radius:12px;">
+                <span style="font-size:11px;color:#5A7472;display:block;">Hemat Biaya</span>
+                <span style="font-size:22px;font-weight:800;color:#0D1F1E;">35.4%</span>
+              </div>
+              <div style="background:#F7F6F2;padding:12px;border-radius:12px;">
+                <span style="font-size:11px;color:#5A7472;display:block;">Emisi Reduksi</span>
+                <span style="font-size:22px;font-weight:800;color:#10B981;">-1.200 Ton</span>
+              </div>
+            </div>
+            <div style="font-size:12px;color:#5A7472;display:flex;align-items:center;gap:6px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Audit berkala sesuai standar ISO 50001</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 Feature Cards -->
+        <div class="site-card-grid">
+          <div class="site-feature-card">
+            <div class="site-feat-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            </div>
+            <span class="site-feat-title">Instalasi Cepat</span>
+            <span class="site-feat-desc">Dikerjakan teknisi bersertifikat tanpa mengganggu operasional pabrik.</span>
+          </div>
+          <div class="site-feature-card">
+            <div class="site-feat-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            </div>
+            <span class="site-feat-title">Dashboard IoT</span>
+            <span class="site-feat-desc">Pantau produksi daya harian dan anomali sistem langsung dari smartphone.</span>
+          </div>
+          <div class="site-feature-card">
+            <div class="site-feat-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <span class="site-feat-title">Garansi 25 Tahun</span>
+            <span class="site-feat-desc">Jaminan performa panel surya dan pemeliharaan rutin berkelanjutan.</span>
+          </div>
+        </div>
+
+        <!-- Floating Smartphone Mockup (Overlaid) -->
+        <div class="mockup-mobile-wrap" aria-hidden="true">
+          <div class="mobile-island"></div>
+          <div class="mobile-screen">
+            <div class="mobile-screen-header">
+              <span style="font-size:11px;font-weight:800;color:#0D1F1E;">BumiLestari</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0D1F1E" stroke-width="2.2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            </div>
+            <div class="mobile-screen-hero">
+              <span style="font-size:9px;font-weight:700;color:#C94D14;background:rgba(255,107,61,0.14);padding:2px 6px;border-radius:999px;align-self:flex-start;">B2B Solar Panel</span>
+              <span style="font-size:13px;font-weight:800;color:#0D1F1E;line-height:1.2;">Energi Surya Pintar untuk Pabrik.</span>
+              <span style="font-size:10px;color:#5A7472;line-height:1.3;">Hemat listrik hingga 35% dengan teknologi terintegrasi.</span>
+              <span style="background:#0A2B2A;color:#FFFFFF;font-size:10px;font-weight:700;padding:6px;border-radius:999px;text-align:center;margin-top:2px;">Konsultasi Gratis</span>
+            </div>
+            <div class="mobile-wa-pill">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.93 11.93 0 0 0 12.06 0C5.46 0 .09 5.37.09 11.97c0 2.11.55 4.17 1.6 5.99L0 24l6.21-1.63a11.93 11.93 0 0 0 5.85 1.51h.01c6.6 0 11.97-5.37 11.97-11.97 0-3.2-.1.24-1.25-1.52-5.43z"/></svg>
+              <span>Chat CS (Online)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Floating Metric Badge 1 -->
+        <div class="floating-metric-badge floating-badge-1">
+          <div style="width:26px;height:26px;border-radius:50%;background:#D1FAE5;color:#065F46;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;">⚡</div>
+          <div>
+            <span style="display:block;font-size:11px;color:#5A7472;">Google PageSpeed</span>
+            <span style="font-size:13px;font-weight:800;color:#0D1F1E;">Skor 99/100 · Loading 0.6 Detik</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ PANEL 2: WEB APP & DASHBOARD OPERASIONAL ═══ -->
+    <div class="mockup-panel" id="panel-mockup-app">
+      <div class="app-preview-layout">
+        <!-- Sidebar -->
+        <div class="app-sidebar">
+          <div>
+            <div style="display:flex;align-items:center;gap:10px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,0.10);">
+              <div style="width:30px;height:30px;border-radius:8px;background:var(--accent);color:#0A2B2A;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:15px;">P</div>
+              <div>
+                <span style="font-weight:800;font-size:14px;display:block;">Sistem Mandiri</span>
+                <span style="font-size:11px;color:#A9C2BE;">PT. Surya Abadi Logistik</span>
+              </div>
+            </div>
+
+            <div class="app-nav-list">
+              <span class="app-nav-item active">
+                <span style="display:flex;align-items:center;gap:8px;">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                  <span>Dashboard Ringkasan</span>
+                </span>
+              </span>
+              <span class="app-nav-item">
+                <span style="display:flex;align-items:center;gap:8px;">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                  <span>Pesanan Masuk</span>
+                </span>
+                <span class="app-nav-badge">14 Baru</span>
+              </span>
+              <span class="app-nav-item">
+                <span style="display:flex;align-items:center;gap:8px;">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                  <span>Stok &amp; Gudang</span>
+                </span>
+              </span>
+              <span class="app-nav-item">
+                <span style="display:flex;align-items:center;gap:8px;">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                  <span>Data Pelanggan</span>
+                </span>
+              </span>
+              <span class="app-nav-item">
+                <span style="display:flex;align-items:center;gap:8px;">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                  <span>Laporan Laba Rugi</span>
+                </span>
+              </span>
+              <span class="app-nav-item">
+                <span style="display:flex;align-items:center;gap:8px;">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                  <span>Pengaturan Akses</span>
+                </span>
+              </span>
+            </div>
+          </div>
+
+          <div style="background:rgba(255,255,255,0.06);padding:10px 12px;border-radius:12px;display:flex;align-items:center;gap:10px;">
+            <div style="width:30px;height:30px;border-radius:50%;background:#FF6B3D;color:#0A2B2A;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;">AS</div>
+            <div>
+              <span style="font-weight:700;font-size:12px;display:block;">Asykar Akmal</span>
+              <span style="font-size:10px;color:#A9C2BE;">Super Admin · Owner</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Main Workspace -->
+        <div class="app-main-content">
+          <!-- Topbar -->
+          <div class="app-topbar">
+            <div>
+              <span style="font-weight:800;font-size:20px;color:#0D1F1E;display:block;">Ringkasan Operasional Hari Ini</span>
+              <span style="font-size:13px;color:#5A7472;">Status server: <b style="color:#10B981">● PostgreSQL Normal (Uptime 99.98%)</b> · Cabang Jakarta</span>
+            </div>
+            <div style="display:flex;gap:10px;align-items:center;">
+              <div class="app-search-box">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <span>Cari no. faktur / nama klien...</span>
+              </div>
+              <div style="width:36px;height:36px;border-radius:50%;background:#FFFFFF;border:1px solid rgba(13,31,30,0.10);display:flex;align-items:center;justify-content:center;position:relative;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0D1F1E" stroke-width="2.2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                <span style="position:absolute;top:2px;right:2px;width:8px;height:8px;border-radius:50%;background:#FF6B3D;"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3 KPI Cards -->
+          <div class="app-metrics-grid">
+            <div class="app-stat-card">
+              <span class="app-stat-label">Total Omset Penjualan</span>
+              <span class="app-stat-val">Rp 48.250.000</span>
+              <span class="app-stat-sub">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="18 15 12 9 6 15"/></svg>
+                <span>+18.4% vs kemarin (Target 112%)</span>
+              </span>
+            </div>
+            <div class="app-stat-card">
+              <span class="app-stat-label">Pesanan Berjalan</span>
+              <span class="app-stat-val">36 Transaksi</span>
+              <span class="app-stat-sub" style="color:#0284C7">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="9 11 12 14 22 4"/></svg>
+                <span>14 Baru · 18 Proses · 4 Selesai</span>
+              </span>
+            </div>
+            <div class="app-stat-card">
+              <span class="app-stat-label">Peringatan Stok Gudang</span>
+              <span class="app-stat-val">2 Item Kritis</span>
+              <span class="app-stat-sub" style="color:#D97706">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                <span>Notifikasi WA otomatis terkirim</span>
+              </span>
+            </div>
+          </div>
+
+          <!-- Order Table -->
+          <div class="app-table-wrap">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+              <span style="font-weight:800;font-size:15px;color:#0D1F1E;">Antrean Transaksi &amp; Pengiriman Terkini</span>
+              <span style="font-size:12px;font-weight:700;color:var(--accent);cursor:pointer;">Lihat Semua Data →</span>
+            </div>
+            <table class="app-table">
+              <thead>
+                <tr>
+                  <th>No. Faktur</th>
+                  <th>Nama Klien</th>
+                  <th>Layanan / Produk</th>
+                  <th>Nilai Transaksi</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span style="font-family:monospace;font-weight:700;color:#0D1F1E;">#TRX-8821</span></td>
+                  <td><b>PT. Sumber Rejeki Abadi</b></td>
+                  <td>Paket Custom Web App Logistics</td>
+                  <td><b>Rp 14.500.000</b></td>
+                  <td><span class="status-pill selesai">● Selesai</span></td>
+                </tr>
+                <tr>
+                  <td><span style="font-family:monospace;font-weight:700;color:#0D1F1E;">#TRX-8822</span></td>
+                  <td><b>Klinik Sehat Medika</b></td>
+                  <td>Modul Antrean &amp; Rekam Medis</td>
+                  <td><b>Rp 3.800.000</b></td>
+                  <td><span class="status-pill proses">● Diproses</span></td>
+                </tr>
+                <tr>
+                  <td><span style="font-family:monospace;font-weight:700;color:#0D1F1E;">#TRX-8823</span></td>
+                  <td><b>Kopi Roastery Nusantara</b></td>
+                  <td>Kasir POS Multi-Kasir</td>
+                  <td><b>Rp 5.200.000</b></td>
+                  <td><span class="status-pill baru">● Baru Masuk</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ─── PRICING ─── -->
 <section id="harga">
@@ -1261,24 +2084,37 @@
           <a href="./layanan-webapp.html" class="mt-auto" style="font-weight:700;color:#0D1F1E;padding:8px 0">Pelajari selengkapnya →</a>
         </div>
         <!-- Mini dashboard mock -->
-        <div style="flex:1 1 280px;min-width:0;background:#08201F;border:1px solid rgba(255,255,255,0.08);border-radius:18px;padding:18px;display:flex;flex-direction:column;gap:14px;">
-          <div style="display:flex;gap:10px">
-            <div style="flex:1;background:#0F3736;border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:8px"><span style="width:40%;height:6px;border-radius:3px;background:#3E6A68"></span><span style="width:70%;height:14px;border-radius:7px;background:#F4F6F3"></span></div>
-            <div style="flex:1;background:#0F3736;border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:8px"><span style="width:50%;height:6px;border-radius:3px;background:#3E6A68"></span><span style="width:55%;height:14px;border-radius:7px;background:#F4F6F3"></span></div>
-            <div style="flex:1;background:#0F3736;border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:8px"><span style="width:35%;height:6px;border-radius:3px;background:#3E6A68"></span><span style="width:80%;height:14px;border-radius:7px;background:var(--accent)"></span></div>
+        <div style="flex:1 1 280px;min-width:0;background:#08201F;border:1px solid rgba(255,255,255,0.08);border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:12px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,0.08);">
+            <div style="display:flex;align-items:center;gap:6px;">
+              <span style="width:8px;height:8px;border-radius:50%;background:#10B981;"></span>
+              <span style="font-size:11px;font-weight:700;color:#FFFFFF;">Live POS &amp; Order Stream</span>
+            </div>
+            <span style="font-size:10px;font-weight:700;background:rgba(255,107,61,0.18);color:var(--accent);padding:2px 7px;border-radius:999px;">Realtime</span>
           </div>
-          <div style="display:flex;align-items:flex-end;gap:8px;height:96px">
-            <span style="flex:1;height:30%;background:#1F5552;border-radius:4px"></span>
-            <span style="flex:1;height:52%;background:#1F5552;border-radius:4px"></span>
-            <span style="flex:1;height:42%;background:#1F5552;border-radius:4px"></span>
-            <span style="flex:1;height:70%;background:#1F5552;border-radius:4px"></span>
-            <span style="flex:1;height:58%;background:#1F5552;border-radius:4px"></span>
-            <span style="flex:1;height:92%;background:var(--accent);border-radius:4px"></span>
-            <span style="flex:1;height:66%;background:#1F5552;border-radius:4px"></span>
+          <div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:8px;">
+            <div style="background:#0F3736;border-radius:10px;padding:8px 10px;display:flex;flex-direction:column;">
+              <span style="font-size:10px;color:#A9C2BE;">Omset</span>
+              <span style="font-size:13px;font-weight:800;color:#FFFFFF;">Rp 18,4 Jt</span>
+            </div>
+            <div style="background:#0F3736;border-radius:10px;padding:8px 10px;display:flex;flex-direction:column;">
+              <span style="font-size:10px;color:#A9C2BE;">Pesanan</span>
+              <span style="font-size:13px;font-weight:800;color:#FFFFFF;">42 Order</span>
+            </div>
+            <div style="background:#0F3736;border-radius:10px;padding:8px 10px;display:flex;flex-direction:column;">
+              <span style="font-size:10px;color:#A9C2BE;">Stok Alert</span>
+              <span style="font-size:13px;font-weight:800;color:var(--accent);">2 Kritis</span>
+            </div>
           </div>
-          <div style="display:flex;flex-direction:column;gap:10px">
-            <div style="display:flex;align-items:center;gap:10px"><span style="width:22px;height:22px;border-radius:50%;background:#3E6A68"></span><span style="flex:1;height:8px;border-radius:4px;background:#1F5552"></span></div>
-            <div style="display:flex;align-items:center;gap:10px"><span style="width:22px;height:22px;border-radius:50%;background:#3E6A68"></span><span style="width:70%;height:8px;border-radius:4px;background:#1F5552"></span></div>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;background:#0F3736;padding:7px 10px;border-radius:8px;font-size:11px;">
+              <span style="color:#FFFFFF;font-weight:600;">#ORD-9021 · Kopi Arabika 2kg</span>
+              <span style="font-size:10px;font-weight:700;background:#065F46;color:#D1FAE5;padding:2px 6px;border-radius:999px;">Selesai</span>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;background:#0F3736;padding:7px 10px;border-radius:8px;font-size:11px;">
+              <span style="color:#FFFFFF;font-weight:600;">#ORD-9022 · Cold Brew 10 Btl</span>
+              <span style="font-size:10px;font-weight:700;background:#1E40AF;color:#DBEAFE;padding:2px 6px;border-radius:999px;">Diproses</span>
+            </div>
           </div>
         </div>
       </div>
@@ -1287,11 +2123,24 @@
       <div class="card-light" style="flex:1 1 320px;min-width:0;display:flex;flex-direction:column;gap:16px;">
         <span style="font-weight:700;font-size:14px;color:#0E3B3A">01 · Website Company Profile</span>
         <h3 style="margin:0;font-weight:800;font-size:26px;line-height:1.15;letter-spacing:-0.02em">Wajah resmi bisnis Anda di internet.</h3>
-        <div class="mock-browser">
-          <div class="mock-dots"><span></span><span></span><span></span></div>
-          <span class="mock-bar" style="width:70%;height:12px"></span>
-          <span class="mock-bar" style="width:45%;height:12px"></span>
-          <span class="mock-btn"></span>
+        <!-- Mini website card mock -->
+        <div style="background:#FFFFFF;border:1px solid rgba(0,0,0,0.10);border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:10px;box-shadow:0 8px 20px rgba(0,0,0,0.04);">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding-bottom:8px;border-bottom:1px solid rgba(0,0,0,0.06);">
+            <div style="display:flex;gap:4px;"><span style="width:7px;height:7px;border-radius:50%;background:#FF5F56;"></span><span style="width:7px;height:7px;border-radius:50%;background:#FFBD2E;"></span><span style="width:7px;height:7px;border-radius:50%;background:#27C93F;"></span></div>
+            <span style="font-size:10px;color:#5A7472;font-family:monospace;">bisnisanda.com 🔒</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <span style="font-size:10px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.04em;">Official Company Profile</span>
+            <span style="font-size:14px;font-weight:800;color:#0D1F1E;line-height:1.2;">Solusi Terpercaya untuk Kebutuhan Industri.</span>
+            <div style="display:flex;gap:6px;margin-top:2px;">
+              <span style="font-size:10px;font-weight:700;background:var(--accent);color:#0A2B2A;padding:4px 10px;border-radius:999px;">Hubungi Kami</span>
+              <span style="font-size:10px;font-weight:600;background:#F5F4EF;color:#2A3B3A;padding:4px 8px;border-radius:999px;">Lihat Katalog</span>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:4px;">
+            <div style="background:#F7F6F2;padding:6px 8px;border-radius:8px;font-size:10px;color:#5A7472;"><b>⚡ 0.7s</b> Loading Cepat</div>
+            <div style="background:#F7F6F2;padding:6px 8px;border-radius:8px;font-size:10px;color:#5A7472;"><b>📱 100%</b> Mobile Rapi</div>
+          </div>
         </div>
         <p style="margin:0;color:#46525A">Cepat, rapi di HP, dan mudah ditemukan di Google.</p>
         <a href="./layanan-website.html" class="mt-auto" style="font-weight:700;color:#0E3B3A;padding:8px 0">Pelajari selengkapnya →</a>
@@ -1546,6 +2395,41 @@ if (mobileLayananToggle && mobileLayananSub) {
   });
 }
 
+// ── Interactive Showcase Mockup Tabs ──
+function switchMockupTab(type) {
+  const btnWeb = document.getElementById('tab-mockup-web');
+  const btnApp = document.getElementById('tab-mockup-app');
+  const panelWeb = document.getElementById('panel-mockup-web');
+  const panelApp = document.getElementById('panel-mockup-app');
+  const urlDisplay = document.getElementById('mockup-url-display');
+
+  if (type === 'web') {
+    if (btnWeb) {
+      btnWeb.classList.add('active');
+      btnWeb.setAttribute('aria-selected', 'true');
+    }
+    if (btnApp) {
+      btnApp.classList.remove('active');
+      btnApp.setAttribute('aria-selected', 'false');
+    }
+    if (panelWeb) panelWeb.classList.add('active');
+    if (panelApp) panelApp.classList.remove('active');
+    if (urlDisplay) urlDisplay.textContent = 'https://bumi-lestari.co.id (SSL Aktif · Terverifikasi)';
+  } else {
+    if (btnApp) {
+      btnApp.classList.add('active');
+      btnApp.setAttribute('aria-selected', 'true');
+    }
+    if (btnWeb) {
+      btnWeb.classList.remove('active');
+      btnWeb.setAttribute('aria-selected', 'false');
+    }
+    if (panelApp) panelApp.classList.add('active');
+    if (panelWeb) panelWeb.classList.remove('active');
+    if (urlDisplay) urlDisplay.textContent = 'https://app.parasdigital.id/portal-operasional/dashboard';
+  }
+}
+
 // ── Pricing tab switch ──
 function switchPricingTab(tab) {
   const webBtn = document.getElementById('tab-web-btn');
@@ -1745,6 +2629,8 @@ renderDemo();
 
 // ── Scroll fade-in (Intersection Observer) ──
 const fadeTargets = [
+  '#showcase .showcase-header',
+  '#showcase .mockup-display',
   '#layanan > div:first-child',
   '#webapp .webapp-text',
   '#webapp .before-after > *',
