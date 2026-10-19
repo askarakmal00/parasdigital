@@ -1124,6 +1124,77 @@ body {
   50% { transform: translateY(-6px); }
 }
 .phone-frame { animation: floatY 4s ease-in-out infinite; }
+
+/* ─── MASTER RESPONSIVE MOBILE ─── */
+@media (max-width: 768px) {
+  .hero-wrap { padding: 36px 16px 28px; }
+  .hero-h1 { font-size: clamp(26px, 6.5vw, 38px); }
+  .hero-sub { font-size: 14px; margin-bottom: 22px; }
+  .tab-switcher { width: 100%; max-width: 420px; display: flex; flex-direction: column; gap: 6px; }
+  .tab-btn { justify-content: center; width: 100%; padding: 10px 16px; font-size: 13px; }
+  .showcase-wrap { padding: 0 12px 48px; }
+
+  /* Tab 1: Primavera */
+  .website-scene { grid-template-columns: 1fr; gap: 24px; }
+  .phone-col { display: none; }
+  .browser-content { height: auto; min-height: 520px; }
+  .site-nav { padding: 0 16px; height: 50px; }
+  .site-nav-links { display: none; }
+  .site-hero { grid-template-columns: 1fr; padding: 22px 16px 18px; gap: 18px; }
+  .site-hero-h1 { font-size: 24px; }
+  .site-hero-sub { max-width: 100%; }
+  .site-hero-right { height: 160px; }
+  .site-img-main { width: 140px; height: 150px; }
+  .site-float-1 { bottom: 6px; left: -8px; padding: 6px 10px; }
+  .site-float-2 { top: 6px; right: -8px; padding: 6px 10px; }
+  .site-float-text b { font-size: 10px; }
+  .site-float-text span { font-size: 8px; }
+  .site-products { padding: 14px 16px 18px; }
+  .site-products-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .site-product-name { font-size: 10px; }
+  .site-product-price { font-size: 10px; }
+  .speed-badge { top: 10px; right: 10px; padding: 6px 10px; }
+  .speed-score { font-size: 18px; }
+  .speed-ring { width: 36px; height: 36px; }
+  .speed-ring svg { width: 36px; height: 36px; }
+
+  .info-cards { grid-template-columns: 1fr; gap: 10px; margin-top: 20px; }
+  .info-card { padding: 16px; }
+  .info-card-value { font-size: 22px; }
+
+  /* Tab 2: Dashboard */
+  .dash-content { grid-template-columns: 1fr; height: auto; min-height: 520px; }
+  .dash-sidebar {
+    flex-direction: row; align-items: center; justify-content: space-between;
+    padding: 10px 14px; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06);
+    overflow-x: auto;
+  }
+  .dash-brand { padding: 0; border-bottom: none; margin-bottom: 0; }
+  .dash-brand-sub, .sidebar-section-label, .sidebar-user, .sidebar-badge { display: none; }
+  .dash-sidebar .sidebar-item { padding: 6px 10px; font-size: 11px; white-space: nowrap; }
+  .dash-sidebar .sidebar-item.active::before { display: none; }
+  .dash-sidebar .sidebar-item.active { border-radius: 8px; }
+
+  .dash-main { padding: 16px 14px; gap: 14px; }
+  .dash-topbar { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .dash-topbar-right { width: 100%; justify-content: space-between; }
+  .dash-search { flex: 1; }
+
+  .kpi-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .kpi-card { padding: 12px; }
+  .kpi-value { font-size: 17px; }
+  .kpi-mini-chart { display: none; }
+
+  .chart-area { grid-template-columns: 1fr; gap: 14px; }
+  .chart-bars { height: 60px; }
+
+  .orders-table-wrap { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .orders-table { min-width: 480px; }
+
+  .webapp-features { grid-template-columns: 1fr; gap: 10px; margin-top: 20px; }
+  .feature-card { padding: 14px 16px; }
+}
+
 </style>
 </head>
 <body>
@@ -1691,6 +1762,7 @@ body {
                     <div class="filter-pill">Selesai</div>
                   </div>
                 </div>
+                <div class="orders-table-wrap">
                 <table class="orders-table">
                   <thead>
                     <tr>
@@ -1737,6 +1809,7 @@ body {
                     </tr>
                   </tbody>
                 </table>
+                </div>
               </div>
 
             </div><!-- /dash-main -->
@@ -1784,7 +1857,23 @@ function switchTab(tab) {
   });
   document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
   document.getElementById('tab-' + tab).classList.add('active');
+  setTimeout(notifyHeight, 60);
 }
+
+function notifyHeight() {
+  const h = Math.max(
+    document.documentElement.scrollHeight,
+    document.body.scrollHeight,
+    document.documentElement.offsetHeight,
+    document.body.offsetHeight
+  );
+  if (window.parent && window.parent !== window) {
+    window.parent.postMessage({ type: 'resize-mockup-iframe', height: h }, '*');
+  }
+}
+window.addEventListener('load', () => setTimeout(notifyHeight, 80));
+window.addEventListener('resize', notifyHeight);
 </script>
 </body>
 </html>
+
