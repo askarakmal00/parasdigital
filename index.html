@@ -1879,107 +1879,6 @@
   </div>
 </section>
 
-<!-- ─── WEB APP CUSTOM ─── -->
-<section id="webapp">
-  <div class="webapp-inner">
-    <div class="webapp-top">
-      <!-- Text -->
-      <div class="webapp-text">
-        <span style="align-self:flex-start;background:#0A2B2A;color:#FFFFFF;font-weight:700;font-size:14px;padding:6px 14px;border-radius:999px;">Layanan unggulan · Web App Custom</span>
-        <h2 style="margin:0;font-weight:800;font-size:clamp(36px,5vw,64px);line-height:1;letter-spacing:-0.035em">Masih mencatat pesanan di Excel dan chat WhatsApp?</h2>
-        <div style="display:flex;flex-wrap:wrap;gap:14px">
-          <a href="#kontak" style="background:#0A2B2A;color:#FFFFFF;font-weight:700;padding:17px 30px;border-radius:999px;">Diskusikan kebutuhan Anda</a>
-          <a href="#harga" style="border:2px solid #0A2B2A;color:#0A2B2A;font-weight:700;padding:15px 28px;border-radius:999px;">Lihat harga web app</a>
-        </div>
-      </div>
-
-      <!-- Demo card -->
-      <div id="demo-card">
-        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
-          <span style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:19px">Pesanan masuk</span>
-          <span style="font-size:12px;font-weight:700;background:rgba(255,255,255,0.12);padding:4px 10px;border-radius:999px;color:#CFE0DD">Demo · data contoh</span>
-        </div>
-        <div class="demo-stats" id="demo-stats">
-          <div class="demo-stat"><span class="label">Baru</span><span class="val color-accent" id="cnt-baru">2</span></div>
-          <div class="demo-stat"><span class="label">Diproses</span><span class="val" id="cnt-proses">2</span></div>
-          <div class="demo-stat"><span class="label">Selesai</span><span class="val" id="cnt-selesai">1</span></div>
-        </div>
-        <div class="demo-chart" id="demo-chart">
-          <span id="bar-baru" style="background:var(--accent)"></span>
-          <span id="bar-proses" style="background:#3E6A68"></span>
-          <span id="bar-selesai" style="background:#1F5552"></span>
-        </div>
-        <div class="demo-tabs" id="demo-tabs"></div>
-        <div class="demo-rows" id="demo-rows"></div>
-        <span class="demo-hint">Klik status untuk mengubahnya. Tampilan ini hanya contoh.</span>
-      </div>
-    </div>
-
-    <!-- Before / After -->
-    <div class="before-after">
-      <div class="before-card">
-        <span style="font-weight:700;font-size:14px;letter-spacing:0.1em;text-transform:uppercase">Sebelum</span>
-        <h3 style="margin:0;font-weight:800;font-size:28px;line-height:1.1;letter-spacing:-0.02em">Data tersebar, kerja berulang.</h3>
-        <ul class="check-list" style="padding:0;margin:0">
-          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0A2B2A" stroke-width="2.4" stroke-linecap="round" aria-hidden="true" style="flex:none;margin-top:4px"><path d="M6 6l12 12M18 6L6 18"/></svg><span>Pesanan masuk lewat chat dan sering terlewat</span></li>
-          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0A2B2A" stroke-width="2.4" stroke-linecap="round" aria-hidden="true" style="flex:none;margin-top:4px"><path d="M6 6l12 12M18 6L6 18"/></svg><span>Stok dicatat di spreadsheet yang tidak sinkron</span></li>
-          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0A2B2A" stroke-width="2.4" stroke-linecap="round" aria-hidden="true" style="flex:none;margin-top:4px"><path d="M6 6l12 12M18 6L6 18"/></svg><span>Laporan dibuat manual tiap akhir bulan</span></li>
-          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0A2B2A" stroke-width="2.4" stroke-linecap="round" aria-hidden="true" style="flex:none;margin-top:4px"><path d="M6 6l12 12M18 6L6 18"/></svg><span>Data pelanggan terpencar di banyak tempat</span></li>
-        </ul>
-      </div>
-      <div class="after-card">
-        <span style="font-weight:700;font-size:14px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent)">Sesudah</span>
-        <h3 style="margin:0;font-weight:800;font-size:28px;line-height:1.1;letter-spacing:-0.02em">Satu sistem, semua rapi.</h3>
-        <ul class="check-list" style="padding:0;margin:0">
-          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF6B3D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:4px"><path d="M5 12l5 5 9-10"/></svg><span>Pesanan tercatat otomatis di satu tempat</span></li>
-          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF6B3D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:4px"><path d="M5 12l5 5 9-10"/></svg><span>Stok berkurang otomatis saat ada pesanan</span></li>
-          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF6B3D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:4px"><path d="M5 12l5 5 9-10"/></svg><span>Laporan siap dilihat kapan saja</span></li>
-          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF6B3D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:4px"><path d="M5 12l5 5 9-10"/></svg><span>Setiap staf punya akses sesuai perannya</span></li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Contoh yang bisa dibangun -->
-    <div class="flex-col gap-28">
-      <h3 style="margin:0;font-weight:800;font-size:clamp(26px,3vw,36px);letter-spacing:-0.025em">Contoh yang bisa kami bangun</h3>
-      <div class="example-grid">
-        <div class="example-card">
-          <span class="example-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF6B3D" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span>
-          <h4 style="margin:0;font-weight:800;font-size:19px">Booking &amp; reservasi</h4>
-        </div>
-        <div class="example-card">
-          <span class="example-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF6B3D" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l9-5 9 5v8l-9 5-9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/></svg></span>
-          <h4 style="margin:0;font-weight:800;font-size:19px">Stok &amp; inventori</h4>
-        </div>
-        <div class="example-card">
-          <span class="example-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF6B3D" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2"/><circle cx="12" cy="12" r="3"/></svg></span>
-          <h4 style="margin:0;font-weight:800;font-size:19px">Kasir &amp; penjualan</h4>
-        </div>
-        <div class="example-card">
-          <span class="example-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF6B3D" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V4M4 20h16"/><path d="M8 16v-4M12 16V8M16 16v-6"/></svg></span>
-          <h4 style="margin:0;font-weight:800;font-size:19px">Dashboard laporan</h4>
-        </div>
-        <div class="example-card">
-          <span class="example-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF6B3D" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></span>
-          <h4 style="margin:0;font-weight:800;font-size:19px">Portal klien</h4>
-        </div>
-        <div class="example-card">
-          <span class="example-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF6B3D" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
-          <h4 style="margin:0;font-weight:800;font-size:19px">Absensi &amp; shift</h4>
-        </div>
-        <div class="example-card">
-          <span class="example-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF6B3D" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 6h12M8 12h12M8 18h12"/><circle cx="4" cy="6" r="1"/><circle cx="4" cy="12" r="1"/><circle cx="4" cy="18" r="1"/></svg></span>
-          <h4 style="margin:0;font-weight:800;font-size:19px">Manajemen pesanan</h4>
-        </div>
-        <div class="example-card dark">
-          <span class="example-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0A2B2A" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
-          <h4 style="margin:0;font-weight:800;font-size:19px">Dan lainnya — ceritakan kebutuhan Anda</h4>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ─── PROSES ─── -->
 <section id="proses">
   <div class="flex-col gap-14 max-w-680">
@@ -2213,102 +2112,11 @@ function switchDomain(type) {
 }
 switchDomain('com');
 
-// ── Interactive Demo ──
-const ACCENT = '#FF6B3D';
-let demoState = {
-  filter: -1,
-  orders: [
-    { id: 101, who: 'Pelanggan A', item: 'Paket 3 item', s: 0 },
-    { id: 102, who: 'Pelanggan B', item: 'Pesanan kantor', s: 1 },
-    { id: 103, who: 'Pelanggan C', item: 'Pesanan kantor', s: 2 },
-    { id: 104, who: 'Pelanggan D', item: 'Paket 5 item', s: 0 },
-    { id: 105, who: 'Pelanggan E', item: 'Pesanan ulang', s: 1 }
-  ]
-};
-
-function renderDemo() {
-  const { filter, orders } = demoState;
-  const n0 = orders.filter(o => o.s === 0).length;
-  const n1 = orders.filter(o => o.s === 1).length;
-  const n2 = orders.filter(o => o.s === 2).length;
-  const total = Math.max(orders.length, 1);
-  const h = n => Math.max(10, Math.round((n / total) * 100)) + '%';
-
-  // Stats
-  document.getElementById('cnt-baru').textContent = n0;
-  document.getElementById('cnt-proses').textContent = n1;
-  document.getElementById('cnt-selesai').textContent = n2;
-
-  // Chart bars
-  document.getElementById('bar-baru').style.height = h(n0);
-  document.getElementById('bar-proses').style.height = h(n1);
-  document.getElementById('bar-selesai').style.height = h(n2);
-
-  // Tabs
-  const labels = ['Semua', 'Baru', 'Diproses', 'Selesai'];
-  const tabsEl = document.getElementById('demo-tabs');
-  tabsEl.innerHTML = '';
-  labels.forEach((label, i) => {
-    const filterVal = i - 1;
-    const btn = document.createElement('button');
-    const isActive = filter === filterVal;
-    btn.textContent = label;
-    btn.style.cssText = `border:0;cursor:pointer;font:inherit;font-size:14px;font-weight:${isActive?'700':'500'};
-      background:${isActive?'#FFFFFF':'transparent'};color:${isActive?'#0A2B2A':'#FFFFFF'};
-      border:${isActive?'none':'1px solid rgba(255,255,255,0.3)'};
-      padding:${isActive?'12px':'11px'} 16px;border-radius:999px;`;
-    btn.addEventListener('click', () => {
-      demoState.filter = filterVal;
-      renderDemo();
-    });
-    tabsEl.appendChild(btn);
-  });
-
-  // Rows
-  const rowsEl = document.getElementById('demo-rows');
-  rowsEl.innerHTML = '';
-  const filtered = orders.filter(o => filter === -1 || o.s === filter);
-  if (filtered.length === 0) {
-    const msg = document.createElement('div');
-    msg.style.cssText = 'padding:16px;text-align:center;color:#A9C2BE;font-size:15px';
-    msg.textContent = 'Tidak ada pesanan di tahap ini.';
-    rowsEl.appendChild(msg);
-  } else {
-    filtered.forEach(o => {
-      const row = document.createElement('div');
-      row.style.cssText = 'display:flex;align-items:center;justify-content:space-between;gap:12px;background:#0F3736;border-radius:14px;padding:8px 8px 8px 16px;';
-      const info = document.createElement('div');
-      info.style.cssText = 'display:flex;flex-direction:column;min-width:0;';
-      info.innerHTML = `<span style="font-weight:700">#${o.id} · ${o.who}</span><span style="font-size:14px;color:#A9C2BE">${o.item}</span>`;
-      const statusLabels = ['Baru', 'Diproses', 'Selesai'];
-      const statusStyles = [
-        `border:0;cursor:pointer;font:inherit;font-size:14px;font-weight:700;background:${ACCENT};color:#0A2B2A;padding:12px 16px;border-radius:999px;flex:none;`,
-        'border:0;cursor:pointer;font:inherit;font-size:14px;font-weight:700;background:#3E6A68;color:#FFFFFF;padding:12px 16px;border-radius:999px;flex:none;',
-        'border:1px solid rgba(255,255,255,0.3);cursor:pointer;font:inherit;font-size:14px;font-weight:500;background:transparent;color:#CFE0DD;padding:11px 16px;border-radius:999px;flex:none;'
-      ];
-      const btn = document.createElement('button');
-      btn.textContent = statusLabels[o.s];
-      btn.style.cssText = statusStyles[o.s];
-      btn.addEventListener('click', () => {
-        demoState.orders = demoState.orders.map(x => x.id === o.id ? { ...x, s: (x.s + 1) % 3 } : x);
-        renderDemo();
-      });
-      row.appendChild(info);
-      row.appendChild(btn);
-      rowsEl.appendChild(row);
-    });
-  }
-}
-renderDemo();
-
 // ── Scroll fade-in (Intersection Observer) ──
 const fadeTargets = [
   '#showcase .showcase-header',
   '#showcase .mockup-display',
   '#layanan > div:first-child',
-  '#webapp .webapp-text',
-  '#webapp .before-after > *',
-  '#webapp .example-grid > *',
   '#klien > div:first-child',
   '#klien .client-card',
   '#harga .pricing-inner > div:first-child',
@@ -2316,7 +2124,6 @@ const fadeTargets = [
   '#proses .process-step',
   '#kontak .kontak-text',
   '.bento-row > *',
-  '#demo-card',
 ];
 fadeTargets.forEach(sel => {
   document.querySelectorAll(sel).forEach((el, i) => {
