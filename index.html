@@ -31,7 +31,7 @@
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
 
 <!-- Structured Data (Schema.org JSON-LD) -->
 <script type="application/ld+json">
@@ -697,33 +697,103 @@
     text-overflow: ellipsis;
   }
 
-  /* ─── SHOWCASE EMBED STYLING ─── */
+  /* ─── PREVIEW / SHOWCASE SECTION (Pages Section Preview) ─── */
   #showcase {
     max-width: 1240px;
-    margin: 40px auto 0;
+    margin: 48px auto 0;
     padding: 0 24px 80px;
-  }
-  .showcase-header {
-    text-align: center;
-    max-width: 700px;
-    margin: 0 auto 36px;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    align-items: center;
+    gap: 40px;
+    box-sizing: border-box;
+    font-family: 'Outfit', system-ui, sans-serif;
   }
-  .showcase-frame-wrap {
-    border-radius: 24px;
-    overflow: hidden;
-    box-shadow: 0 24px 64px rgba(13,31,30,0.12);
-    border: 1px solid rgba(13,31,30,0.08);
-    background: #0C0E13;
+  .preview-header {
+    max-width: 720px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
   }
-  #showcase iframe {
+  .preview-h2 {
+    margin: 0;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(32px, 4.4vw, 52px);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    color: #10181A;
+  }
+  .preview-desc {
+    margin: 0;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #4D5A57;
+  }
+  .preview-card {
     width: 100%;
-    height: 1040px;
-    display: block;
-    border: none;
-    transition: height 0.2s ease;
+    max-width: 1200px;
+    box-sizing: border-box;
+    background: #0C0D12;
+    border: 1px solid #23252F;
+    border-radius: 28px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    color: #F4F1EA;
+    box-shadow: 0 24px 64px rgba(13,31,30,0.12);
+  }
+  .preview-tablist {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px;
+    padding: 5px;
+    background: #151720;
+    border: 1px solid #2A2C37;
+    border-radius: 14px;
+  }
+  .preview-tab-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    padding: 0 20px;
+    border: 0;
+    border-radius: 10px;
+    background: transparent;
+    color: #C9CCD8;
+    font-size: 15px;
+    font-weight: 500;
+    font-family: 'Outfit', sans-serif;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .preview-tab-btn.active {
+    background: #F58A5E;
+    color: #14110F;
+    font-weight: 600;
+  }
+  .preview-tab-btn:hover:not(.active) {
+    color: #FFFFFF;
+    background: rgba(255,255,255,0.06);
+  }
+  .preview-notice {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #181A23;
+    border: 1px solid #262836;
+    border-radius: 14px;
+    padding: 9px 16px;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #C9CCD8;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   /* ─── RESPONSIVE ─── */
@@ -769,10 +839,11 @@
     .sec-h2 { font-size: 34px; }
     .card-dark, .card-light, .card-accent { border-radius: 24px; padding: 26px; }
 
-    /* Showcase */
-    #showcase { padding: 0 16px 56px; margin-top: 24px; }
-    .showcase-frame-wrap { border-radius: 18px; }
-    #showcase iframe { height: 1080px; }
+    /* Showcase / Preview Section */
+    #showcase { padding: 0 16px 56px; margin-top: 28px; gap: 28px; }
+    .preview-card { padding: 22px 14px; border-radius: 20px; gap: 20px; }
+    .preview-tab-btn { font-size: 13px; padding: 0 14px; min-height: 40px; }
+    .preview-notice { font-size: 12px; padding: 8px 12px; }
 
     /* Klien */
     #klien { padding: 8px 20px 64px; gap: 28px; }
@@ -834,10 +905,11 @@
     .bento-stat-box { padding: 7px 6px; }
     .bento-stat-val { font-size: clamp(10px, 3.2vw, 12px); }
 
-    /* Showcase Frame */
-    #showcase { padding: 0 12px 48px; margin-top: 16px; }
-    .showcase-frame-wrap { border-radius: 16px; }
-    #showcase iframe { height: 1120px; }
+    /* Showcase / Preview Section */
+    #showcase { padding: 0 10px 44px; margin-top: 20px; gap: 20px; }
+    .preview-card { padding: 16px 10px; border-radius: 18px; }
+    .preview-tablist { width: 100%; }
+    .preview-tab-btn { flex: 1; justify-content: center; padding: 0 10px; font-size: 12px; }
 
     /* Klien */
     #klien { padding: 0 14px 48px; gap: 20px; }
@@ -1039,20 +1111,339 @@
   </div>
 </div>
 
-<!-- ─── SHOWCASE MOCKUP INTERAKTIF ─── -->
+<!-- ─── SHOWCASE MOCKUP INTERAKTIF (Pages / Section Preview) ─── -->
 <section id="showcase">
-  <div class="showcase-header">
-    <span class="sec-label">Preview Visual &amp; Sistem</span>
-    <h2 class="sec-h2">Lihat sebelum kami mulai membangun.</h2>
-    <p style="font-size:17px;color:#5A7472;line-height:1.6;margin:0 auto;max-width:640px;">Dua contoh nyata — website dan web app — yang bisa disesuaikan untuk bisnis Anda. Konten, warna, dan fitur dapat diubah sesuai kebutuhan.</p>
+  <div class="preview-header">
+    <span class="sec-label">PREVIEW VISUAL &amp; SISTEM</span>
+    <h2 class="preview-h2">Lihat sebelum kami mulai membangun.</h2>
+    <p class="preview-desc">Dua contoh rancangan, website dan web app, yang bisa disesuaikan untuk bisnis Anda. Konten, warna, dan fitur dapat diubah sesuai kebutuhan.</p>
   </div>
-  <div class="showcase-frame-wrap">
-    <iframe
-      src="./mockup-showcase-preview.html"
-      title="Preview Mockup Website &amp; Web App"
-      loading="lazy"
-      scrolling="no"
-    ></iframe>
+
+  <div class="preview-card">
+
+    <div role="tablist" aria-label="Pilih contoh rancangan" class="preview-tablist">
+      <button id="preview-tab-btn-web" role="tab" aria-selected="true" class="preview-tab-btn active" onclick="switchPreviewTab('web')">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line></svg>
+        Website &amp; Mobile
+      </button>
+      <button id="preview-tab-btn-app" role="tab" aria-selected="false" class="preview-tab-btn" onclick="switchPreviewTab('app')">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+        Web App &amp; Dashboard
+      </button>
+    </div>
+
+    <div class="preview-notice">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F58A5E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:0 0 auto"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+      <span>Contoh ilustrasi desain. Nama brand, angka, dan data pada mockup bersifat fiktif.</span>
+    </div>
+
+    <!-- ============ TAB 1: WEBSITE & MOBILE ============ -->
+    <div id="preview-pane-web" style="width:100%;display:flex;flex-direction:column;gap:28px">
+<div style="width:100%;display:flex;flex-direction:column;gap:28px">
+
+      <div style="display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:32px">
+
+        <!-- Browser mockup -->
+        <div role="img" aria-label="Ilustrasi halaman beranda website toko furnitur di browser desktop" style="flex:1 1 560px;min-width:0;max-width:820px;border-radius:16px;overflow:hidden;border:1px solid #2A2C37;background:#FAF8F4">
+          <div style="display:flex;align-items:center;gap:14px;padding:12px 16px;background:#1E2029;border-bottom:1px solid #2A2C37">
+            <div style="display:flex;gap:7px"><span style="width:11px;height:11px;border-radius:50%;background:#FF6058"></span><span style="width:11px;height:11px;border-radius:50%;background:#FFBD2E"></span><span style="width:11px;height:11px;border-radius:50%;background:#28C940"></span></div>
+            <div style="flex:1;min-width:0;display:flex;align-items:center;gap:8px;background:#12131A;border-radius:8px;padding:7px 12px;font-size:13px;color:#A8ABB8;white-space:nowrap;overflow:hidden">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#6EDDAE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:0 0 auto"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              <span>primavera-studio.id</span>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;padding:16px 28px;border-bottom:1px solid #E7E2D8">
+            <div style="display:flex;align-items:center;gap:10px">
+              <span style="width:26px;height:26px;border-radius:7px;background:#161616;display:flex;align-items:center;justify-content:center"><span style="width:9px;height:9px;border-radius:50%;background:#F58A5E"></span></span>
+              <span style="font-family:'Syne',sans-serif;font-weight:700;font-size:18px;color:#161616">Primavera</span>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:8px 24px;font-size:14px;color:#5C5A55"><span>Koleksi</span><span>Material</span><span>Tentang Kami</span></div>
+            <span style="background:#161616;color:#FAF8F4;font-size:13px;font-weight:600;padding:8px 16px;border-radius:999px;white-space:nowrap">Hubungi Kami</span>
+          </div>
+
+          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:32px;padding:36px 28px 32px">
+            <div style="flex:1 1 280px;min-width:0;display:flex;flex-direction:column;gap:18px">
+              <span style="align-self:flex-start;background:#FBE6DC;color:#A5410F;font-size:12px;font-weight:600;letter-spacing:.1em;padding:6px 12px;border-radius:999px">KOLEKSI LIVING 2026</span>
+              <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:38px;line-height:1.1;letter-spacing:-.01em;color:#161616">Furnitur esensial dengan sentuhan kurasi.</div>
+              <div style="font-size:16px;line-height:1.6;color:#5C5A55">Didesain presisi dari kayu solid dan kain bertekstur, menghadirkan estetika hangat di setiap sudut ruang kerja dan hunian.</div>
+              <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px">
+                <span style="background:#161616;color:#FAF8F4;font-size:15px;font-weight:600;padding:14px 22px;border-radius:12px;white-space:nowrap">Eksplorasi Produk →</span>
+                <span style="font-size:15px;font-weight:600;color:#161616;white-space:nowrap">Hubungi Desainer</span>
+              </div>
+              <div style="display:flex;flex-wrap:wrap;gap:12px 32px;padding-top:18px;border-top:1px solid #E7E2D8">
+                <div style="display:flex;flex-direction:column;gap:2px"><span style="font-family:'Syne',sans-serif;font-weight:700;font-size:20px;color:#161616">840+</span><span style="font-size:12px;letter-spacing:.08em;color:#5C5A55">KLIEN</span></div>
+                <div style="display:flex;flex-direction:column;gap:2px"><span style="font-family:'Syne',sans-serif;font-weight:700;font-size:20px;color:#161616">4,9 / 5</span><span style="font-size:12px;letter-spacing:.08em;color:#5C5A55">RATING</span></div>
+                <div style="display:flex;flex-direction:column;gap:2px"><span style="font-family:'Syne',sans-serif;font-weight:700;font-size:20px;color:#161616">100%</span><span style="font-size:12px;letter-spacing:.08em;color:#5C5A55">KAYU SOLID</span></div>
+              </div>
+            </div>
+
+            <div style="flex:0 1 300px;min-width:240px;height:300px;position:relative;background:#EFE7DC;border-radius:20px;display:flex;align-items:center;justify-content:center">
+              <svg width="200" height="110" viewBox="0 0 200 110" aria-hidden="true">
+                <rect x="20" y="14" width="160" height="48" rx="14" fill="#B79C7E"></rect>
+                <rect x="6" y="40" width="34" height="44" rx="12" fill="#A58B6F"></rect>
+                <rect x="160" y="40" width="34" height="44" rx="12" fill="#A58B6F"></rect>
+                <rect x="34" y="52" width="132" height="32" rx="10" fill="#C4AB8D"></rect>
+                <rect x="34" y="26" width="60" height="30" rx="10" fill="#CDB598"></rect>
+                <rect x="106" y="26" width="60" height="30" rx="10" fill="#CDB598"></rect>
+                <rect x="30" y="84" width="6" height="18" rx="3" fill="#5A4636"></rect>
+                <rect x="164" y="84" width="6" height="18" rx="3" fill="#5A4636"></rect>
+              </svg>
+              <div style="position:absolute;top:14px;left:14px;display:flex;flex-direction:column;background:#fff;border-radius:12px;padding:9px 14px;box-shadow:0 6px 18px rgba(0,0,0,.12)"><span style="font-size:13px;font-weight:600;color:#161616">Gratis Ongkir</span><span style="font-size:12px;color:#5C5A55">Seluruh Jawa &amp; Bali</span></div>
+              <div style="position:absolute;bottom:14px;right:14px;display:flex;flex-direction:column;background:#fff;border-radius:12px;padding:9px 14px;box-shadow:0 6px 18px rgba(0,0,0,.12)"><span style="font-size:13px;font-weight:600;color:#161616">4,9 / 5 ★</span><span style="font-size:12px;color:#5C5A55">840 ulasan terverifikasi</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Phone mockup -->
+        <div role="img" aria-label="Ilustrasi tampilan website yang sama di smartphone" style="flex:0 0 250px;box-sizing:border-box;background:#1A1B23;border:1px solid #2E3040;border-radius:40px;padding:10px">
+          <div style="position:relative;height:530px;background:#FAF8F4;border-radius:31px;overflow:hidden;display:flex;flex-direction:column">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:18px 18px 12px;border-bottom:1px solid #E7E2D8">
+              <span style="font-family:'Syne',sans-serif;font-weight:700;font-size:17px;color:#161616">Primavera</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#161616" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </div>
+            <div style="padding:18px;display:flex;flex-direction:column;gap:12px">
+              <span style="align-self:flex-start;background:#FBE6DC;color:#A5410F;font-size:11px;font-weight:600;letter-spacing:.08em;padding:4px 10px;border-radius:999px">KOLEKSI LIVING</span>
+              <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:22px;line-height:1.15;color:#161616">Furnitur esensial dengan sentuhan kurasi.</div>
+              <div style="font-size:14px;line-height:1.5;color:#5C5A55">Material kayu solid &amp; kain bertekstur untuk hunian modern.</div>
+              <span style="align-self:flex-start;background:#161616;color:#FAF8F4;font-size:14px;font-weight:600;padding:12px 18px;border-radius:10px;white-space:nowrap">Eksplorasi Produk →</span>
+            </div>
+            <div style="margin-top:auto;padding:14px 18px 84px;border-top:1px solid #E7E2D8;display:flex;flex-direction:column;gap:10px">
+              <span style="font-size:12px;font-weight:600;letter-spacing:.1em;color:#5C5A55">PILIHAN TERLARIS</span>
+              <div style="display:flex;gap:10px">
+                <div style="flex:1;display:flex;flex-direction:column;gap:6px"><div style="height:56px;border-radius:10px;background:#EFE7DC"></div><span style="font-size:12px;font-weight:600;color:#161616">Sofa Arka</span></div>
+                <div style="flex:1;display:flex;flex-direction:column;gap:6px"><div style="height:56px;border-radius:10px;background:#E6DDD0"></div><span style="font-size:12px;font-weight:600;color:#161616">Kursi Lumi</span></div>
+              </div>
+            </div>
+            <div style="position:absolute;right:16px;bottom:16px;width:52px;height:52px;border-radius:50%;background:#1FA855;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px rgba(0,0,0,.25)">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px">
+        <div style="background:#151720;border:1px solid #23252F;border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:10px">
+          <span style="align-self:flex-start;background:#2A1A14;color:#F58A5E;font-size:12px;font-weight:600;letter-spacing:.08em;padding:4px 10px;border-radius:999px">CORE WEB VITALS</span>
+          <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:28px;color:#F58A5E">≤ 1 detik</div>
+          <div style="font-size:15px;line-height:1.55;color:#A8ABB8">Target waktu muat halaman. Ringan, tanpa plugin berat, dan diuji dengan Google PageSpeed.</div>
+        </div>
+        <div style="background:#151720;border:1px solid #23252F;border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:10px">
+          <span style="align-self:flex-start;background:#12251D;color:#6EDDAE;font-size:12px;font-weight:600;letter-spacing:.08em;padding:4px 10px;border-radius:999px">RESPONSIF</span>
+          <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:28px;color:#6EDDAE">Mobile-first</div>
+          <div style="font-size:15px;line-height:1.55;color:#A8ABB8">Layout fluid dan ramah sentuhan untuk smartphone, tablet, dan PC.</div>
+        </div>
+        <div style="background:#151720;border:1px solid #23252F;border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:10px">
+          <span style="align-self:flex-start;background:#151C33;color:#8FB0FF;font-size:12px;font-weight:600;letter-spacing:.08em;padding:4px 10px;border-radius:999px">KEAMANAN</span>
+          <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:28px;color:#8FB0FF">SSL / TLS</div>
+          <div style="font-size:15px;line-height:1.55;color:#A8ABB8">Koneksi terenkripsi dengan sertifikat yang diperbarui otomatis.</div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <!-- ============ TAB 2: WEB APP & DASHBOARD ============ -->
+    <div id="preview-pane-app" style="width:100%;display:none;flex-direction:column;gap:28px">
+<div style="width:100%;display:flex;flex-direction:column;gap:28px">
+
+      <div role="img" aria-label="Ilustrasi dashboard operasional bisnis: omset harian, pesanan, stok, grafik penjualan, dan antrean transaksi" style="width:100%;box-sizing:border-box;border-radius:16px;overflow:hidden;border:1px solid #2A2C37;background:#12131A">
+        <div style="display:flex;align-items:center;gap:14px;padding:12px 16px;background:#1E2029;border-bottom:1px solid #2A2C37">
+          <div style="display:flex;gap:7px"><span style="width:11px;height:11px;border-radius:50%;background:#FF6058"></span><span style="width:11px;height:11px;border-radius:50%;background:#FFBD2E"></span><span style="width:11px;height:11px;border-radius:50%;background:#28C940"></span></div>
+          <div style="flex:1;min-width:0;display:flex;align-items:center;gap:8px;background:#12131A;border-radius:8px;padding:7px 12px;font-size:13px;color:#A8ABB8;white-space:nowrap;overflow:hidden">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#6EDDAE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:0 0 auto"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            <span>portal.niagacore.id/dashboard</span>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-wrap:wrap">
+          <!-- Sidebar -->
+          <div style="flex:1 1 210px;max-width:100%;box-sizing:border-box;background:#0F1017;border-right:1px solid #23252F;padding:20px 14px;display:flex;flex-direction:column;gap:6px">
+            <div style="display:flex;align-items:center;gap:10px;padding:0 6px 16px">
+              <span style="width:34px;height:34px;border-radius:9px;background:#F58A5E;color:#14110F;font-family:'Syne',sans-serif;font-weight:800;font-size:16px;display:flex;align-items:center;justify-content:center">N</span>
+              <div style="display:flex;flex-direction:column"><span style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px;color:#F4F1EA">NiagaCore</span><span style="font-size:12px;color:#A8ABB8;white-space:nowrap">Cabang Pusat</span></div>
+            </div>
+            <span style="font-size:12px;font-weight:600;letter-spacing:.12em;color:#8C90A0;padding:4px 10px">OPERASIONAL</span>
+            <div style="display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:10px;background:#2A1A14;color:#F58A5E;font-size:14px;font-weight:600">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F58A5E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+              <span>Ringkasan</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:10px;color:#C9CCD8;font-size:14px">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9CCD8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+              <span>Pesanan</span>
+              <span style="margin-left:auto;background:#F58A5E;color:#14110F;font-size:12px;font-weight:600;padding:2px 8px;border-radius:999px;white-space:nowrap">8 baru</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:10px;color:#C9CCD8;font-size:14px">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9CCD8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+              <span>Inventori Stok</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:10px;color:#C9CCD8;font-size:14px">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9CCD8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg>
+              <span>Kasir &amp; POS</span>
+            </div>
+            <span style="font-size:12px;font-weight:600;letter-spacing:.12em;color:#8C90A0;padding:14px 10px 4px">LAPORAN</span>
+            <div style="display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:10px;color:#C9CCD8;font-size:14px">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9CCD8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="20" x2="12" y2="10"></line><line x1="18" y1="20" x2="18" y2="4"></line><line x1="6" y1="20" x2="6" y2="16"></line></svg>
+              <span>Analitik Omset</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:10px;color:#C9CCD8;font-size:14px">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9CCD8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+              <span>Data Pelanggan</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:10px;color:#C9CCD8;font-size:14px">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9CCD8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v3M12 19v3M2 12h3M19 12h3"></path></svg>
+              <span>Pengaturan</span>
+            </div>
+            <div style="margin-top:auto;display:flex;align-items:center;gap:10px;padding:16px 6px 0;border-top:1px solid #23252F">
+              <span style="width:34px;height:34px;border-radius:50%;background:#2A2C37;color:#F4F1EA;font-size:13px;font-weight:600;display:flex;align-items:center;justify-content:center">AR</span>
+              <div style="display:flex;flex-direction:column"><span style="font-size:14px;font-weight:600;color:#F4F1EA;white-space:nowrap">Ahmad Rasyid</span><span style="font-size:12px;color:#A8ABB8">Super Admin</span></div>
+            </div>
+          </div>
+
+          <!-- Main -->
+          <div style="flex:999 1 520px;min-width:0;box-sizing:border-box;padding:24px;display:flex;flex-direction:column;gap:16px">
+            <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px">
+              <div style="display:flex;flex-direction:column;gap:4px">
+                <span style="font-family:'Syne',sans-serif;font-weight:700;font-size:22px;color:#F4F1EA">Ringkasan Operasional</span>
+                <span style="display:flex;align-items:center;gap:8px;font-size:13px;color:#A8ABB8"><span style="width:7px;height:7px;border-radius:50%;background:#6EDDAE"></span>Sinkronisasi aktif · Cabang Pusat</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px;background:#181A23;border:1px solid #262836;border-radius:10px;padding:9px 14px;width:220px;max-width:100%;box-sizing:border-box;font-size:14px;color:#A8ABB8;white-space:nowrap">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#A8ABB8" stroke-width="2" stroke-linecap="round" aria-hidden="true" style="flex:0 0 auto"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                <span>Cari transaksi...</span>
+              </div>
+            </div>
+
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px">
+              <div style="background:#181A23;border:1px solid #262836;border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:6px">
+                <span style="font-size:12px;font-weight:600;letter-spacing:.1em;color:#A8ABB8">OMSET HARI INI</span>
+                <span style="font-family:'Syne',sans-serif;font-weight:700;font-size:24px;color:#F4F1EA;white-space:nowrap">Rp 14,85 jt</span>
+                <span style="font-size:13px;font-weight:600;color:#6EDDAE">+12,4% vs kemarin</span>
+                <svg width="100%" height="24" viewBox="0 0 120 24" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,20 20,16 40,18 60,10 80,12 100,5 120,3" fill="none" stroke="#6EDDAE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg>
+              </div>
+              <div style="background:#181A23;border:1px solid #262836;border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:6px">
+                <span style="font-size:12px;font-weight:600;letter-spacing:.1em;color:#A8ABB8">PESANAN AKTIF</span>
+                <span style="font-family:'Syne',sans-serif;font-weight:700;font-size:24px;color:#F4F1EA;white-space:nowrap">36 order</span>
+                <span style="font-size:13px;font-weight:600;color:#8FB0FF">+5 order baru</span>
+                <svg width="100%" height="24" viewBox="0 0 120 24" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,18 20,19 40,14 60,15 80,9 100,10 120,5" fill="none" stroke="#8FB0FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg>
+              </div>
+              <div style="background:#181A23;border:1px solid #262836;border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:6px">
+                <span style="font-size:12px;font-weight:600;letter-spacing:.1em;color:#A8ABB8">STOK MINIMUM</span>
+                <span style="font-family:'Syne',sans-serif;font-weight:700;font-size:24px;color:#F4F1EA;white-space:nowrap">7 SKU</span>
+                <span style="font-size:13px;font-weight:600;color:#F2C14E">Perlu restock</span>
+                <svg width="100%" height="24" viewBox="0 0 120 24" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,4 20,7 40,6 60,13 80,15 100,19 120,21" fill="none" stroke="#F2C14E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg>
+              </div>
+              <div style="background:#181A23;border:1px solid #262836;border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:6px">
+                <span style="font-size:12px;font-weight:600;letter-spacing:.1em;color:#A8ABB8">LAYANAN CS</span>
+                <span style="font-family:'Syne',sans-serif;font-weight:700;font-size:24px;color:#F4F1EA;white-space:nowrap">98,4%</span>
+                <span style="font-size:13px;font-weight:600;color:#6EDDAE">Respons &lt; 2 menit</span>
+                <svg width="100%" height="24" viewBox="0 0 120 24" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,12 20,10 40,13 60,9 80,10 100,7 120,8" fill="none" stroke="#6EDDAE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg>
+              </div>
+            </div>
+
+            <div style="display:flex;flex-wrap:wrap;gap:12px">
+              <div style="flex:2 1 380px;min-width:0;box-sizing:border-box;background:#181A23;border:1px solid #262836;border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:14px">
+                <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px">
+                  <div style="display:flex;flex-direction:column;gap:2px"><span style="font-family:'Syne',sans-serif;font-weight:700;font-size:16px;color:#F4F1EA">Tren penjualan 7 hari terakhir</span><span style="font-size:12px;color:#A8ABB8">Dalam juta rupiah</span></div>
+                  <div style="display:flex;gap:4px;font-size:13px;font-weight:600"><span style="background:#2A1A14;color:#F58A5E;padding:5px 12px;border-radius:8px">Mingguan</span><span style="color:#A8ABB8;padding:5px 12px">Bulanan</span></div>
+                </div>
+                <div style="display:flex;align-items:flex-end;gap:10px;height:200px">
+                  <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:6px"><span style="font-size:12px;color:#C9CCD8">9,2</span><div style="width:100%;max-width:44px;height:83px;border-radius:8px 8px 4px 4px;background:#B5603F"></div><span style="font-size:13px;color:#A8ABB8">Sen</span></div>
+                  <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:6px"><span style="font-size:12px;color:#C9CCD8">11,0</span><div style="width:100%;max-width:44px;height:100px;border-radius:8px 8px 4px 4px;background:#B5603F"></div><span style="font-size:13px;color:#A8ABB8">Sel</span></div>
+                  <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:6px"><span style="font-size:12px;color:#C9CCD8">8,1</span><div style="width:100%;max-width:44px;height:73px;border-radius:8px 8px 4px 4px;background:#B5603F"></div><span style="font-size:13px;color:#A8ABB8">Rab</span></div>
+                  <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:6px"><span style="font-size:12px;color:#C9CCD8">13,4</span><div style="width:100%;max-width:44px;height:121px;border-radius:8px 8px 4px 4px;background:#B5603F"></div><span style="font-size:13px;color:#A8ABB8">Kam</span></div>
+                  <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:6px"><span style="font-size:12px;color:#C9CCD8">10,6</span><div style="width:100%;max-width:44px;height:96px;border-radius:8px 8px 4px 4px;background:#B5603F"></div><span style="font-size:13px;color:#A8ABB8">Jum</span></div>
+                  <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:6px"><span style="font-size:12px;color:#C9CCD8">14,1</span><div style="width:100%;max-width:44px;height:128px;border-radius:8px 8px 4px 4px;background:#B5603F"></div><span style="font-size:13px;color:#A8ABB8">Sab</span></div>
+                  <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:6px"><span style="font-size:12px;font-weight:600;color:#F58A5E">14,85</span><div style="width:100%;max-width:44px;height:134px;border-radius:8px 8px 4px 4px;background:#F58A5E"></div><span style="font-size:13px;font-weight:600;color:#F4F1EA">Min</span></div>
+                </div>
+              </div>
+
+              <div style="flex:1 1 250px;min-width:0;box-sizing:border-box;background:#181A23;border:1px solid #262836;border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:16px">
+                <span style="font-family:'Syne',sans-serif;font-weight:700;font-size:16px;color:#F4F1EA">Distribusi status</span>
+                <div style="display:flex;flex-wrap:wrap;align-items:center;gap:18px">
+                  <div style="flex:0 0 auto;width:112px;height:112px;border-radius:50%;background:conic-gradient(#6EDDAE 0 55%,#8FB0FF 55% 83%,#F2C14E 83% 95%,#F0707A 95% 100%);display:flex;align-items:center;justify-content:center">
+                    <div style="width:74px;height:74px;border-radius:50%;background:#181A23;display:flex;flex-direction:column;align-items:center;justify-content:center"><span style="font-family:'Syne',sans-serif;font-weight:700;font-size:22px;color:#F4F1EA;line-height:1">36</span><span style="font-size:12px;color:#A8ABB8">order</span></div>
+                  </div>
+                  <div style="display:flex;flex-direction:column;gap:8px;font-size:14px;color:#C9CCD8">
+                    <span style="display:flex;align-items:center;gap:8px;white-space:nowrap"><span style="width:10px;height:10px;border-radius:3px;background:#6EDDAE"></span>Selesai 55%</span>
+                    <span style="display:flex;align-items:center;gap:8px;white-space:nowrap"><span style="width:10px;height:10px;border-radius:3px;background:#8FB0FF"></span>Diproses 28%</span>
+                    <span style="display:flex;align-items:center;gap:8px;white-space:nowrap"><span style="width:10px;height:10px;border-radius:3px;background:#F2C14E"></span>Menunggu 12%</span>
+                    <span style="display:flex;align-items:center;gap:8px;white-space:nowrap"><span style="width:10px;height:10px;border-radius:3px;background:#F0707A"></span>Batal 5%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div style="box-sizing:border-box;background:#181A23;border:1px solid #262836;border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:12px">
+              <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px">
+                <span style="font-family:'Syne',sans-serif;font-weight:700;font-size:16px;color:#F4F1EA">Antrean transaksi terbaru</span>
+                <div style="display:flex;gap:4px;font-size:13px;font-weight:600"><span style="background:#2A1A14;color:#F58A5E;padding:5px 12px;border-radius:8px">Semua</span><span style="color:#A8ABB8;padding:5px 12px">Diproses</span><span style="color:#A8ABB8;padding:5px 12px">Selesai</span></div>
+              </div>
+              <div style="overflow-x:auto">
+                <table style="width:100%;min-width:480px;border-collapse:collapse;font-size:14px;color:#E4E2DC">
+                  <thead>
+                    <tr style="text-align:left;font-size:12px;letter-spacing:.08em;color:#A8ABB8">
+                      <th style="padding:8px 12px;font-weight:600">NO. ORDER</th>
+                      <th style="padding:8px 12px;font-weight:600">PELANGGAN</th>
+                      <th style="padding:8px 12px;font-weight:600">TOTAL</th>
+                      <th style="padding:8px 12px;font-weight:600">STATUS</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr style="border-top:1px solid #262836"><td style="padding:12px">INV-2041</td><td style="padding:12px">Dewi Lestari</td><td style="padding:12px">Rp 1.250.000</td><td style="padding:12px"><span style="background:#12251D;color:#6EDDAE;font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px">Selesai</span></td></tr>
+                    <tr style="border-top:1px solid #262836"><td style="padding:12px">INV-2040</td><td style="padding:12px">Budi Santoso</td><td style="padding:12px">Rp 480.000</td><td style="padding:12px"><span style="background:#151C33;color:#8FB0FF;font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px">Diproses</span></td></tr>
+                    <tr style="border-top:1px solid #262836"><td style="padding:12px">INV-2039</td><td style="padding:12px">Toko Maju Jaya</td><td style="padding:12px">Rp 3.900.000</td><td style="padding:12px"><span style="background:#2B2412;color:#F2C14E;font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px">Menunggu</span></td></tr>
+                    <tr style="border-top:1px solid #262836"><td style="padding:12px">INV-2038</td><td style="padding:12px">Rina Wijaya</td><td style="padding:12px">Rp 275.000</td><td style="padding:12px"><span style="background:#12251D;color:#6EDDAE;font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px">Selesai</span></td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px">
+        <div style="background:#151720;border:1px solid #23252F;border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:8px">
+          <span style="font-size:12px;font-weight:600;letter-spacing:.12em;color:#F58A5E">INVENTORI</span>
+          <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:18px;color:#F4F1EA">Pencatatan stok otomatis</div>
+          <div style="font-size:15px;line-height:1.55;color:#A8ABB8">Barang masuk dan keluar terpotong langsung saat transaksi terjadi, tanpa input ganda.</div>
+        </div>
+        <div style="background:#151720;border:1px solid #23252F;border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:8px">
+          <span style="font-size:12px;font-weight:600;letter-spacing:.12em;color:#F58A5E">KEAMANAN</span>
+          <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:18px;color:#F4F1EA">Hak akses bertingkat</div>
+          <div style="font-size:15px;line-height:1.55;color:#A8ABB8">Admin, kasir, dan staf gudang hanya melihat modul yang relevan dengan tugasnya.</div>
+        </div>
+        <div style="background:#151720;border:1px solid #23252F;border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:8px">
+          <span style="font-size:12px;font-weight:600;letter-spacing:.12em;color:#F58A5E">LAPORAN</span>
+          <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:18px;color:#F4F1EA">Rekap finansial instan</div>
+          <div style="font-size:15px;line-height:1.55;color:#A8ABB8">Omset dan margin laba tersusun otomatis tanpa rumus spreadsheet manual.</div>
+        </div>
+        <div style="background:#151720;border:1px solid #23252F;border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:8px">
+          <span style="font-size:12px;font-weight:600;letter-spacing:.12em;color:#F58A5E">INTEGRASI</span>
+          <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:18px;color:#F4F1EA">Koneksi API &amp; webhook</div>
+          <div style="font-size:15px;line-height:1.55;color:#A8ABB8">Bisa dihubungkan ke WhatsApp API, payment gateway, atau sistem logistik pihak ketiga.</div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <!-- ============ CTA (shared by both tabs) ============ -->
+    <div class="preview-cta-box" style="width:100%;box-sizing:border-box;background:#151720;border:1px solid #2A2C37;border-radius:20px;padding:32px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px 40px">
+      <div style="flex:1 1 360px;min-width:0;display:flex;flex-direction:column;gap:12px">
+        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:28px;line-height:1.15;color:#F4F1EA">Punya kebutuhan serupa?</div>
+        <div style="font-size:16px;line-height:1.6;color:#A8ABB8">Ceritakan alur bisnis Anda. Kami siapkan contoh visual dengan brand Anda sebelum proyek dimulai.</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px 20px;padding-top:4px;font-size:14px;color:#C9CCD8">
+          <span style="display:flex;align-items:center;gap:8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6EDDAE" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>Revisi desain sebelum coding</span>
+          <span style="display:flex;align-items:center;gap:8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6EDDAE" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>Estimasi: ±1–3 minggu</span>
+          <span style="display:flex;align-items:center;gap:8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6EDDAE" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>Teknologi: Modern, Cepat & Ringan</span>
+        </div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:12px">
+        <a href="https://wa.me/6281991947017" class="js-wa-link" data-wa-label="Preview Section WA" style="display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 24px;border-radius:12px;background:#F58A5E;color:#14110F;font-size:16px;font-weight:600;text-decoration:none;white-space:nowrap">Konsultasi gratis via WhatsApp</a>
+        <a href="#proses" style="display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 24px;border-radius:12px;border:1px solid #3A3D4D;color:#F4F1EA;font-size:16px;font-weight:600;text-decoration:none;white-space:nowrap">Lihat cara kerja kami</a>
+      </div>
+    </div>
+
+    <div style="text-align:center;font-size:13px;line-height:1.6;color:#9A9EAD;max-width:640px">Dirancang oleh <span style="color:#F58A5E;font-weight:600">Paras Digital</span> · Seluruh nama, angka, dan data pada mockup adalah ilustrasi dan dapat disesuaikan dengan bisnis Anda.</div>
+
   </div>
 </section>
 
@@ -1866,6 +2257,23 @@ document.addEventListener('click', (e) => {
     }
   }
 });
+function switchPreviewTab(tab) {
+  const isWeb = tab === 'web';
+  const paneWeb = document.getElementById('preview-pane-web');
+  const paneApp = document.getElementById('preview-pane-app');
+  const btnWeb = document.getElementById('preview-tab-btn-web');
+  const btnApp = document.getElementById('preview-tab-btn-app');
+  if (paneWeb && paneApp) {
+    paneWeb.style.display = isWeb ? 'flex' : 'none';
+    paneApp.style.display = isWeb ? 'none' : 'flex';
+  }
+  if (btnWeb && btnApp) {
+    btnWeb.classList.toggle('active', isWeb);
+    btnWeb.setAttribute('aria-selected', isWeb ? 'true' : 'false');
+    btnApp.classList.toggle('active', !isWeb);
+    btnApp.setAttribute('aria-selected', !isWeb ? 'true' : 'false');
+  }
+}
 </script>
 </body>
 </html>
