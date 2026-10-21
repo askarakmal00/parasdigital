@@ -12,25 +12,35 @@
 <style>
   *, *::before, *::after { box-sizing: border-box; }
   :root {
-    --bg-base: #070B10;
-    --bg-surface: #0D131C;
-    --bg-card: #121A26;
-    --bg-card-hover: #162232;
-    --bg-elevated: #1B2636;
-    --border-subtle: rgba(255, 255, 255, 0.07);
-    --border-focus: rgba(255, 107, 61, 0.45);
-    --text-primary: #F3F5F7;
-    --text-secondary: #94A3B8;
-    --text-tertiary: #64748B;
+    --bg-base: #F8FAFC;
+    --bg-surface: #FFFFFF;
+    --bg-card: #FFFFFF;
+    --bg-card-subtle: #F1F5F9;
+    --bg-input: #FFFFFF;
+    --border-subtle: #E2E8F0;
+    --border-card: #E5E7EB;
+    --border-focus: #FF6B3D;
+    --text-primary: #0F172A;
+    --text-secondary: #475569;
+    --text-tertiary: #94A3B8;
     --accent: #FF6B3D;
-    --accent-glow: rgba(255, 107, 61, 0.22);
-    --green: #10B981;
-    --green-glow: rgba(16, 185, 129, 0.18);
-    --red: #F43F5E;
-    --red-glow: rgba(244, 63, 94, 0.18);
-    --blue: #38BDF8;
-    --blue-glow: rgba(56, 189, 248, 0.18);
-    --purple: #A855F7;
+    --accent-hover: #F25A2B;
+    --accent-light: #FFF2ED;
+    --green: #059669;
+    --green-bg: #ECFDF5;
+    --green-border: #A7F3D0;
+    --red: #E11D48;
+    --red-bg: #FFF1F2;
+    --red-border: #FECDD3;
+    --blue: #0284C7;
+    --blue-bg: #F0F9FF;
+    --blue-border: #BAE6FD;
+    --purple: #7C3AED;
+    --purple-bg: #FAF5FF;
+    --purple-border: #E9D5FF;
+    --shadow-sm: 0 1px 2px 0 rgba(15, 23, 42, 0.05);
+    --shadow-card: 0 2px 8px -1px rgba(15, 23, 42, 0.06), 0 1px 3px 0 rgba(15, 23, 42, 0.04);
+    --shadow-lg: 0 12px 32px -4px rgba(15, 23, 42, 0.1), 0 4px 12px -2px rgba(15, 23, 42, 0.06);
     --mono-font: 'JetBrains Mono', monospace;
   }
 
@@ -59,8 +69,8 @@
   /* ─── SCROLLBAR ─── */
   ::-webkit-scrollbar { width: 8px; height: 8px; }
   ::-webkit-scrollbar-track { background: var(--bg-base); }
-  ::-webkit-scrollbar-thumb { background: var(--bg-elevated); border-radius: 4px; }
-  ::-webkit-scrollbar-thumb:hover { background: var(--text-tertiary); }
+  ::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
 
   /* ─── LOGIN SCREEN ─── */
   #login-view {
@@ -70,8 +80,8 @@
     justify-content: center;
     padding: 24px;
     background:
-      radial-gradient(55% 45% at 50% 10%, rgba(255, 107, 61, 0.14) 0%, transparent 70%),
-      radial-gradient(40% 40% at 85% 90%, rgba(16, 185, 129, 0.08) 0%, transparent 60%),
+      radial-gradient(55% 45% at 50% 12%, rgba(255, 107, 61, 0.09) 0%, transparent 70%),
+      radial-gradient(40% 40% at 85% 90%, rgba(5, 150, 105, 0.06) 0%, transparent 60%),
       var(--bg-base);
   }
   .login-card {
@@ -84,14 +94,14 @@
     display: flex;
     flex-direction: column;
     gap: 24px;
-    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255,255,255,0.04) inset;
+    box-shadow: var(--shadow-lg);
   }
   .brand-logo {
     display: inline-flex;
     align-items: center;
     gap: 12px;
     text-decoration: none;
-    color: #FFF;
+    color: var(--text-primary);
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 19px;
   }
@@ -110,11 +120,11 @@
     text-transform: uppercase;
   }
   .input {
-    background: var(--bg-card);
+    background: var(--bg-input);
     border: 1px solid var(--border-subtle);
     color: var(--text-primary);
-    padding: 11px 14px;
-    border-radius: 12px;
+    padding: 10px 14px;
+    border-radius: 10px;
     outline: none;
     width: 100%;
     font-size: 14px;
@@ -122,8 +132,8 @@
   }
   .input:focus {
     border-color: var(--accent);
-    background: var(--bg-surface);
-    box-shadow: 0 0 0 3px var(--accent-glow);
+    background: #FFFFFF;
+    box-shadow: 0 0 0 3px rgba(255, 107, 61, 0.15);
   }
   textarea.input {
     min-height: 88px;
@@ -151,30 +161,31 @@
   .btn:active { transform: translateY(0); }
   .btn-accent {
     background: var(--accent);
-    color: #070B10;
+    color: #FFFFFF;
     font-weight: 700;
-    box-shadow: 0 4px 14px rgba(255, 107, 61, 0.35);
+    box-shadow: 0 2px 10px rgba(255, 107, 61, 0.3);
   }
   .btn-accent:hover {
-    background: #FF7B52;
-    box-shadow: 0 6px 20px rgba(255, 107, 61, 0.45);
+    background: var(--accent-hover);
+    box-shadow: 0 4px 14px rgba(255, 107, 61, 0.4);
   }
   .btn-outline {
-    background: rgba(255, 255, 255, 0.03);
+    background: #FFFFFF;
     color: var(--text-primary);
     border: 1px solid var(--border-subtle);
+    box-shadow: var(--shadow-sm);
   }
   .btn-outline:hover {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.18);
+    background: #F1F5F9;
+    border-color: #CBD5E1;
   }
   .btn-danger {
-    background: var(--red-glow);
-    color: #FFA5B4;
-    border: 1px solid rgba(244, 63, 94, 0.3);
+    background: var(--red-bg);
+    color: var(--red);
+    border: 1px solid var(--red-border);
   }
   .btn-danger:hover {
-    background: rgba(244, 63, 94, 0.3);
+    background: #FFE4E6;
   }
 
   /* ─── APP SHELL ─── */
@@ -187,9 +198,9 @@
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(13, 19, 28, 0.88);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--border-subtle);
     padding: 12px 28px;
     display: flex;
@@ -197,12 +208,13 @@
     align-items: center;
     justify-content: space-between;
     gap: 16px;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
   }
   .nav-tabs {
     display: flex;
     flex-wrap: wrap;
     gap: 4px;
-    background: var(--bg-base);
+    background: #F1F5F9;
     padding: 4px;
     border-radius: 12px;
     border: 1px solid var(--border-subtle);
@@ -214,7 +226,7 @@
     font-weight: 600;
     font-size: 13px;
     padding: 8px 16px;
-    border-radius: 9px;
+    border-radius: 8px;
     cursor: pointer;
     transition: all 0.15s ease;
     display: flex;
@@ -223,13 +235,12 @@
   }
   .nav-tab:hover {
     color: var(--text-primary);
-    background: rgba(255, 255, 255, 0.04);
   }
   .nav-tab.active {
-    background: var(--bg-card);
-    color: #FFF;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: #FFFFFF;
+    color: var(--text-primary);
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
+    font-weight: 700;
   }
 
   .status-pill {
@@ -240,16 +251,16 @@
     border-radius: 999px;
     font-size: 12px;
     font-weight: 600;
-    background: rgba(16, 185, 129, 0.12);
-    border: 1px solid rgba(16, 185, 129, 0.28);
-    color: #34D399;
+    background: var(--green-bg);
+    border: 1px solid var(--green-border);
+    color: #047857;
   }
   .pulse-dot {
     width: 7px;
     height: 7px;
     border-radius: 50%;
     background: #10B981;
-    box-shadow: 0 0 8px #10B981;
+    box-shadow: 0 0 6px rgba(16, 185, 129, 0.6);
     animation: livePulse 2s infinite ease-in-out;
   }
   @keyframes livePulse {
@@ -265,7 +276,7 @@
     padding: 32px 24px 80px;
     display: flex;
     flex-direction: column;
-    gap: 28px;
+    gap: 26px;
   }
   .tab-pane {
     display: none;
@@ -287,48 +298,38 @@
     grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
     gap: 20px;
   }
-  .grid-3 {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 16px;
-  }
 
   .card {
-    background: var(--bg-surface);
+    background: var(--bg-card);
     border: 1px solid var(--border-subtle);
-    border-radius: 20px;
+    border-radius: 18px;
     padding: 24px;
     display: flex;
     flex-direction: column;
     gap: 16px;
-    position: relative;
-    box-shadow: 0 4px 24px -4px rgba(0, 0, 0, 0.45);
-    transition: border-color 0.2s ease;
+    box-shadow: var(--shadow-card);
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
   }
   .card:hover {
-    border-color: rgba(255, 255, 255, 0.12);
+    border-color: #CBD5E1;
   }
 
   /* ─── STAT KPI HERO CARDS ─── */
   .kpi-card {
-    background: linear-gradient(180deg, var(--bg-surface) 0%, rgba(13, 19, 28, 0.7) 100%);
+    background: #FFFFFF;
     border: 1px solid var(--border-subtle);
-    border-radius: 20px;
+    border-radius: 18px;
     padding: 22px 20px;
     display: flex;
     flex-direction: column;
     gap: 14px;
     position: relative;
-    overflow: hidden;
-    box-shadow: 0 8px 30px -6px rgba(0,0,0,0.5);
+    box-shadow: var(--shadow-card);
+    transition: all 0.2s ease;
   }
-  .kpi-card::after {
-    content: '';
-    position: absolute;
-    top: 0; right: 0;
-    width: 110px; height: 110px;
-    background: radial-gradient(circle at top right, var(--kpi-glow, rgba(255,255,255,0.04)), transparent 70%);
-    pointer-events: none;
+  .kpi-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
   }
   .kpi-top {
     display: flex;
@@ -347,18 +348,18 @@
   .kpi-icon {
     width: 32px;
     height: 32px;
-    border-radius: 9px;
+    border-radius: 8px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 16px;
-    background: var(--kpi-icon-bg, rgba(255,255,255,0.06));
+    font-size: 15px;
+    background: var(--kpi-icon-bg, #F1F5F9);
     border: 1px solid var(--border-subtle);
   }
   .kpi-main {
     display: flex;
     align-items: baseline;
-    gap: 12px;
+    gap: 10px;
   }
   .kpi-number {
     font-family: 'Plus Jakarta Sans', sans-serif;
@@ -366,7 +367,7 @@
     font-weight: 800;
     line-height: 1;
     letter-spacing: -0.03em;
-    color: #FFF;
+    color: var(--text-primary);
   }
   .kpi-unit {
     font-size: 13px;
@@ -379,7 +380,7 @@
     justify-content: space-between;
     gap: 10px;
     padding-top: 10px;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 1px solid #F1F5F9;
     font-size: 12px;
   }
 
@@ -395,30 +396,31 @@
     letter-spacing: 0.02em;
   }
   .growth-pill.up {
-    background: var(--green-glow);
-    color: #34D399;
-    border: 1px solid rgba(16, 185, 129, 0.3);
+    background: var(--green-bg);
+    color: #047857;
+    border: 1px solid var(--green-border);
   }
   .growth-pill.down {
-    background: var(--red-glow);
-    color: #FB7185;
-    border: 1px solid rgba(244, 63, 94, 0.3);
+    background: var(--red-bg);
+    color: #BE123C;
+    border: 1px solid var(--red-border);
   }
   .growth-pill.neutral {
-    background: rgba(255, 255, 255, 0.06);
+    background: #F1F5F9;
     color: var(--text-secondary);
     border: 1px solid var(--border-subtle);
   }
 
   /* ─── CONVERSION FUNNEL STRIP ─── */
   .funnel-card {
-    background: linear-gradient(180deg, var(--bg-surface) 0%, rgba(13, 19, 28, 0.8) 100%);
+    background: #FFFFFF;
     border: 1px solid var(--border-subtle);
-    border-radius: 20px;
+    border-radius: 18px;
     padding: 24px;
     display: flex;
     flex-direction: column;
     gap: 18px;
+    box-shadow: var(--shadow-card);
   }
   .funnel-stages {
     display: grid;
@@ -434,22 +436,20 @@
     .funnel-arrow { display: none; }
   }
   .funnel-stage {
-    background: var(--bg-card);
+    background: #F8FAFC;
     border: 1px solid var(--border-subtle);
     border-radius: 14px;
     padding: 16px 18px;
     display: flex;
     flex-direction: column;
     gap: 8px;
-    position: relative;
-    overflow: hidden;
   }
   .funnel-arrow {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--text-tertiary);
-    font-size: 20px;
+    color: #94A3B8;
+    font-size: 18px;
   }
 
   /* ─── INTERACTIVE BAR CHART ─── */
@@ -464,9 +464,11 @@
     align-items: flex-end;
     gap: 8px;
     padding: 28px 12px 10px;
-    border-bottom: 1px solid var(--border-subtle);
+    border-bottom: 2px solid #E2E8F0;
     overflow-x: auto;
     position: relative;
+    background: #FCFDFE;
+    border-radius: 12px;
   }
   .chart-col {
     flex: 1;
@@ -490,26 +492,26 @@
   }
   .bar-pv {
     width: 44%;
-    background: linear-gradient(180deg, #38BDF8 0%, #0284C7 100%);
+    background: #0284C7;
     border-radius: 4px 4px 0 0;
-    transition: height 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s;
+    transition: height 0.3s ease, filter 0.2s;
     min-height: 4px;
   }
   .bar-uv {
     width: 44%;
-    background: linear-gradient(180deg, #FF7B52 0%, #FF6B3D 100%);
+    background: #FF6B3D;
     border-radius: 4px 4px 0 0;
-    transition: height 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s;
+    transition: height 0.3s ease, filter 0.2s;
     min-height: 4px;
   }
   .chart-col:hover .bar-pv, .chart-col:hover .bar-uv {
-    filter: brightness(1.25);
+    filter: brightness(0.9);
   }
   .chart-lbl {
     font-size: 11px;
     color: var(--text-secondary);
     white-space: nowrap;
-    font-weight: 500;
+    font-weight: 600;
   }
 
   /* Tooltip on Chart */
@@ -519,16 +521,15 @@
     bottom: calc(100% - 10px);
     left: 50%;
     transform: translateX(-50%);
-    background: #000;
-    color: #FFF;
-    border: 1px solid rgba(255,255,255,0.18);
+    background: #0F172A;
+    color: #FFFFFF;
     font-size: 11px;
     padding: 6px 10px;
     border-radius: 8px;
     white-space: pre;
     z-index: 20;
     pointer-events: none;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
     line-height: 1.4;
     text-align: center;
   }
@@ -540,53 +541,53 @@
     justify-content: space-between;
     gap: 12px;
     padding: 10px 14px;
-    background: var(--bg-card);
+    background: #F8FAFC;
     border-radius: 12px;
     font-size: 13px;
-    border: 1px solid rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-subtle);
     transition: background 0.15s ease;
   }
   .list-item:hover {
-    background: var(--bg-card-hover);
+    background: #F1F5F9;
   }
   .meter-bar {
-    height: 4px;
-    background: rgba(255,255,255,0.06);
-    border-radius: 2px;
+    height: 5px;
+    background: #E2E8F0;
+    border-radius: 3px;
     overflow: hidden;
     margin-top: 5px;
     width: 100%;
   }
   .meter-fill {
     height: 100%;
-    border-radius: 2px;
+    border-radius: 3px;
     background: var(--accent);
   }
 
   .badge {
     font-size: 11px;
     font-weight: 700;
-    padding: 3px 9px;
+    padding: 3px 8px;
     border-radius: 6px;
-    background: rgba(255, 107, 61, 0.14);
-    color: #FF8F6B;
-    border: 1px solid rgba(255, 107, 61, 0.28);
+    background: var(--accent-light);
+    color: #C2410C;
+    border: 1px solid #FFD0B8;
     font-family: var(--mono-font);
   }
   .badge-wa {
-    background: var(--green-glow);
-    color: #34D399;
-    border-color: rgba(16, 185, 129, 0.3);
+    background: var(--green-bg);
+    color: #047857;
+    border-color: var(--green-border);
   }
   .badge-pv {
-    background: var(--blue-glow);
-    color: #7DD3FC;
-    border-color: rgba(56, 189, 248, 0.3);
+    background: var(--blue-bg);
+    color: #0369A1;
+    border-color: var(--blue-border);
   }
   .badge-plan {
-    background: rgba(168, 85, 247, 0.15);
-    color: #D8B4FE;
-    border-color: rgba(168, 85, 247, 0.3);
+    background: var(--purple-bg);
+    color: #6D28D9;
+    border-color: var(--purple-border);
   }
 
   /* Realtime Table */
@@ -598,19 +599,21 @@
   .activity-table th {
     text-align: left;
     padding: 10px 14px;
-    color: var(--text-tertiary);
+    color: var(--text-secondary);
     font-size: 11px;
-    font-weight: 600;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    border-bottom: 1px solid var(--border-subtle);
+    border-bottom: 2px solid var(--border-subtle);
+    background: #F8FAFC;
   }
   .activity-table td {
     padding: 12px 14px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    border-bottom: 1px solid #F1F5F9;
+    color: var(--text-primary);
   }
   .activity-table tr:hover td {
-    background: rgba(255, 255, 255, 0.02);
+    background: #F8FAFC;
   }
 
   /* ─── TOAST NOTIFICATION ─── */
@@ -619,13 +622,12 @@
     bottom: 28px;
     right: 28px;
     z-index: 999;
-    background: var(--bg-elevated);
-    color: #FFF;
-    border: 1px solid var(--border-subtle);
+    background: #0F172A;
+    color: #FFFFFF;
     font-weight: 600;
     padding: 14px 22px;
     border-radius: 12px;
-    box-shadow: 0 16px 40px rgba(0,0,0,0.6);
+    box-shadow: 0 16px 36px rgba(0,0,0,0.18);
     display: none;
     align-items: center;
     gap: 10px;
@@ -647,11 +649,11 @@
     <div style="display:flex;align-items:center;justify-content:space-between">
       <div class="brand-logo">
         <svg width="32" height="32" viewBox="0 0 48 48" aria-hidden="true">
-          <rect x="6" y="5" width="11" height="38" rx="5.5" fill="#FFFFFF"/>
-          <circle cx="27" cy="19" r="14" fill="#FFFFFF"/>
+          <rect x="6" y="5" width="11" height="38" rx="5.5" fill="#0D1F1E"/>
+          <circle cx="27" cy="19" r="14" fill="#0D1F1E"/>
           <circle cx="29.5" cy="19" r="4.6" fill="#FF6B3D"/>
         </svg>
-        <span><b>paras</b> <span style="color:var(--text-secondary);font-weight:500">intelligence</span></span>
+        <span><b>paras</b> <span style="color:var(--text-secondary);font-weight:500">dashboard</span></span>
       </div>
       <span class="status-pill"><span class="pulse-dot"></span> v2.4</span>
     </div>
@@ -661,7 +663,7 @@
       <p style="margin:6px 0 0;color:var(--text-secondary);font-size:13px">Masuk untuk melihat metrik real-time & mengelola konten parasdigital.id</p>
     </div>
 
-    <div id="login-err" style="display:none;background:var(--red-glow);color:#FFA5B4;padding:12px 16px;border-radius:12px;font-size:13px;border:1px solid rgba(244,63,94,0.3)"></div>
+    <div id="login-err" style="display:none;background:var(--red-bg);color:var(--red);padding:12px 16px;border-radius:12px;font-size:13px;border:1px solid var(--red-border)"></div>
 
     <div class="field">
       <label>Username Operator</label>
@@ -688,8 +690,8 @@
     <div style="display:flex;align-items:center;gap:18px">
       <a href="/" target="_blank" class="brand-logo" title="Buka website publik">
         <svg width="26" height="26" viewBox="0 0 48 48">
-          <rect x="6" y="5" width="11" height="38" rx="5.5" fill="#FFFFFF"/>
-          <circle cx="27" cy="19" r="14" fill="#FFFFFF"/>
+          <rect x="6" y="5" width="11" height="38" rx="5.5" fill="#0D1F1E"/>
+          <circle cx="27" cy="19" r="14" fill="#0D1F1E"/>
           <circle cx="29.5" cy="19" r="4.6" fill="#FF6B3D"/>
         </svg>
         <span><b>paras</b> <span style="color:var(--text-secondary);font-weight:500">studio</span></span>
@@ -738,7 +740,7 @@
       <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px">
         <div>
           <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
-            <span style="font-size:11px;font-weight:700;letter-spacing:0.06em;color:var(--accent);text-transform:uppercase">Executive Overview</span>
+            <span style="font-size:11px;font-weight:700;letter-spacing:0.06em;color:var(--accent);text-transform:uppercase">Overview Ringkasan</span>
             <span style="color:var(--text-tertiary)">•</span>
             <span id="current-date-lbl" style="font-size:12px;color:var(--text-secondary);font-family:var(--mono-font)"></span>
           </div>
@@ -764,10 +766,10 @@
       <!-- 4 Hero KPI Cards (Today Focus + Growth vs Yesterday) -->
       <div class="grid-4">
         <!-- 1: Pengunjung Hari Ini -->
-        <div class="kpi-card" style="--kpi-icon-bg:rgba(255,107,61,0.12);--kpi-glow:rgba(255,107,61,0.18)">
+        <div class="kpi-card">
           <div class="kpi-top">
             <span class="kpi-title">
-              <span class="kpi-icon" style="color:var(--accent)">👤</span>
+              <span class="kpi-icon" style="color:var(--accent);background:var(--accent-light)">👤</span>
               Pengunjung Hari Ini
             </span>
             <span id="growth-visitors" class="growth-pill neutral">0%</span>
@@ -777,16 +779,16 @@
             <span class="kpi-unit">orang unik</span>
           </div>
           <div class="kpi-footer">
-            <span style="color:var(--text-tertiary)">Kemarin: <b id="sub-yest-visitors" style="color:var(--text-secondary)">0</b></span>
-            <span style="color:var(--text-tertiary)">Periode: <b id="kpi-period-visitors" style="color:var(--text-secondary)">0</b></span>
+            <span style="color:var(--text-secondary)">Kemarin: <b id="sub-yest-visitors" style="color:var(--text-primary)">0</b></span>
+            <span style="color:var(--text-secondary)">Periode: <b id="kpi-period-visitors" style="color:var(--text-primary)">0</b></span>
           </div>
         </div>
 
         <!-- 2: Pageviews Hari Ini -->
-        <div class="kpi-card" style="--kpi-icon-bg:rgba(56,189,248,0.12);--kpi-glow:rgba(56,189,248,0.18)">
+        <div class="kpi-card">
           <div class="kpi-top">
             <span class="kpi-title">
-              <span class="kpi-icon" style="color:var(--blue)">📄</span>
+              <span class="kpi-icon" style="color:var(--blue);background:var(--blue-bg)">📄</span>
               Pageviews Hari Ini
             </span>
             <span id="growth-pageviews" class="growth-pill neutral">0%</span>
@@ -796,46 +798,46 @@
             <span class="kpi-unit">tayangan</span>
           </div>
           <div class="kpi-footer">
-            <span style="color:var(--text-tertiary)">Kemarin: <b id="sub-yest-pageviews" style="color:var(--text-secondary)">0</b></span>
-            <span style="color:var(--text-tertiary)">Rasio: <b id="sub-pv-ratio" style="color:var(--text-secondary)">1.0x</b></span>
+            <span style="color:var(--text-secondary)">Kemarin: <b id="sub-yest-pageviews" style="color:var(--text-primary)">0</b></span>
+            <span style="color:var(--text-secondary)">Rasio: <b id="sub-pv-ratio" style="color:var(--text-primary)">1.0x</b></span>
           </div>
         </div>
 
         <!-- 3: Kontak WhatsApp Hari Ini (The Core Goal) -->
-        <div class="kpi-card" style="--kpi-icon-bg:rgba(16,185,129,0.12);--kpi-glow:rgba(16,185,129,0.18)">
+        <div class="kpi-card">
           <div class="kpi-top">
             <span class="kpi-title">
-              <span class="kpi-icon" style="color:var(--green)">💬</span>
+              <span class="kpi-icon" style="color:var(--green);background:var(--green-bg)">💬</span>
               Klik WhatsApp Hari Ini
             </span>
             <span id="growth-wa" class="growth-pill neutral">0%</span>
           </div>
           <div class="kpi-main">
-            <span class="kpi-number" id="kpi-today-wa" style="color:#34D399">0</span>
+            <span class="kpi-number" id="kpi-today-wa" style="color:#059669">0</span>
             <span class="kpi-unit">calon klien</span>
           </div>
           <div class="kpi-footer">
-            <span style="color:var(--text-tertiary)">Kemarin: <b id="sub-yest-wa" style="color:var(--text-secondary)">0</b></span>
-            <span style="color:var(--text-tertiary)">Total periode: <b id="kpi-period-wa" style="color:var(--text-secondary)">0</b></span>
+            <span style="color:var(--text-secondary)">Kemarin: <b id="sub-yest-wa" style="color:var(--text-primary)">0</b></span>
+            <span style="color:var(--text-secondary)">Total periode: <b id="kpi-period-wa" style="color:var(--text-primary)">0</b></span>
           </div>
         </div>
 
         <!-- 4: Interaksi Paket & Solusi -->
-        <div class="kpi-card" style="--kpi-icon-bg:rgba(168,85,247,0.12);--kpi-glow:rgba(168,85,247,0.18)">
+        <div class="kpi-card">
           <div class="kpi-top">
             <span class="kpi-title">
-              <span class="kpi-icon" style="color:var(--purple)">🏷️</span>
+              <span class="kpi-icon" style="color:var(--purple);background:var(--purple-bg)">🏷️</span>
               Klik Evaluasi Paket
             </span>
             <span id="growth-plan" class="growth-pill neutral">0%</span>
           </div>
           <div class="kpi-main">
-            <span class="kpi-number" id="kpi-today-plan" style="color:#D8B4FE">0</span>
+            <span class="kpi-number" id="kpi-today-plan" style="color:#7C3AED">0</span>
             <span class="kpi-unit">interaksi</span>
           </div>
           <div class="kpi-footer">
-            <span style="color:var(--text-tertiary)">Kemarin: <b id="sub-yest-plan" style="color:var(--text-secondary)">0</b></span>
-            <span style="color:var(--text-tertiary)">Total periode: <b id="kpi-period-plan" style="color:var(--text-secondary)">0</b></span>
+            <span style="color:var(--text-secondary)">Kemarin: <b id="sub-yest-plan" style="color:var(--text-primary)">0</b></span>
+            <span style="color:var(--text-secondary)">Total periode: <b id="kpi-period-plan" style="color:var(--text-primary)">0</b></span>
           </div>
         </div>
       </div>
@@ -848,10 +850,10 @@
               <span>🎯</span> Funnel Konversi Pengunjung Website
             </h3>
             <p style="margin:2px 0 0;color:var(--text-secondary);font-size:12px">
-              Perjalanan calon klien dari pertama mendarat di parasdigital.id hingga menekan tombol konsultasi WhatsApp.
+              Perjalanan calon klien dari mendarat di parasdigital.id hingga menekan tombol konsultasi WhatsApp.
             </p>
           </div>
-          <div style="font-size:12px;background:var(--bg-base);padding:6px 14px;border-radius:999px;border:1px solid var(--border-subtle)">
+          <div style="font-size:12px;background:#F8FAFC;padding:6px 14px;border-radius:999px;border:1px solid var(--border-subtle)">
             Overall Conversion Rate: <b id="funnel-conv-rate" style="color:var(--green)">0.0%</b>
           </div>
         </div>
@@ -860,7 +862,7 @@
           <!-- Stage 1 -->
           <div class="funnel-stage">
             <div style="display:flex;justify-content:space-between;align-items:center">
-              <span style="font-size:11px;font-weight:700;color:var(--text-tertiary);text-transform:uppercase">Tahap 1 · Masuk</span>
+              <span style="font-size:11px;font-weight:700;color:var(--text-secondary);text-transform:uppercase">Tahap 1 · Masuk</span>
               <span class="badge badge-pv">100%</span>
             </div>
             <div style="font-size:22px;font-weight:800;font-family:'Plus Jakarta Sans'" id="funnel-v-count">0</div>
@@ -873,7 +875,7 @@
           <!-- Stage 2 -->
           <div class="funnel-stage">
             <div style="display:flex;justify-content:space-between;align-items:center">
-              <span style="font-size:11px;font-weight:700;color:var(--text-tertiary);text-transform:uppercase">Tahap 2 · Minat</span>
+              <span style="font-size:11px;font-weight:700;color:var(--text-secondary);text-transform:uppercase">Tahap 2 · Minat</span>
               <span class="badge badge-plan" id="funnel-plan-pct">0%</span>
             </div>
             <div style="font-size:22px;font-weight:800;font-family:'Plus Jakarta Sans'" id="funnel-p-count">0</div>
@@ -886,10 +888,10 @@
           <!-- Stage 3 -->
           <div class="funnel-stage">
             <div style="display:flex;justify-content:space-between;align-items:center">
-              <span style="font-size:11px;font-weight:700;color:var(--text-tertiary);text-transform:uppercase">Tahap 3 · Kontak</span>
+              <span style="font-size:11px;font-weight:700;color:var(--text-secondary);text-transform:uppercase">Tahap 3 · Kontak</span>
               <span class="badge badge-wa" id="funnel-wa-pct">0%</span>
             </div>
-            <div style="font-size:22px;font-weight:800;font-family:'Plus Jakarta Sans';color:#34D399" id="funnel-w-count">0</div>
+            <div style="font-size:22px;font-weight:800;font-family:'Plus Jakarta Sans';color:#059669" id="funnel-w-count">0</div>
             <div style="font-size:12px;color:var(--text-secondary)">Chat WhatsApp untuk konsultasi proyek</div>
             <div class="meter-bar"><div class="meter-fill" id="meter-wa-fill" style="width:0%;background:var(--green)"></div></div>
           </div>
@@ -927,7 +929,7 @@
             <h3 style="font-size:15px;display:flex;align-items:center;gap:6px">
               <span>🌐</span> Sumber Traffic (Referrer)
             </h3>
-            <span style="font-size:11px;color:var(--text-tertiary)">Kunjungan</span>
+            <span style="font-size:11px;color:var(--text-secondary)">Kunjungan</span>
           </div>
           <div id="list-referrers" style="display:flex;flex-direction:column;gap:8px"></div>
         </div>
@@ -938,7 +940,7 @@
             <h3 style="font-size:15px;display:flex;align-items:center;gap:6px">
               <span>🎯</span> Tombol & Paket Terpopuler
             </h3>
-            <span style="font-size:11px;color:var(--text-tertiary)">Frekuensi</span>
+            <span style="font-size:11px;color:var(--text-secondary)">Frekuensi</span>
           </div>
           <div id="list-clicks" style="display:flex;flex-direction:column;gap:8px"></div>
         </div>
@@ -949,7 +951,7 @@
             <h3 style="font-size:15px;display:flex;align-items:center;gap:6px">
               <span>📱</span> Distribusi Perangkat (Device)
             </h3>
-            <span style="font-size:11px;color:var(--text-tertiary)">Proporsi</span>
+            <span style="font-size:11px;color:var(--text-secondary)">Proporsi</span>
           </div>
           <div id="list-devices" style="display:flex;flex-direction:column;gap:8px"></div>
         </div>
@@ -960,7 +962,7 @@
             <h3 style="font-size:15px;display:flex;align-items:center;gap:6px">
               <span>🧭</span> Peramban (Browser)
             </h3>
-            <span style="font-size:11px;color:var(--text-tertiary)">Proporsi</span>
+            <span style="font-size:11px;color:var(--text-secondary)">Proporsi</span>
           </div>
           <div id="list-browsers" style="display:flex;flex-direction:column;gap:8px"></div>
         </div>
@@ -1122,9 +1124,8 @@ function showToast(msg, isError = false) {
   const icn = document.getElementById('toast-icon');
   txt.textContent = msg;
   icn.textContent = isError ? '✕' : '✓';
-  t.style.background = isError ? '#881337' : '#064E3B';
-  t.style.borderColor = isError ? '#F43F5E' : '#10B981';
-  t.style.color = '#FFF';
+  t.style.background = isError ? '#9F1239' : '#0F172A';
+  t.style.color = '#FFFFFF';
   t.style.display = 'inline-flex';
   setTimeout(() => { t.style.display = 'none'; }, isError ? 4500 : 2800);
 }
@@ -1312,7 +1313,7 @@ function renderDailyChart(daily = []) {
   const chartEl = document.getElementById('daily-chart');
   chartEl.innerHTML = '';
   if (!daily.length) {
-    chartEl.innerHTML = `<div style="margin:auto;color:var(--text-tertiary);font-size:13px">Belum ada rekaman data pada rentang waktu ini.</div>`;
+    chartEl.innerHTML = `<div style="margin:auto;color:var(--text-secondary);font-size:13px">Belum ada rekaman data pada rentang waktu ini.</div>`;
     return;
   }
 
@@ -1343,7 +1344,7 @@ function renderBreakdownList(containerId, items = [], labelFn, countFn, unit = '
   const el = document.getElementById(containerId);
   el.innerHTML = '';
   if (!items || items.length === 0) {
-    el.innerHTML = `<div style="color:var(--text-tertiary);font-size:13px;padding:8px 0">Belum ada aktivitas tercatat.</div>`;
+    el.innerHTML = `<div style="color:var(--text-secondary);font-size:13px;padding:8px 0">Belum ada aktivitas tercatat.</div>`;
     return;
   }
 
@@ -1364,7 +1365,7 @@ function renderBreakdownList(containerId, items = [], labelFn, countFn, unit = '
 
     row.innerHTML = `
       <div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
-        <span style="font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${label}</span>
+        <span style="font-weight:600;color:var(--text-primary);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${label}</span>
         <div style="display:flex;align-items:center;gap:8px;flex:none">
           <span style="font-size:12px;font-family:var(--mono-font);color:var(--text-secondary)">${count} ${unit}</span>
           <span class="badge">${pct}%</span>
@@ -1383,7 +1384,7 @@ function renderRecentTable(recent = []) {
   const tbody = document.getElementById('table-recent');
   tbody.innerHTML = '';
   if (!recent.length) {
-    tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;color:var(--text-tertiary);padding:24px">Belum ada rekaman pengunjung terbaru.</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;color:var(--text-secondary);padding:24px">Belum ada rekaman pengunjung terbaru.</td></tr>`;
     return;
   }
 
@@ -1403,9 +1404,9 @@ function renderRecentTable(recent = []) {
 
     tr.innerHTML = `
       <td><span class="badge ${badgeClass}">${icon} ${r.event_type}</span></td>
-      <td style="font-weight:600;color:#FFF">${r.event_label || r.page_path || 'Kunjungan Landing Page'}</td>
+      <td style="font-weight:600;color:var(--text-primary)">${r.event_label || r.page_path || 'Kunjungan Landing Page'}</td>
       <td style="color:var(--text-secondary);font-size:12px">${deviceIcon} · ${r.browser || 'Browser'}</td>
-      <td style="color:var(--text-tertiary);font-size:12px;font-family:var(--mono-font)">#${r.visitor_hash ? r.visitor_hash.substring(0, 8) : 'anon'}</td>
+      <td style="color:var(--text-secondary);font-size:12px;font-family:var(--mono-font)">#${r.visitor_hash ? r.visitor_hash.substring(0, 8) : 'anon'}</td>
       <td style="text-align:right;color:var(--text-secondary);font-size:12px;font-family:var(--mono-font);white-space:nowrap">${r.time_str || ''} WIB</td>
     `;
     tbody.appendChild(tr);
@@ -1431,10 +1432,10 @@ function renderPricingEditor(containerId, list) {
   el.innerHTML = '';
   list.forEach((plan, idx) => {
     const box = document.createElement('div');
-    box.style.cssText = 'background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:12px';
+    box.style.cssText = 'background:#FFFFFF;border:1px solid var(--border-subtle);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:12px;box-shadow:var(--shadow-sm)';
     box.innerHTML = `
       <div style="display:flex;justify-content:space-between;align-items:center">
-        <strong style="color:#FFF;font-size:15px">Paket #${idx + 1} ${plan.featured ? '<span class="badge badge-plan">⭐ Populer</span>' : ''}</strong>
+        <strong style="color:var(--text-primary);font-size:15px">Paket #${idx + 1} ${plan.featured ? '<span class="badge badge-plan">⭐ Populer</span>' : ''}</strong>
       </div>
       <div class="field"><label>Nama Paket</label><input class="input p-name" value="${plan.name || ''}"></div>
       <div class="field"><label>Deskripsi Singkat</label><input class="input p-desc" value="${plan.desc || ''}"></div>
