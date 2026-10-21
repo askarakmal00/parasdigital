@@ -65,13 +65,13 @@ pm2 save
 sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u $USER --hp $HOME || true
 
 # 6. Setup Nginx Reverse Proxy
-echo "🌐 [6/6] Mengatur Nginx Reverse Proxy..."
+echo "🌐 [6/6] Mengatur Nginx Reverse Proxy untuk parasdigital.id..."
 sudo rm -f /etc/nginx/sites-enabled/default
 sudo tee /etc/nginx/sites-available/parasdigital > /dev/null <<'EOF'
 server {
     listen 80 default_server;
     listen [::]:80 default_server;
-    server_name _;
+    server_name parasdigital.id www.parasdigital.id _;
 
     location / {
         proxy_pass http://127.0.0.1:3000;
@@ -92,10 +92,14 @@ sudo nginx -t
 sudo systemctl enable nginx
 sudo systemctl restart nginx
 
+# 7. Setup SSL Otomatis dengan Certbot (Let's Encrypt)
+echo "🔐 [Opsional] Menyiapkan SSL HTTPS untuk parasdigital.id..."
+sudo certbot --nginx -d parasdigital.id -d www.parasdigital.id --non-interactive --agree-tos --redirect -m halo@parasdigital.id 2>/dev/null || true
+
 echo "====================================================="
 echo "✅ SELESAI! Website & CMS Paras Digital sudah aktif!"
-echo "👉 Buka Website : http://IP_VPS_ANDA/"
-echo "👉 Buka CMS     : http://IP_VPS_ANDA/admin"
+echo "👉 Buka Website : https://parasdigital.id (atau http://IP_VPS/)"
+echo "👉 Buka CMS     : https://parasdigital.id/admin"
 echo "   User Admin   : admin"
 echo "   Pass Admin   : parasdigital2026 (bisa diubah di .env)"
 echo "====================================================="
