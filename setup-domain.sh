@@ -64,3 +64,4 @@ else
     echo "   sudo certbot --nginx -d ${DOMAIN} -d www.${DOMAIN}"
     echo "====================================================="
 fi
+
