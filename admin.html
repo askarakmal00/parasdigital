@@ -3,1095 +3,717 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Admin & Intelligence Dashboard – Paras Digital</title>
+<title>Paras Digital — Admin</title>
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" type="image/svg+xml" href="asset/logoandicon/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
 <style>
-  *, *::before, *::after { box-sizing: border-box; }
-  :root {
-    --bg-base: #F8FAFC;
-    --bg-surface: #FFFFFF;
-    --bg-card: #FFFFFF;
-    --bg-card-subtle: #F1F5F9;
-    --bg-input: #FFFFFF;
-    --border-subtle: #E2E8F0;
-    --border-card: #E5E7EB;
-    --border-focus: #FF6B3D;
-    --text-primary: #0F172A;
-    --text-secondary: #475569;
-    --text-tertiary: #94A3B8;
-    --accent: #FF6B3D;
-    --accent-hover: #F25A2B;
-    --accent-light: #FFF2ED;
-    --green: #059669;
-    --green-bg: #ECFDF5;
-    --green-border: #A7F3D0;
-    --red: #E11D48;
-    --red-bg: #FFF1F2;
-    --red-border: #FECDD3;
-    --blue: #0284C7;
-    --blue-bg: #F0F9FF;
-    --blue-border: #BAE6FD;
-    --purple: #7C3AED;
-    --purple-bg: #FAF5FF;
-    --purple-border: #E9D5FF;
-    --shadow-sm: 0 1px 2px 0 rgba(15, 23, 42, 0.05);
-    --shadow-card: 0 2px 8px -1px rgba(15, 23, 42, 0.06), 0 1px 3px 0 rgba(15, 23, 42, 0.04);
-    --shadow-lg: 0 12px 32px -4px rgba(15, 23, 42, 0.1), 0 4px 12px -2px rgba(15, 23, 42, 0.06);
-    --mono-font: 'JetBrains Mono', monospace;
-  }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  body {
-    margin: 0;
-    background: var(--bg-base);
-    color: var(--text-primary);
-    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-    font-size: 14px;
-    line-height: 1.55;
-    -webkit-font-smoothing: antialiased;
-  }
+:root {
+  --bg:        #F4F6F8;
+  --surface:   #FFFFFF;
+  --border:    #E4E7EC;
+  --border-md: #CDD2DA;
+  --text:      #111827;
+  --muted:     #6B7280;
+  --subtle:    #9CA3AF;
+  --accent:    #E55A2B;
+  --accent-bg: #FEF0EB;
+  --green:     #059669;
+  --green-bg:  #ECFDF5;
+  --green-br:  #A7F3D0;
+  --red:       #DC2626;
+  --red-bg:    #FEF2F2;
+  --red-br:    #FECACA;
+  --blue:      #2563EB;
+  --blue-bg:   #EFF6FF;
+  --blue-br:   #BFDBFE;
+  --purple:    #7C3AED;
+  --purple-bg: #F5F3FF;
+  --purple-br: #DDD6FE;
+  --shadow:    0 1px 3px rgba(0,0,0,.07), 0 1px 2px rgba(0,0,0,.05);
+  --shadow-md: 0 4px 12px rgba(0,0,0,.08), 0 2px 4px rgba(0,0,0,.05);
+  --radius:    10px;
+}
 
-  h1, h2, h3, h4, .font-heading {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    color: var(--text-primary);
-    margin: 0;
-    letter-spacing: -0.02em;
-  }
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 13.5px;
+  line-height: 1.55;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
 
-  button, input, textarea, select {
-    font: inherit;
-    color: inherit;
-  }
+/* ─── SCROLLBAR ─── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #D1D5DB; border-radius: 4px; }
 
-  /* ─── SCROLLBAR ─── */
-  ::-webkit-scrollbar { width: 8px; height: 8px; }
-  ::-webkit-scrollbar-track { background: var(--bg-base); }
-  ::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 4px; }
-  ::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
+/* ─── HELPERS ─── */
+.mono { font-family: 'JetBrains Mono', monospace; }
+.text-muted { color: var(--muted); }
+.text-subtle { color: var(--subtle); }
 
-  /* ─── LOGIN SCREEN ─── */
-  #login-view {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
-    background:
-      radial-gradient(55% 45% at 50% 12%, rgba(255, 107, 61, 0.09) 0%, transparent 70%),
-      radial-gradient(40% 40% at 85% 90%, rgba(5, 150, 105, 0.06) 0%, transparent 60%),
-      var(--bg-base);
-  }
-  .login-card {
-    width: 100%;
-    max-width: 420px;
-    background: var(--bg-surface);
-    border: 1px solid var(--border-subtle);
-    border-radius: 24px;
-    padding: 40px 32px;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    box-shadow: var(--shadow-lg);
-  }
-  .brand-logo {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    text-decoration: none;
-    color: var(--text-primary);
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 19px;
-  }
+/* ─── FORM ─── */
+.field { display: flex; flex-direction: column; gap: 5px; }
+.label {
+  font-size: 11.5px; font-weight: 600; color: var(--muted);
+  text-transform: uppercase; letter-spacing: .04em;
+}
+.input {
+  background: var(--surface); border: 1px solid var(--border);
+  color: var(--text); padding: 9px 12px; border-radius: var(--radius);
+  outline: none; width: 100%; font: inherit; font-size: 13.5px;
+  transition: border-color .15s, box-shadow .15s;
+}
+.input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(229,90,43,.12);
+}
+textarea.input { min-height: 86px; resize: vertical; }
+select.input { cursor: pointer; }
 
-  /* ─── FORM CONTROLS ─── */
-  .field {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-  .field label {
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--text-secondary);
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
-  }
-  .input {
-    background: var(--bg-input);
-    border: 1px solid var(--border-subtle);
-    color: var(--text-primary);
-    padding: 10px 14px;
-    border-radius: 10px;
-    outline: none;
-    width: 100%;
-    font-size: 14px;
-    transition: all 0.2s ease;
-  }
-  .input:focus {
-    border-color: var(--accent);
-    background: #FFFFFF;
-    box-shadow: 0 0 0 3px rgba(255, 107, 61, 0.15);
-  }
-  textarea.input {
-    min-height: 88px;
-    resize: vertical;
-    font-family: inherit;
-    line-height: 1.5;
-  }
+/* ─── BUTTONS ─── */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  font: 600 13px/1 'Inter', sans-serif; border: none; cursor: pointer;
+  border-radius: var(--radius); padding: 9px 16px; white-space: nowrap;
+  transition: background .15s, box-shadow .15s, transform .1s;
+  text-decoration: none;
+}
+.btn:active { transform: scale(.98); }
+.btn-primary { background: var(--accent); color: #fff; box-shadow: 0 1px 3px rgba(229,90,43,.35); }
+.btn-primary:hover { background: #CC4D22; }
+.btn-ghost { background: transparent; color: var(--muted); border: 1px solid var(--border); }
+.btn-ghost:hover { background: #F9FAFB; color: var(--text); border-color: var(--border-md); }
+.btn-danger-ghost { background: var(--red-bg); color: var(--red); border: 1px solid var(--red-br); }
+.btn-danger-ghost:hover { background: #FEE2E2; }
 
-  .btn {
-    border: 0;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 13px;
-    border-radius: 10px;
-    padding: 10px 18px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    transition: all 0.15s ease;
-    white-space: nowrap;
-    text-decoration: none;
-  }
-  .btn:hover { transform: translateY(-1px); }
-  .btn:active { transform: translateY(0); }
-  .btn-accent {
-    background: var(--accent);
-    color: #FFFFFF;
-    font-weight: 700;
-    box-shadow: 0 2px 10px rgba(255, 107, 61, 0.3);
-  }
-  .btn-accent:hover {
-    background: var(--accent-hover);
-    box-shadow: 0 4px 14px rgba(255, 107, 61, 0.4);
-  }
-  .btn-outline {
-    background: #FFFFFF;
-    color: var(--text-primary);
-    border: 1px solid var(--border-subtle);
-    box-shadow: var(--shadow-sm);
-  }
-  .btn-outline:hover {
-    background: #F1F5F9;
-    border-color: #CBD5E1;
-  }
-  .btn-danger {
-    background: var(--red-bg);
-    color: var(--red);
-    border: 1px solid var(--red-border);
-  }
-  .btn-danger:hover {
-    background: #FFE4E6;
-  }
+/* ─── DIVIDER ─── */
+.divider { height: 1px; background: var(--border); }
 
-  /* ─── APP SHELL ─── */
-  #app-view {
-    display: none;
-    min-height: 100vh;
-    flex-direction: column;
-  }
-  .topbar {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: rgba(255, 255, 255, 0.94);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border-bottom: 1px solid var(--border-subtle);
-    padding: 12px 28px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
-  }
-  .nav-tabs {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4px;
-    background: #F1F5F9;
-    padding: 4px;
-    border-radius: 12px;
-    border: 1px solid var(--border-subtle);
-  }
-  .nav-tab {
-    border: 0;
-    background: transparent;
-    color: var(--text-secondary);
-    font-weight: 600;
-    font-size: 13px;
-    padding: 8px 16px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.15s ease;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .nav-tab:hover {
-    color: var(--text-primary);
-  }
-  .nav-tab.active {
-    background: #FFFFFF;
-    color: var(--text-primary);
-    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
-    font-weight: 700;
-  }
+/* ─── LOGIN ─── */
+#login-view {
+  min-height: 100vh; display: flex; align-items: center; justify-content: center;
+  padding: 24px;
+  background: linear-gradient(135deg, #F4F6F8 0%, #EEF2F7 100%);
+}
+.login-wrap {
+  width: 100%; max-width: 380px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 36px 32px 32px;
+  box-shadow: var(--shadow-md);
+  display: flex; flex-direction: column; gap: 22px;
+}
+.login-brand { display: flex; align-items: center; gap: 10px; }
+.login-brand-name {
+  font-size: 16px; font-weight: 700; color: var(--text);
+  letter-spacing: -.02em;
+}
+.login-brand-tag {
+  font-size: 11px; font-weight: 500; color: var(--muted);
+  background: #F3F4F6; border: 1px solid var(--border);
+  padding: 2px 7px; border-radius: 4px; letter-spacing: .02em;
+}
 
-  .status-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    padding: 4px 11px;
-    border-radius: 999px;
-    font-size: 12px;
-    font-weight: 600;
-    background: var(--green-bg);
-    border: 1px solid var(--green-border);
-    color: #047857;
-  }
-  .pulse-dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: #10B981;
-    box-shadow: 0 0 6px rgba(16, 185, 129, 0.6);
-    animation: livePulse 2s infinite ease-in-out;
-  }
-  @keyframes livePulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.4; transform: scale(0.85); }
-  }
+/* ─── TOPBAR ─── */
+#app-view { display: none; min-height: 100vh; flex-direction: column; }
+.topbar {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(255,255,255,.95); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  height: 54px; padding: 0 28px;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+}
+.topbar-brand { display: flex; align-items: center; gap: 8px; }
+.topbar-brand-name {
+  font-size: 14px; font-weight: 700; color: var(--text); letter-spacing: -.02em;
+  text-decoration: none;
+}
+.topbar-badge {
+  font-size: 11px; font-weight: 500; color: var(--green);
+  background: var(--green-bg); border: 1px solid var(--green-br);
+  padding: 2px 8px; border-radius: 999px;
+  display: inline-flex; align-items: center; gap: 5px;
+}
+.live-dot {
+  width: 6px; height: 6px; border-radius: 50%; background: var(--green);
+  animation: blink 2s ease-in-out infinite;
+}
+@keyframes blink {
+  0%,100% { opacity: 1; }
+  50% { opacity: .3; }
+}
 
-  /* ─── CONTAINER & SECTIONS ─── */
-  .container {
-    max-width: 1280px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 32px 24px 80px;
-    display: flex;
-    flex-direction: column;
-    gap: 26px;
-  }
-  .tab-pane {
-    display: none;
-    flex-direction: column;
-    gap: 24px;
-  }
-  .tab-pane.active {
-    display: flex;
-  }
+/* Navigation */
+.nav { display: flex; align-items: center; gap: 2px; }
+.nav-item {
+  font-size: 13px; font-weight: 500; color: var(--muted);
+  background: none; border: none; cursor: pointer;
+  padding: 7px 14px; border-radius: 8px;
+  transition: background .15s, color .15s;
+  display: flex; align-items: center; gap: 6px;
+}
+.nav-item:hover { background: #F3F4F6; color: var(--text); }
+.nav-item.active { background: #F3F4F6; color: var(--text); font-weight: 600; }
 
-  /* ─── CARDS & GRIDS ─── */
-  .grid-4 {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 16px;
-  }
-  .grid-2 {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-    gap: 20px;
-  }
+.topbar-right { display: flex; align-items: center; gap: 8px; }
 
-  .card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-subtle);
-    border-radius: 18px;
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    box-shadow: var(--shadow-card);
-    transition: box-shadow 0.2s ease, border-color 0.2s ease;
-  }
-  .card:hover {
-    border-color: #CBD5E1;
-  }
+/* ─── CONTENT AREA ─── */
+.main {
+  max-width: 1240px; width: 100%; margin: 0 auto;
+  padding: 32px 28px 80px;
+  display: flex; flex-direction: column; gap: 24px;
+}
+.pane { display: none; flex-direction: column; gap: 20px; }
+.pane.active { display: flex; }
 
-  /* ─── STAT KPI HERO CARDS ─── */
-  .kpi-card {
-    background: #FFFFFF;
-    border: 1px solid var(--border-subtle);
-    border-radius: 18px;
-    padding: 22px 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    position: relative;
-    box-shadow: var(--shadow-card);
-    transition: all 0.2s ease;
-  }
-  .kpi-card:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-lg);
-  }
-  .kpi-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-  }
-  .kpi-title {
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--text-secondary);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .kpi-icon {
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 15px;
-    background: var(--kpi-icon-bg, #F1F5F9);
-    border: 1px solid var(--border-subtle);
-  }
-  .kpi-main {
-    display: flex;
-    align-items: baseline;
-    gap: 10px;
-  }
-  .kpi-number {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 38px;
-    font-weight: 800;
-    line-height: 1;
-    letter-spacing: -0.03em;
-    color: var(--text-primary);
-  }
-  .kpi-unit {
-    font-size: 13px;
-    color: var(--text-secondary);
-    font-weight: 500;
-  }
-  .kpi-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    padding-top: 10px;
-    border-top: 1px solid #F1F5F9;
-    font-size: 12px;
-  }
+/* ─── PAGE HEADER ─── */
+.page-header {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  flex-wrap: wrap; gap: 14px;
+}
+.page-title { font-size: 20px; font-weight: 700; letter-spacing: -.02em; }
+.page-desc { font-size: 13px; color: var(--muted); margin-top: 3px; }
 
-  /* ─── GROWTH BADGES ─── */
-  .growth-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    padding: 3px 8px;
-    border-radius: 6px;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.02em;
-  }
-  .growth-pill.up {
-    background: var(--green-bg);
-    color: #047857;
-    border: 1px solid var(--green-border);
-  }
-  .growth-pill.down {
-    background: var(--red-bg);
-    color: #BE123C;
-    border: 1px solid var(--red-border);
-  }
-  .growth-pill.neutral {
-    background: #F1F5F9;
-    color: var(--text-secondary);
-    border: 1px solid var(--border-subtle);
-  }
+/* ─── CARD ─── */
+.card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); box-shadow: var(--shadow);
+}
+.card-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 20px; border-bottom: 1px solid var(--border);
+}
+.card-title { font-size: 13.5px; font-weight: 600; letter-spacing: -.01em; }
+.card-body { padding: 20px; }
+.card-body-sm { padding: 16px 20px; }
 
-  /* ─── CONVERSION FUNNEL STRIP ─── */
-  .funnel-card {
-    background: #FFFFFF;
-    border: 1px solid var(--border-subtle);
-    border-radius: 18px;
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-    box-shadow: var(--shadow-card);
-  }
-  .funnel-stages {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr auto 1fr;
-    align-items: center;
-    gap: 12px;
-  }
-  @media (max-width: 820px) {
-    .funnel-stages {
-      grid-template-columns: 1fr;
-      gap: 14px;
-    }
-    .funnel-arrow { display: none; }
-  }
-  .funnel-stage {
-    background: #F8FAFC;
-    border: 1px solid var(--border-subtle);
-    border-radius: 14px;
-    padding: 16px 18px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-  .funnel-arrow {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #94A3B8;
-    font-size: 18px;
-  }
+/* ─── GRID ─── */
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 14px;
+}
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 16px;
+}
+.grid-2-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+@media (max-width: 640px) {
+  .grid-2-col { grid-template-columns: 1fr; }
+}
 
-  /* ─── INTERACTIVE BAR CHART ─── */
-  .chart-container {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-  }
-  .chart-wrap {
-    height: 240px;
-    display: flex;
-    align-items: flex-end;
-    gap: 8px;
-    padding: 28px 12px 10px;
-    border-bottom: 2px solid #E2E8F0;
-    overflow-x: auto;
-    position: relative;
-    background: #FCFDFE;
-    border-radius: 12px;
-  }
-  .chart-col {
-    flex: 1;
-    min-width: 38px;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 8px;
-    cursor: pointer;
-    position: relative;
-  }
-  .chart-bars {
-    width: 100%;
-    height: 180px;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    gap: 3px;
-  }
-  .bar-pv {
-    width: 44%;
-    background: #0284C7;
-    border-radius: 4px 4px 0 0;
-    transition: height 0.3s ease, filter 0.2s;
-    min-height: 4px;
-  }
-  .bar-uv {
-    width: 44%;
-    background: #FF6B3D;
-    border-radius: 4px 4px 0 0;
-    transition: height 0.3s ease, filter 0.2s;
-    min-height: 4px;
-  }
-  .chart-col:hover .bar-pv, .chart-col:hover .bar-uv {
-    filter: brightness(0.9);
-  }
-  .chart-lbl {
-    font-size: 11px;
-    color: var(--text-secondary);
-    white-space: nowrap;
-    font-weight: 600;
-  }
+/* ─── STAT CARD ─── */
+.stat {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); box-shadow: var(--shadow);
+  padding: 18px 20px; display: flex; flex-direction: column; gap: 12px;
+}
+.stat-header {
+  display: flex; align-items: center; justify-content: space-between;
+}
+.stat-label { font-size: 12px; font-weight: 600; color: var(--muted); }
+.stat-number {
+  font-size: 32px; font-weight: 700; letter-spacing: -.03em;
+  line-height: 1; font-family: 'Inter', sans-serif;
+}
+.stat-footer {
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 12px; color: var(--muted);
+  padding-top: 10px; border-top: 1px solid var(--border);
+}
 
-  /* Tooltip on Chart */
-  .chart-col:hover::before {
-    content: attr(data-tooltip);
-    position: absolute;
-    bottom: calc(100% - 10px);
-    left: 50%;
-    transform: translateX(-50%);
-    background: #0F172A;
-    color: #FFFFFF;
-    font-size: 11px;
-    padding: 6px 10px;
-    border-radius: 8px;
-    white-space: pre;
-    z-index: 20;
-    pointer-events: none;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-    line-height: 1.4;
-    text-align: center;
-  }
+/* ─── BADGE ─── */
+.badge {
+  font-size: 11px; font-weight: 600; padding: 2px 8px;
+  border-radius: 5px; font-family: 'Inter', sans-serif;
+  white-space: nowrap;
+}
+.badge-up    { background: var(--green-bg);  color: #047857; border: 1px solid var(--green-br); }
+.badge-down  { background: var(--red-bg);    color: #B91C1C; border: 1px solid var(--red-br); }
+.badge-flat  { background: #F3F4F6; color: var(--muted); border: 1px solid var(--border); }
+.badge-blue  { background: var(--blue-bg);   color: var(--blue); border: 1px solid var(--blue-br); }
+.badge-orange{ background: var(--accent-bg); color: var(--accent); border: 1px solid #FDCDB8; }
+.badge-purple{ background: var(--purple-bg); color: var(--purple); border: 1px solid var(--purple-br); }
+.badge-green { background: var(--green-bg);  color: var(--green); border: 1px solid var(--green-br); }
 
-  /* ─── DATA LISTS & TABLES ─── */
-  .list-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    padding: 10px 14px;
-    background: #F8FAFC;
-    border-radius: 12px;
-    font-size: 13px;
-    border: 1px solid var(--border-subtle);
-    transition: background 0.15s ease;
-  }
-  .list-item:hover {
-    background: #F1F5F9;
-  }
-  .meter-bar {
-    height: 5px;
-    background: #E2E8F0;
-    border-radius: 3px;
-    overflow: hidden;
-    margin-top: 5px;
-    width: 100%;
-  }
-  .meter-fill {
-    height: 100%;
-    border-radius: 3px;
-    background: var(--accent);
-  }
+/* ─── FUNNEL STRIP ─── */
+.funnel { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 10px; align-items: center; }
+@media (max-width: 780px) {
+  .funnel { grid-template-columns: 1fr; }
+  .funnel-arrow { display: none; }
+}
+.funnel-stage {
+  background: #F9FAFB; border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 14px 16px;
+  display: flex; flex-direction: column; gap: 6px;
+}
+.funnel-stage-label { font-size: 11px; font-weight: 600; color: var(--subtle); text-transform: uppercase; letter-spacing: .04em; }
+.funnel-stage-num { font-size: 24px; font-weight: 700; letter-spacing: -.02em; }
+.funnel-stage-desc { font-size: 12px; color: var(--muted); }
+.funnel-arrow { text-align: center; color: var(--subtle); font-size: 16px; }
+.progress-bar { height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; }
+.progress-fill { height: 100%; border-radius: 2px; transition: width .4s ease; }
 
-  .badge {
-    font-size: 11px;
-    font-weight: 700;
-    padding: 3px 8px;
-    border-radius: 6px;
-    background: var(--accent-light);
-    color: #C2410C;
-    border: 1px solid #FFD0B8;
-    font-family: var(--mono-font);
-  }
-  .badge-wa {
-    background: var(--green-bg);
-    color: #047857;
-    border-color: var(--green-border);
-  }
-  .badge-pv {
-    background: var(--blue-bg);
-    color: #0369A1;
-    border-color: var(--blue-border);
-  }
-  .badge-plan {
-    background: var(--purple-bg);
-    color: #6D28D9;
-    border-color: var(--purple-border);
-  }
+/* ─── CHART ─── */
+.chart-area {
+  height: 200px; display: flex; align-items: flex-end; gap: 6px;
+  padding: 16px 4px 0; overflow-x: auto;
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(180deg, #FAFBFC 0%, transparent 100%);
+  border-radius: 8px 8px 0 0;
+}
+.bar-col {
+  flex: 1; min-width: 32px; display: flex; flex-direction: column;
+  align-items: center; gap: 6px; height: 100%; justify-content: flex-end;
+  cursor: default; position: relative;
+}
+.bars { display: flex; align-items: flex-end; justify-content: center; gap: 2px; width: 100%; }
+.b-uv { width: 46%; background: var(--accent); border-radius: 3px 3px 0 0; min-height: 3px; transition: height .3s ease; }
+.b-pv { width: 46%; background: var(--blue); opacity: .65; border-radius: 3px 3px 0 0; min-height: 3px; transition: height .3s ease; }
+.bar-col:hover::before {
+  content: attr(data-tip);
+  position: absolute; bottom: calc(100% + 4px); left: 50%;
+  transform: translateX(-50%);
+  background: #1F2937; color: #F9FAFB;
+  font-size: 11px; padding: 5px 8px; border-radius: 6px;
+  white-space: pre; text-align: center; z-index: 10;
+  pointer-events: none; line-height: 1.5;
+  box-shadow: 0 4px 12px rgba(0,0,0,.2);
+}
+.bar-lbl { font-size: 10.5px; color: var(--subtle); font-weight: 500; padding-bottom: 4px; }
+.chart-legend { display: flex; gap: 16px; font-size: 12px; color: var(--muted); }
+.legend-dot { width: 9px; height: 9px; border-radius: 2px; display: inline-block; }
 
-  /* Realtime Table */
-  .activity-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 13px;
-  }
-  .activity-table th {
-    text-align: left;
-    padding: 10px 14px;
-    color: var(--text-secondary);
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    border-bottom: 2px solid var(--border-subtle);
-    background: #F8FAFC;
-  }
-  .activity-table td {
-    padding: 12px 14px;
-    border-bottom: 1px solid #F1F5F9;
-    color: var(--text-primary);
-  }
-  .activity-table tr:hover td {
-    background: #F8FAFC;
-  }
+/* ─── ROW ITEM ─── */
+.row-item {
+  display: flex; flex-direction: column; gap: 5px;
+  padding: 11px 14px; border-radius: 8px;
+  background: #F9FAFB; border: 1px solid var(--border);
+  transition: background .12s;
+}
+.row-item:hover { background: #F3F4F6; }
+.row-item-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.row-item-label { font-weight: 500; font-size: 13px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.row-item-meta { display: flex; align-items: center; gap: 8px; flex: none; }
+.row-item-val { font-size: 12px; color: var(--muted); font-family: 'JetBrains Mono', monospace; }
 
-  /* ─── TOAST NOTIFICATION ─── */
-  #toast {
-    position: fixed;
-    bottom: 28px;
-    right: 28px;
-    z-index: 999;
-    background: #0F172A;
-    color: #FFFFFF;
-    font-weight: 600;
-    padding: 14px 22px;
-    border-radius: 12px;
-    box-shadow: 0 16px 36px rgba(0,0,0,0.18);
-    display: none;
-    align-items: center;
-    gap: 10px;
-    animation: toastPop 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  @keyframes toastPop {
-    from { opacity: 0; transform: translateY(12px) scale(0.96); }
-    to { opacity: 1; transform: translateY(0) scale(1); }
-  }
+/* ─── ACTIVITY TABLE ─── */
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+thead th {
+  text-align: left; padding: 9px 14px;
+  font-size: 11.5px; font-weight: 600; color: var(--muted);
+  text-transform: uppercase; letter-spacing: .04em;
+  border-bottom: 1px solid var(--border);
+  background: #F9FAFB;
+}
+tbody td { padding: 11px 14px; border-bottom: 1px solid #F3F4F6; }
+tbody tr:hover td { background: #FAFAFA; }
+tbody tr:last-child td { border-bottom: none; }
+
+/* ─── PRICING EDITOR CARD ─── */
+.plan-box {
+  background: #F9FAFB; border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 18px;
+  display: flex; flex-direction: column; gap: 12px;
+}
+
+/* ─── TOAST ─── */
+#toast {
+  position: fixed; bottom: 24px; right: 24px; z-index: 9999;
+  background: #111827; color: #fff;
+  padding: 12px 18px; border-radius: var(--radius);
+  font-size: 13px; font-weight: 500;
+  display: none; align-items: center; gap: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.18);
+  animation: popIn .2s cubic-bezier(.34,1.56,.64,1);
+}
+@keyframes popIn {
+  from { opacity: 0; transform: translateY(8px) scale(.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+.toast-icon {
+  width: 18px; height: 18px; border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 10px; font-weight: 700; flex: none;
+}
+.toast-icon.ok  { background: #059669; }
+.toast-icon.err { background: #DC2626; }
+
+/* ─── SVG ICONS ─── */
+.ico { display: inline-block; flex: none; vertical-align: middle; }
+.stat-icon {
+  width: 34px; height: 34px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  flex: none;
+}
 </style>
 </head>
 <body>
 
-<!-- ═════════════════════════════════════════════════════════════
-     LOGIN VIEW
-═════════════════════════════════════════════════════════════ -->
+<!-- ══════════════════════════════════════════════════════════════
+     LOGIN
+══════════════════════════════════════════════════════════════ -->
 <div id="login-view">
-  <form class="login-card" id="login-form">
-    <div style="display:flex;align-items:center;justify-content:space-between">
-      <div class="brand-logo">
-        <svg width="32" height="32" viewBox="0 0 48 48" aria-hidden="true">
-          <rect x="6" y="5" width="11" height="38" rx="5.5" fill="#0D1F1E"/>
-          <circle cx="27" cy="19" r="14" fill="#0D1F1E"/>
-          <circle cx="29.5" cy="19" r="4.6" fill="#FF6B3D"/>
-        </svg>
-        <span><b>paras</b> <span style="color:var(--text-secondary);font-weight:500">dashboard</span></span>
-      </div>
-      <span class="status-pill"><span class="pulse-dot"></span> v2.4</span>
+  <form id="login-form" class="login-wrap">
+
+    <div class="login-brand">
+      <svg width="26" height="26" viewBox="0 0 48 48" fill="none">
+        <rect x="6" y="5" width="11" height="38" rx="5.5" fill="#111827"/>
+        <circle cx="27" cy="19" r="14" fill="#111827"/>
+        <circle cx="29.5" cy="19" r="4.6" fill="#E55A2B"/>
+      </svg>
+      <span class="login-brand-name">Paras Digital</span>
+      <span class="login-brand-tag">ADMIN</span>
     </div>
 
     <div>
-      <h2 style="font-size:22px">Portal Manajemen Studio</h2>
-      <p style="margin:6px 0 0;color:var(--text-secondary);font-size:13px">Masuk untuk melihat metrik real-time & mengelola konten parasdigital.id</p>
+      <div style="font-size:17px;font-weight:700;letter-spacing:-.02em">Masuk ke Portal</div>
+      <div style="font-size:13px;color:var(--muted);margin-top:4px">Kelola website dan pantau performa harian Anda.</div>
     </div>
 
-    <div id="login-err" style="display:none;background:var(--red-bg);color:var(--red);padding:12px 16px;border-radius:12px;font-size:13px;border:1px solid var(--red-border)"></div>
+    <div id="login-err" style="display:none;background:var(--red-bg);color:var(--red);padding:10px 14px;border-radius:8px;font-size:13px;border:1px solid var(--red-br)"></div>
 
     <div class="field">
-      <label>Username Operator</label>
-      <input class="input" type="text" id="login-user" required autocomplete="username" placeholder="Masukkan username">
+      <label class="label">Username</label>
+      <input class="input" id="login-user" type="text" required autocomplete="username" placeholder="admin">
     </div>
-
     <div class="field">
-      <label>Kata Sandi Akses</label>
-      <input class="input" type="password" id="login-pass" required autocomplete="current-password" placeholder="••••••••">
+      <label class="label">Password</label>
+      <input class="input" id="login-pass" type="password" required autocomplete="current-password" placeholder="••••••••">
     </div>
 
-    <button type="submit" class="btn btn-accent" style="padding:13px;margin-top:6px;font-size:14px">
-      Buka Dashboard Studio →
-    </button>
+    <button type="submit" class="btn btn-primary" style="width:100%;padding:11px">Masuk</button>
   </form>
 </div>
 
-<!-- ═════════════════════════════════════════════════════════════
-     APP DASHBOARD VIEW
-═════════════════════════════════════════════════════════════ -->
+<!-- ══════════════════════════════════════════════════════════════
+     APP
+══════════════════════════════════════════════════════════════ -->
 <div id="app-view">
-  <!-- Topbar Header -->
+
+  <!-- Topbar -->
   <header class="topbar">
-    <div style="display:flex;align-items:center;gap:18px">
-      <a href="/" target="_blank" class="brand-logo" title="Buka website publik">
-        <svg width="26" height="26" viewBox="0 0 48 48">
-          <rect x="6" y="5" width="11" height="38" rx="5.5" fill="#0D1F1E"/>
-          <circle cx="27" cy="19" r="14" fill="#0D1F1E"/>
-          <circle cx="29.5" cy="19" r="4.6" fill="#FF6B3D"/>
-        </svg>
-        <span><b>paras</b> <span style="color:var(--text-secondary);font-weight:500">studio</span></span>
-      </a>
-      <span class="status-pill" title="Server PostgreSQL VPS aktif & merekam pengunjung">
-        <span class="pulse-dot"></span> Live Analytics · parasdigital.id
+    <div class="topbar-brand">
+      <a href="/" target="_blank" class="topbar-brand-name">Paras Digital</a>
+      <span class="topbar-badge">
+        <span class="live-dot"></span>
+        Live
       </span>
     </div>
 
-    <!-- Navigation Tabs -->
-    <nav class="nav-tabs">
-      <button class="nav-tab active" onclick="switchTab('traffic', this)">
-        <span>📈</span> Performa & Traffic
+    <nav class="nav">
+      <button class="nav-item active" onclick="switchTab('traffic', this)">
+        <svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        Analitik
       </button>
-      <button class="nav-tab" onclick="switchTab('pricing', this)">
-        <span>🏷️</span> Paket & Harga
+      <button class="nav-item" onclick="switchTab('pricing', this)">
+        <svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+        Paket & Harga
       </button>
-      <button class="nav-tab" onclick="switchTab('portfolio', this)">
-        <span>🖼️</span> Portofolio
+      <button class="nav-item" onclick="switchTab('portfolio', this)">
+        <svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        Portofolio
       </button>
-      <button class="nav-tab" onclick="switchTab('settings', this)">
-        <span>⚙️</span> Kontak & WhatsApp
+      <button class="nav-item" onclick="switchTab('settings', this)">
+        <svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+        Pengaturan
       </button>
     </nav>
 
-    <!-- Right Controls -->
-    <div style="display:flex;align-items:center;gap:10px">
-      <a href="/" target="_blank" class="btn btn-outline" style="font-size:12px;padding:8px 14px">
-        Website Publik ↗
+    <div class="topbar-right">
+      <a href="/" target="_blank" class="btn btn-ghost" style="font-size:12px;padding:7px 13px">
+        Buka Website
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
       </a>
-      <button class="btn btn-outline" style="font-size:12px;padding:8px 14px" onclick="logout()">
-        Keluar
-      </button>
+      <button class="btn btn-ghost" onclick="logout()" style="font-size:12px;padding:7px 13px">Keluar</button>
     </div>
   </header>
 
-  <!-- Main Content Wrapper -->
-  <main class="container">
+  <!-- Content -->
+  <main class="main">
 
-    <!-- ═════════════════════════════════════════════════════════
-         TAB 1: PERFORMA & TRAFFIC MONITOR
-    ═════════════════════════════════════════════════════════ -->
-    <section id="tab-traffic" class="tab-pane active">
+    <!-- ══════════ TAB: ANALITIK ══════════ -->
+    <section id="tab-traffic" class="pane active">
 
-      <!-- Header & Filter Controls -->
-      <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px">
+      <div class="page-header">
         <div>
-          <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
-            <span style="font-size:11px;font-weight:700;letter-spacing:0.06em;color:var(--accent);text-transform:uppercase">Overview Ringkasan</span>
-            <span style="color:var(--text-tertiary)">•</span>
-            <span id="current-date-lbl" style="font-size:12px;color:var(--text-secondary);font-family:var(--mono-font)"></span>
-          </div>
-          <h1 style="font-size:26px">Performa Situs & Konversi Klien</h1>
-          <p style="margin:4px 0 0;color:var(--text-secondary);font-size:13px">
-            Pantau pertumbuhan traffic harian, interaksi paket penawaran, serta calon klien yang menghubungi WhatsApp.
-          </p>
+          <div class="page-title">Analitik & Performa</div>
+          <div class="page-desc" id="current-date-lbl"></div>
         </div>
-
-        <div style="display:flex;align-items:center;gap:10px">
-          <select id="stats-days" class="input" style="width:auto;padding:8px 14px;font-size:13px" onchange="loadStats()">
-            <option value="7">7 Hari Terakhir</option>
-            <option value="14" selected>14 Hari Terakhir</option>
-            <option value="30">30 Hari Terakhir</option>
-            <option value="90">90 Hari Terakhir</option>
+        <div style="display:flex;align-items:center;gap:8px">
+          <select id="stats-days" class="input" style="width:auto;padding:8px 12px" onchange="loadStats()">
+            <option value="7">7 hari terakhir</option>
+            <option value="14" selected>14 hari terakhir</option>
+            <option value="30">30 hari terakhir</option>
+            <option value="90">90 hari terakhir</option>
           </select>
-          <button class="btn btn-outline" style="padding:8px 14px" onclick="loadStats()" id="btn-refresh">
-            <span id="refresh-icon">↻</span> Segarkan
+          <button class="btn btn-ghost" onclick="loadStats()" id="btn-refresh">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>
+            Perbarui
           </button>
         </div>
       </div>
 
-      <!-- 4 Hero KPI Cards (Today Focus + Growth vs Yesterday) -->
+      <!-- KPI Cards -->
       <div class="grid-4">
-        <!-- 1: Pengunjung Hari Ini -->
-        <div class="kpi-card">
-          <div class="kpi-top">
-            <span class="kpi-title">
-              <span class="kpi-icon" style="color:var(--accent);background:var(--accent-light)">👤</span>
-              Pengunjung Hari Ini
-            </span>
-            <span id="growth-visitors" class="growth-pill neutral">0%</span>
+        <!-- Pengunjung -->
+        <div class="stat">
+          <div class="stat-header">
+            <span class="stat-label">Pengunjung Hari Ini</span>
+            <span id="g-visitors" class="badge badge-flat">—</span>
           </div>
-          <div class="kpi-main">
-            <span class="kpi-number" id="kpi-today-visitors">0</span>
-            <span class="kpi-unit">orang unik</span>
-          </div>
-          <div class="kpi-footer">
-            <span style="color:var(--text-secondary)">Kemarin: <b id="sub-yest-visitors" style="color:var(--text-primary)">0</b></span>
-            <span style="color:var(--text-secondary)">Periode: <b id="kpi-period-visitors" style="color:var(--text-primary)">0</b></span>
+          <div class="stat-number" id="k-visitors">—</div>
+          <div class="stat-footer">
+            <span>Kemarin: <strong id="y-visitors">—</strong></span>
+            <span>Total: <strong id="p-visitors">—</strong></span>
           </div>
         </div>
 
-        <!-- 2: Pageviews Hari Ini -->
-        <div class="kpi-card">
-          <div class="kpi-top">
-            <span class="kpi-title">
-              <span class="kpi-icon" style="color:var(--blue);background:var(--blue-bg)">📄</span>
-              Pageviews Hari Ini
-            </span>
-            <span id="growth-pageviews" class="growth-pill neutral">0%</span>
+        <!-- Pageviews -->
+        <div class="stat">
+          <div class="stat-header">
+            <span class="stat-label">Pageviews Hari Ini</span>
+            <span id="g-pageviews" class="badge badge-flat">—</span>
           </div>
-          <div class="kpi-main">
-            <span class="kpi-number" id="kpi-today-pageviews">0</span>
-            <span class="kpi-unit">tayangan</span>
-          </div>
-          <div class="kpi-footer">
-            <span style="color:var(--text-secondary)">Kemarin: <b id="sub-yest-pageviews" style="color:var(--text-primary)">0</b></span>
-            <span style="color:var(--text-secondary)">Rasio: <b id="sub-pv-ratio" style="color:var(--text-primary)">1.0x</b></span>
+          <div class="stat-number" id="k-pageviews">—</div>
+          <div class="stat-footer">
+            <span>Kemarin: <strong id="y-pageviews">—</strong></span>
+            <span>Rasio: <strong id="r-pv">—</strong></span>
           </div>
         </div>
 
-        <!-- 3: Kontak WhatsApp Hari Ini (The Core Goal) -->
-        <div class="kpi-card">
-          <div class="kpi-top">
-            <span class="kpi-title">
-              <span class="kpi-icon" style="color:var(--green);background:var(--green-bg)">💬</span>
-              Klik WhatsApp Hari Ini
-            </span>
-            <span id="growth-wa" class="growth-pill neutral">0%</span>
+        <!-- WhatsApp -->
+        <div class="stat">
+          <div class="stat-header">
+            <span class="stat-label">Klik WhatsApp Hari Ini</span>
+            <span id="g-wa" class="badge badge-flat">—</span>
           </div>
-          <div class="kpi-main">
-            <span class="kpi-number" id="kpi-today-wa" style="color:#059669">0</span>
-            <span class="kpi-unit">calon klien</span>
-          </div>
-          <div class="kpi-footer">
-            <span style="color:var(--text-secondary)">Kemarin: <b id="sub-yest-wa" style="color:var(--text-primary)">0</b></span>
-            <span style="color:var(--text-secondary)">Total periode: <b id="kpi-period-wa" style="color:var(--text-primary)">0</b></span>
+          <div class="stat-number" style="color:var(--green)" id="k-wa">—</div>
+          <div class="stat-footer">
+            <span>Kemarin: <strong id="y-wa">—</strong></span>
+            <span>Total: <strong id="p-wa">—</strong></span>
           </div>
         </div>
 
-        <!-- 4: Interaksi Paket & Solusi -->
-        <div class="kpi-card">
-          <div class="kpi-top">
-            <span class="kpi-title">
-              <span class="kpi-icon" style="color:var(--purple);background:var(--purple-bg)">🏷️</span>
-              Klik Evaluasi Paket
-            </span>
-            <span id="growth-plan" class="growth-pill neutral">0%</span>
+        <!-- Plan -->
+        <div class="stat">
+          <div class="stat-header">
+            <span class="stat-label">Klik Pilih Paket Hari Ini</span>
+            <span id="g-plan" class="badge badge-flat">—</span>
           </div>
-          <div class="kpi-main">
-            <span class="kpi-number" id="kpi-today-plan" style="color:#7C3AED">0</span>
-            <span class="kpi-unit">interaksi</span>
-          </div>
-          <div class="kpi-footer">
-            <span style="color:var(--text-secondary)">Kemarin: <b id="sub-yest-plan" style="color:var(--text-primary)">0</b></span>
-            <span style="color:var(--text-secondary)">Total periode: <b id="kpi-period-plan" style="color:var(--text-primary)">0</b></span>
+          <div class="stat-number" style="color:var(--purple)" id="k-plan">—</div>
+          <div class="stat-footer">
+            <span>Kemarin: <strong id="y-plan">—</strong></span>
+            <span>Total: <strong id="p-plan">—</strong></span>
           </div>
         </div>
       </div>
 
-      <!-- Conversion Funnel Pipeline -->
-      <div class="funnel-card">
-        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
-          <div>
-            <h3 style="font-size:16px;display:flex;align-items:center;gap:8px">
-              <span>🎯</span> Funnel Konversi Pengunjung Website
-            </h3>
-            <p style="margin:2px 0 0;color:var(--text-secondary);font-size:12px">
-              Perjalanan calon klien dari mendarat di parasdigital.id hingga menekan tombol konsultasi WhatsApp.
-            </p>
-          </div>
-          <div style="font-size:12px;background:#F8FAFC;padding:6px 14px;border-radius:999px;border:1px solid var(--border-subtle)">
-            Overall Conversion Rate: <b id="funnel-conv-rate" style="color:var(--green)">0.0%</b>
-          </div>
-        </div>
-
-        <div class="funnel-stages">
-          <!-- Stage 1 -->
-          <div class="funnel-stage">
-            <div style="display:flex;justify-content:space-between;align-items:center">
-              <span style="font-size:11px;font-weight:700;color:var(--text-secondary);text-transform:uppercase">Tahap 1 · Masuk</span>
-              <span class="badge badge-pv">100%</span>
-            </div>
-            <div style="font-size:22px;font-weight:800;font-family:'Plus Jakarta Sans'" id="funnel-v-count">0</div>
-            <div style="font-size:12px;color:var(--text-secondary)">Pengunjung Unik mendarat di landing page</div>
-            <div class="meter-bar"><div class="meter-fill" style="width:100%;background:var(--blue)"></div></div>
-          </div>
-
-          <div class="funnel-arrow">➔</div>
-
-          <!-- Stage 2 -->
-          <div class="funnel-stage">
-            <div style="display:flex;justify-content:space-between;align-items:center">
-              <span style="font-size:11px;font-weight:700;color:var(--text-secondary);text-transform:uppercase">Tahap 2 · Minat</span>
-              <span class="badge badge-plan" id="funnel-plan-pct">0%</span>
-            </div>
-            <div style="font-size:22px;font-weight:800;font-family:'Plus Jakarta Sans'" id="funnel-p-count">0</div>
-            <div style="font-size:12px;color:var(--text-secondary)">Mengeklik pilihan paket & harga studio</div>
-            <div class="meter-bar"><div class="meter-fill" id="meter-plan-fill" style="width:0%;background:var(--purple)"></div></div>
-          </div>
-
-          <div class="funnel-arrow">➔</div>
-
-          <!-- Stage 3 -->
-          <div class="funnel-stage">
-            <div style="display:flex;justify-content:space-between;align-items:center">
-              <span style="font-size:11px;font-weight:700;color:var(--text-secondary);text-transform:uppercase">Tahap 3 · Kontak</span>
-              <span class="badge badge-wa" id="funnel-wa-pct">0%</span>
-            </div>
-            <div style="font-size:22px;font-weight:800;font-family:'Plus Jakarta Sans';color:#059669" id="funnel-w-count">0</div>
-            <div style="font-size:12px;color:var(--text-secondary)">Chat WhatsApp untuk konsultasi proyek</div>
-            <div class="meter-bar"><div class="meter-fill" id="meter-wa-fill" style="width:0%;background:var(--green)"></div></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Interactive Daily Trend Chart -->
-      <div class="card chart-container">
-        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px">
-          <div>
-            <h3 style="font-size:16px">Tren Kunjungan & Pageviews Harian</h3>
-            <p style="margin:2px 0 0;color:var(--text-secondary);font-size:12px">Arahkan kursor ke setiap batang grafik untuk rincian data per hari.</p>
-          </div>
-          <div style="display:flex;align-items:center;gap:18px;font-size:12px;color:var(--text-secondary)">
-            <span style="display:flex;align-items:center;gap:6px">
-              <span style="width:10px;height:10px;border-radius:3px;background:var(--accent)"></span>
-              Pengunjung Unik
-            </span>
-            <span style="display:flex;align-items:center;gap:6px">
-              <span style="width:10px;height:10px;border-radius:3px;background:var(--blue)"></span>
-              Pageviews
-            </span>
-          </div>
-        </div>
-        <div class="chart-wrap" id="daily-chart">
-          <!-- Dynamic Chart Bars -->
-        </div>
-      </div>
-
-      <!-- Intelligence Breakdown 4-Grid -->
-      <div class="grid-2">
-        <!-- Sumber Traffic -->
-        <div class="card">
-          <div style="display:flex;align-items:center;justify-content:space-between">
-            <h3 style="font-size:15px;display:flex;align-items:center;gap:6px">
-              <span>🌐</span> Sumber Traffic (Referrer)
-            </h3>
-            <span style="font-size:11px;color:var(--text-secondary)">Kunjungan</span>
-          </div>
-          <div id="list-referrers" style="display:flex;flex-direction:column;gap:8px"></div>
-        </div>
-
-        <!-- Tombol Terpopuler -->
-        <div class="card">
-          <div style="display:flex;align-items:center;justify-content:space-between">
-            <h3 style="font-size:15px;display:flex;align-items:center;gap:6px">
-              <span>🎯</span> Tombol & Paket Terpopuler
-            </h3>
-            <span style="font-size:11px;color:var(--text-secondary)">Frekuensi</span>
-          </div>
-          <div id="list-clicks" style="display:flex;flex-direction:column;gap:8px"></div>
-        </div>
-
-        <!-- Tipe Perangkat -->
-        <div class="card">
-          <div style="display:flex;align-items:center;justify-content:space-between">
-            <h3 style="font-size:15px;display:flex;align-items:center;gap:6px">
-              <span>📱</span> Distribusi Perangkat (Device)
-            </h3>
-            <span style="font-size:11px;color:var(--text-secondary)">Proporsi</span>
-          </div>
-          <div id="list-devices" style="display:flex;flex-direction:column;gap:8px"></div>
-        </div>
-
-        <!-- Browser -->
-        <div class="card">
-          <div style="display:flex;align-items:center;justify-content:space-between">
-            <h3 style="font-size:15px;display:flex;align-items:center;gap:6px">
-              <span>🧭</span> Peramban (Browser)
-            </h3>
-            <span style="font-size:11px;color:var(--text-secondary)">Proporsi</span>
-          </div>
-          <div id="list-browsers" style="display:flex;flex-direction:column;gap:8px"></div>
-        </div>
-      </div>
-
-      <!-- Realtime Activity Log Table -->
+      <!-- Funnel -->
       <div class="card">
-        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
-          <div>
-            <h3 style="font-size:15px;display:flex;align-items:center;gap:8px">
-              <span>⚡</span> 15 Aktivitas Pengunjung Terbaru (Real-Time Feed)
-            </h3>
-            <p style="margin:2px 0 0;color:var(--text-secondary);font-size:12px">Tercatat langsung saat pengunjung berinteraksi dengan website.</p>
-          </div>
-          <span class="status-pill" style="font-size:11px">Auto-Synced</span>
+        <div class="card-header">
+          <span class="card-title">Konversi Pengunjung</span>
+          <span style="font-size:12px;color:var(--muted)">
+            Conversion rate: <strong id="conv-rate" style="color:var(--green)">—</strong>
+          </span>
         </div>
-        <div style="overflow-x:auto">
-          <table class="activity-table">
+        <div class="card-body">
+          <div class="funnel">
+            <div class="funnel-stage">
+              <div class="funnel-stage-label">Trafik Masuk</div>
+              <div class="funnel-stage-num" id="f-visitors">—</div>
+              <div class="funnel-stage-desc">Pengunjung unik</div>
+              <div class="progress-bar" style="margin-top:4px">
+                <div class="progress-fill" style="width:100%;background:var(--blue)"></div>
+              </div>
+            </div>
+            <div class="funnel-arrow">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </div>
+            <div class="funnel-stage">
+              <div class="funnel-stage-label">Evaluasi Paket</div>
+              <div class="funnel-stage-num" id="f-plan">—</div>
+              <div class="funnel-stage-desc">Klik pilihan paket</div>
+              <div class="progress-bar" style="margin-top:4px">
+                <div class="progress-fill" id="fp-plan" style="width:0%;background:var(--purple)"></div>
+              </div>
+            </div>
+            <div class="funnel-arrow">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </div>
+            <div class="funnel-stage">
+              <div class="funnel-stage-label">Hubungi WhatsApp</div>
+              <div class="funnel-stage-num" style="color:var(--green)" id="f-wa">—</div>
+              <div class="funnel-stage-desc">Calon klien kontak</div>
+              <div class="progress-bar" style="margin-top:4px">
+                <div class="progress-fill" id="fp-wa" style="width:0%;background:var(--green)"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chart -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Kunjungan Harian</span>
+          <div class="chart-legend">
+            <span><span class="legend-dot" style="background:var(--accent)"></span> Pengunjung</span>
+            <span><span class="legend-dot" style="background:var(--blue);opacity:.65"></span> Pageviews</span>
+          </div>
+        </div>
+        <div style="padding:16px 20px 0">
+          <div class="chart-area" id="daily-chart"></div>
+        </div>
+        <div style="height:8px"></div>
+      </div>
+
+      <!-- Breakdown -->
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-header"><span class="card-title">Sumber Traffic</span></div>
+          <div class="card-body-sm">
+            <div id="list-referrers" style="display:flex;flex-direction:column;gap:6px"></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"><span class="card-title">Tombol Terpopuler</span></div>
+          <div class="card-body-sm">
+            <div id="list-clicks" style="display:flex;flex-direction:column;gap:6px"></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"><span class="card-title">Perangkat</span></div>
+          <div class="card-body-sm">
+            <div id="list-devices" style="display:flex;flex-direction:column;gap:6px"></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"><span class="card-title">Browser</span></div>
+          <div class="card-body-sm">
+            <div id="list-browsers" style="display:flex;flex-direction:column;gap:6px"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Activity -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Aktivitas Terbaru</span>
+          <span style="font-size:12px;color:var(--muted)">15 entri terakhir</span>
+        </div>
+        <div class="table-wrap">
+          <table>
             <thead>
               <tr>
-                <th>Event</th>
-                <th>Aksi / Label</th>
-                <th>Perangkat & Browser</th>
-                <th>Lokasi / IP Hash</th>
+                <th>Tipe</th>
+                <th>Halaman / Aksi</th>
+                <th>Perangkat</th>
+                <th>ID Pengunjung</th>
                 <th style="text-align:right">Waktu</th>
               </tr>
             </thead>
-            <tbody id="table-recent">
-              <!-- Dynamic rows -->
-            </tbody>
+            <tbody id="tbl-recent"></tbody>
           </table>
         </div>
       </div>
 
     </section>
 
-    <!-- ═════════════════════════════════════════════════════════
-         TAB 2: KELOLA PAKET & HARGA
-    ═════════════════════════════════════════════════════════ -->
-    <section id="tab-pricing" class="tab-pane">
-      <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px">
+    <!-- ══════════ TAB: PAKET & HARGA ══════════ -->
+    <section id="tab-pricing" class="pane">
+      <div class="page-header">
         <div>
-          <h1 style="font-size:26px">Kelola Paket & Penawaran Harga</h1>
-          <p style="margin:4px 0 0;color:var(--text-secondary);font-size:13px">Perubahan langsung tersimpan ke PostgreSQL VPS dan otomatis tampil di halaman utama.</p>
+          <div class="page-title">Paket & Harga</div>
+          <div class="page-desc">Perubahan tersimpan ke database dan langsung tampil di halaman utama.</div>
         </div>
-        <button class="btn btn-accent" onclick="savePricing()">
-          💾 Simpan Semua Perubahan
-        </button>
+        <button class="btn btn-primary" onclick="savePricing()">Simpan Perubahan</button>
       </div>
 
       <div class="card">
-        <div style="display:flex;align-items:center;gap:8px">
-          <span style="font-size:18px">🌐</span>
-          <h3 style="font-size:16px;color:var(--accent)">Kategori 1: Paket Website Studio</h3>
-        </div>
-        <div id="editor-pricing-website" class="grid-2"></div>
+        <div class="card-header"><span class="card-title">Paket Website</span></div>
+        <div class="card-body"><div id="editor-pricing-website" class="grid-2"></div></div>
       </div>
-
       <div class="card">
-        <div style="display:flex;align-items:center;gap:8px">
-          <span style="font-size:18px">⚡</span>
-          <h3 style="font-size:16px;color:var(--accent)">Kategori 2: Paket Web App & Sistem Kustom</h3>
-        </div>
-        <div id="editor-pricing-webapp" class="grid-2"></div>
+        <div class="card-header"><span class="card-title">Paket Web App & Sistem Kustom</span></div>
+        <div class="card-body"><div id="editor-pricing-webapp" class="grid-2"></div></div>
       </div>
     </section>
 
-    <!-- ═════════════════════════════════════════════════════════
-         TAB 3: KELOLA PORTOFOLIO
-    ═════════════════════════════════════════════════════════ -->
-    <section id="tab-portfolio" class="tab-pane">
-      <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px">
+    <!-- ══════════ TAB: PORTOFOLIO ══════════ -->
+    <section id="tab-portfolio" class="pane">
+      <div class="page-header">
         <div>
-          <h1 style="font-size:26px">Kelola Portofolio Studio</h1>
-          <p style="margin:4px 0 0;color:var(--text-secondary);font-size:13px">Tambah studi kasus baru, ubah deskripsi tantangan, solusi, dan hasil pencapaian proyek.</p>
+          <div class="page-title">Portofolio</div>
+          <div class="page-desc">Kelola proyek yang ditampilkan di halaman portofolio.</div>
         </div>
-        <div style="display:flex;gap:10px">
-          <button class="btn btn-outline" onclick="addPortfolioItem()">+ Tambah Proyek</button>
-          <button class="btn btn-accent" onclick="savePortfolio()">💾 Simpan Portofolio</button>
+        <div style="display:flex;gap:8px">
+          <button class="btn btn-ghost" onclick="addPortfolioItem()">+ Tambah Proyek</button>
+          <button class="btn btn-primary" onclick="savePortfolio()">Simpan</button>
         </div>
       </div>
-
       <div id="editor-portfolio" class="grid-2"></div>
     </section>
 
-    <!-- ═════════════════════════════════════════════════════════
-         TAB 4: PENGATURAN & KONTAK
-    ═════════════════════════════════════════════════════════ -->
-    <section id="tab-settings" class="tab-pane">
-      <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px">
+    <!-- ══════════ TAB: PENGATURAN ══════════ -->
+    <section id="tab-settings" class="pane">
+      <div class="page-header">
         <div>
-          <h1 style="font-size:26px">Pengaturan WhatsApp & Footer</h1>
-          <p style="margin:4px 0 0;color:var(--text-secondary);font-size:13px">Atur nomor WhatsApp penerima konsultasi dan informasi identitas website.</p>
+          <div class="page-title">Pengaturan Kontak</div>
+          <div class="page-desc">Nomor WhatsApp dan informasi footer website.</div>
         </div>
-        <button class="btn btn-accent" onclick="saveSettings()">💾 Simpan Pengaturan</button>
+        <button class="btn btn-primary" onclick="saveSettings()">Simpan</button>
       </div>
 
-      <div class="card" style="max-width:760px">
-        <div class="field">
-          <label>Nomor WhatsApp Tujuan (Format internasional 62..., tanpa tanda + atau spasi)</label>
-          <input class="input" id="set-wa-num" placeholder="6281991947017">
-        </div>
-        <div class="field">
-          <label>Pesan Template Otomatis WhatsApp</label>
-          <input class="input" id="set-wa-msg" placeholder="Halo Paras Digital, saya ingin konsultasi...">
-        </div>
-        <div class="grid-2">
+      <div class="card" style="max-width:680px">
+        <div class="card-body" style="display:flex;flex-direction:column;gap:16px">
           <div class="field">
-            <label>Domain Resmi (Tampil di Header & Footer)</label>
-            <input class="input" id="set-domain" placeholder="parasdigital.id">
+            <label class="label">Nomor WhatsApp (62..., tanpa +, tanpa spasi)</label>
+            <input class="input" id="set-wa-num" placeholder="6281991947017">
           </div>
           <div class="field">
-            <label>Email Kontak Resmi</label>
-            <input class="input" id="set-email" placeholder="halo@parasdigital.id">
+            <label class="label">Pesan Template WhatsApp</label>
+            <input class="input" id="set-wa-msg" placeholder="Halo Paras Digital, saya ingin konsultasi...">
           </div>
-        </div>
-        <div class="grid-2">
-          <div class="field">
-            <label>Lokasi Studio</label>
-            <input class="input" id="set-city" placeholder="Jakarta, Indonesia">
+          <div class="grid-2-col">
+            <div class="field">
+              <label class="label">Domain</label>
+              <input class="input" id="set-domain" placeholder="parasdigital.id">
+            </div>
+            <div class="field">
+              <label class="label">Email</label>
+              <input class="input" id="set-email" placeholder="halo@parasdigital.id">
+            </div>
           </div>
-          <div class="field">
-            <label>Biaya Hosting & Maintenance Bulanan</label>
-            <input class="input" id="set-hosting" placeholder="150rb">
+          <div class="grid-2-col">
+            <div class="field">
+              <label class="label">Kota / Lokasi</label>
+              <input class="input" id="set-city" placeholder="Jakarta, Indonesia">
+            </div>
+            <div class="field">
+              <label class="label">Biaya Hosting Bulanan</label>
+              <input class="input" id="set-hosting" placeholder="150rb">
+            </div>
           </div>
-        </div>
-        <div class="field" style="max-width:280px">
-          <label>Persentase DP Komitmen (%)</label>
-          <input class="input" id="set-dp" placeholder="50">
+          <div class="field" style="max-width:220px">
+            <label class="label">Persentase DP (%)</label>
+            <input class="input" id="set-dp" placeholder="50">
+          </div>
         </div>
       </div>
     </section>
@@ -1099,44 +721,45 @@
   </main>
 </div>
 
-<!-- Floating Toast -->
+<!-- Toast -->
 <div id="toast">
-  <span id="toast-icon">✓</span>
-  <span id="toast-text">Tersimpan</span>
+  <span class="toast-icon ok" id="toast-icon">✓</span>
+  <span id="toast-msg">Tersimpan</span>
 </div>
 
-<!-- ═════════════════════════════════════════════════════════════
-     JAVASCRIPT LOGIC
-═════════════════════════════════════════════════════════════ -->
 <script>
+/* ─── STATE ─── */
 let token = localStorage.getItem('paras_admin_token') || '';
 let cmsData = null;
 
-// Display localized date in header
-const now = new Date();
-const dateStr = now.toLocaleDateString('id-ID', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-const dateEl = document.getElementById('current-date-lbl');
-if (dateEl) dateEl.textContent = dateStr;
+/* ─── DATE LABEL ─── */
+const nowDate = new Date();
+const lbl = document.getElementById('current-date-lbl');
+if (lbl) lbl.textContent = nowDate.toLocaleDateString('id-ID', { weekday:'long', day:'numeric', month:'long', year:'numeric' });
 
-function showToast(msg, isError = false) {
-  const t = document.getElementById('toast');
-  const txt = document.getElementById('toast-text');
-  const icn = document.getElementById('toast-icon');
+/* ─── TOAST ─── */
+function toast(msg, err = false) {
+  const el   = document.getElementById('toast');
+  const ico  = document.getElementById('toast-icon');
+  const txt  = document.getElementById('toast-msg');
   txt.textContent = msg;
-  icn.textContent = isError ? '✕' : '✓';
-  t.style.background = isError ? '#9F1239' : '#0F172A';
-  t.style.color = '#FFFFFF';
-  t.style.display = 'inline-flex';
-  setTimeout(() => { t.style.display = 'none'; }, isError ? 4500 : 2800);
+  ico.className   = 'toast-icon ' + (err ? 'err' : 'ok');
+  ico.textContent = err ? '✕' : '✓';
+  el.style.background = err ? '#7F1D1D' : '#111827';
+  el.style.display = 'inline-flex';
+  clearTimeout(el._t);
+  el._t = setTimeout(() => el.style.display = 'none', err ? 4500 : 2800);
 }
 
+/* ─── TABS ─── */
 function switchTab(name, btn) {
-  document.querySelectorAll('.nav-tab').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
-  document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.pane').forEach(p => p.classList.remove('active'));
   document.getElementById('tab-' + name).classList.add('active');
 }
 
+/* ─── AUTH ─── */
 function logout() {
   localStorage.removeItem('paras_admin_token');
   token = '';
@@ -1144,436 +767,348 @@ function logout() {
   document.getElementById('login-view').style.display = 'flex';
 }
 
-// ─── LOGIN HANDLER ───
-document.getElementById('login-form').addEventListener('submit', async (e) => {
+document.getElementById('login-form').addEventListener('submit', async e => {
   e.preventDefault();
   const errEl = document.getElementById('login-err');
   errEl.style.display = 'none';
-  const username = document.getElementById('login-user').value.trim();
-  const password = document.getElementById('login-pass').value;
-
   try {
-    const res = await fetch('/api/admin/login', {
+    const r = await fetch('/api/admin/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ username, password })
+      body: JSON.stringify({
+        username: document.getElementById('login-user').value.trim(),
+        password: document.getElementById('login-pass').value
+      })
     });
-    const data = await res.json();
-    if (!res.ok) throw new Error(data.error || 'Gagal login, periksa username & password');
-    token = data.token;
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.error || 'Username atau password salah.');
+    token = d.token;
     localStorage.setItem('paras_admin_token', token);
-    initDashboard();
+    init();
   } catch (err) {
     errEl.textContent = err.message;
     errEl.style.display = 'block';
   }
 });
 
-async function apiAdmin(url, options = {}) {
-  const res = await fetch(url, {
-    ...options,
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + token,
-      ...(options.headers || {})
-    }
+/* ─── API HELPER ─── */
+async function api(url, opts = {}) {
+  const r = await fetch(url, {
+    ...opts,
+    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token, ...(opts.headers || {}) }
   });
-  if (res.status === 401) {
-    logout();
-    throw new Error('Sesi autentikasi berakhir, silakan login kembali.');
-  }
-  const data = await res.json().catch(() => ({ error: 'Gagal membaca respon server' }));
-  if (!res.ok) {
-    throw new Error(data.error || ('Gagal memproses (HTTP ' + res.status + ')'));
-  }
-  return data;
+  if (r.status === 401) { logout(); throw new Error('Sesi berakhir.'); }
+  const d = await r.json().catch(() => ({ error: 'Respon tidak valid' }));
+  if (!r.ok) throw new Error(d.error || 'HTTP ' + r.status);
+  return d;
 }
 
-async function initDashboard() {
+/* ─── INIT ─── */
+async function init() {
   document.getElementById('login-view').style.display = 'none';
   document.getElementById('app-view').style.display = 'flex';
   await Promise.all([loadStats(), loadCMS()]);
 }
 
-// ─── GROWTH CALCULATION HELPER ───
-function calcGrowth(today, yesterday) {
-  const t = parseInt(today, 10) || 0;
-  const y = parseInt(yesterday, 10) || 0;
-  if (y === 0) {
-    if (t > 0) return { pct: '+100%', diff: t, state: 'up', label: '↑ Baru hari ini' };
-    return { pct: '0%', diff: 0, state: 'neutral', label: '● Sama' };
-  }
-  const diff = t - y;
-  const pctNum = Math.round((diff / y) * 100);
-  if (pctNum > 0) return { pct: `+${pctNum}%`, diff, state: 'up', label: `↑ +${pctNum}% vs kemarin` };
-  if (pctNum < 0) return { pct: `${pctNum}%`, diff, state: 'down', label: `↓ ${pctNum}% vs kemarin` };
-  return { pct: '0%', diff: 0, state: 'neutral', label: '● Stabil vs kemarin' };
+/* ─── GROWTH HELPER ─── */
+function growth(today, yest) {
+  const t = +today || 0, y = +yest || 0;
+  if (y === 0) return t > 0 ? { cls: 'badge-up', txt: 'Baru' } : { cls: 'badge-flat', txt: '—' };
+  const p = Math.round(((t - y) / y) * 100);
+  if (p > 0) return { cls: 'badge-up',   txt: `+${p}%` };
+  if (p < 0) return { cls: 'badge-down', txt: `${p}%` };
+  return { cls: 'badge-flat', txt: '0%' };
 }
-
-function applyGrowthPill(elemId, growth) {
-  const el = document.getElementById(elemId);
+function applyGrowth(id, g) {
+  const el = document.getElementById(id);
   if (!el) return;
-  el.className = `growth-pill ${growth.state}`;
-  el.textContent = growth.label;
+  el.className = 'badge ' + g.cls;
+  el.textContent = g.txt;
 }
 
-// ─── LOAD ANALYTICS STATS ───
+/* ─── STATS ─── */
 async function loadStats() {
   const days = document.getElementById('stats-days').value;
-  const refreshBtn = document.getElementById('btn-refresh');
-  if (refreshBtn) refreshBtn.style.opacity = '0.6';
-
+  const btn = document.getElementById('btn-refresh');
+  btn.disabled = true;
   try {
-    const data = await apiAdmin('/api/admin/stats?days=' + days);
+    const d = await api('/api/admin/stats?days=' + days);
+    const sum = d.summary || {}, td = d.today || {}, yd = d.yesterday || {};
 
-    // Summary & Today numbers
-    const sum = data.summary || {};
-    const td = data.today || {};
-    const yest = data.yesterday || {};
+    const tv = +td.today_visitors    || 0, yv = +yd.yesterday_visitors    || 0;
+    const tp = +td.today_pageviews   || 0, yp = +yd.yesterday_pageviews   || 0;
+    const tw = +td.today_wa_clicks   || 0, yw = +yd.yesterday_wa_clicks   || 0;
+    const tl = +td.today_plan_clicks || 0, yl = +yd.yesterday_plan_clicks || 0;
 
-    const tVisitors = parseInt(td.today_visitors, 10) || 0;
-    const tPageviews = parseInt(td.today_pageviews, 10) || 0;
-    const tWa = parseInt(td.today_wa_clicks, 10) || 0;
-    const tPlan = parseInt(td.today_plan_clicks, 10) || 0;
+    /* KPI Cards */
+    document.getElementById('k-visitors').textContent  = tv.toLocaleString('id-ID');
+    document.getElementById('k-pageviews').textContent = tp.toLocaleString('id-ID');
+    document.getElementById('k-wa').textContent        = tw.toLocaleString('id-ID');
+    document.getElementById('k-plan').textContent      = tl.toLocaleString('id-ID');
 
-    const yVisitors = parseInt(yest.yesterday_visitors, 10) || 0;
-    const yPageviews = parseInt(yest.yesterday_pageviews, 10) || 0;
-    const yWa = parseInt(yest.yesterday_wa_clicks, 10) || 0;
-    const yPlan = parseInt(yest.yesterday_plan_clicks, 10) || 0;
+    document.getElementById('y-visitors').textContent  = yv.toLocaleString('id-ID');
+    document.getElementById('y-pageviews').textContent = yp.toLocaleString('id-ID');
+    document.getElementById('y-wa').textContent        = yw.toLocaleString('id-ID');
+    document.getElementById('y-plan').textContent      = yl.toLocaleString('id-ID');
 
-    // 1. Visitors Card
-    document.getElementById('kpi-today-visitors').textContent = tVisitors.toLocaleString('id-ID');
-    document.getElementById('sub-yest-visitors').textContent = yVisitors;
-    document.getElementById('kpi-period-visitors').textContent = (sum.unique_visitors || 0).toLocaleString('id-ID');
-    applyGrowthPill('growth-visitors', calcGrowth(tVisitors, yVisitors));
+    document.getElementById('p-visitors').textContent  = (+sum.unique_visitors || 0).toLocaleString('id-ID');
+    document.getElementById('p-wa').textContent        = (+sum.wa_clicks || 0).toLocaleString('id-ID');
+    document.getElementById('p-plan').textContent      = (+sum.plan_clicks || 0).toLocaleString('id-ID');
+    document.getElementById('r-pv').textContent        = tv > 0 ? (tp/tv).toFixed(1)+'x' : '—';
 
-    // 2. Pageviews Card
-    document.getElementById('kpi-today-pageviews').textContent = tPageviews.toLocaleString('id-ID');
-    document.getElementById('sub-yest-pageviews').textContent = yPageviews;
-    const ratio = tVisitors > 0 ? (tPageviews / tVisitors).toFixed(1) : '1.0';
-    document.getElementById('sub-pv-ratio').textContent = `${ratio} hal/org`;
-    applyGrowthPill('growth-pageviews', calcGrowth(tPageviews, yPageviews));
+    applyGrowth('g-visitors',  growth(tv, yv));
+    applyGrowth('g-pageviews', growth(tp, yp));
+    applyGrowth('g-wa',        growth(tw, yw));
+    applyGrowth('g-plan',      growth(tl, yl));
 
-    // 3. WA Clicks Card
-    document.getElementById('kpi-today-wa').textContent = tWa.toLocaleString('id-ID');
-    document.getElementById('sub-yest-wa').textContent = yWa;
-    document.getElementById('kpi-period-wa').textContent = (sum.wa_clicks || 0).toLocaleString('id-ID');
-    applyGrowthPill('growth-wa', calcGrowth(tWa, yWa));
+    /* Funnel */
+    const totalV = +sum.unique_visitors || 0;
+    const totalW = +sum.wa_clicks || 0;
+    const totalL = +sum.plan_clicks || 0;
+    document.getElementById('f-visitors').textContent = totalV.toLocaleString('id-ID');
+    document.getElementById('f-plan').textContent     = totalL.toLocaleString('id-ID');
+    document.getElementById('f-wa').textContent       = totalW.toLocaleString('id-ID');
+    const planPct = totalV > 0 ? Math.min(100, Math.round(totalL/totalV*100)) : 0;
+    const waPct   = totalV > 0 ? Math.min(100, Math.round(totalW/totalV*100)) : 0;
+    document.getElementById('fp-plan').style.width = planPct + '%';
+    document.getElementById('fp-wa').style.width   = waPct + '%';
+    document.getElementById('conv-rate').textContent =
+      totalV > 0 ? (totalW/totalV*100).toFixed(1)+'%' : '—';
 
-    // 4. Plan Clicks Card
-    document.getElementById('kpi-today-plan').textContent = tPlan.toLocaleString('id-ID');
-    document.getElementById('sub-yest-plan').textContent = yPlan;
-    document.getElementById('kpi-period-plan').textContent = (sum.plan_clicks || 0).toLocaleString('id-ID');
-    applyGrowthPill('growth-plan', calcGrowth(tPlan, yPlan));
+    /* Chart */
+    renderChart(d.daily || []);
 
-    // 5. Funnel Pipeline
-    const totalV = parseInt(sum.unique_visitors, 10) || 0;
-    const totalPlan = parseInt(sum.plan_clicks, 10) || 0;
-    const totalWa = parseInt(sum.wa_clicks, 10) || 0;
-
-    document.getElementById('funnel-v-count').textContent = totalV.toLocaleString('id-ID');
-    document.getElementById('funnel-p-count').textContent = totalPlan.toLocaleString('id-ID');
-    document.getElementById('funnel-w-count').textContent = totalWa.toLocaleString('id-ID');
-
-    const planPct = totalV > 0 ? Math.min(100, Math.round((totalPlan / totalV) * 100)) : 0;
-    const waPct = totalV > 0 ? Math.min(100, Math.round((totalWa / totalV) * 100)) : 0;
-    const convRate = totalV > 0 ? ((totalWa / totalV) * 100).toFixed(1) : '0.0';
-
-    document.getElementById('funnel-plan-pct').textContent = `${planPct}%`;
-    document.getElementById('funnel-wa-pct').textContent = `${waPct}%`;
-    document.getElementById('meter-plan-fill').style.width = `${planPct}%`;
-    document.getElementById('meter-wa-fill').style.width = `${waPct}%`;
-    document.getElementById('funnel-conv-rate').textContent = `${convRate}% (${totalWa} dari ${totalV})`;
-
-    // 6. Interactive Daily Chart
-    renderDailyChart(data.daily || []);
-
-    // 7. Intelligence Breakdown lists with progress bars
-    renderBreakdownList('list-referrers', data.referrers, r => r.source, r => r.count, 'kunjungan');
-    renderBreakdownList('list-clicks', data.clicks, c => {
-      const isWa = c.event_type === 'wa_click';
-      return `${isWa ? '💬 WA' : '🏷️ Paket'}: ${c.event_label || 'Aksi'}`;
+    /* Breakdown lists */
+    renderList('list-referrers', d.referrers, r => r.source,       r => r.count,   'kunjungan');
+    renderList('list-clicks',   d.clicks,    c => {
+      return (c.event_type === 'wa_click' ? 'WA: ' : 'Paket: ') + (c.event_label || 'Klik');
     }, c => c.count, 'klik');
-    renderBreakdownList('list-devices', data.devices, d => (d.device_type || 'Desktop').toUpperCase(), d => d.count, 'sesi');
-    renderBreakdownList('list-browsers', data.browsers, b => b.browser || 'Lainnya', b => b.count, 'sesi');
+    renderList('list-devices',  d.devices,   dv => dv.device_type, dv => dv.count, 'sesi');
+    renderList('list-browsers', d.browsers,  b => b.browser,       b => b.count,   'sesi');
 
-    // 8. Real-time Activity Table
-    renderRecentTable(data.recent || []);
+    /* Activity */
+    renderActivity(d.recent || []);
 
   } catch (err) {
-    console.error('Stats error:', err);
-    showToast('Gagal memuat statistik: ' + err.message, true);
-  } finally {
-    if (refreshBtn) refreshBtn.style.opacity = '1';
+    toast('Gagal memuat data: ' + err.message, true);
   }
+  btn.disabled = false;
 }
 
-// ─── RENDER DAILY CHART WITH INTERACTIVE HOVER ───
-function renderDailyChart(daily = []) {
-  const chartEl = document.getElementById('daily-chart');
-  chartEl.innerHTML = '';
+/* ─── CHART ─── */
+function renderChart(daily) {
+  const el = document.getElementById('daily-chart');
+  el.innerHTML = '';
   if (!daily.length) {
-    chartEl.innerHTML = `<div style="margin:auto;color:var(--text-secondary);font-size:13px">Belum ada rekaman data pada rentang waktu ini.</div>`;
+    el.innerHTML = '<span style="margin:auto;font-size:13px;color:var(--muted)">Belum ada data.</span>';
     return;
   }
-
-  const maxVal = Math.max(1, ...daily.map(d => Math.max(d.pageviews, d.visitors)));
-
+  const max = Math.max(1, ...daily.map(d => Math.max(d.pageviews, d.visitors)));
   daily.forEach(d => {
-    const hPv = Math.max(4, Math.round((d.pageviews / maxVal) * 170));
-    const hUv = Math.max(4, Math.round((d.visitors / maxVal) * 170));
+    const huv = Math.max(4, Math.round(d.visitors / max * 160));
+    const hpv = Math.max(4, Math.round(d.pageviews / max * 160));
     const col = document.createElement('div');
-    col.className = 'chart-col';
-
-    const tooltip = `${d.label}\n👤 ${d.visitors} Pengunjung\n📄 ${d.pageviews} Pageviews\n💬 ${d.wa_clicks || 0} WA Click`;
-    col.setAttribute('data-tooltip', tooltip);
-
+    col.className = 'bar-col';
+    col.setAttribute('data-tip', `${d.label}\nPengunjung: ${d.visitors}\nPageviews: ${d.pageviews}\nWA: ${d.wa_clicks||0}`);
     col.innerHTML = `
-      <div class="chart-bars">
-        <div class="bar-uv" style="height:${hUv}px" title="${d.visitors} Pengunjung"></div>
-        <div class="bar-pv" style="height:${hPv}px" title="${d.pageviews} Pageviews"></div>
+      <div class="bars">
+        <div class="b-uv" style="height:${huv}px"></div>
+        <div class="b-pv" style="height:${hpv}px"></div>
       </div>
-      <span class="chart-lbl">${d.label}</span>
-    `;
-    chartEl.appendChild(col);
+      <span class="bar-lbl">${d.label}</span>`;
+    el.appendChild(col);
   });
 }
 
-// ─── RENDER BREAKDOWN LIST WITH PROGRESS BAR ───
-function renderBreakdownList(containerId, items = [], labelFn, countFn, unit = '') {
-  const el = document.getElementById(containerId);
+/* ─── LIST ─── */
+function renderList(id, items = [], labelFn, countFn, unit) {
+  const el = document.getElementById(id);
   el.innerHTML = '';
-  if (!items || items.length === 0) {
-    el.innerHTML = `<div style="color:var(--text-secondary);font-size:13px;padding:8px 0">Belum ada aktivitas tercatat.</div>`;
+  if (!items.length) {
+    el.innerHTML = '<span style="font-size:13px;color:var(--muted)">Belum ada data.</span>';
     return;
   }
-
-  const maxCount = Math.max(1, ...items.map(countFn));
-  const totalCount = items.reduce((acc, it) => acc + (parseInt(countFn(it), 10) || 0), 0);
-
-  items.slice(0, 6).forEach(item => {
-    const count = parseInt(countFn(item), 10) || 0;
-    const label = labelFn(item);
-    const pct = totalCount > 0 ? Math.round((count / totalCount) * 100) : 0;
-    const barPct = Math.round((count / maxCount) * 100);
-
-    const row = document.createElement('div');
-    row.className = 'list-item';
-    row.style.flexDirection = 'column';
-    row.style.alignItems = 'stretch';
-    row.style.gap = '4px';
-
+  const total = items.reduce((s, i) => s + (+countFn(i)||0), 0);
+  const max   = Math.max(1, ...items.map(countFn));
+  items.slice(0,6).forEach(item => {
+    const cnt  = +countFn(item) || 0;
+    const pct  = total > 0 ? Math.round(cnt/total*100) : 0;
+    const fill = Math.round(cnt/max*100);
+    const row  = document.createElement('div');
+    row.className = 'row-item';
     row.innerHTML = `
-      <div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
-        <span style="font-weight:600;color:var(--text-primary);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${label}</span>
-        <div style="display:flex;align-items:center;gap:8px;flex:none">
-          <span style="font-size:12px;font-family:var(--mono-font);color:var(--text-secondary)">${count} ${unit}</span>
-          <span class="badge">${pct}%</span>
+      <div class="row-item-top">
+        <span class="row-item-label">${labelFn(item) || '—'}</span>
+        <div class="row-item-meta">
+          <span class="row-item-val">${cnt} ${unit}</span>
+          <span class="badge badge-flat" style="font-family:'JetBrains Mono',monospace">${pct}%</span>
         </div>
       </div>
-      <div class="meter-bar">
-        <div class="meter-fill" style="width:${barPct}%"></div>
-      </div>
-    `;
+      <div class="progress-bar">
+        <div class="progress-fill" style="width:${fill}%;background:var(--accent)"></div>
+      </div>`;
     el.appendChild(row);
   });
 }
 
-// ─── RENDER REALTIME FEED TABLE ───
-function renderRecentTable(recent = []) {
-  const tbody = document.getElementById('table-recent');
+/* ─── ACTIVITY TABLE ─── */
+function renderActivity(recent) {
+  const tbody = document.getElementById('tbl-recent');
   tbody.innerHTML = '';
   if (!recent.length) {
-    tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;color:var(--text-secondary);padding:24px">Belum ada rekaman pengunjung terbaru.</td></tr>`;
+    tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:20px;color:var(--muted)">Belum ada aktivitas.</td></tr>';
     return;
   }
-
+  const typeMap = {
+    wa_click:  { cls: 'badge-green',  label: 'WA Click' },
+    plan_click:{ cls: 'badge-purple', label: 'Plan Click' },
+    pageview:  { cls: 'badge-blue',   label: 'Pageview' }
+  };
   recent.forEach(r => {
+    const t = typeMap[r.event_type] || { cls: 'badge-flat', label: r.event_type };
     const tr = document.createElement('tr');
-    let badgeClass = 'badge-pv';
-    let icon = '📄';
-    if (r.event_type === 'wa_click') {
-      badgeClass = 'badge-wa';
-      icon = '💬';
-    } else if (r.event_type === 'plan_click') {
-      badgeClass = 'badge-plan';
-      icon = '🏷️';
-    }
-
-    const deviceIcon = r.device_type === 'mobile' ? '📱 Mobile' : (r.device_type === 'tablet' ? '📟 Tablet' : '💻 Desktop');
-
     tr.innerHTML = `
-      <td><span class="badge ${badgeClass}">${icon} ${r.event_type}</span></td>
-      <td style="font-weight:600;color:var(--text-primary)">${r.event_label || r.page_path || 'Kunjungan Landing Page'}</td>
-      <td style="color:var(--text-secondary);font-size:12px">${deviceIcon} · ${r.browser || 'Browser'}</td>
-      <td style="color:var(--text-secondary);font-size:12px;font-family:var(--mono-font)">#${r.visitor_hash ? r.visitor_hash.substring(0, 8) : 'anon'}</td>
-      <td style="text-align:right;color:var(--text-secondary);font-size:12px;font-family:var(--mono-font);white-space:nowrap">${r.time_str || ''} WIB</td>
-    `;
+      <td><span class="badge ${t.cls}">${t.label}</span></td>
+      <td style="font-weight:500">${r.event_label || r.page_path || 'Landing page'}</td>
+      <td style="color:var(--muted)">${r.device_type || 'Desktop'} · ${r.browser || '—'}</td>
+      <td class="mono" style="color:var(--muted);font-size:12px">#${(r.visitor_hash||'').slice(0,8)}</td>
+      <td class="mono" style="text-align:right;color:var(--muted);font-size:12px">${r.time_str||'—'} WIB</td>`;
     tbody.appendChild(tr);
   });
 }
 
-// ─── CMS MANAGERS (PRICING, PORTFOLIO, SETTINGS) ───
+/* ─── CMS ─── */
 async function loadCMS() {
   try {
-    const res = await fetch('/api/content?t=' + Date.now());
-    cmsData = await res.json();
-    renderPricingEditor('editor-pricing-website', cmsData.pricing_website || []);
-    renderPricingEditor('editor-pricing-webapp', cmsData.pricing_webapp || []);
-    renderPortfolioEditor();
-    renderSettingsEditor();
-  } catch (e) {
-    console.error('Failed to load CMS content:', e);
-  }
+    cmsData = await (await fetch('/api/content?t=' + Date.now())).json();
+    renderPricing('editor-pricing-website', cmsData.pricing_website || []);
+    renderPricing('editor-pricing-webapp',  cmsData.pricing_webapp  || []);
+    renderPortfolio();
+    renderSettings();
+  } catch (e) { console.error(e); }
 }
 
-function renderPricingEditor(containerId, list) {
-  const el = document.getElementById(containerId);
+/* Pricing */
+function renderPricing(cid, list) {
+  const el = document.getElementById(cid);
   el.innerHTML = '';
-  list.forEach((plan, idx) => {
+  list.forEach((plan, i) => {
     const box = document.createElement('div');
-    box.style.cssText = 'background:#FFFFFF;border:1px solid var(--border-subtle);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:12px;box-shadow:var(--shadow-sm)';
+    box.className = 'plan-box';
     box.innerHTML = `
-      <div style="display:flex;justify-content:space-between;align-items:center">
-        <strong style="color:var(--text-primary);font-size:15px">Paket #${idx + 1} ${plan.featured ? '<span class="badge badge-plan">⭐ Populer</span>' : ''}</strong>
+      <div style="display:flex;align-items:center;justify-content:space-between">
+        <strong style="font-size:13.5px">Paket ${i+1}${plan.featured ? ' <span class="badge badge-orange" style="margin-left:4px">Populer</span>' : ''}</strong>
       </div>
-      <div class="field"><label>Nama Paket</label><input class="input p-name" value="${plan.name || ''}"></div>
-      <div class="field"><label>Deskripsi Singkat</label><input class="input p-desc" value="${plan.desc || ''}"></div>
-      <div class="grid-2">
-        <div class="field"><label>Harga (tanpa Rp)</label><input class="input p-price" value="${plan.price || ''}"></div>
-        <div class="field"><label>Estimasi Selesai</label><input class="input p-badge2" value="${plan.badge2 || ''}"></div>
+      <div class="field"><label class="label">Nama Paket</label><input class="input p-name" value="${plan.name||''}"></div>
+      <div class="field"><label class="label">Deskripsi</label><input class="input p-desc" value="${plan.desc||''}"></div>
+      <div class="grid-2-col">
+        <div class="field"><label class="label">Harga</label><input class="input p-price" value="${plan.price||''}"></div>
+        <div class="field"><label class="label">Estimasi</label><input class="input p-badge2" value="${plan.badge2||''}"></div>
       </div>
-      <div class="field"><label>Daftar Fitur (1 baris = 1 fitur)</label><textarea class="input p-features">${(plan.features || []).join('\n')}</textarea></div>
-    `;
+      <div class="field"><label class="label">Fitur (1 baris = 1 fitur)</label><textarea class="input p-features">${(plan.features||[]).join('\n')}</textarea></div>`;
     el.appendChild(box);
   });
 }
-
-function collectPricing(containerId, originalList) {
-  const boxes = document.getElementById(containerId).children;
-  return Array.from(boxes).map((box, idx) => ({
-    ...(originalList[idx] || {}),
-    name: box.querySelector('.p-name').value.trim(),
-    desc: box.querySelector('.p-desc').value.trim(),
-    price: box.querySelector('.p-price').value.trim(),
-    badge2: box.querySelector('.p-badge2').value.trim(),
-    features: box.querySelector('.p-features').value.split('\n').map(s => s.trim()).filter(Boolean)
+function collectPricing(cid, orig) {
+  return Array.from(document.getElementById(cid).children).map((b, i) => ({
+    ...(orig[i]||{}),
+    name:     b.querySelector('.p-name').value.trim(),
+    desc:     b.querySelector('.p-desc').value.trim(),
+    price:    b.querySelector('.p-price').value.trim(),
+    badge2:   b.querySelector('.p-badge2').value.trim(),
+    features: b.querySelector('.p-features').value.split('\n').map(s=>s.trim()).filter(Boolean)
   }));
 }
-
 async function savePricing() {
   try {
-    const web = collectPricing('editor-pricing-website', cmsData.pricing_website || []);
-    const app = collectPricing('editor-pricing-webapp', cmsData.pricing_webapp || []);
-    await apiAdmin('/api/admin/content/pricing_website', { method: 'PUT', body: JSON.stringify(web) });
-    await apiAdmin('/api/admin/content/pricing_webapp', { method: 'PUT', body: JSON.stringify(app) });
-    cmsData.pricing_website = web;
-    cmsData.pricing_webapp = app;
-    showToast('Paket & Harga berhasil diperbarui di server!');
-  } catch (err) {
-    showToast('Gagal menyimpan: ' + err.message, true);
-  }
+    const web = collectPricing('editor-pricing-website', cmsData.pricing_website||[]);
+    const app = collectPricing('editor-pricing-webapp',  cmsData.pricing_webapp||[]);
+    await api('/api/admin/content/pricing_website', { method:'PUT', body:JSON.stringify(web) });
+    await api('/api/admin/content/pricing_webapp',  { method:'PUT', body:JSON.stringify(app) });
+    cmsData.pricing_website = web; cmsData.pricing_webapp = app;
+    toast('Paket & Harga disimpan.');
+  } catch (e) { toast(e.message, true); }
 }
 
-function renderPortfolioEditor() {
+/* Portfolio */
+function renderPortfolio() {
   const el = document.getElementById('editor-portfolio');
   el.innerHTML = '';
-  (cmsData.portfolio || []).forEach((item, idx) => {
+  (cmsData.portfolio||[]).forEach((item, i) => {
     const box = document.createElement('div');
     box.className = 'card';
     box.innerHTML = `
-      <div style="display:flex;justify-content:space-between;align-items:center">
-        <h3 style="font-size:15px">Proyek #${item.num || (idx + 1)}</h3>
-        <button class="btn btn-danger" style="padding:6px 12px;font-size:12px" onclick="removePortfolio(${idx})">Hapus Proyek</button>
+      <div class="card-header">
+        <span class="card-title">Proyek #${item.num||(i+1)}</span>
+        <button class="btn btn-danger-ghost" style="padding:6px 12px;font-size:12px" onclick="removePortfolio(${i})">Hapus</button>
       </div>
-      <div class="grid-2">
-        <div class="field"><label>Nomor Urut</label><input class="input pf-num" value="${item.num || ''}"></div>
-        <div class="field"><label>Kategori (Website / Web App / Dashboard)</label><input class="input pf-cat" value="${item.category || ''}"></div>
-      </div>
-      <div class="field"><label>Nama Klien / Judul Proyek</label><input class="input pf-title" value="${item.title || ''}"></div>
-      <div class="field"><label>URL Gambar Screenshot (Opsional)</label><input class="input pf-img" value="${item.image_url || ''}" placeholder="https://..."></div>
-      <div class="field"><label>Ringkasan Tantangan & Solusi</label><textarea class="input pf-sum">${item.summary || ''}</textarea></div>
-    `;
+      <div class="card-body" style="display:flex;flex-direction:column;gap:12px">
+        <div class="grid-2-col">
+          <div class="field"><label class="label">Nomor Urut</label><input class="input pf-num" value="${item.num||''}"></div>
+          <div class="field"><label class="label">Kategori</label><input class="input pf-cat" value="${item.category||''}"></div>
+        </div>
+        <div class="field"><label class="label">Judul / Nama Klien</label><input class="input pf-title" value="${item.title||''}"></div>
+        <div class="field"><label class="label">URL Gambar (opsional)</label><input class="input pf-img" value="${item.image_url||''}" placeholder="https://..."></div>
+        <div class="field"><label class="label">Ringkasan</label><textarea class="input pf-sum">${item.summary||''}</textarea></div>
+      </div>`;
     el.appendChild(box);
   });
 }
-
-function syncPortfolioFromDOM() {
-  const boxes = document.getElementById('editor-portfolio').children;
-  cmsData.portfolio = Array.from(boxes).map((box, idx) => ({
-    num: box.querySelector('.pf-num').value.trim() || String(idx + 1).padStart(2, '0'),
-    category: box.querySelector('.pf-cat').value.trim(),
-    title: box.querySelector('.pf-title').value.trim(),
-    image_url: box.querySelector('.pf-img').value.trim(),
-    image_placeholder: `[Tangkapan layar proyek ${String(idx + 1).padStart(2, '0')}]`,
-    summary: box.querySelector('.pf-sum').value.trim()
+function syncPortfolio() {
+  cmsData.portfolio = Array.from(document.getElementById('editor-portfolio').children).map((b,i) => ({
+    num:               b.querySelector('.pf-num').value.trim() || String(i+1).padStart(2,'0'),
+    category:          b.querySelector('.pf-cat').value.trim(),
+    title:             b.querySelector('.pf-title').value.trim(),
+    image_url:         b.querySelector('.pf-img').value.trim(),
+    image_placeholder: `[Screenshot proyek ${String(i+1).padStart(2,'0')}]`,
+    summary:           b.querySelector('.pf-sum').value.trim()
   }));
 }
-
 function addPortfolioItem() {
-  syncPortfolioFromDOM();
-  const nextNum = String((cmsData.portfolio.length || 0) + 1).padStart(2, '0');
-  cmsData.portfolio.push({
-    num: nextNum,
-    title: 'Proyek Baru',
-    category: 'Website',
-    image_url: '',
-    image_placeholder: `[Tangkapan layar proyek ${nextNum}]`,
-    summary: 'Masalah: [isi ringkas]. Solusi: [isi ringkas]. Hasil: [isi ringkas].'
-  });
-  renderPortfolioEditor();
+  syncPortfolio();
+  const n = String((cmsData.portfolio.length||0)+1).padStart(2,'0');
+  cmsData.portfolio.push({ num:n, title:'Proyek Baru', category:'Website', image_url:'', summary:'' });
+  renderPortfolio();
 }
-
-function removePortfolio(idx) {
-  syncPortfolioFromDOM();
-  cmsData.portfolio.splice(idx, 1);
-  renderPortfolioEditor();
-}
-
+function removePortfolio(i) { syncPortfolio(); cmsData.portfolio.splice(i,1); renderPortfolio(); }
 async function savePortfolio() {
   try {
-    syncPortfolioFromDOM();
-    await apiAdmin('/api/admin/content/portfolio', { method: 'PUT', body: JSON.stringify(cmsData.portfolio) });
-    showToast('Portofolio berhasil diperbarui!');
-  } catch (err) {
-    showToast('Gagal menyimpan: ' + err.message, true);
-  }
+    syncPortfolio();
+    await api('/api/admin/content/portfolio', { method:'PUT', body:JSON.stringify(cmsData.portfolio) });
+    toast('Portofolio disimpan.');
+  } catch (e) { toast(e.message, true); }
 }
 
-function renderSettingsEditor() {
+/* Settings */
+function renderSettings() {
   const s = cmsData.settings || {};
-  document.getElementById('set-wa-num').value = s.whatsapp_number || '';
-  document.getElementById('set-wa-msg').value = s.whatsapp_greeting || '';
-  document.getElementById('set-domain').value = s.domain_display || '';
-  document.getElementById('set-email').value = s.email || '';
-  document.getElementById('set-city').value = s.city || '';
-  document.getElementById('set-hosting').value = s.hosting_price || '';
-  document.getElementById('set-dp').value = s.dp_percent || '';
+  document.getElementById('set-wa-num').value  = s.whatsapp_number   || '';
+  document.getElementById('set-wa-msg').value  = s.whatsapp_greeting || '';
+  document.getElementById('set-domain').value  = s.domain_display    || '';
+  document.getElementById('set-email').value   = s.email             || '';
+  document.getElementById('set-city').value    = s.city              || '';
+  document.getElementById('set-hosting').value = s.hosting_price     || '';
+  document.getElementById('set-dp').value      = s.dp_percent        || '';
 }
-
 async function saveSettings() {
   try {
     const s = {
-      whatsapp_number: document.getElementById('set-wa-num').value.trim(),
+      whatsapp_number:   document.getElementById('set-wa-num').value.trim(),
       whatsapp_greeting: document.getElementById('set-wa-msg').value.trim(),
-      domain_display: document.getElementById('set-domain').value.trim(),
-      email: document.getElementById('set-email').value.trim(),
-      city: document.getElementById('set-city').value.trim(),
-      hosting_price: document.getElementById('set-hosting').value.trim(),
-      dp_percent: document.getElementById('set-dp').value.trim()
+      domain_display:    document.getElementById('set-domain').value.trim(),
+      email:             document.getElementById('set-email').value.trim(),
+      city:              document.getElementById('set-city').value.trim(),
+      hosting_price:     document.getElementById('set-hosting').value.trim(),
+      dp_percent:        document.getElementById('set-dp').value.trim()
     };
-    await apiAdmin('/api/admin/content/settings', { method: 'PUT', body: JSON.stringify(s) });
+    await api('/api/admin/content/settings', { method:'PUT', body:JSON.stringify(s) });
     cmsData.settings = s;
-    showToast('Pengaturan studio berhasil diperbarui!');
-  } catch (err) {
-    showToast('Gagal menyimpan: ' + err.message, true);
-  }
+    toast('Pengaturan disimpan.');
+  } catch (e) { toast(e.message, true); }
 }
 
-// Auto init if token exists
-if (token) {
-  initDashboard();
-}
+/* ─── AUTO LOGIN ─── */
+if (token) init();
 </script>
 </body>
 </html>
