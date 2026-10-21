@@ -342,9 +342,21 @@ app.get('/api/admin/stats', requireAdmin, async (req, res) => {
       `SELECT
          COUNT(*) FILTER (WHERE event_type = 'pageview') AS today_pageviews,
          COUNT(DISTINCT visitor_hash) FILTER (WHERE event_type = 'pageview') AS today_visitors,
-         COUNT(*) FILTER (WHERE event_type = 'wa_click') AS today_wa_clicks
+         COUNT(*) FILTER (WHERE event_type = 'wa_click') AS today_wa_clicks,
+         COUNT(*) FILTER (WHERE event_type = 'plan_click') AS today_plan_clicks
        FROM analytics_events
        WHERE created_at >= CURRENT_DATE`
+    );
+
+    // Kemarin (untuk komparasi growth harian)
+    const yesterdayQ = await pool.query(
+      `SELECT
+         COUNT(*) FILTER (WHERE event_type = 'pageview') AS yesterday_pageviews,
+         COUNT(DISTINCT visitor_hash) FILTER (WHERE event_type = 'pageview') AS yesterday_visitors,
+         COUNT(*) FILTER (WHERE event_type = 'wa_click') AS yesterday_wa_clicks,
+         COUNT(*) FILTER (WHERE event_type = 'plan_click') AS yesterday_plan_clicks
+       FROM analytics_events
+       WHERE created_at >= CURRENT_DATE - INTERVAL '1 day' AND created_at < CURRENT_DATE`
     );
 
     // Grafik harian
@@ -420,6 +432,7 @@ app.get('/api/admin/stats', requireAdmin, async (req, res) => {
     res.json({
       summary: summaryQ.rows[0],
       today: todayQ.rows[0],
+      yesterday: yesterdayQ.rows[0],
       daily: dailyQ.rows,
       devices: deviceQ.rows,
       browsers: browserQ.rows,
