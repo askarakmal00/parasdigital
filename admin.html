@@ -271,7 +271,7 @@ select.input { cursor: pointer; }
 /* ─── CHART ─── */
 .chart-area {
   height: 200px; display: flex; align-items: flex-end; gap: 6px;
-  padding: 16px 4px 0; overflow-x: auto;
+  padding: 16px 4px 0; overflow-x: auto; overflow-y: visible;
   border-bottom: 1px solid var(--border);
   background: linear-gradient(180deg, #FAFBFC 0%, transparent 100%);
   border-radius: 8px 8px 0 0;
@@ -284,17 +284,20 @@ select.input { cursor: pointer; }
 .bars { display: flex; align-items: flex-end; justify-content: center; gap: 2px; width: 100%; }
 .b-uv { width: 46%; background: var(--accent); border-radius: 3px 3px 0 0; min-height: 3px; transition: height .3s ease; }
 .b-pv { width: 46%; background: var(--blue); opacity: .65; border-radius: 3px 3px 0 0; min-height: 3px; transition: height .3s ease; }
-.bar-col:hover::before {
-  content: attr(data-tip);
-  position: absolute; bottom: calc(100% + 4px); left: 50%;
-  transform: translateX(-50%);
-  background: #1F2937; color: #F9FAFB;
-  font-size: 11px; padding: 5px 8px; border-radius: 6px;
-  white-space: pre; text-align: center; z-index: 10;
-  pointer-events: none; line-height: 1.5;
-  box-shadow: 0 4px 12px rgba(0,0,0,.2);
-}
 .bar-lbl { font-size: 10.5px; color: var(--subtle); font-weight: 500; padding-bottom: 4px; }
+
+/* JS Tooltip — attached to body to escape overflow clipping */
+#chart-tip {
+  position: fixed; z-index: 9000; pointer-events: none;
+  background: #1F2937; color: #F9FAFB;
+  font-size: 11.5px; font-family: 'Inter', sans-serif;
+  padding: 7px 11px; border-radius: 7px;
+  white-space: pre; line-height: 1.6; text-align: center;
+  box-shadow: 0 4px 14px rgba(0,0,0,.22);
+  display: none;
+  transform: translate(-50%, calc(-100% - 10px));
+  transition: opacity .1s;
+}
 .chart-legend { display: flex; gap: 16px; font-size: 12px; color: var(--muted); }
 .legend-dot { width: 9px; height: 9px; border-radius: 2px; display: inline-block; }
 
@@ -721,6 +724,9 @@ tbody tr:last-child td { border-bottom: none; }
   </main>
 </div>
 
+<!-- Chart Tooltip (body-level to escape overflow clipping) -->
+<div id="chart-tip"></div>
+
 <!-- Toast -->
 <div id="toast">
   <span class="toast-icon ok" id="toast-icon">✓</span>
@@ -896,6 +902,21 @@ async function loadStats() {
 }
 
 /* ─── CHART ─── */
+const chartTip = document.getElementById('chart-tip');
+
+function showTip(e, text) {
+  chartTip.textContent = text;
+  chartTip.style.display = 'block';
+  moveTip(e);
+}
+function moveTip(e) {
+  chartTip.style.left = e.clientX + 'px';
+  chartTip.style.top  = e.clientY + 'px';
+}
+function hideTip() {
+  chartTip.style.display = 'none';
+}
+
 function renderChart(daily) {
   const el = document.getElementById('daily-chart');
   el.innerHTML = '';
@@ -907,15 +928,18 @@ function renderChart(daily) {
   daily.forEach(d => {
     const huv = Math.max(4, Math.round(d.visitors / max * 160));
     const hpv = Math.max(4, Math.round(d.pageviews / max * 160));
+    const tip = `${d.label}\nPengunjung: ${d.visitors}\nPageviews: ${d.pageviews}\nWA: ${d.wa_clicks||0}`;
     const col = document.createElement('div');
     col.className = 'bar-col';
-    col.setAttribute('data-tip', `${d.label}\nPengunjung: ${d.visitors}\nPageviews: ${d.pageviews}\nWA: ${d.wa_clicks||0}`);
     col.innerHTML = `
       <div class="bars">
         <div class="b-uv" style="height:${huv}px"></div>
         <div class="b-pv" style="height:${hpv}px"></div>
       </div>
       <span class="bar-lbl">${d.label}</span>`;
+    col.addEventListener('mouseenter', e => showTip(e, tip));
+    col.addEventListener('mousemove',  e => moveTip(e));
+    col.addEventListener('mouseleave', hideTip);
     el.appendChild(col);
   });
 }
