@@ -10,6 +10,25 @@
 
   gtag('config', 'AW-961777212');
 </script>
+<!-- Event snippet for Tayangan halaman conversion page -->
+<script>
+function gtag_report_conversion(url) {
+  var callback = function () {
+    if (typeof(url) != 'undefined') {
+      window.location = url;
+    }
+  };
+  if (typeof gtag === 'function') {
+    gtag('event', 'conversion', {
+        'send_to': 'AW-961777212/JYUcCN7q7KYdELyczsoD',
+        'value': 1.0,
+        'currency': 'IDR',
+        'event_callback': callback
+    });
+  }
+  return false;
+}
+</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Jasa Pembuatan Website Company Profile &amp; Landing Page – Paras Digital</title>
@@ -1103,6 +1122,9 @@ fetch('/api/content')
 document.addEventListener('click', (e) => {
   const waBtn = e.target.closest('.js-wa-link, a[href*="wa.me"]');
   if (waBtn) {
+    if (typeof gtag_report_conversion === 'function') {
+      gtag_report_conversion();
+    }
     const label = waBtn.getAttribute('data-wa-label') || waBtn.textContent.trim().slice(0, 40) || 'Tombol WA';
     if (waBtn.classList.contains('js-plan-btn')) {
       trackEvent('plan_click', waBtn.getAttribute('data-plan-name') || label);
