@@ -287,15 +287,15 @@ function gtag_report_conversion(url) {
   /* ─── HERO SECTION ─── */
   .hero-section {
     margin-top: -82px;
-    padding-top: 82px;
+    padding-top: 108px;
     background:
       radial-gradient(60% 55% at 88% 18%, rgba(255,107,61,0.13) 0%, rgba(255,107,61,0) 62%),
       radial-gradient(55% 60% at 0% 0%, rgba(31,122,116,0.09) 0%, rgba(31,122,116,0) 62%);
   }
   .hero-inner {
     max-width: 1200px; margin: 0 auto;
-    padding: 80px 32px 100px;
-    display: flex; flex-wrap: wrap; align-items: center; gap: 56px;
+    padding: 36px 32px 72px;
+    display: flex; flex-wrap: wrap; align-items: center; gap: 48px;
     position: relative; z-index: 1;
   }
   .hero-text { flex: 1 1 500px; min-width: 0; display: flex; flex-direction: column; gap: 28px; }
@@ -354,7 +354,7 @@ function gtag_report_conversion(url) {
   .showcase-scaler {
     position: relative;
     width: 100%;
-    aspect-ratio: 1480 / 920;
+    aspect-ratio: 1480 / 830;
     container-type: inline-size;
     overflow: visible;
   }
@@ -363,7 +363,7 @@ function gtag_report_conversion(url) {
     top: 0;
     left: 0;
     width: 1480px;
-    height: 920px;
+    height: 830px;
     transform-origin: top left;
     transform: scale(var(--showcase-scale, calc(100cqw / 1480)));
     animation: float 6s ease-in-out infinite;
@@ -372,7 +372,7 @@ function gtag_report_conversion(url) {
   }
 
   /* ─── TILTED BAND ─── */
-  .band-wrap { overflow: hidden; padding: 40px 0 56px; }
+  .band-wrap { overflow: hidden; padding: 48px 0 56px; margin-top: 20px; }
   .band {
     margin: 0 -48px; transform: rotate(-2deg); background: var(--accent); color: #0A2B2A;
     padding: 22px 0; overflow: hidden;
@@ -864,7 +864,7 @@ function gtag_report_conversion(url) {
     .nav-hamburger svg { width: 18px; height: 18px; }
 
     /* Hero */
-    .hero-section { margin-top: -62px; padding-top: 62px; }
+    .hero-section { margin-top: -62px; padding-top: 84px; }
     .hero-inner { padding: 36px 18px 52px; gap: 28px; }
     .hero-text { gap: 28px; }
     .hero-badge { font-size: 13px; padding: 6px 14px 6px 12px; }
@@ -1230,27 +1230,27 @@ function gtag_report_conversion(url) {
           </div>
 
           <!-- KARTU MELAYANG: Desain Modern -->
-          <div style="position: absolute; left: 1130px; top: 40px; width: 160px; height: 176px; background: rgba(255,255,255,0.92); border: 1px solid #D3E1DE; border-radius: 28px; box-shadow: 0 18px 36px rgba(15,118,110,0.22); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; text-align: center; color: #0B1F24">
+          <div style="position: absolute; left: 1130px; top: 40px; width: 160px; height: 176px; background: rgba(255,255,255,0.95); border: 1px solid #D3E1DE; border-radius: 28px; box-shadow: 0 18px 36px rgba(15,118,110,0.22); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; text-align: center; color: #0B1F24">
             <div style="width: 68px; height: 68px; border-radius: 50%; background: #DDF2EE; display: flex; align-items: center; justify-content: center">
               <svg width="36" height="36" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 4.5l10.5 7.5-5 1.4 3 5.4-2.4 1.3-3-5.4L9 18.5z" fill="#0F766E"></path><g stroke="#0F766E" stroke-width="1.6" stroke-linecap="round"><line x1="9" y1="1.5" x2="9" y2="3"></line><line x1="3" y1="7" x2="4.5" y2="8"></line><line x1="15" y1="7" x2="13.5" y2="8"></line><line x1="2" y1="13" x2="3.5" y2="12.5"></line></g></svg>
             </div>
             <div style="font-size: 15px; font-weight: 700; line-height: 1.25">Desain Custom<br>Bukan Template</div>
           </div>
 
-          <!-- KARTU MELAYANG: Aman -->
-          <div style="position: absolute; left: 70px; top: 380px; width: 168px; height: 176px; background: rgba(255,255,255,0.92); border: 1px solid #D3E1DE; border-radius: 28px; box-shadow: 0 18px 36px rgba(15,118,110,0.22); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; text-align: center; color: #0B1F24">
-            <div style="width: 68px; height: 68px; border-radius: 50%; background: #DDF2EE; display: flex; align-items: center; justify-content: center">
-              <svg width="38" height="38" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2.5l8 3v6.2c0 5-3.4 8.4-8 9.8-4.6-1.4-8-4.8-8-9.8V5.5l8-3z" fill="#0F766E"></path><polyline points="8.2 12 11 14.8 16 9.2" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg>
+          <!-- KARTU MELAYANG: Aman (posisi dipindah ke bawah-kiri agar tidak menutupi teks headline) -->
+          <div style="position: absolute; left: 20px; top: 450px; width: 164px; height: 170px; background: rgba(255,255,255,0.95); border: 1px solid #D3E1DE; border-radius: 28px; box-shadow: 0 18px 36px rgba(15,118,110,0.22); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; text-align: center; color: #0B1F24">
+            <div style="width: 64px; height: 64px; border-radius: 50%; background: #DDF2EE; display: flex; align-items: center; justify-content: center">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2.5l8 3v6.2c0 5-3.4 8.4-8 9.8-4.6-1.4-8-4.8-8-9.8V5.5l8-3z" fill="#0F766E"></path><polyline points="8.2 12 11 14.8 16 9.2" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg>
             </div>
-            <div style="font-size: 15px; font-weight: 700; line-height: 1.25">Dirawat Penuh<br>Setiap Tahun</div>
+            <div style="font-size: 14.5px; font-weight: 700; line-height: 1.25">Dirawat Penuh<br>Setiap Tahun</div>
           </div>
 
-          <!-- KARTU MELAYANG: Pertumbuhan -->
-          <div style="position: absolute; left: 880px; top: 690px; width: 370px; height: 150px; background: rgba(255,255,255,0.94); border: 1px solid #D3E1DE; border-radius: 28px; box-shadow: 0 18px 36px rgba(15,118,110,0.22); display: flex; align-items: center; gap: 22px; padding: 0 28px; box-sizing: border-box; color: #0B1F24">
-            <div style="flex: none; width: 92px; height: 92px; border-radius: 24px; background: #DDF2EE; display: flex; align-items: center; justify-content: center; font-size: 34px; font-weight: 800; color: #0F766E">Rp</div>
-            <div style="display: flex; flex-direction: column; gap: 6px">
-              <div style="font-size: 22px; font-weight: 800; line-height: 1.15">Harga Jelas,<br>Sekali Bayar</div>
-              <div style="font-size: 24px; font-weight: 800; color: #0F766E">Mulai Rp 600 rb</div>
+          <!-- KARTU MELAYANG: Pertumbuhan (posisi dipindah lebih ke atas agar tidak menabrak pita oranye) -->
+          <div style="position: absolute; left: 810px; top: 590px; width: 340px; height: 130px; background: rgba(255,255,255,0.96); border: 1px solid #D3E1DE; border-radius: 26px; box-shadow: 0 18px 36px rgba(15,118,110,0.22); display: flex; align-items: center; gap: 20px; padding: 0 26px; box-sizing: border-box; color: #0B1F24">
+            <div style="flex: none; width: 80px; height: 80px; border-radius: 22px; background: #DDF2EE; display: flex; align-items: center; justify-content: center; font-size: 30px; font-weight: 800; color: #0F766E">Rp</div>
+            <div style="display: flex; flex-direction: column; gap: 5px">
+              <div style="font-size: 20px; font-weight: 800; line-height: 1.15">Harga Jelas,<br>Sekali Bayar</div>
+              <div style="font-size: 22px; font-weight: 800; color: #0F766E">Mulai Rp 600 rb</div>
             </div>
           </div>
 
