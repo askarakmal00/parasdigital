@@ -163,35 +163,35 @@ function gtag_report_conversion(url) {
   .nav-wrap { padding: 16px 20px 0; transition: padding 0.3s ease; }
   .nav-wrap.scrolled { padding: 12px 20px 0; }
   .nav-pill {
-    max-width: 1200px; margin: 0 auto;
+    max-width: 1160px; margin: 0 auto;
     display: flex; flex-wrap: nowrap; align-items: center; justify-content: space-between; gap: 12px;
     padding: 10px 12px 10px 22px; border-radius: 999px;
     background: rgba(255,255,255,0.85); border: 1px solid rgba(0,0,0,0.08);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     transition: background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
   }
   .nav-wrap.scrolled .nav-pill {
     background: rgba(245,244,239,0.96);
-    border-color: rgba(0,0,0,0.10);
+    border-color: rgba(0,0,0,0.12);
     box-shadow: 0 8px 32px rgba(0,0,0,0.08);
   }
   .nav-logo { display: flex; align-items: center; gap: 10px; font-size: 20px; letter-spacing: -0.02em; transition: opacity 0.2s; }
   .nav-logo:hover { opacity: 0.85; }
   .nav-logo .wordmark-bold { font-weight: 800; color: #0D1F1E; }
   .nav-logo .wordmark-light { font-weight: 500; color: #5A7472; }
-  .nav-links { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 26px; font-size: 15.5px; font-weight: 500; }
+  .nav-links { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 26px; font-size: 16px; font-weight: 500; }
   .nav-links a { color: #2A3B3A; padding: 10px 0; position: relative; transition: color 0.2s; }
-  .nav-links a::after { content: ''; position: absolute; bottom: 6px; left: 0; width: 0; height: 2px; background: #FF6B3D; border-radius: 2px; transition: width 0.25s ease; }
+  .nav-links a::after { content: ''; position: absolute; bottom: 6px; left: 0; width: 0; height: 2px; background: var(--accent); border-radius: 2px; transition: width 0.25s ease; }
   .nav-links a:hover::after { width: 100%; }
   .nav-links a:hover { color: #0D1F1E; }
-  .nav-cta { background: var(--accent) !important; color: #0A2B2A !important; padding: 10px 22px !important; border-radius: 10px; font-weight: 700 !important; transition: transform 0.2s ease, box-shadow 0.2s ease !important; }
-  .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255,107,61,0.45); color: #0A2B2A !important; }
+  .nav-cta { background: var(--accent); color: #0A2B2A !important; padding: 12px 22px !important; border-radius: 999px; font-weight: 700 !important; transition: transform 0.2s ease, box-shadow 0.2s ease !important; }
+  .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255,107,61,0.4); color: #0A2B2A !important; }
 
   /* ─── NAV DROPDOWN ─── */
   .nav-dropdown { position: relative; display: inline-flex; align-items: center; }
   .nav-dropdown-btn {
-    background: transparent; color: #2A3B3A; font-size: 15.5px; font-weight: 500;
+    background: transparent; color: #2A3B3A; font-size: 16px; font-weight: 500;
     padding: 10px 0; display: inline-flex; align-items: center; gap: 6px; cursor: pointer;
     transition: color 0.2s; border: none; font-family: inherit;
   }
@@ -284,21 +284,18 @@ function gtag_report_conversion(url) {
   .mobile-dropdown-sub a:hover { color: var(--accent) !important; }
 
   /* ─── HERO ─── */
-  /* ─── HERO SECTION ─── */
   .hero-section {
     margin-top: -82px;
-    padding-top: 108px;
-    background:
-      radial-gradient(60% 55% at 88% 18%, rgba(255,107,61,0.13) 0%, rgba(255,107,61,0) 62%),
-      radial-gradient(55% 60% at 0% 0%, rgba(31,122,116,0.09) 0%, rgba(31,122,116,0) 62%);
+    padding-top: 82px;
+    background: radial-gradient(60% 55% at 88% 18%, rgba(255,107,61,0.16) 0%, rgba(255,107,61,0) 62%),
+                radial-gradient(55% 60% at 0% 0%, rgba(31,122,116,0.10) 0%, rgba(31,122,116,0) 62%);
   }
   .hero-inner {
-    max-width: 1200px; margin: 0 auto;
-    padding: 36px 32px 72px;
+    max-width: 1160px; margin: 0 auto;
+    padding: 72px 24px 104px;
     display: flex; flex-wrap: wrap; align-items: center; gap: 48px;
-    position: relative; z-index: 1;
   }
-  .hero-text { flex: 1 1 500px; min-width: 0; display: flex; flex-direction: column; gap: 28px; }
+  .hero-text { flex: 1 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 32px; }
 
   /* Hero staggered fade-in */
   .hero-badge    { animation: fade-up 0.55s ease 0.1s both; }
@@ -310,69 +307,54 @@ function gtag_report_conversion(url) {
   .hero-badge {
     align-self: flex-start; display: flex; align-items: center; gap: 10px;
     border: 1px solid rgba(13,31,30,0.14); background: rgba(13,31,30,0.04); border-radius: 999px;
-    padding: 7px 16px 7px 12px; font-size: 13.5px; font-weight: 600; color: #2A3B3A;
-    letter-spacing: .02em;
+    padding: 7px 16px 7px 12px; font-size: 14px; font-weight: 500; color: #2A3B3A;
   }
   .hero-badge .dot {
-    width: 9px; height: 9px; border-radius: 50%; background: var(--accent); flex: none;
+    width: 10px; height: 10px; border-radius: 50%; background: var(--accent); flex: none;
     animation: pulse-dot 2.2s ease-in-out infinite;
   }
-  .hero-h1 { margin: 0; font-weight: 800; font-size: clamp(38px, 5.5vw, 72px); line-height: 1.05; letter-spacing: -0.035em; color: #0D1F1E; }
+  .hero-h1 { margin: 0; font-weight: 800; font-size: clamp(44px, 6.4vw, 88px); line-height: 1; letter-spacing: -0.035em; color: #0D1F1E; }
   .hero-highlight {
     display: inline-block; background: var(--accent); color: #0A2B2A;
     padding: 0 0.18em 0.06em; border-radius: 0.22em; transform: rotate(-2.5deg);
     transition: transform 0.3s ease;
   }
   .hero-highlight:hover { transform: rotate(-1deg) scale(1.03); }
-  .hero-sub { margin: 0; font-size: 18px; color: #5A7472; max-width: 520px; line-height: 1.65; }
+  .hero-sub { margin: 0; font-size: 20px; color: #5A7472; max-width: 540px; }
   .hero-btns { display: flex; flex-wrap: wrap; gap: 14px; }
   .btn-primary {
-    background: var(--accent); color: #0A2B2A; font-weight: 700; padding: 15px 28px; border-radius: 12px;
+    background: var(--accent); color: #0A2B2A; font-weight: 700; padding: 17px 30px; border-radius: 999px;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
-    display: inline-flex; align-items: center; gap: 8px;
-    box-shadow: 0 4px 16px rgba(255,107,61,0.35);
   }
-  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,107,61,0.45); color: #0A2B2A; }
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(255,107,61,0.45); color: #0A2B2A; }
   .btn-outline-white {
-    border: 2px solid rgba(13,31,30,0.25); color: #0D1F1E; font-weight: 700; padding: 13px 26px; border-radius: 12px;
+    border: 2px solid rgba(13,31,30,0.38); color: #0D1F1E; font-weight: 700; padding: 15px 28px; border-radius: 999px;
     transition: border-color 0.2s, background 0.2s;
-    display: inline-flex; align-items: center; gap: 8px;
   }
-  .btn-outline-white:hover { border-color: rgba(13,31,30,0.5); background: rgba(13,31,30,0.04); color: #0D1F1E; }
-  .hero-pills { display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: 14px; color: #5A7472; }
-  .hero-pills span { display: flex; align-items: center; gap: 7px; }
-  .hero-pills .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex: none; }
+  .btn-outline-white:hover { border-color: rgba(13,31,30,0.7); background: rgba(13,31,30,0.05); color: #0D1F1E; }
+  .hero-pills { display: flex; flex-wrap: wrap; gap: 10px 28px; font-size: 15px; color: #5A7472; }
+  .hero-pills span { display: flex; align-items: center; gap: 8px; }
+  .hero-pills .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); flex: none; }
 
-  /* ─── HERO VISUAL — showcase laptop + HP dari pages/ ─── */
+  /* Hero orbit visual */
   .hero-visual {
-    flex: 1 1 520px;
-    min-width: 0;
-    max-width: 660px;
-    position: relative;
-    user-select: none;
+    flex: 1 1 400px; min-width: 0; max-width: 520px; position: relative; aspect-ratio: 1/1;
+    animation: float 5s ease-in-out infinite;
   }
-  .showcase-scaler {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 1480 / 830;
-    container-type: inline-size;
-    overflow: visible;
+  .hero-visual svg { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
+  .orbit-tag {
+    position: absolute; background: rgba(13,31,30,0.05);
+    border: 1px solid rgba(13,31,30,0.12); border-radius: 999px;
+    padding: 10px 18px; font-weight: 700; font-size: 15px;
+    display: flex; align-items: center; gap: 8px; color: #2A3B3A;
+    transition: background 0.2s, transform 0.2s;
+    backdrop-filter: blur(6px);
   }
-  .showcase-canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 1480px;
-    height: 830px;
-    transform-origin: top left;
-    transform: scale(var(--showcase-scale, calc(100cqw / 1480)));
-    animation: float 6s ease-in-out infinite;
-    pointer-events: none;
-    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
-  }
+  .orbit-tag:hover { background: rgba(13,31,30,0.09); transform: scale(1.05); }
+  .orbit-tag .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex: none; }
 
   /* ─── TILTED BAND ─── */
-  .band-wrap { overflow: hidden; padding: 48px 0 56px; margin-top: 20px; }
+  .band-wrap { overflow: hidden; padding: 40px 0 56px; }
   .band {
     margin: 0 -48px; transform: rotate(-2deg); background: var(--accent); color: #0A2B2A;
     padding: 22px 0; overflow: hidden;
@@ -864,7 +846,7 @@ function gtag_report_conversion(url) {
     .nav-hamburger svg { width: 18px; height: 18px; }
 
     /* Hero */
-    .hero-section { margin-top: -62px; padding-top: 84px; }
+    .hero-section { margin-top: -62px; padding-top: 62px; }
     .hero-inner { padding: 36px 18px 52px; gap: 28px; }
     .hero-text { gap: 28px; }
     .hero-badge { font-size: 13px; padding: 6px 14px 6px 12px; }
@@ -938,7 +920,7 @@ function gtag_report_conversion(url) {
     .hero-h1 { font-size: clamp(34px, 8.5vw, 42px); line-height: 1.12; }
     .hero-highlight { padding: 0 0.14em 0.04em; }
     .hero-sub { font-size: 16px; line-height: 1.55; }
-    .hero-visual { max-width: 100%; margin: 0 auto; }
+    .hero-visual { max-width: 290px; margin: 0 auto; }
     .orbit-tag { padding: 6px 12px; font-size: 12px; gap: 6px; }
     .orbit-tag .dot { width: 6px; height: 6px; }
 
@@ -991,8 +973,8 @@ function gtag_report_conversion(url) {
       <a href="#" class="nav-logo">
         <!-- Icon inline -->
         <svg width="30" height="30" viewBox="0 0 48 48" aria-hidden="true">
-          <rect x="6" y="5" width="11" height="38" rx="5.5" fill="#FFFFFF"/>
-          <circle cx="27" cy="19" r="14" fill="#FFFFFF"/>
+          <rect x="6" y="5" width="11" height="38" rx="5.5" fill="#0D1F1E"/>
+          <circle cx="27" cy="19" r="14" fill="#0D1F1E"/>
           <circle cx="29.5" cy="19" r="4.6" fill="#FF6B3D"/>
         </svg>
         <span class="wordmark-bold">paras</span><span class="wordmark-light"> digital</span>
@@ -1081,181 +1063,51 @@ function gtag_report_conversion(url) {
 <!-- ─── HERO ─── -->
 <section class="hero-section">
   <div class="hero-inner">
-    <!-- Text Left -->
+    <!-- Text -->
     <div class="hero-text">
       <div class="hero-badge">
         <span class="dot"></span>
-        Jasa Website &amp; Web App Profesional
+        Studio website &amp; web app custom
       </div>
-      <h1 class="hero-h1">Beri Bisnis Anda Wajah<br>Online yang <em>Tepat &amp; Terpercaya</em></h1>
-      <p class="hero-sub">Dari company profile, landing page, hingga web app custom — kami bantu bisnis Anda tampil profesional dari konsep hingga online dengan harga terbuka sejak awal.</p>
+      <h1 class="hero-h1">Beri bisnis Anda <span class="hero-highlight">paras</span> yang dikenal.</h1>
+      <p class="hero-sub">Paras berarti wajah. Kami merancang website company profile dan aplikasi web custom yang memberi bisnis Anda wajah online yang tepat, bukan sekadar template.</p>
       <div class="hero-btns">
-        <a href="#kontak" class="btn-primary js-wa-link" data-wa-label="Hero - Konsultasi Gratis">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="flex:none"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.524 5.847L.057 23.882l6.196-1.444A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.826 9.826 0 01-5.032-1.384l-.36-.214-3.732.869.944-3.63-.235-.373A9.818 9.818 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
-          Konsultasi Gratis
-        </a>
-        <a href="#layanan" class="btn-outline-white">
-          Lihat Layanan Kami &rarr;
-        </a>
+        <a href="#kontak" class="btn-primary">Konsultasi via WhatsApp</a>
+        <a href="#showcase" class="btn-outline-white">Lihat Preview Mockup →</a>
       </div>
       <div class="hero-pills">
-        <span><span class="dot"></span>Website Profesional</span>
-        <span><span class="dot"></span>Responsif di HP</span>
-        <span><span class="dot"></span>SEO-Friendly</span>
-        <span><span class="dot"></span>Support &amp; Maintenance</span>
+        <span><span class="dot"></span>Desain khas</span>
+        <span><span class="dot"></span>Cepat &amp; ringan</span>
+        <span><span class="dot"></span>Harga terbuka</span>
       </div>
     </div>
 
-    <!-- Visual Right — Showcase Laptop & HP (dari pages/Showcase Laptop + HP-html/Showcase.dc.html) -->
+    <!-- Orbit Visual -->
     <div class="hero-visual" aria-hidden="true">
-      <div class="showcase-scaler">
-        <div class="showcase-canvas">
-
-          <!-- lapisan belakang browser -->
-          <div style="position: absolute; left: 168px; top: 96px; width: 1080px; height: 640px; background: #CFE6E2; border-radius: 28px; transform: perspective(2000px) rotateX(6deg) rotateY(-8deg) rotateZ(-1.5deg)"></div>
-
-          <!-- BROWSER -->
-          <div style="position: absolute; left: 130px; top: 70px; width: 1080px; height: 640px; background: #FFFFFF; border: 1px solid #D3E1DE; border-radius: 28px; box-shadow: 0 30px 60px rgba(15,118,110,0.18); overflow: hidden; transform: perspective(2000px) rotateX(6deg) rotateY(-8deg) rotateZ(-1.5deg)">
-            <div style="height: 64px; background: #EEF5F3; padding: 0 24px; box-sizing: border-box; display: flex; align-items: center; gap: 10px">
-              <div style="width: 14px; height: 14px; border-radius: 50%; background: #FF5F57"></div>
-              <div style="width: 14px; height: 14px; border-radius: 50%; background: #FEBC2E"></div>
-              <div style="width: 14px; height: 14px; border-radius: 50%; background: #28C840"></div>
-              <div style="flex: 1; margin-left: 16px; height: 36px; background: #FFFFFF; border: 1px solid #D3E1DE; border-radius: 18px; padding: 0 16px; display: flex; align-items: center; gap: 10px; font-size: 14px; color: #44585A">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#44585A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg>
-                www.[domain-anda]
-              </div>
-            </div>
-
-            <div style="padding: 0 56px">
-              <div style="height: 84px; display: flex; align-items: center; justify-content: space-between">
-                <div style="display: flex; align-items: center; gap: 12px; font-size: 24px; font-weight: 800; color: #0B1F24">
-                  <span style="width: 38px; height: 38px; border-radius: 11px; background: #0F766E; display: flex; align-items: center; justify-content: center">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M8 19V5h5a4 4 0 0 1 0 8H8"></path><circle cx="13.2" cy="9" r="1.5" fill="#FF8A3D" stroke="none"></circle></svg>
-                  </span>
-                  Paras Digital
-                </div>
-                <div style="display: flex; align-items: center; gap: 32px; font-size: 15px; font-weight: 600">
-                  <span style="color: #0F766E; border-bottom: 2px solid #0F766E; padding-bottom: 4px">Home</span>
-                  <span style="color: #0B1F24">About</span>
-                  <span style="color: #0B1F24">Services</span>
-                  <span style="color: #0B1F24">Portfolio</span>
-                  <span style="color: #0B1F24">Contact</span>
-                  <span style="color: #0B1F24; background: #FF8A3D; padding: 0 22px; height: 44px; border-radius: 12px; display: inline-flex; align-items: center; font-weight: 700">Hubungi Kami</span>
-                </div>
-              </div>
-
-              <div style="display: flex; align-items: center; gap: 24px; margin-top: 20px">
-                <div style="flex: 0 0 520px; display: flex; flex-direction: column; gap: 16px">
-                  <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.22em; color: #0F766E">WEBSITE CUSTOM</div>
-                  <div style="margin: 0; font-size: 68px; line-height: 1; font-weight: 800; letter-spacing: -0.03em; color: #0B1F24">Bisnis Anda<br><span style="color: #0F766E">layak memikat</span></div>
-                  <p style="margin: 0; font-size: 18px; line-height: 1.55; color: #44585A; max-width: 420px">Website yang bukan cuma cantik, tapi bekerja untuk Anda.</p>
-                  <div style="display: flex; gap: 14px; margin-top: 8px">
-                    <span style="color: #FFFFFF; background: #0F766E; height: 56px; padding: 0 28px; border-radius: 14px; display: inline-flex; align-items: center; gap: 12px; font-weight: 700; font-size: 16px; box-shadow: 0 12px 24px rgba(15,118,110,0.3)">Ceritakan Proyek
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="13 6 19 12 13 18"></polyline></svg>
-                    </span>
-                    <span style="color: #0F766E; background: #FFFFFF; border: 1.5px solid #BFD8D3; height: 56px; padding: 0 28px; box-sizing: border-box; border-radius: 14px; display: inline-flex; align-items: center; font-weight: 700; font-size: 16px">Intip Karya Kami</span>
-                  </div>
-                </div>
-
-                <div style="flex: 1; min-width: 0; height: 330px; border-radius: 24px; overflow: hidden">
-                  <svg width="100%" height="100%" viewBox="0 0 400 330" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Ilustrasi gedung kaca modern">
-                    <rect width="400" height="330" fill="#BFE3DE"></rect>
-                    <ellipse cx="90" cy="60" rx="60" ry="16" fill="#FFFFFF" opacity="0.7"></ellipse>
-                    <ellipse cx="330" cy="40" rx="50" ry="12" fill="#FFFFFF" opacity="0.6"></ellipse>
-                    <polygon points="150,30 310,62 310,300 150,300" fill="#134E4A"></polygon>
-                    <polygon points="70,110 150,30 150,300 70,300" fill="#2A8F86"></polygon>
-                    <g stroke="#FFFFFF" stroke-opacity="0.2" stroke-width="1.5">
-                      <line x1="190" y1="38" x2="190" y2="300"></line>
-                      <line x1="230" y1="46" x2="230" y2="300"></line>
-                      <line x1="270" y1="54" x2="270" y2="300"></line>
-                      <line x1="150" y1="90" x2="310" y2="122"></line>
-                      <line x1="150" y1="150" x2="310" y2="182"></line>
-                      <line x1="150" y1="210" x2="310" y2="242"></line>
-                      <line x1="110" y1="130" x2="110" y2="300"></line>
-                    </g>
-                    <polygon points="40,215 330,240 330,262 40,238" fill="#FFFFFF"></polygon>
-                    <polygon points="40,238 330,262 330,300 40,300" fill="#17605A"></polygon>
-                    <g stroke="#FFFFFF" stroke-opacity="0.25" stroke-width="1.5">
-                      <line x1="90" y1="238" x2="90" y2="300"></line>
-                      <line x1="150" y1="244" x2="150" y2="300"></line>
-                      <line x1="210" y1="250" x2="210" y2="300"></line>
-                      <line x1="270" y1="256" x2="270" y2="300"></line>
-                    </g>
-                    <rect y="300" width="400" height="30" fill="#E3F0EE"></rect>
-                  </svg>
-                </div>
-              </div>
-
-              <div style="display: flex; align-items: center; gap: 28px; margin-top: 28px; font-size: 14px; color: #44585A">
-                <div>Dipercaya oleh banyak bisnis</div>
-                <div style="padding: 8px 18px; border-radius: 999px; background: #EEF5F3; font-weight: 600">[Logo Klien]</div>
-                <div style="padding: 8px 18px; border-radius: 999px; background: #EEF5F3; font-weight: 600">[Logo Klien]</div>
-                <div style="padding: 8px 18px; border-radius: 999px; background: #EEF5F3; font-weight: 600">[Logo Klien]</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- HP -->
-          <div style="position: absolute; left: 1090px; top: 250px; width: 262px; height: 560px; background: #1A1D29; border-radius: 46px; padding: 10px; box-sizing: border-box; box-shadow: 0 30px 50px rgba(11,16,32,0.3); transform: rotate(2deg)">
-            <div style="position: relative; width: 100%; height: 100%; background: #FFFFFF; border-radius: 37px; overflow: hidden">
-              <div style="position: absolute; left: 50%; top: 10px; margin-left: -42px; width: 84px; height: 24px; border-radius: 12px; background: #0B1F24"></div>
-              <div style="padding: 54px 18px 0">
-                <div style="display: flex; align-items: center; justify-content: space-between">
-                  <div style="display: flex; align-items: center; gap: 7px; font-size: 14px; font-weight: 800; color: #0B1F24">
-                    <span style="width: 22px; height: 22px; border-radius: 7px; background: #0F766E; display: flex; align-items: center; justify-content: center">
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M8 19V5h5a4 4 0 0 1 0 8H8"></path><circle cx="13.2" cy="9" r="1.5" fill="#FF8A3D" stroke="none"></circle></svg>
-                    </span>
-                    Paras Digital
-                  </div>
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0B1F24" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"></line><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="17" x2="20" y2="17"></line></svg>
-                </div>
-                <div style="font-size: 9px; font-weight: 700; letter-spacing: 0.2em; color: #0F766E; margin-top: 30px">WEBSITE CUSTOM</div>
-                <div style="font-size: 27px; line-height: 1.05; font-weight: 800; letter-spacing: -0.03em; margin-top: 10px; color: #0B1F24">Bisnis Anda<br><span style="color: #0F766E">layak memikat</span></div>
-                <div style="font-size: 12px; line-height: 1.5; color: #44585A; margin-top: 12px">Website yang bukan cuma cantik, tapi bekerja untuk Anda.</div>
-                <div style="margin-top: 16px; height: 40px; border-radius: 12px; background: #0F766E; color: #FFFFFF; font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 8px">Ceritakan Proyek
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="13 6 19 12 13 18"></polyline></svg>
-                </div>
-                <div style="margin-top: 18px; height: 170px; border-radius: 16px; overflow: hidden">
-                  <svg width="100%" height="100%" viewBox="0 0 400 330" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Ilustrasi gedung kaca modern">
-                    <rect width="400" height="330" fill="#BFE3DE"></rect>
-                    <polygon points="150,30 310,62 310,300 150,300" fill="#134E4A"></polygon>
-                    <polygon points="70,110 150,30 150,300 70,300" fill="#2A8F86"></polygon>
-                    <polygon points="40,215 330,240 330,262 40,238" fill="#FFFFFF"></polygon>
-                    <polygon points="40,238 330,262 330,300 40,300" fill="#17605A"></polygon>
-                    <rect y="300" width="400" height="30" fill="#E3F0EE"></rect>
-                  </svg>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- KARTU MELAYANG: Desain Modern -->
-          <div style="position: absolute; left: 1130px; top: 40px; width: 160px; height: 176px; background: rgba(255,255,255,0.95); border: 1px solid #D3E1DE; border-radius: 28px; box-shadow: 0 18px 36px rgba(15,118,110,0.22); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; text-align: center; color: #0B1F24">
-            <div style="width: 68px; height: 68px; border-radius: 50%; background: #DDF2EE; display: flex; align-items: center; justify-content: center">
-              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 4.5l10.5 7.5-5 1.4 3 5.4-2.4 1.3-3-5.4L9 18.5z" fill="#0F766E"></path><g stroke="#0F766E" stroke-width="1.6" stroke-linecap="round"><line x1="9" y1="1.5" x2="9" y2="3"></line><line x1="3" y1="7" x2="4.5" y2="8"></line><line x1="15" y1="7" x2="13.5" y2="8"></line><line x1="2" y1="13" x2="3.5" y2="12.5"></line></g></svg>
-            </div>
-            <div style="font-size: 15px; font-weight: 700; line-height: 1.25">Desain Custom<br>Bukan Template</div>
-          </div>
-
-          <!-- KARTU MELAYANG: Aman (posisi dipindah ke bawah-kiri agar tidak menutupi teks headline) -->
-          <div style="position: absolute; left: 20px; top: 450px; width: 164px; height: 170px; background: rgba(255,255,255,0.95); border: 1px solid #D3E1DE; border-radius: 28px; box-shadow: 0 18px 36px rgba(15,118,110,0.22); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; text-align: center; color: #0B1F24">
-            <div style="width: 64px; height: 64px; border-radius: 50%; background: #DDF2EE; display: flex; align-items: center; justify-content: center">
-              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2.5l8 3v6.2c0 5-3.4 8.4-8 9.8-4.6-1.4-8-4.8-8-9.8V5.5l8-3z" fill="#0F766E"></path><polyline points="8.2 12 11 14.8 16 9.2" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg>
-            </div>
-            <div style="font-size: 14.5px; font-weight: 700; line-height: 1.25">Dirawat Penuh<br>Setiap Tahun</div>
-          </div>
-
-          <!-- KARTU MELAYANG: Pertumbuhan (posisi dipindah lebih ke atas agar tidak menabrak pita oranye) -->
-          <div style="position: absolute; left: 810px; top: 590px; width: 340px; height: 130px; background: rgba(255,255,255,0.96); border: 1px solid #D3E1DE; border-radius: 26px; box-shadow: 0 18px 36px rgba(15,118,110,0.22); display: flex; align-items: center; gap: 20px; padding: 0 26px; box-sizing: border-box; color: #0B1F24">
-            <div style="flex: none; width: 80px; height: 80px; border-radius: 22px; background: #DDF2EE; display: flex; align-items: center; justify-content: center; font-size: 30px; font-weight: 800; color: #0F766E">Rp</div>
-            <div style="display: flex; flex-direction: column; gap: 5px">
-              <div style="font-size: 20px; font-weight: 800; line-height: 1.15">Harga Jelas,<br>Sekali Bayar</div>
-              <div style="font-size: 22px; font-weight: 800; color: #0F766E">Mulai Rp 600 rb</div>
-            </div>
-          </div>
-
-        </div>
-      </div>
+      <svg viewBox="0 0 520 520">
+        <defs>
+          <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#FF6B3D" stop-opacity="0.55"/>
+            <stop offset="100%" stop-color="#FF6B3D" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <circle cx="260" cy="260" r="170" fill="url(#glow)"/>
+        <circle cx="260" cy="260" r="120" fill="none" stroke="rgba(13,31,30,0.12)"/>
+        <circle cx="260" cy="260" r="190" fill="none" stroke="rgba(13,31,30,0.09)"/>
+        <circle cx="260" cy="260" r="250" fill="none" stroke="rgba(13,31,30,0.08)" stroke-dasharray="3 9"/>
+        <circle cx="130" cy="125" r="6" fill="#FF6B3D"/>
+        <circle cx="448" cy="330" r="5" fill="#0D1F1E" fill-opacity="0.45"/>
+        <circle cx="170" cy="445" r="4" fill="#0D1F1E" fill-opacity="0.35"/>
+        <!-- Logo icon in center -->
+        <g transform="translate(161.3 159.2) scale(4.2)">
+          <rect x="6" y="5" width="11" height="38" rx="5.5" fill="#0D1F1E"/>
+          <circle cx="27" cy="19" r="14" fill="#0D1F1E"/>
+          <circle cx="29.5" cy="19" r="4.6" fill="#FF6B3D"/>
+        </g>
+      </svg>
+      <div class="orbit-tag" style="left:0;top:14%"><span class="dot"></span>Website</div>
+      <div class="orbit-tag" style="right:0;top:40%"><span class="dot"></span>Web App</div>
+      <div class="orbit-tag" style="left:12%;bottom:6%"><span class="dot"></span>Hosting</div>
     </div>
   </div>
 </section>
@@ -2421,18 +2273,6 @@ window.addEventListener('message', (e) => {
     }
   }
 });
-
-// Auto-scale hero showcase canvas based on container width
-function updateHeroShowcaseScale() {
-  const scaler = document.querySelector('.showcase-scaler');
-  if (scaler) {
-    const scale = scaler.clientWidth / 1480;
-    scaler.style.setProperty('--showcase-scale', scale);
-  }
-}
-window.addEventListener('resize', updateHeroShowcaseScale);
-window.addEventListener('DOMContentLoaded', updateHeroShowcaseScale);
-updateHeroShowcaseScale();
 
 // Delegasi event klik untuk melacak klik WA & pilih paket
 document.addEventListener('click', (e) => {
