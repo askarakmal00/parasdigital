@@ -163,39 +163,39 @@ function gtag_report_conversion(url) {
   .nav-wrap { padding: 16px 20px 0; transition: padding 0.3s ease; }
   .nav-wrap.scrolled { padding: 12px 20px 0; }
   .nav-pill {
-    max-width: 1160px; margin: 0 auto;
+    max-width: 1200px; margin: 0 auto;
     display: flex; flex-wrap: nowrap; align-items: center; justify-content: space-between; gap: 12px;
-    padding: 10px 12px 10px 22px; border-radius: 999px;
-    background: rgba(255,255,255,0.85); border: 1px solid rgba(0,0,0,0.08);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    padding: 10px 12px 10px 22px; border-radius: 16px;
+    background: rgba(10, 22, 40, 0.75); border: 1px solid rgba(255,255,255,0.12);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     transition: background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
   }
   .nav-wrap.scrolled .nav-pill {
-    background: rgba(245,244,239,0.96);
-    border-color: rgba(0,0,0,0.12);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+    background: rgba(10, 22, 40, 0.95);
+    border-color: rgba(255,255,255,0.15);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
   }
   .nav-logo { display: flex; align-items: center; gap: 10px; font-size: 20px; letter-spacing: -0.02em; transition: opacity 0.2s; }
   .nav-logo:hover { opacity: 0.85; }
-  .nav-logo .wordmark-bold { font-weight: 800; color: #0D1F1E; }
-  .nav-logo .wordmark-light { font-weight: 500; color: #5A7472; }
-  .nav-links { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 26px; font-size: 16px; font-weight: 500; }
-  .nav-links a { color: #2A3B3A; padding: 10px 0; position: relative; transition: color 0.2s; }
-  .nav-links a::after { content: ''; position: absolute; bottom: 6px; left: 0; width: 0; height: 2px; background: var(--accent); border-radius: 2px; transition: width 0.25s ease; }
+  .nav-logo .wordmark-bold { font-weight: 800; color: #FFFFFF; }
+  .nav-logo .wordmark-light { font-weight: 500; color: rgba(255,255,255,0.55); }
+  .nav-links { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 26px; font-size: 15.5px; font-weight: 500; }
+  .nav-links a { color: rgba(255,255,255,0.75); padding: 10px 0; position: relative; transition: color 0.2s; }
+  .nav-links a::after { content: ''; position: absolute; bottom: 6px; left: 0; width: 0; height: 2px; background: #FF6B3D; border-radius: 2px; transition: width 0.25s ease; }
   .nav-links a:hover::after { width: 100%; }
-  .nav-links a:hover { color: #0D1F1E; }
-  .nav-cta { background: var(--accent); color: #0A2B2A !important; padding: 12px 22px !important; border-radius: 999px; font-weight: 700 !important; transition: transform 0.2s ease, box-shadow 0.2s ease !important; }
-  .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255,107,61,0.4); color: #0A2B2A !important; }
+  .nav-links a:hover { color: #FFFFFF; }
+  .nav-cta { background: #FF6B3D !important; color: #FFFFFF !important; padding: 10px 22px !important; border-radius: 10px; font-weight: 700 !important; transition: transform 0.2s ease, box-shadow 0.2s ease !important; }
+  .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255,107,61,0.45); color: #FFFFFF !important; }
 
   /* ─── NAV DROPDOWN ─── */
   .nav-dropdown { position: relative; display: inline-flex; align-items: center; }
   .nav-dropdown-btn {
-    background: transparent; color: #2A3B3A; font-size: 16px; font-weight: 500;
+    background: transparent; color: rgba(255,255,255,0.75); font-size: 15.5px; font-weight: 500;
     padding: 10px 0; display: inline-flex; align-items: center; gap: 6px; cursor: pointer;
     transition: color 0.2s; border: none; font-family: inherit;
   }
-  .nav-dropdown-btn:hover, .nav-dropdown:hover .nav-dropdown-btn { color: #0D1F1E; }
+  .nav-dropdown-btn:hover, .nav-dropdown:hover .nav-dropdown-btn { color: #FFFFFF; }
   .dropdown-chevron { transition: transform 0.25s ease; stroke: currentColor; }
   .nav-dropdown:hover .dropdown-chevron,
   .nav-dropdown.active .dropdown-chevron { transform: rotate(180deg); }
@@ -284,18 +284,38 @@ function gtag_report_conversion(url) {
   .mobile-dropdown-sub a:hover { color: var(--accent) !important; }
 
   /* ─── HERO ─── */
+  /* ─── HERO SECTION — dark navy gradient style ─── */
   .hero-section {
     margin-top: -82px;
     padding-top: 82px;
-    background: radial-gradient(60% 55% at 88% 18%, rgba(255,107,61,0.16) 0%, rgba(255,107,61,0) 62%),
-                radial-gradient(55% 60% at 0% 0%, rgba(31,122,116,0.10) 0%, rgba(31,122,116,0) 62%);
+    background: linear-gradient(135deg, #0A1628 0%, #0D2051 40%, #1A3A8C 75%, #1565C0 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-section::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 70% 60% at 80% 30%, rgba(56,139,253,0.25) 0%, transparent 65%),
+      radial-gradient(ellipse 50% 50% at 10% 70%, rgba(21,101,192,0.3) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  /* Subtle grid pattern overlay */
+  .hero-section::after {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
   }
   .hero-inner {
-    max-width: 1160px; margin: 0 auto;
-    padding: 72px 24px 104px;
-    display: flex; flex-wrap: wrap; align-items: center; gap: 48px;
+    max-width: 1200px; margin: 0 auto;
+    padding: 80px 32px 100px;
+    display: flex; flex-wrap: wrap; align-items: center; gap: 56px;
+    position: relative; z-index: 1;
   }
-  .hero-text { flex: 1 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 32px; }
+  .hero-text { flex: 1 1 500px; min-width: 0; display: flex; flex-direction: column; gap: 28px; }
 
   /* Hero staggered fade-in */
   .hero-badge    { animation: fade-up 0.55s ease 0.1s both; }
@@ -306,52 +326,149 @@ function gtag_report_conversion(url) {
 
   .hero-badge {
     align-self: flex-start; display: flex; align-items: center; gap: 10px;
-    border: 1px solid rgba(13,31,30,0.14); background: rgba(13,31,30,0.04); border-radius: 999px;
-    padding: 7px 16px 7px 12px; font-size: 14px; font-weight: 500; color: #2A3B3A;
+    border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.08);
+    border-radius: 999px;
+    padding: 6px 16px 6px 8px; font-size: 13px; font-weight: 600;
+    color: rgba(255,255,255,0.85); letter-spacing: 0.06em; text-transform: uppercase;
+    backdrop-filter: blur(8px);
   }
   .hero-badge .dot {
-    width: 10px; height: 10px; border-radius: 50%; background: var(--accent); flex: none;
+    width: 8px; height: 8px; border-radius: 50%; background: #FF6B3D; flex: none;
     animation: pulse-dot 2.2s ease-in-out infinite;
+    box-shadow: 0 0 8px rgba(255,107,61,0.7);
   }
-  .hero-h1 { margin: 0; font-weight: 800; font-size: clamp(44px, 6.4vw, 88px); line-height: 1; letter-spacing: -0.035em; color: #0D1F1E; }
+  .hero-h1 {
+    margin: 0; font-weight: 800;
+    font-size: clamp(38px, 5.5vw, 70px);
+    line-height: 1.08; letter-spacing: -0.03em;
+    color: #FFFFFF;
+  }
+  .hero-h1 em { font-style: normal; color: #FF6B3D; }
   .hero-highlight {
-    display: inline-block; background: var(--accent); color: #0A2B2A;
-    padding: 0 0.18em 0.06em; border-radius: 0.22em; transform: rotate(-2.5deg);
-    transition: transform 0.3s ease;
+    display: inline; color: #FF6B3D;
   }
-  .hero-highlight:hover { transform: rotate(-1deg) scale(1.03); }
-  .hero-sub { margin: 0; font-size: 20px; color: #5A7472; max-width: 540px; }
+  .hero-sub { margin: 0; font-size: 17px; color: rgba(255,255,255,0.68); max-width: 520px; line-height: 1.65; }
   .hero-btns { display: flex; flex-wrap: wrap; gap: 14px; }
   .btn-primary {
-    background: var(--accent); color: #0A2B2A; font-weight: 700; padding: 17px 30px; border-radius: 999px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    background: #FF6B3D; color: #FFFFFF; font-weight: 700; padding: 15px 28px; border-radius: 10px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s;
+    display: inline-flex; align-items: center; gap: 8px;
+    box-shadow: 0 4px 20px rgba(255,107,61,0.45);
   }
-  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(255,107,61,0.45); color: #0A2B2A; }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(255,107,61,0.55); background: #e85a2c; color: #fff; }
   .btn-outline-white {
-    border: 2px solid rgba(13,31,30,0.38); color: #0D1F1E; font-weight: 700; padding: 15px 28px; border-radius: 999px;
+    border: 1.5px solid rgba(255,255,255,0.35); color: rgba(255,255,255,0.9); font-weight: 600;
+    padding: 14px 26px; border-radius: 10px;
     transition: border-color 0.2s, background 0.2s;
+    display: inline-flex; align-items: center; gap: 8px;
+    backdrop-filter: blur(6px); background: rgba(255,255,255,0.06);
   }
-  .btn-outline-white:hover { border-color: rgba(13,31,30,0.7); background: rgba(13,31,30,0.05); color: #0D1F1E; }
-  .hero-pills { display: flex; flex-wrap: wrap; gap: 10px 28px; font-size: 15px; color: #5A7472; }
-  .hero-pills span { display: flex; align-items: center; gap: 8px; }
-  .hero-pills .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); flex: none; }
+  .btn-outline-white:hover { border-color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.12); color: #fff; }
 
-  /* Hero orbit visual */
+  /* Feature pills at bottom */
+  .hero-pills {
+    display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: 13.5px;
+    color: rgba(255,255,255,0.6);
+    padding-top: 4px;
+  }
+  .hero-pills span {
+    display: flex; align-items: center; gap: 7px;
+  }
+  .hero-pills .dot {
+    width: 6px; height: 6px; border-radius: 50%; background: #FF6B3D; flex: none;
+  }
+
+  /* ─── HERO VISUAL — right side device mockups ─── */
   .hero-visual {
-    flex: 1 1 400px; min-width: 0; max-width: 520px; position: relative; aspect-ratio: 1/1;
+    flex: 1 1 420px; min-width: 0; max-width: 560px;
+    position: relative;
     animation: float 5s ease-in-out infinite;
+    min-height: 380px;
   }
-  .hero-visual svg { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
-  .orbit-tag {
-    position: absolute; background: rgba(13,31,30,0.05);
-    border: 1px solid rgba(13,31,30,0.12); border-radius: 999px;
-    padding: 10px 18px; font-weight: 700; font-size: 15px;
-    display: flex; align-items: center; gap: 8px; color: #2A3B3A;
-    transition: background 0.2s, transform 0.2s;
+
+  /* Main laptop mockup */
+  .hero-device-wrap {
+    position: relative; width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: flex-end;
+  }
+  .hero-laptop {
+    width: 88%; background: #1A2B4A;
+    border: 1.5px solid rgba(255,255,255,0.12);
+    border-radius: 16px; padding: 10px 10px 0;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.06) inset;
+  }
+  .hero-laptop-screen {
+    background: linear-gradient(145deg, #EFF6FF, #DBEAFE);
+    border-radius: 8px 8px 0 0; padding: 16px 14px;
+    display: flex; flex-direction: column; gap: 8px; min-height: 180px;
+  }
+  .laptop-nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding-bottom: 8px; border-bottom: 1px solid rgba(0,0,0,0.07);
+  }
+  .laptop-nav-brand { font-size: 9px; font-weight: 800; color: #1E3A8A; letter-spacing: .02em; }
+  .laptop-nav-links { display: flex; gap: 8px; }
+  .laptop-nav-links span { width: 20px; height: 4px; background: #93C5FD; border-radius: 2px; }
+  .laptop-nav-btn { background: #3B82F6; color: #fff; font-size: 7px; font-weight: 700; padding: 3px 8px; border-radius: 4px; }
+  .laptop-hero-text { padding: 10px 0 4px; }
+  .laptop-hero-text .lh-label { font-size: 7px; color: #3B82F6; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }
+  .laptop-hero-text .lh-title { font-size: 15px; font-weight: 800; color: #1E3A8A; line-height: 1.1; margin: 3px 0; letter-spacing: -.02em; }
+  .laptop-hero-text .lh-title span { color: #3B82F6; }
+  .laptop-hero-text .lh-sub { font-size: 7px; color: #6B7280; line-height: 1.5; }
+  .laptop-btns { display: flex; gap: 6px; margin-top: 6px; }
+  .laptop-btn-p { background: #3B82F6; color: #fff; font-size: 7px; font-weight: 700; padding: 4px 10px; border-radius: 4px; }
+  .laptop-btn-s { border: 1px solid #3B82F6; color: #3B82F6; font-size: 7px; font-weight: 700; padding: 4px 10px; border-radius: 4px; }
+  .laptop-logos { display: flex; gap: 6px; margin-top: 8px; align-items: center; }
+  .laptop-logos span { width: 24px; height: 6px; background: #CBD5E1; border-radius: 2px; }
+  .laptop-footer { height: 10px; background: #1E3A8A; border-radius: 0 0 8px 8px; margin: 0 -14px; }
+
+  /* Mobile mockup overlay */
+  .hero-mobile {
+    position: absolute;
+    right: -8%; bottom: -5%;
+    width: 28%;
+    background: #1E293B;
+    border: 1.5px solid rgba(255,255,255,0.15);
+    border-radius: 18px; padding: 8px 6px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  }
+  .hero-mobile-screen {
+    background: linear-gradient(145deg, #EFF6FF, #DBEAFE);
+    border-radius: 12px; padding: 10px 8px; min-height: 110px;
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .mob-bar { height: 6px; background: #1E3A8A; border-radius: 2px; width: 80%; }
+  .mob-title { font-size: 7px; font-weight: 800; color: #1E3A8A; line-height: 1.2; margin: 4px 0 2px; }
+  .mob-title span { color: #3B82F6; }
+  .mob-sub { font-size: 5px; color: #6B7280; line-height: 1.4; }
+  .mob-btn { background: #3B82F6; color: #fff; font-size: 5px; font-weight: 700; padding: 3px 7px; border-radius: 3px; align-self: flex-start; margin-top: 4px; }
+
+  /* Floating cards */
+  .hero-float-card {
+    position: absolute;
+    background: #FFFFFF;
+    border-radius: 12px;
+    padding: 10px 14px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    font-size: 12px;
+    font-weight: 600;
+    color: #0F172A;
     backdrop-filter: blur(6px);
+    white-space: nowrap;
+    animation: float 4s ease-in-out infinite;
   }
-  .orbit-tag:hover { background: rgba(13,31,30,0.09); transform: scale(1.05); }
-  .orbit-tag .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex: none; }
+  .hero-float-card.card-stat {
+    left: -4%; top: 12%;
+    animation-delay: 1s;
+  }
+  .hero-float-card.card-rating {
+    right: 10%; bottom: 10%;
+    animation-delay: 2s;
+  }
+  .float-card-icon { font-size: 18px; margin-bottom: 2px; }
+  .float-card-num { font-size: 18px; font-weight: 800; color: #1E3A8A; line-height: 1; }
+  .float-card-label { font-size: 11px; color: #6B7280; font-weight: 500; }
+  .stars { color: #F59E0B; font-size: 11px; }
 
   /* ─── TILTED BAND ─── */
   .band-wrap { overflow: hidden; padding: 40px 0 56px; }
@@ -973,8 +1090,8 @@ function gtag_report_conversion(url) {
       <a href="#" class="nav-logo">
         <!-- Icon inline -->
         <svg width="30" height="30" viewBox="0 0 48 48" aria-hidden="true">
-          <rect x="6" y="5" width="11" height="38" rx="5.5" fill="#0D1F1E"/>
-          <circle cx="27" cy="19" r="14" fill="#0D1F1E"/>
+          <rect x="6" y="5" width="11" height="38" rx="5.5" fill="#FFFFFF"/>
+          <circle cx="27" cy="19" r="14" fill="#FFFFFF"/>
           <circle cx="29.5" cy="19" r="4.6" fill="#FF6B3D"/>
         </svg>
         <span class="wordmark-bold">paras</span><span class="wordmark-light"> digital</span>
@@ -1063,51 +1180,89 @@ function gtag_report_conversion(url) {
 <!-- ─── HERO ─── -->
 <section class="hero-section">
   <div class="hero-inner">
-    <!-- Text -->
+    <!-- Text Left -->
     <div class="hero-text">
       <div class="hero-badge">
         <span class="dot"></span>
-        Studio website &amp; web app custom
+        Jasa Website &amp; Web App Profesional
       </div>
-      <h1 class="hero-h1">Beri bisnis Anda <span class="hero-highlight">paras</span> yang dikenal.</h1>
-      <p class="hero-sub">Paras berarti wajah. Kami merancang website company profile dan aplikasi web custom yang memberi bisnis Anda wajah online yang tepat, bukan sekadar template.</p>
+      <h1 class="hero-h1">Beri Bisnis Anda Wajah<br>Online yang <em>Tepat &amp; Terpercaya</em></h1>
+      <p class="hero-sub">Dari company profile, landing page, hingga web app custom — kami bantu bisnis Anda tampil profesional dari konsep hingga online dengan harga terbuka sejak awal.</p>
       <div class="hero-btns">
-        <a href="#kontak" class="btn-primary">Konsultasi via WhatsApp</a>
-        <a href="#showcase" class="btn-outline-white">Lihat Preview Mockup →</a>
+        <a href="#kontak" class="btn-primary js-wa-link" data-wa-label="Hero - Konsultasi Gratis">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="flex:none"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.524 5.847L.057 23.882l6.196-1.444A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.826 9.826 0 01-5.032-1.384l-.36-.214-3.732.869.944-3.63-.235-.373A9.818 9.818 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+          Konsultasi Gratis
+        </a>
+        <a href="#layanan" class="btn-outline-white">
+          Lihat Layanan Kami &rarr;
+        </a>
       </div>
       <div class="hero-pills">
-        <span><span class="dot"></span>Desain khas</span>
-        <span><span class="dot"></span>Cepat &amp; ringan</span>
-        <span><span class="dot"></span>Harga terbuka</span>
+        <span><span class="dot"></span>Website Profesional</span>
+        <span><span class="dot"></span>Responsif di HP</span>
+        <span><span class="dot"></span>SEO-Friendly</span>
+        <span><span class="dot"></span>Support &amp; Maintenance</span>
       </div>
     </div>
 
-    <!-- Orbit Visual -->
+    <!-- Visual Right — Device Mockups -->
     <div class="hero-visual" aria-hidden="true">
-      <svg viewBox="0 0 520 520">
-        <defs>
-          <radialGradient id="glow" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="#FF6B3D" stop-opacity="0.55"/>
-            <stop offset="100%" stop-color="#FF6B3D" stop-opacity="0"/>
-          </radialGradient>
-        </defs>
-        <circle cx="260" cy="260" r="170" fill="url(#glow)"/>
-        <circle cx="260" cy="260" r="120" fill="none" stroke="rgba(13,31,30,0.12)"/>
-        <circle cx="260" cy="260" r="190" fill="none" stroke="rgba(13,31,30,0.09)"/>
-        <circle cx="260" cy="260" r="250" fill="none" stroke="rgba(13,31,30,0.08)" stroke-dasharray="3 9"/>
-        <circle cx="130" cy="125" r="6" fill="#FF6B3D"/>
-        <circle cx="448" cy="330" r="5" fill="#0D1F1E" fill-opacity="0.45"/>
-        <circle cx="170" cy="445" r="4" fill="#0D1F1E" fill-opacity="0.35"/>
-        <!-- Logo icon in center -->
-        <g transform="translate(161.3 159.2) scale(4.2)">
-          <rect x="6" y="5" width="11" height="38" rx="5.5" fill="#0D1F1E"/>
-          <circle cx="27" cy="19" r="14" fill="#0D1F1E"/>
-          <circle cx="29.5" cy="19" r="4.6" fill="#FF6B3D"/>
-        </g>
-      </svg>
-      <div class="orbit-tag" style="left:0;top:14%"><span class="dot"></span>Website</div>
-      <div class="orbit-tag" style="right:0;top:40%"><span class="dot"></span>Web App</div>
-      <div class="orbit-tag" style="left:12%;bottom:6%"><span class="dot"></span>Hosting</div>
+      <div class="hero-device-wrap">
+
+        <!-- Floating stat card (top left) -->
+        <div class="hero-float-card card-stat">
+          <div class="float-card-icon">👥</div>
+          <div class="float-card-num">10+</div>
+          <div class="float-card-label">Klien Telah<br>Mempercayai Kami</div>
+        </div>
+
+        <!-- Laptop mockup -->
+        <div class="hero-laptop">
+          <div class="hero-laptop-screen">
+            <!-- Nav -->
+            <div class="laptop-nav">
+              <div class="laptop-nav-brand">YourBrand</div>
+              <div class="laptop-nav-links">
+                <span></span><span></span><span></span>
+              </div>
+              <div class="laptop-nav-btn">Get Started</div>
+            </div>
+            <!-- Hero content -->
+            <div class="laptop-hero-text">
+              <div class="lh-label">Modern Website</div>
+              <div class="lh-title">Build Your<br>Future <span>Online</span></div>
+              <div class="lh-sub">Modern website for growing businesses<br>with clean design &amp; fast performance.</div>
+              <div class="laptop-btns">
+                <div class="laptop-btn-p">Get Started</div>
+                <div class="laptop-btn-s">Learn More</div>
+              </div>
+            </div>
+            <!-- Partner logos -->
+            <div class="laptop-logos">
+              <span></span><span></span><span></span><span></span>
+            </div>
+          </div>
+          <div class="laptop-footer"></div>
+        </div>
+
+        <!-- Mobile overlay mockup -->
+        <div class="hero-mobile">
+          <div class="hero-mobile-screen">
+            <div class="mob-bar"></div>
+            <div class="mob-title">Build Your<br>Future <span>Online</span></div>
+            <div class="mob-sub">Modern website for growing businesses.</div>
+            <div class="mob-btn">Get Started</div>
+          </div>
+        </div>
+
+        <!-- Floating rating card (bottom right) -->
+        <div class="hero-float-card card-rating">
+          <div class="stars">★★★★★</div>
+          <div style="font-size:12px;font-weight:700;color:#0F172A;margin-top:2px">4.9/5</div>
+          <div class="float-card-label">dari 200+ ulasan</div>
+        </div>
+
+      </div>
     </div>
   </div>
 </section>
