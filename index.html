@@ -165,37 +165,37 @@ function gtag_report_conversion(url) {
   .nav-pill {
     max-width: 1200px; margin: 0 auto;
     display: flex; flex-wrap: nowrap; align-items: center; justify-content: space-between; gap: 12px;
-    padding: 10px 12px 10px 22px; border-radius: 16px;
-    background: rgba(10, 22, 40, 0.75); border: 1px solid rgba(255,255,255,0.12);
+    padding: 10px 12px 10px 22px; border-radius: 999px;
+    background: rgba(255,255,255,0.85); border: 1px solid rgba(0,0,0,0.08);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     transition: background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
   }
   .nav-wrap.scrolled .nav-pill {
-    background: rgba(10, 22, 40, 0.95);
-    border-color: rgba(255,255,255,0.15);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    background: rgba(245,244,239,0.96);
+    border-color: rgba(0,0,0,0.10);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.08);
   }
   .nav-logo { display: flex; align-items: center; gap: 10px; font-size: 20px; letter-spacing: -0.02em; transition: opacity 0.2s; }
   .nav-logo:hover { opacity: 0.85; }
-  .nav-logo .wordmark-bold { font-weight: 800; color: #FFFFFF; }
-  .nav-logo .wordmark-light { font-weight: 500; color: rgba(255,255,255,0.55); }
+  .nav-logo .wordmark-bold { font-weight: 800; color: #0D1F1E; }
+  .nav-logo .wordmark-light { font-weight: 500; color: #5A7472; }
   .nav-links { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 26px; font-size: 15.5px; font-weight: 500; }
-  .nav-links a { color: rgba(255,255,255,0.75); padding: 10px 0; position: relative; transition: color 0.2s; }
+  .nav-links a { color: #2A3B3A; padding: 10px 0; position: relative; transition: color 0.2s; }
   .nav-links a::after { content: ''; position: absolute; bottom: 6px; left: 0; width: 0; height: 2px; background: #FF6B3D; border-radius: 2px; transition: width 0.25s ease; }
   .nav-links a:hover::after { width: 100%; }
-  .nav-links a:hover { color: #FFFFFF; }
-  .nav-cta { background: #FF6B3D !important; color: #FFFFFF !important; padding: 10px 22px !important; border-radius: 10px; font-weight: 700 !important; transition: transform 0.2s ease, box-shadow 0.2s ease !important; }
-  .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255,107,61,0.45); color: #FFFFFF !important; }
+  .nav-links a:hover { color: #0D1F1E; }
+  .nav-cta { background: var(--accent) !important; color: #0A2B2A !important; padding: 10px 22px !important; border-radius: 10px; font-weight: 700 !important; transition: transform 0.2s ease, box-shadow 0.2s ease !important; }
+  .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255,107,61,0.45); color: #0A2B2A !important; }
 
   /* ─── NAV DROPDOWN ─── */
   .nav-dropdown { position: relative; display: inline-flex; align-items: center; }
   .nav-dropdown-btn {
-    background: transparent; color: rgba(255,255,255,0.75); font-size: 15.5px; font-weight: 500;
+    background: transparent; color: #2A3B3A; font-size: 15.5px; font-weight: 500;
     padding: 10px 0; display: inline-flex; align-items: center; gap: 6px; cursor: pointer;
     transition: color 0.2s; border: none; font-family: inherit;
   }
-  .nav-dropdown-btn:hover, .nav-dropdown:hover .nav-dropdown-btn { color: #FFFFFF; }
+  .nav-dropdown-btn:hover, .nav-dropdown:hover .nav-dropdown-btn { color: #0D1F1E; }
   .dropdown-chevron { transition: transform 0.25s ease; stroke: currentColor; }
   .nav-dropdown:hover .dropdown-chevron,
   .nav-dropdown.active .dropdown-chevron { transform: rotate(180deg); }
@@ -284,30 +284,13 @@ function gtag_report_conversion(url) {
   .mobile-dropdown-sub a:hover { color: var(--accent) !important; }
 
   /* ─── HERO ─── */
-  /* ─── HERO SECTION — dark navy gradient style ─── */
+  /* ─── HERO SECTION ─── */
   .hero-section {
     margin-top: -82px;
     padding-top: 82px;
-    background: linear-gradient(135deg, #0A1628 0%, #0D2051 40%, #1A3A8C 75%, #1565C0 100%);
-    position: relative;
-    overflow: hidden;
-  }
-  .hero-section::before {
-    content: '';
-    position: absolute; inset: 0;
     background:
-      radial-gradient(ellipse 70% 60% at 80% 30%, rgba(56,139,253,0.25) 0%, transparent 65%),
-      radial-gradient(ellipse 50% 50% at 10% 70%, rgba(21,101,192,0.3) 0%, transparent 60%);
-    pointer-events: none;
-  }
-  /* Subtle grid pattern overlay */
-  .hero-section::after {
-    content: '';
-    position: absolute; inset: 0;
-    background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-                      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-    background-size: 60px 60px;
-    pointer-events: none;
+      radial-gradient(60% 55% at 88% 18%, rgba(255,107,61,0.13) 0%, rgba(255,107,61,0) 62%),
+      radial-gradient(55% 60% at 0% 0%, rgba(31,122,116,0.09) 0%, rgba(31,122,116,0) 62%);
   }
   .hero-inner {
     max-width: 1200px; margin: 0 auto;
@@ -326,149 +309,164 @@ function gtag_report_conversion(url) {
 
   .hero-badge {
     align-self: flex-start; display: flex; align-items: center; gap: 10px;
-    border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.08);
-    border-radius: 999px;
-    padding: 6px 16px 6px 8px; font-size: 13px; font-weight: 600;
-    color: rgba(255,255,255,0.85); letter-spacing: 0.06em; text-transform: uppercase;
-    backdrop-filter: blur(8px);
+    border: 1px solid rgba(13,31,30,0.14); background: rgba(13,31,30,0.04); border-radius: 999px;
+    padding: 7px 16px 7px 12px; font-size: 13.5px; font-weight: 600; color: #2A3B3A;
+    letter-spacing: .02em;
   }
   .hero-badge .dot {
-    width: 8px; height: 8px; border-radius: 50%; background: #FF6B3D; flex: none;
+    width: 9px; height: 9px; border-radius: 50%; background: var(--accent); flex: none;
     animation: pulse-dot 2.2s ease-in-out infinite;
-    box-shadow: 0 0 8px rgba(255,107,61,0.7);
   }
-  .hero-h1 {
-    margin: 0; font-weight: 800;
-    font-size: clamp(38px, 5.5vw, 70px);
-    line-height: 1.08; letter-spacing: -0.03em;
-    color: #FFFFFF;
-  }
-  .hero-h1 em { font-style: normal; color: #FF6B3D; }
+  .hero-h1 { margin: 0; font-weight: 800; font-size: clamp(38px, 5.5vw, 72px); line-height: 1.05; letter-spacing: -0.035em; color: #0D1F1E; }
   .hero-highlight {
-    display: inline; color: #FF6B3D;
+    display: inline-block; background: var(--accent); color: #0A2B2A;
+    padding: 0 0.18em 0.06em; border-radius: 0.22em; transform: rotate(-2.5deg);
+    transition: transform 0.3s ease;
   }
-  .hero-sub { margin: 0; font-size: 17px; color: rgba(255,255,255,0.68); max-width: 520px; line-height: 1.65; }
+  .hero-highlight:hover { transform: rotate(-1deg) scale(1.03); }
+  .hero-sub { margin: 0; font-size: 18px; color: #5A7472; max-width: 520px; line-height: 1.65; }
   .hero-btns { display: flex; flex-wrap: wrap; gap: 14px; }
   .btn-primary {
-    background: #FF6B3D; color: #FFFFFF; font-weight: 700; padding: 15px 28px; border-radius: 10px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s;
+    background: var(--accent); color: #0A2B2A; font-weight: 700; padding: 15px 28px; border-radius: 12px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
     display: inline-flex; align-items: center; gap: 8px;
-    box-shadow: 0 4px 20px rgba(255,107,61,0.45);
+    box-shadow: 0 4px 16px rgba(255,107,61,0.35);
   }
-  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(255,107,61,0.55); background: #e85a2c; color: #fff; }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,107,61,0.45); color: #0A2B2A; }
   .btn-outline-white {
-    border: 1.5px solid rgba(255,255,255,0.35); color: rgba(255,255,255,0.9); font-weight: 600;
-    padding: 14px 26px; border-radius: 10px;
+    border: 2px solid rgba(13,31,30,0.25); color: #0D1F1E; font-weight: 700; padding: 13px 26px; border-radius: 12px;
     transition: border-color 0.2s, background 0.2s;
     display: inline-flex; align-items: center; gap: 8px;
-    backdrop-filter: blur(6px); background: rgba(255,255,255,0.06);
   }
-  .btn-outline-white:hover { border-color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.12); color: #fff; }
+  .btn-outline-white:hover { border-color: rgba(13,31,30,0.5); background: rgba(13,31,30,0.04); color: #0D1F1E; }
+  .hero-pills { display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: 14px; color: #5A7472; }
+  .hero-pills span { display: flex; align-items: center; gap: 7px; }
+  .hero-pills .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex: none; }
 
-  /* Feature pills at bottom */
-  .hero-pills {
-    display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: 13.5px;
-    color: rgba(255,255,255,0.6);
-    padding-top: 4px;
-  }
-  .hero-pills span {
-    display: flex; align-items: center; gap: 7px;
-  }
-  .hero-pills .dot {
-    width: 6px; height: 6px; border-radius: 50%; background: #FF6B3D; flex: none;
-  }
-
-  /* ─── HERO VISUAL — right side device mockups ─── */
+  /* ─── HERO VISUAL — device mockup illustration ─── */
   .hero-visual {
-    flex: 1 1 420px; min-width: 0; max-width: 560px;
+    flex: 1 1 420px; min-width: 0; max-width: 580px;
     position: relative;
-    animation: float 5s ease-in-out infinite;
-    min-height: 380px;
+    animation: float 5.5s ease-in-out infinite;
+    min-height: 400px;
   }
-
-  /* Main laptop mockup */
   .hero-device-wrap {
     position: relative; width: 100%; height: 100%;
-    display: flex; align-items: center; justify-content: flex-end;
+    display: flex; align-items: center; justify-content: center;
   }
-  .hero-laptop {
-    width: 88%; background: #1A2B4A;
-    border: 1.5px solid rgba(255,255,255,0.12);
-    border-radius: 16px; padding: 10px 10px 0;
-    box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.06) inset;
+
+  /* Browser mockup — company profile */
+  .hm-browser {
+    width: 92%;
+    background: #FFFFFF;
+    border-radius: 14px;
+    border: 1px solid #E2E8F0;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.12), 0 4px 16px rgba(0,0,0,0.07);
+    overflow: hidden;
   }
-  .hero-laptop-screen {
-    background: linear-gradient(145deg, #EFF6FF, #DBEAFE);
-    border-radius: 8px 8px 0 0; padding: 16px 14px;
-    display: flex; flex-direction: column; gap: 8px; min-height: 180px;
+  .hm-browser-bar {
+    background: #F8FAFC;
+    border-bottom: 1px solid #E2E8F0;
+    padding: 9px 14px;
+    display: flex; align-items: center; gap: 10px;
   }
-  .laptop-nav {
+  .hm-dots { display: flex; gap: 5px; }
+  .hm-dot { width: 9px; height: 9px; border-radius: 50%; }
+  .hm-url {
+    flex: 1; background: #F1F5F9; border-radius: 6px;
+    padding: 4px 10px; font-size: 11px; color: #64748B; font-family: 'DM Mono', monospace;
+    display: flex; align-items: center; gap: 5px;
+  }
+  .hm-url-dot { width: 6px; height: 6px; border-radius: 50%; background: #10B981; flex: none; }
+
+  /* Compro screen inside browser */
+  .hm-compro-screen { background: #F5F4EF; }
+  .hm-compro-nav {
+    background: #FFFFFF; padding: 10px 16px;
     display: flex; align-items: center; justify-content: space-between;
-    padding-bottom: 8px; border-bottom: 1px solid rgba(0,0,0,0.07);
+    border-bottom: 1px solid #F1F5F9;
   }
-  .laptop-nav-brand { font-size: 9px; font-weight: 800; color: #1E3A8A; letter-spacing: .02em; }
-  .laptop-nav-links { display: flex; gap: 8px; }
-  .laptop-nav-links span { width: 20px; height: 4px; background: #93C5FD; border-radius: 2px; }
-  .laptop-nav-btn { background: #3B82F6; color: #fff; font-size: 7px; font-weight: 700; padding: 3px 8px; border-radius: 4px; }
-  .laptop-hero-text { padding: 10px 0 4px; }
-  .laptop-hero-text .lh-label { font-size: 7px; color: #3B82F6; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }
-  .laptop-hero-text .lh-title { font-size: 15px; font-weight: 800; color: #1E3A8A; line-height: 1.1; margin: 3px 0; letter-spacing: -.02em; }
-  .laptop-hero-text .lh-title span { color: #3B82F6; }
-  .laptop-hero-text .lh-sub { font-size: 7px; color: #6B7280; line-height: 1.5; }
-  .laptop-btns { display: flex; gap: 6px; margin-top: 6px; }
-  .laptop-btn-p { background: #3B82F6; color: #fff; font-size: 7px; font-weight: 700; padding: 4px 10px; border-radius: 4px; }
-  .laptop-btn-s { border: 1px solid #3B82F6; color: #3B82F6; font-size: 7px; font-weight: 700; padding: 4px 10px; border-radius: 4px; }
-  .laptop-logos { display: flex; gap: 6px; margin-top: 8px; align-items: center; }
-  .laptop-logos span { width: 24px; height: 6px; background: #CBD5E1; border-radius: 2px; }
-  .laptop-footer { height: 10px; background: #1E3A8A; border-radius: 0 0 8px 8px; margin: 0 -14px; }
+  .hm-brand-pill { display: flex; align-items: center; gap: 6px; }
+  .hm-brand-dot { width: 18px; height: 18px; border-radius: 50%; background: #0D1F1E; display: flex; align-items: center; justify-content: center; }
+  .hm-brand-dot::after { content: ''; display: block; width: 6px; height: 6px; border-radius: 50%; background: #FF6B3D; }
+  .hm-brand-txt { font-size: 11px; font-weight: 700; color: #0D1F1E; letter-spacing: -.02em; }
+  .hm-nav-links { display: flex; gap: 10px; }
+  .hm-nav-links span { width: 24px; height: 5px; background: #CBD5E1; border-radius: 3px; }
+  .hm-nav-btn { background: #FF6B3D; border-radius: 6px; padding: 4px 10px; font-size: 9px; font-weight: 700; color: #fff; }
 
-  /* Mobile mockup overlay */
-  .hero-mobile {
+  .hm-hero-block {
+    padding: 18px 16px 14px;
+    background: linear-gradient(135deg, #0D1F1E 0%, #1A4A47 100%);
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  }
+  .hm-hero-copy { flex: 1; }
+  .hm-hero-eyebrow { font-size: 7px; font-weight: 700; color: #FF6B3D; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 4px; }
+  .hm-hero-h { font-size: 16px; font-weight: 800; color: #FFFFFF; line-height: 1.15; letter-spacing: -.02em; margin-bottom: 5px; }
+  .hm-hero-h span { color: #FF6B3D; }
+  .hm-hero-p { font-size: 7px; color: rgba(255,255,255,0.62); line-height: 1.5; margin-bottom: 8px; }
+  .hm-hero-btns { display: flex; gap: 5px; }
+  .hm-hbtn-p { background: #FF6B3D; color: #fff; font-size: 7px; font-weight: 700; padding: 4px 9px; border-radius: 5px; }
+  .hm-hbtn-s { border: 1px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.85); font-size: 7px; font-weight: 600; padding: 3px 9px; border-radius: 5px; }
+  .hm-hero-mockup {
+    width: 80px; background: rgba(255,255,255,0.07); border-radius: 8px; padding: 6px; border: 1px solid rgba(255,255,255,0.12);
+  }
+  .hm-mockup-bar { height: 5px; background: rgba(255,255,255,0.15); border-radius: 3px; margin-bottom: 4px; }
+  .hm-mockup-bar.accent { background: rgba(255,107,61,0.6); width: 60%; }
+  .hm-mockup-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; margin-top: 4px; }
+  .hm-mockup-cell { height: 20px; background: rgba(255,255,255,0.08); border-radius: 3px; }
+
+  .hm-services-block { padding: 14px 16px; }
+  .hm-services-label { font-size: 7px; font-weight: 700; color: #5A7472; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 8px; }
+  .hm-services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; }
+  .hm-service-card {
+    background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 8px;
+    padding: 8px; display: flex; flex-direction: column; gap: 4px;
+  }
+  .hm-service-icon { width: 18px; height: 18px; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 10px; }
+  .hm-service-title { font-size: 7.5px; font-weight: 700; color: #0D1F1E; }
+  .hm-service-sub { font-size: 6px; color: #94A3B8; line-height: 1.4; }
+
+  /* Floating web app dashboard card */
+  .hm-dashboard {
     position: absolute;
-    right: -8%; bottom: -5%;
-    width: 28%;
+    right: -5%; bottom: -6%;
+    width: 52%;
     background: #1E293B;
-    border: 1.5px solid rgba(255,255,255,0.15);
-    border-radius: 18px; padding: 8px 6px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 14px;
+    padding: 12px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.25);
   }
-  .hero-mobile-screen {
-    background: linear-gradient(145deg, #EFF6FF, #DBEAFE);
-    border-radius: 12px; padding: 10px 8px; min-height: 110px;
-    display: flex; flex-direction: column; gap: 4px;
+  .hm-dash-header {
+    display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;
   }
-  .mob-bar { height: 6px; background: #1E3A8A; border-radius: 2px; width: 80%; }
-  .mob-title { font-size: 7px; font-weight: 800; color: #1E3A8A; line-height: 1.2; margin: 4px 0 2px; }
-  .mob-title span { color: #3B82F6; }
-  .mob-sub { font-size: 5px; color: #6B7280; line-height: 1.4; }
-  .mob-btn { background: #3B82F6; color: #fff; font-size: 5px; font-weight: 700; padding: 3px 7px; border-radius: 3px; align-self: flex-start; margin-top: 4px; }
+  .hm-dash-title { font-size: 9px; font-weight: 700; color: #F8FAFC; }
+  .hm-dash-badge { background: rgba(16,185,129,0.2); border: 1px solid rgba(16,185,129,0.35); color: #34D399; font-size: 7px; font-weight: 600; padding: 2px 7px; border-radius: 5px; }
+  .hm-kpis { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; margin-bottom: 10px; }
+  .hm-kpi { background: rgba(255,255,255,0.06); border-radius: 7px; padding: 6px 8px; }
+  .hm-kpi-val { font-size: 14px; font-weight: 800; color: #F8FAFC; line-height: 1; }
+  .hm-kpi-label { font-size: 6.5px; color: #94A3B8; margin-top: 2px; }
+  .hm-kpi-up { font-size: 7px; color: #34D399; font-weight: 600; }
+  .hm-chart-bars { display: flex; align-items: flex-end; gap: 4px; height: 32px; padding: 0 2px; }
+  .hm-bar { flex: 1; border-radius: 2px 2px 0 0; background: #3B82F6; opacity: 0.6; }
+  .hm-bar.hi { opacity: 1; }
+  .hm-bar.accent { background: #FF6B3D; }
 
-  /* Floating cards */
-  .hero-float-card {
+  /* Floating social proof card */
+  .hm-float-badge {
     position: absolute;
     background: #FFFFFF;
     border-radius: 12px;
     padding: 10px 14px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    display: flex; align-items: center; gap: 10px;
     font-size: 12px;
-    font-weight: 600;
-    color: #0F172A;
-    backdrop-filter: blur(6px);
-    white-space: nowrap;
-    animation: float 4s ease-in-out infinite;
   }
-  .hero-float-card.card-stat {
-    left: -4%; top: 12%;
-    animation-delay: 1s;
-  }
-  .hero-float-card.card-rating {
-    right: 10%; bottom: 10%;
-    animation-delay: 2s;
-  }
-  .float-card-icon { font-size: 18px; margin-bottom: 2px; }
-  .float-card-num { font-size: 18px; font-weight: 800; color: #1E3A8A; line-height: 1; }
-  .float-card-label { font-size: 11px; color: #6B7280; font-weight: 500; }
-  .stars { color: #F59E0B; font-size: 11px; }
+  .hm-float-badge.top-left { left: -4%; top: 10%; animation: float 4.5s ease-in-out 0.5s infinite; }
+  .hm-float-badge.top-right { right: 4%; top: 8%; animation: float 4s ease-in-out 1.5s infinite; }
+  .hm-badge-icon { font-size: 22px; flex: none; }
+  .hm-badge-val { font-size: 16px; font-weight: 800; color: #0D1F1E; line-height: 1; }
+  .hm-badge-lbl { font-size: 11px; color: #64748B; margin-top: 1px; }
 
   /* ─── TILTED BAND ─── */
   .band-wrap { overflow: hidden; padding: 40px 0 56px; }
@@ -1209,57 +1207,107 @@ function gtag_report_conversion(url) {
     <div class="hero-visual" aria-hidden="true">
       <div class="hero-device-wrap">
 
-        <!-- Floating stat card (top left) -->
-        <div class="hero-float-card card-stat">
-          <div class="float-card-icon">👥</div>
-          <div class="float-card-num">10+</div>
-          <div class="float-card-label">Klien Telah<br>Mempercayai Kami</div>
-        </div>
-
-        <!-- Laptop mockup -->
-        <div class="hero-laptop">
-          <div class="hero-laptop-screen">
-            <!-- Nav -->
-            <div class="laptop-nav">
-              <div class="laptop-nav-brand">YourBrand</div>
-              <div class="laptop-nav-links">
-                <span></span><span></span><span></span>
-              </div>
-              <div class="laptop-nav-btn">Get Started</div>
-            </div>
-            <!-- Hero content -->
-            <div class="laptop-hero-text">
-              <div class="lh-label">Modern Website</div>
-              <div class="lh-title">Build Your<br>Future <span>Online</span></div>
-              <div class="lh-sub">Modern website for growing businesses<br>with clean design &amp; fast performance.</div>
-              <div class="laptop-btns">
-                <div class="laptop-btn-p">Get Started</div>
-                <div class="laptop-btn-s">Learn More</div>
-              </div>
-            </div>
-            <!-- Partner logos -->
-            <div class="laptop-logos">
-              <span></span><span></span><span></span><span></span>
-            </div>
-          </div>
-          <div class="laptop-footer"></div>
-        </div>
-
-        <!-- Mobile overlay mockup -->
-        <div class="hero-mobile">
-          <div class="hero-mobile-screen">
-            <div class="mob-bar"></div>
-            <div class="mob-title">Build Your<br>Future <span>Online</span></div>
-            <div class="mob-sub">Modern website for growing businesses.</div>
-            <div class="mob-btn">Get Started</div>
+        <!-- Floating badge top-left: social proof -->
+        <div class="hm-float-badge top-left">
+          <div class="hm-badge-icon">👥</div>
+          <div>
+            <div class="hm-badge-val">10+</div>
+            <div class="hm-badge-lbl">Klien Mempercayai Kami</div>
           </div>
         </div>
 
-        <!-- Floating rating card (bottom right) -->
-        <div class="hero-float-card card-rating">
-          <div class="stars">★★★★★</div>
-          <div style="font-size:12px;font-weight:700;color:#0F172A;margin-top:2px">4.9/5</div>
-          <div class="float-card-label">dari 200+ ulasan</div>
+        <!-- Main browser mockup — company profile website -->
+        <div class="hm-browser">
+          <div class="hm-browser-bar">
+            <div class="hm-dots">
+              <div class="hm-dot" style="background:#FF5F57"></div>
+              <div class="hm-dot" style="background:#FEBC2E"></div>
+              <div class="hm-dot" style="background:#28C840"></div>
+            </div>
+            <div class="hm-url"><span class="hm-url-dot"></span>parasdigital.id</div>
+          </div>
+          <div class="hm-compro-screen">
+            <!-- Navbar -->
+            <div class="hm-compro-nav">
+              <div class="hm-brand-pill">
+                <div class="hm-brand-dot"></div>
+                <div class="hm-brand-txt">paras digital</div>
+              </div>
+              <div class="hm-nav-links"><span></span><span></span><span></span></div>
+              <div class="hm-nav-btn">Konsultasi</div>
+            </div>
+            <!-- Hero block -->
+            <div class="hm-hero-block">
+              <div class="hm-hero-copy">
+                <div class="hm-hero-eyebrow">Company Profile</div>
+                <div class="hm-hero-h">Wajah Online <span>Bisnis Anda</span></div>
+                <div class="hm-hero-p">Website company profile profesional yang memberi kepercayaan klien korporat sejak pertama kali melihat.</div>
+                <div class="hm-hero-btns">
+                  <div class="hm-hbtn-p">Konsultasi WA</div>
+                  <div class="hm-hbtn-s">Lihat Paket</div>
+                </div>
+              </div>
+              <div class="hm-hero-mockup">
+                <div class="hm-mockup-bar accent"></div>
+                <div class="hm-mockup-bar"></div>
+                <div class="hm-mockup-bar" style="width:80%"></div>
+                <div class="hm-mockup-grid">
+                  <div class="hm-mockup-cell"></div>
+                  <div class="hm-mockup-cell"></div>
+                </div>
+              </div>
+            </div>
+            <!-- Services section -->
+            <div class="hm-services-block">
+              <div class="hm-services-label">Layanan Kami</div>
+              <div class="hm-services-grid">
+                <div class="hm-service-card">
+                  <div class="hm-service-icon" style="background:#FEF0EB">🌐</div>
+                  <div class="hm-service-title">Website</div>
+                  <div class="hm-service-sub">Company profile &amp; landing page modern</div>
+                </div>
+                <div class="hm-service-card">
+                  <div class="hm-service-icon" style="background:#EFF6FF">⚡</div>
+                  <div class="hm-service-title">Web App</div>
+                  <div class="hm-service-sub">Sistem &amp; dashboard bisnis custom</div>
+                </div>
+                <div class="hm-service-card">
+                  <div class="hm-service-icon" style="background:#ECFDF5">🔧</div>
+                  <div class="hm-service-title">Maintenance</div>
+                  <div class="hm-service-sub">Perawatan &amp; update berkala</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Floating web app dashboard overlay (bottom right) -->
+        <div class="hm-dashboard">
+          <div class="hm-dash-header">
+            <div class="hm-dash-title">Dashboard Web App</div>
+            <div class="hm-dash-badge">● Live</div>
+          </div>
+          <div class="hm-kpis">
+            <div class="hm-kpi">
+              <div class="hm-kpi-val">248</div>
+              <div class="hm-kpi-label">Total Pesanan</div>
+              <div class="hm-kpi-up">↑ +12%</div>
+            </div>
+            <div class="hm-kpi">
+              <div class="hm-kpi-val">Rp4,2M</div>
+              <div class="hm-kpi-label">Pendapatan</div>
+              <div class="hm-kpi-up">↑ +8%</div>
+            </div>
+          </div>
+          <div class="hm-chart-bars">
+            <div class="hm-bar" style="height:40%"></div>
+            <div class="hm-bar" style="height:55%"></div>
+            <div class="hm-bar" style="height:35%"></div>
+            <div class="hm-bar hi" style="height:80%"></div>
+            <div class="hm-bar accent hi" style="height:100%"></div>
+            <div class="hm-bar" style="height:65%"></div>
+            <div class="hm-bar" style="height:70%"></div>
+          </div>
         </div>
 
       </div>
