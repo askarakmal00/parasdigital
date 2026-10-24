@@ -343,130 +343,33 @@ function gtag_report_conversion(url) {
   .hero-pills span { display: flex; align-items: center; gap: 7px; }
   .hero-pills .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex: none; }
 
-  /* ─── HERO VISUAL — device mockup illustration ─── */
+  /* ─── HERO VISUAL — showcase laptop + HP dari pages/ ─── */
   .hero-visual {
-    flex: 1 1 420px; min-width: 0; max-width: 580px;
+    flex: 1 1 520px;
+    min-width: 0;
+    max-width: 660px;
     position: relative;
-    animation: float 5.5s ease-in-out infinite;
-    min-height: 400px;
+    user-select: none;
   }
-  .hero-device-wrap {
-    position: relative; width: 100%; height: 100%;
-    display: flex; align-items: center; justify-content: center;
+  .showcase-scaler {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1480 / 920;
+    container-type: inline-size;
+    overflow: visible;
   }
-
-  /* Browser mockup — company profile */
-  .hm-browser {
-    width: 92%;
-    background: #FFFFFF;
-    border-radius: 14px;
-    border: 1px solid #E2E8F0;
-    box-shadow: 0 24px 64px rgba(0,0,0,0.12), 0 4px 16px rgba(0,0,0,0.07);
-    overflow: hidden;
-  }
-  .hm-browser-bar {
-    background: #F8FAFC;
-    border-bottom: 1px solid #E2E8F0;
-    padding: 9px 14px;
-    display: flex; align-items: center; gap: 10px;
-  }
-  .hm-dots { display: flex; gap: 5px; }
-  .hm-dot { width: 9px; height: 9px; border-radius: 50%; }
-  .hm-url {
-    flex: 1; background: #F1F5F9; border-radius: 6px;
-    padding: 4px 10px; font-size: 11px; color: #64748B; font-family: 'DM Mono', monospace;
-    display: flex; align-items: center; gap: 5px;
-  }
-  .hm-url-dot { width: 6px; height: 6px; border-radius: 50%; background: #10B981; flex: none; }
-
-  /* Compro screen inside browser */
-  .hm-compro-screen { background: #F5F4EF; }
-  .hm-compro-nav {
-    background: #FFFFFF; padding: 10px 16px;
-    display: flex; align-items: center; justify-content: space-between;
-    border-bottom: 1px solid #F1F5F9;
-  }
-  .hm-brand-pill { display: flex; align-items: center; gap: 6px; }
-  .hm-brand-dot { width: 18px; height: 18px; border-radius: 50%; background: #0D1F1E; display: flex; align-items: center; justify-content: center; }
-  .hm-brand-dot::after { content: ''; display: block; width: 6px; height: 6px; border-radius: 50%; background: #FF6B3D; }
-  .hm-brand-txt { font-size: 11px; font-weight: 700; color: #0D1F1E; letter-spacing: -.02em; }
-  .hm-nav-links { display: flex; gap: 10px; }
-  .hm-nav-links span { width: 24px; height: 5px; background: #CBD5E1; border-radius: 3px; }
-  .hm-nav-btn { background: #FF6B3D; border-radius: 6px; padding: 4px 10px; font-size: 9px; font-weight: 700; color: #fff; }
-
-  .hm-hero-block {
-    padding: 18px 16px 14px;
-    background: linear-gradient(135deg, #0D1F1E 0%, #1A4A47 100%);
-    display: flex; align-items: center; justify-content: space-between; gap: 12px;
-  }
-  .hm-hero-copy { flex: 1; }
-  .hm-hero-eyebrow { font-size: 7px; font-weight: 700; color: #FF6B3D; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 4px; }
-  .hm-hero-h { font-size: 16px; font-weight: 800; color: #FFFFFF; line-height: 1.15; letter-spacing: -.02em; margin-bottom: 5px; }
-  .hm-hero-h span { color: #FF6B3D; }
-  .hm-hero-p { font-size: 7px; color: rgba(255,255,255,0.62); line-height: 1.5; margin-bottom: 8px; }
-  .hm-hero-btns { display: flex; gap: 5px; }
-  .hm-hbtn-p { background: #FF6B3D; color: #fff; font-size: 7px; font-weight: 700; padding: 4px 9px; border-radius: 5px; }
-  .hm-hbtn-s { border: 1px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.85); font-size: 7px; font-weight: 600; padding: 3px 9px; border-radius: 5px; }
-  .hm-hero-mockup {
-    width: 80px; background: rgba(255,255,255,0.07); border-radius: 8px; padding: 6px; border: 1px solid rgba(255,255,255,0.12);
-  }
-  .hm-mockup-bar { height: 5px; background: rgba(255,255,255,0.15); border-radius: 3px; margin-bottom: 4px; }
-  .hm-mockup-bar.accent { background: rgba(255,107,61,0.6); width: 60%; }
-  .hm-mockup-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; margin-top: 4px; }
-  .hm-mockup-cell { height: 20px; background: rgba(255,255,255,0.08); border-radius: 3px; }
-
-  .hm-services-block { padding: 14px 16px; }
-  .hm-services-label { font-size: 7px; font-weight: 700; color: #5A7472; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 8px; }
-  .hm-services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; }
-  .hm-service-card {
-    background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 8px;
-    padding: 8px; display: flex; flex-direction: column; gap: 4px;
-  }
-  .hm-service-icon { width: 18px; height: 18px; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 10px; }
-  .hm-service-title { font-size: 7.5px; font-weight: 700; color: #0D1F1E; }
-  .hm-service-sub { font-size: 6px; color: #94A3B8; line-height: 1.4; }
-
-  /* Floating web app dashboard card */
-  .hm-dashboard {
+  .showcase-canvas {
     position: absolute;
-    right: -5%; bottom: -6%;
-    width: 52%;
-    background: #1E293B;
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 14px;
-    padding: 12px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+    top: 0;
+    left: 0;
+    width: 1480px;
+    height: 920px;
+    transform-origin: top left;
+    transform: scale(var(--showcase-scale, calc(100cqw / 1480)));
+    animation: float 6s ease-in-out infinite;
+    pointer-events: none;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
   }
-  .hm-dash-header {
-    display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;
-  }
-  .hm-dash-title { font-size: 9px; font-weight: 700; color: #F8FAFC; }
-  .hm-dash-badge { background: rgba(16,185,129,0.2); border: 1px solid rgba(16,185,129,0.35); color: #34D399; font-size: 7px; font-weight: 600; padding: 2px 7px; border-radius: 5px; }
-  .hm-kpis { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; margin-bottom: 10px; }
-  .hm-kpi { background: rgba(255,255,255,0.06); border-radius: 7px; padding: 6px 8px; }
-  .hm-kpi-val { font-size: 14px; font-weight: 800; color: #F8FAFC; line-height: 1; }
-  .hm-kpi-label { font-size: 6.5px; color: #94A3B8; margin-top: 2px; }
-  .hm-kpi-up { font-size: 7px; color: #34D399; font-weight: 600; }
-  .hm-chart-bars { display: flex; align-items: flex-end; gap: 4px; height: 32px; padding: 0 2px; }
-  .hm-bar { flex: 1; border-radius: 2px 2px 0 0; background: #3B82F6; opacity: 0.6; }
-  .hm-bar.hi { opacity: 1; }
-  .hm-bar.accent { background: #FF6B3D; }
-
-  /* Floating social proof card */
-  .hm-float-badge {
-    position: absolute;
-    background: #FFFFFF;
-    border-radius: 12px;
-    padding: 10px 14px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-    display: flex; align-items: center; gap: 10px;
-    font-size: 12px;
-  }
-  .hm-float-badge.top-left { left: -4%; top: 10%; animation: float 4.5s ease-in-out 0.5s infinite; }
-  .hm-float-badge.top-right { right: 4%; top: 8%; animation: float 4s ease-in-out 1.5s infinite; }
-  .hm-badge-icon { font-size: 22px; flex: none; }
-  .hm-badge-val { font-size: 16px; font-weight: 800; color: #0D1F1E; line-height: 1; }
-  .hm-badge-lbl { font-size: 11px; color: #64748B; margin-top: 1px; }
 
   /* ─── TILTED BAND ─── */
   .band-wrap { overflow: hidden; padding: 40px 0 56px; }
@@ -1035,7 +938,7 @@ function gtag_report_conversion(url) {
     .hero-h1 { font-size: clamp(34px, 8.5vw, 42px); line-height: 1.12; }
     .hero-highlight { padding: 0 0.14em 0.04em; }
     .hero-sub { font-size: 16px; line-height: 1.55; }
-    .hero-visual { max-width: 290px; margin: 0 auto; }
+    .hero-visual { max-width: 100%; margin: 0 auto; }
     .orbit-tag { padding: 6px 12px; font-size: 12px; gap: 6px; }
     .orbit-tag .dot { width: 6px; height: 6px; }
 
@@ -1203,113 +1106,155 @@ function gtag_report_conversion(url) {
       </div>
     </div>
 
-    <!-- Visual Right — Device Mockups -->
+    <!-- Visual Right — Showcase Laptop & HP (dari pages/Showcase Laptop + HP-html/Showcase.dc.html) -->
     <div class="hero-visual" aria-hidden="true">
-      <div class="hero-device-wrap">
+      <div class="showcase-scaler">
+        <div class="showcase-canvas">
 
-        <!-- Floating badge top-left: social proof -->
-        <div class="hm-float-badge top-left">
-          <div class="hm-badge-icon">👥</div>
-          <div>
-            <div class="hm-badge-val">10+</div>
-            <div class="hm-badge-lbl">Klien Mempercayai Kami</div>
+          <!-- lapisan belakang browser -->
+          <div style="position: absolute; left: 168px; top: 96px; width: 1080px; height: 640px; background: #CFE6E2; border-radius: 28px; transform: perspective(2000px) rotateX(6deg) rotateY(-8deg) rotateZ(-1.5deg)"></div>
+
+          <!-- BROWSER -->
+          <div style="position: absolute; left: 130px; top: 70px; width: 1080px; height: 640px; background: #FFFFFF; border: 1px solid #D3E1DE; border-radius: 28px; box-shadow: 0 30px 60px rgba(15,118,110,0.18); overflow: hidden; transform: perspective(2000px) rotateX(6deg) rotateY(-8deg) rotateZ(-1.5deg)">
+            <div style="height: 64px; background: #EEF5F3; padding: 0 24px; box-sizing: border-box; display: flex; align-items: center; gap: 10px">
+              <div style="width: 14px; height: 14px; border-radius: 50%; background: #FF5F57"></div>
+              <div style="width: 14px; height: 14px; border-radius: 50%; background: #FEBC2E"></div>
+              <div style="width: 14px; height: 14px; border-radius: 50%; background: #28C840"></div>
+              <div style="flex: 1; margin-left: 16px; height: 36px; background: #FFFFFF; border: 1px solid #D3E1DE; border-radius: 18px; padding: 0 16px; display: flex; align-items: center; gap: 10px; font-size: 14px; color: #44585A">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#44585A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg>
+                www.[domain-anda]
+              </div>
+            </div>
+
+            <div style="padding: 0 56px">
+              <div style="height: 84px; display: flex; align-items: center; justify-content: space-between">
+                <div style="display: flex; align-items: center; gap: 12px; font-size: 24px; font-weight: 800; color: #0B1F24">
+                  <span style="width: 38px; height: 38px; border-radius: 11px; background: #0F766E; display: flex; align-items: center; justify-content: center">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M8 19V5h5a4 4 0 0 1 0 8H8"></path><circle cx="13.2" cy="9" r="1.5" fill="#FF8A3D" stroke="none"></circle></svg>
+                  </span>
+                  Paras Digital
+                </div>
+                <div style="display: flex; align-items: center; gap: 32px; font-size: 15px; font-weight: 600">
+                  <span style="color: #0F766E; border-bottom: 2px solid #0F766E; padding-bottom: 4px">Home</span>
+                  <span style="color: #0B1F24">About</span>
+                  <span style="color: #0B1F24">Services</span>
+                  <span style="color: #0B1F24">Portfolio</span>
+                  <span style="color: #0B1F24">Contact</span>
+                  <span style="color: #0B1F24; background: #FF8A3D; padding: 0 22px; height: 44px; border-radius: 12px; display: inline-flex; align-items: center; font-weight: 700">Hubungi Kami</span>
+                </div>
+              </div>
+
+              <div style="display: flex; align-items: center; gap: 24px; margin-top: 20px">
+                <div style="flex: 0 0 520px; display: flex; flex-direction: column; gap: 16px">
+                  <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.22em; color: #0F766E">WEBSITE CUSTOM</div>
+                  <div style="margin: 0; font-size: 68px; line-height: 1; font-weight: 800; letter-spacing: -0.03em; color: #0B1F24">Bisnis Anda<br><span style="color: #0F766E">layak memikat</span></div>
+                  <p style="margin: 0; font-size: 18px; line-height: 1.55; color: #44585A; max-width: 420px">Website yang bukan cuma cantik, tapi bekerja untuk Anda.</p>
+                  <div style="display: flex; gap: 14px; margin-top: 8px">
+                    <span style="color: #FFFFFF; background: #0F766E; height: 56px; padding: 0 28px; border-radius: 14px; display: inline-flex; align-items: center; gap: 12px; font-weight: 700; font-size: 16px; box-shadow: 0 12px 24px rgba(15,118,110,0.3)">Ceritakan Proyek
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="13 6 19 12 13 18"></polyline></svg>
+                    </span>
+                    <span style="color: #0F766E; background: #FFFFFF; border: 1.5px solid #BFD8D3; height: 56px; padding: 0 28px; box-sizing: border-box; border-radius: 14px; display: inline-flex; align-items: center; font-weight: 700; font-size: 16px">Intip Karya Kami</span>
+                  </div>
+                </div>
+
+                <div style="flex: 1; min-width: 0; height: 330px; border-radius: 24px; overflow: hidden">
+                  <svg width="100%" height="100%" viewBox="0 0 400 330" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Ilustrasi gedung kaca modern">
+                    <rect width="400" height="330" fill="#BFE3DE"></rect>
+                    <ellipse cx="90" cy="60" rx="60" ry="16" fill="#FFFFFF" opacity="0.7"></ellipse>
+                    <ellipse cx="330" cy="40" rx="50" ry="12" fill="#FFFFFF" opacity="0.6"></ellipse>
+                    <polygon points="150,30 310,62 310,300 150,300" fill="#134E4A"></polygon>
+                    <polygon points="70,110 150,30 150,300 70,300" fill="#2A8F86"></polygon>
+                    <g stroke="#FFFFFF" stroke-opacity="0.2" stroke-width="1.5">
+                      <line x1="190" y1="38" x2="190" y2="300"></line>
+                      <line x1="230" y1="46" x2="230" y2="300"></line>
+                      <line x1="270" y1="54" x2="270" y2="300"></line>
+                      <line x1="150" y1="90" x2="310" y2="122"></line>
+                      <line x1="150" y1="150" x2="310" y2="182"></line>
+                      <line x1="150" y1="210" x2="310" y2="242"></line>
+                      <line x1="110" y1="130" x2="110" y2="300"></line>
+                    </g>
+                    <polygon points="40,215 330,240 330,262 40,238" fill="#FFFFFF"></polygon>
+                    <polygon points="40,238 330,262 330,300 40,300" fill="#17605A"></polygon>
+                    <g stroke="#FFFFFF" stroke-opacity="0.25" stroke-width="1.5">
+                      <line x1="90" y1="238" x2="90" y2="300"></line>
+                      <line x1="150" y1="244" x2="150" y2="300"></line>
+                      <line x1="210" y1="250" x2="210" y2="300"></line>
+                      <line x1="270" y1="256" x2="270" y2="300"></line>
+                    </g>
+                    <rect y="300" width="400" height="30" fill="#E3F0EE"></rect>
+                  </svg>
+                </div>
+              </div>
+
+              <div style="display: flex; align-items: center; gap: 28px; margin-top: 28px; font-size: 14px; color: #44585A">
+                <div>Dipercaya oleh banyak bisnis</div>
+                <div style="padding: 8px 18px; border-radius: 999px; background: #EEF5F3; font-weight: 600">[Logo Klien]</div>
+                <div style="padding: 8px 18px; border-radius: 999px; background: #EEF5F3; font-weight: 600">[Logo Klien]</div>
+                <div style="padding: 8px 18px; border-radius: 999px; background: #EEF5F3; font-weight: 600">[Logo Klien]</div>
+              </div>
+            </div>
           </div>
+
+          <!-- HP -->
+          <div style="position: absolute; left: 1090px; top: 250px; width: 262px; height: 560px; background: #1A1D29; border-radius: 46px; padding: 10px; box-sizing: border-box; box-shadow: 0 30px 50px rgba(11,16,32,0.3); transform: rotate(2deg)">
+            <div style="position: relative; width: 100%; height: 100%; background: #FFFFFF; border-radius: 37px; overflow: hidden">
+              <div style="position: absolute; left: 50%; top: 10px; margin-left: -42px; width: 84px; height: 24px; border-radius: 12px; background: #0B1F24"></div>
+              <div style="padding: 54px 18px 0">
+                <div style="display: flex; align-items: center; justify-content: space-between">
+                  <div style="display: flex; align-items: center; gap: 7px; font-size: 14px; font-weight: 800; color: #0B1F24">
+                    <span style="width: 22px; height: 22px; border-radius: 7px; background: #0F766E; display: flex; align-items: center; justify-content: center">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M8 19V5h5a4 4 0 0 1 0 8H8"></path><circle cx="13.2" cy="9" r="1.5" fill="#FF8A3D" stroke="none"></circle></svg>
+                    </span>
+                    Paras Digital
+                  </div>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0B1F24" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"></line><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="17" x2="20" y2="17"></line></svg>
+                </div>
+                <div style="font-size: 9px; font-weight: 700; letter-spacing: 0.2em; color: #0F766E; margin-top: 30px">WEBSITE CUSTOM</div>
+                <div style="font-size: 27px; line-height: 1.05; font-weight: 800; letter-spacing: -0.03em; margin-top: 10px; color: #0B1F24">Bisnis Anda<br><span style="color: #0F766E">layak memikat</span></div>
+                <div style="font-size: 12px; line-height: 1.5; color: #44585A; margin-top: 12px">Website yang bukan cuma cantik, tapi bekerja untuk Anda.</div>
+                <div style="margin-top: 16px; height: 40px; border-radius: 12px; background: #0F766E; color: #FFFFFF; font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 8px">Ceritakan Proyek
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="13 6 19 12 13 18"></polyline></svg>
+                </div>
+                <div style="margin-top: 18px; height: 170px; border-radius: 16px; overflow: hidden">
+                  <svg width="100%" height="100%" viewBox="0 0 400 330" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Ilustrasi gedung kaca modern">
+                    <rect width="400" height="330" fill="#BFE3DE"></rect>
+                    <polygon points="150,30 310,62 310,300 150,300" fill="#134E4A"></polygon>
+                    <polygon points="70,110 150,30 150,300 70,300" fill="#2A8F86"></polygon>
+                    <polygon points="40,215 330,240 330,262 40,238" fill="#FFFFFF"></polygon>
+                    <polygon points="40,238 330,262 330,300 40,300" fill="#17605A"></polygon>
+                    <rect y="300" width="400" height="30" fill="#E3F0EE"></rect>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- KARTU MELAYANG: Desain Modern -->
+          <div style="position: absolute; left: 1130px; top: 40px; width: 160px; height: 176px; background: rgba(255,255,255,0.92); border: 1px solid #D3E1DE; border-radius: 28px; box-shadow: 0 18px 36px rgba(15,118,110,0.22); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; text-align: center; color: #0B1F24">
+            <div style="width: 68px; height: 68px; border-radius: 50%; background: #DDF2EE; display: flex; align-items: center; justify-content: center">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 4.5l10.5 7.5-5 1.4 3 5.4-2.4 1.3-3-5.4L9 18.5z" fill="#0F766E"></path><g stroke="#0F766E" stroke-width="1.6" stroke-linecap="round"><line x1="9" y1="1.5" x2="9" y2="3"></line><line x1="3" y1="7" x2="4.5" y2="8"></line><line x1="15" y1="7" x2="13.5" y2="8"></line><line x1="2" y1="13" x2="3.5" y2="12.5"></line></g></svg>
+            </div>
+            <div style="font-size: 15px; font-weight: 700; line-height: 1.25">Desain Custom<br>Bukan Template</div>
+          </div>
+
+          <!-- KARTU MELAYANG: Aman -->
+          <div style="position: absolute; left: 70px; top: 380px; width: 168px; height: 176px; background: rgba(255,255,255,0.92); border: 1px solid #D3E1DE; border-radius: 28px; box-shadow: 0 18px 36px rgba(15,118,110,0.22); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; text-align: center; color: #0B1F24">
+            <div style="width: 68px; height: 68px; border-radius: 50%; background: #DDF2EE; display: flex; align-items: center; justify-content: center">
+              <svg width="38" height="38" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2.5l8 3v6.2c0 5-3.4 8.4-8 9.8-4.6-1.4-8-4.8-8-9.8V5.5l8-3z" fill="#0F766E"></path><polyline points="8.2 12 11 14.8 16 9.2" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg>
+            </div>
+            <div style="font-size: 15px; font-weight: 700; line-height: 1.25">Dirawat Penuh<br>Setiap Tahun</div>
+          </div>
+
+          <!-- KARTU MELAYANG: Pertumbuhan -->
+          <div style="position: absolute; left: 880px; top: 690px; width: 370px; height: 150px; background: rgba(255,255,255,0.94); border: 1px solid #D3E1DE; border-radius: 28px; box-shadow: 0 18px 36px rgba(15,118,110,0.22); display: flex; align-items: center; gap: 22px; padding: 0 28px; box-sizing: border-box; color: #0B1F24">
+            <div style="flex: none; width: 92px; height: 92px; border-radius: 24px; background: #DDF2EE; display: flex; align-items: center; justify-content: center; font-size: 34px; font-weight: 800; color: #0F766E">Rp</div>
+            <div style="display: flex; flex-direction: column; gap: 6px">
+              <div style="font-size: 22px; font-weight: 800; line-height: 1.15">Harga Jelas,<br>Sekali Bayar</div>
+              <div style="font-size: 24px; font-weight: 800; color: #0F766E">Mulai Rp 600 rb</div>
+            </div>
+          </div>
+
         </div>
-
-        <!-- Main browser mockup — company profile website -->
-        <div class="hm-browser">
-          <div class="hm-browser-bar">
-            <div class="hm-dots">
-              <div class="hm-dot" style="background:#FF5F57"></div>
-              <div class="hm-dot" style="background:#FEBC2E"></div>
-              <div class="hm-dot" style="background:#28C840"></div>
-            </div>
-            <div class="hm-url"><span class="hm-url-dot"></span>parasdigital.id</div>
-          </div>
-          <div class="hm-compro-screen">
-            <!-- Navbar -->
-            <div class="hm-compro-nav">
-              <div class="hm-brand-pill">
-                <div class="hm-brand-dot"></div>
-                <div class="hm-brand-txt">paras digital</div>
-              </div>
-              <div class="hm-nav-links"><span></span><span></span><span></span></div>
-              <div class="hm-nav-btn">Konsultasi</div>
-            </div>
-            <!-- Hero block -->
-            <div class="hm-hero-block">
-              <div class="hm-hero-copy">
-                <div class="hm-hero-eyebrow">Company Profile</div>
-                <div class="hm-hero-h">Wajah Online <span>Bisnis Anda</span></div>
-                <div class="hm-hero-p">Website company profile profesional yang memberi kepercayaan klien korporat sejak pertama kali melihat.</div>
-                <div class="hm-hero-btns">
-                  <div class="hm-hbtn-p">Konsultasi WA</div>
-                  <div class="hm-hbtn-s">Lihat Paket</div>
-                </div>
-              </div>
-              <div class="hm-hero-mockup">
-                <div class="hm-mockup-bar accent"></div>
-                <div class="hm-mockup-bar"></div>
-                <div class="hm-mockup-bar" style="width:80%"></div>
-                <div class="hm-mockup-grid">
-                  <div class="hm-mockup-cell"></div>
-                  <div class="hm-mockup-cell"></div>
-                </div>
-              </div>
-            </div>
-            <!-- Services section -->
-            <div class="hm-services-block">
-              <div class="hm-services-label">Layanan Kami</div>
-              <div class="hm-services-grid">
-                <div class="hm-service-card">
-                  <div class="hm-service-icon" style="background:#FEF0EB">🌐</div>
-                  <div class="hm-service-title">Website</div>
-                  <div class="hm-service-sub">Company profile &amp; landing page modern</div>
-                </div>
-                <div class="hm-service-card">
-                  <div class="hm-service-icon" style="background:#EFF6FF">⚡</div>
-                  <div class="hm-service-title">Web App</div>
-                  <div class="hm-service-sub">Sistem &amp; dashboard bisnis custom</div>
-                </div>
-                <div class="hm-service-card">
-                  <div class="hm-service-icon" style="background:#ECFDF5">🔧</div>
-                  <div class="hm-service-title">Maintenance</div>
-                  <div class="hm-service-sub">Perawatan &amp; update berkala</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Floating web app dashboard overlay (bottom right) -->
-        <div class="hm-dashboard">
-          <div class="hm-dash-header">
-            <div class="hm-dash-title">Dashboard Web App</div>
-            <div class="hm-dash-badge">● Live</div>
-          </div>
-          <div class="hm-kpis">
-            <div class="hm-kpi">
-              <div class="hm-kpi-val">248</div>
-              <div class="hm-kpi-label">Total Pesanan</div>
-              <div class="hm-kpi-up">↑ +12%</div>
-            </div>
-            <div class="hm-kpi">
-              <div class="hm-kpi-val">Rp4,2M</div>
-              <div class="hm-kpi-label">Pendapatan</div>
-              <div class="hm-kpi-up">↑ +8%</div>
-            </div>
-          </div>
-          <div class="hm-chart-bars">
-            <div class="hm-bar" style="height:40%"></div>
-            <div class="hm-bar" style="height:55%"></div>
-            <div class="hm-bar" style="height:35%"></div>
-            <div class="hm-bar hi" style="height:80%"></div>
-            <div class="hm-bar accent hi" style="height:100%"></div>
-            <div class="hm-bar" style="height:65%"></div>
-            <div class="hm-bar" style="height:70%"></div>
-          </div>
-        </div>
-
       </div>
     </div>
   </div>
@@ -2476,6 +2421,18 @@ window.addEventListener('message', (e) => {
     }
   }
 });
+
+// Auto-scale hero showcase canvas based on container width
+function updateHeroShowcaseScale() {
+  const scaler = document.querySelector('.showcase-scaler');
+  if (scaler) {
+    const scale = scaler.clientWidth / 1480;
+    scaler.style.setProperty('--showcase-scale', scale);
+  }
+}
+window.addEventListener('resize', updateHeroShowcaseScale);
+window.addEventListener('DOMContentLoaded', updateHeroShowcaseScale);
+updateHeroShowcaseScale();
 
 // Delegasi event klik untuk melacak klik WA & pilih paket
 document.addEventListener('click', (e) => {
